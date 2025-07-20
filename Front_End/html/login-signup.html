@@ -6,62 +6,118 @@
     <title>Login Signup</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="/Front_End/css/login-sighup.css">
-    <script src="/Front_End/js/loginSignup.js"></script>
+    <link rel="stylesheet" href="/Front_End/css/login-signup.css">
 
 </head>
 <body>
 
-<div class="flip-card" id="flipCard">
-    <div class="flip-card-inner">
-
-        <!-- Login Form -->
-        <div class="flip-card-front">
-            <h2 class="mb-4">Login</h2>
-            <form id="loginForm">
-                <div class="mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-                <p class="mt-3">Don't have an account? <span class="toggle-btn" onclick="flipCard()">Signup</span></p>
-            </form>
+    <div class="brand-header">
+        <div class="brand-logo">
+            <img src="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" alt="Brand Logo">
         </div>
-
-        <!-- Signup Form -->
-        <div class="flip-card-back">
-            <h2 class="mb-4">Sign Up</h2>
-            <form id="signupForm">
-                <div class="mb-2">
-                    <input type="text" class="form-control" name="username" placeholder="Name" required>
+        <h1>ClaimRight</h1>
+        <!-- <p>Lost & Found Platform</p> -->
+        <p>Lost something?<br>You're just one step away from getting it back.<br>Sign in and reclaim what's yours.</p>
+    </div>
+    
+    <div class="flip-card" id="flipCard">
+        <div class="flip-card-inner">
+            <!-- Login Form -->
+            <div class="flip-card-front">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
                 </div>
-                <div class="mb-2">
-                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                
+                <div class="form-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                        </div>
+                        
+                        <div class="form-group password-container">
+                            <input type="password" class="form-control" name="password" id="loginPassword" placeholder="Password" required>
+                            <span class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" class="text-primary small">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    
+                    <button class="google-btn">
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo">
+                        <span>Continue with Google</span>
+                    </button>
+                    
+                    <div class="form-footer">
+                        Don't have an account? <span class="toggle-btn" onclick="flipCard()">Sign Up</span>
+                    </div>
                 </div>
-                <div class="mb-2">
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            
+            <!-- Signup Form -->
+            <div class="flip-card-back">
+                <div class="form-header">
+                    <h2>Create Account</h2>
                 </div>
-                <div class="mb-2">
-                    <input type="text" class="form-control" name="contactInfo" placeholder="Contact Info">
+                
+                <div class="form-body">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Full Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                        </div>
+                        
+                        <div class="form-group password-container">
+                            <input type="password" class="form-control" name="password" id="signupPassword" placeholder="Password" required>
+                            <span class="password-toggle" onclick="togglePassword('signupPassword')">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="contactInfo" placeholder="Phone Number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-select" name="role" aria-label="Select Role" required>
+                                <option value="" disabled selected>Select Your Role</option>
+                                <option value="USER">Regular User</option>
+                                <option value="ADMIN">Administrator</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success w-100">Create Account</button>
+                    </form>
+                    
+                    <div class="form-footer">
+                        Already have an account? <span class="toggle-btn" onclick="flipCard()">Login</span>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <select class="form-select" name="role" aria-label="Select Role" required>
-                        <option value="" disabled selected>Select Role</option>
-                        <option value="USER">User</option>
-                        <option value="ADMIN">Admin</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Sign Up</button>
-                <p class="mt-3">Already have an account? <span class="toggle-btn" onclick="flipCard()">Login</span></p>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+    
+    <div class="watermark text-center bottom-row">
+        ClaimRight &copy; 2025 - Reuniting Lost Items
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Front_End/js/loginSignup.js"></script>
 </body>
 </html>

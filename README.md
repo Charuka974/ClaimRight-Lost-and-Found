@@ -48,7 +48,7 @@
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ClaimRight.git
+   git clone https://github.com/Charuka974/ClaimRight-Lost-and-Found.git
    ```
 
 2. Navigate to the project directory:
