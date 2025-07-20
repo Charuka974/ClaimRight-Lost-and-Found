@@ -1,0 +1,14 @@
+:root {
+    --primary: #4e73df;
+    --secondary: #1cc88a;
+    --accent: #36b9cc;
+    --dark: #2e4374;
+    --light: #f8f9fc;
+}
+
+body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #d1e0fd 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}

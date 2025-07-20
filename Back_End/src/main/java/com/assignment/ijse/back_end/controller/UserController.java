@@ -1,0 +1,153 @@
+package com.assignment.ijse.back_end.controller;
+
+import com.assignment.ijse.back_end.dto.UserDTO;
+import com.assignment.ijse.back_end.service.UserService;
+import com.assignment.ijse.back_end.util.APIResponse;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("api/claimright/user")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*")
+@Slf4j
+public class UserController {
+//    @Autowired
+    private final UserService userService;
+
+    @PostMapping("/validate")
+    public ResponseEntity<APIResponse<UserDTO>> validateUser(@RequestBody UserDTO loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+        // Optional: log email for debugging (never log passwords)
+        log.info("Attempting login for email: {}", email);
+        UserDTO matchedUser = userService.getAllUsers().stream()
+                .filter(user -> user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password))
+                .findFirst()
+                .orElse(null);
+
+        if (matchedUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new APIResponse<>(401, "Invalid credentials", null));
+        }
+        return ResponseEntity.ok(new APIResponse<>(200, "User validated successfully", matchedUser));
+    }
+
+
+
+    @PostMapping("/create")
+    public ResponseEntity<APIResponse<UserDTO>> createUser(@RequestBody UserDTO UserDTO) {
+        log.info("User Created Successfully !");
+        log.debug("User Details: {}", UserDTO);
+        log.warn("This is a warning message for User creation");
+        log.error("This is an error message for User creation");
+        log.trace("This is a trace message for User creation");
+
+        UserDTO.setActive(true); // Set the User as active by default
+        UserDTO savedUser = userService.saveUser(UserDTO);
+
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User Saved Successfully", savedUser
+        ));
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<APIResponse<List<UserDTO>>> getAllUsers() {
+        List<UserDTO> UserDTOs = userService.getAllUsers();
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User List Fetched Successfully", UserDTOs
+        ));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<APIResponse<UserDTO>> updateUser(@RequestBody UserDTO UserDTO) {
+        ResponseEntity<APIResponse<UserDTO>> existingUserResponse = getUserById(UserDTO.getUserId());
+        if (existingUserResponse.getBody().getData() == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new APIResponse<>(404, "User not found", null));
+        }
+
+        UserDTO updatedUser = userService.updateUser(UserDTO);
+        return ResponseEntity.ok(new APIResponse<>(200, "User updated successfully", updatedUser));
+    }
+
+    //    // Delete User - we use a put mapping here for delete operation
+    @PutMapping("/deleteUser/{id}")
+    public ResponseEntity<APIResponse<List<UserDTO>>> deleteUser(@PathVariable("id") String id) {
+        userService.deleteUser(Integer.parseInt(id));
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User Deleted Successfully", null
+        ));
+
+    }
+
+    @PatchMapping("/changestatusdeactivate/{id}")
+    public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatus(@PathVariable("id") String id) {
+        userService.changeUserStatusDeactivate(Integer.parseInt(id));
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User Status Deactivated Successfully", null
+        ));
+    }
+
+    @PatchMapping("/changestatusactivate/{id}")
+    public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatusActive(@PathVariable("id") String id) {
+        userService.changeUserStatusActivate(Integer.parseInt(id));
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User Status Activated Successfully", null
+        ));
+    }
+
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<APIResponse<Page<UserDTO>>> searchUser(
+            @PathVariable("keyword") String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<UserDTO> userPage = userService.searchUser(keyword, pageable);
+
+        APIResponse<Page<UserDTO>> response = new APIResponse<>(
+                200,
+                "Users fetched successfully",
+                userPage
+        );
+
+        return ResponseEntity.ok(response);
+    }
+
+
+
+    @GetMapping("/getuserbyid/{id}")
+    public ResponseEntity<APIResponse<UserDTO>> getUserById(@PathVariable("id") int id) {
+        UserDTO selectedUser = userService.getUserById(id);
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User Selected Successfully", selectedUser
+        ));
+    }
+
+
+    @GetMapping("/paginatedusers")
+    public ResponseEntity<APIResponse<Page<UserDTO>>> getUsersPaged(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+
+        Page<UserDTO> userPage = userService.getUsersPages(page, size);
+
+        APIResponse<Page<UserDTO>> response = new APIResponse<>(
+                200,
+                "Users fetched successfully",
+                userPage
+        );
+
+        return ResponseEntity.ok(response);
+    }
+
+}

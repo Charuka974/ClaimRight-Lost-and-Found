@@ -1,0 +1,76 @@
+/* Navbar */
+
+.custom-navbar {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  padding: 0.75rem 1.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  /* color: var(--secondary) !important; */
+  color: black !important;
+}
+
+/* not used yet .navbar-btn */
+.navbar-btn {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar-btn:hover {
+  background: #000000;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(67, 67, 67, 0.3);
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
+}
+
+/* popup styles */
+/* .modal {
+  background: linear-gradient(135deg, #e0e7ff 0%, #d1e0fd 100%);
+} */
+
+.modal-content {
+  background: linear-gradient(135deg, #e0e7ff 0%, #d1e0fd 100%);
+  border-radius: 12px;
+  border: none;
+}
+
+.modal .btn-primary {
+  background: var(--primary);
+  border: none;
+  box-shadow: 0 4px 12px rgba(78, 115, 223, 0.4);
+  transition: all 0.3s ease;
+}
+
+.modal .btn-primary:hover {
+  background: #3a60d5;
+  box-shadow: 0 6px 18px rgba(78, 115, 223, 0.5);
+}
+
+.modal .btn-secondary {
+  background: var(--dark);
+  border: none;
+  box-shadow: 0 4px 12px rgba(78, 115, 223, 0.4);
+  transition: all 0.3s ease;
+}
+.modal .btn-secondary:hover {
+  background: #1f2e57;
+  box-shadow: 0 6px 18px rgba(78, 115, 223, 0.5);
+}

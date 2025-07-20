@@ -24,8 +24,9 @@ public class User {
     private String email;
     private String password;
     private String role; // "USER", "ADMIN"
-    private String contactInfo;
+    private String phoneNumber;
     private LocalDateTime createdAt;
+    private String profilePictureUrl;
     private boolean isActive;
 
     @OneToMany(mappedBy = "user")

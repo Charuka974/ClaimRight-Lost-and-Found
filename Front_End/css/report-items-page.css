@@ -1,0 +1,21 @@
+body {
+    min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px; 
+  height: 300px;
+  background: url('/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg') no-repeat center center/cover;
+  border-radius: 50%; 
+  opacity: 0.3;
+  transform: translate(-50%, -50%); 
+  z-index: -1;
+}
+
+.main-content-container {
+    height: 100vh;
+}
