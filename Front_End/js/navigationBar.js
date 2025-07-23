@@ -87,11 +87,14 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="modal-body">
             <form id="editProfileForm" enctype="multipart/form-data">
                 <div class="text-center mb-3">
-                <img src="" id="profilePreview" alt="Profile Picture" class="rounded-circle" width="100" height="100">
-                <div class="mt-2">
-                    <input type="file" class="form-control form-control-sm" id="profilePicture" accept="image/*">
+                  <label for="profilePicture" style="cursor: pointer; display: inline-block;">
+                    <img src="" id="profilePreview" alt="Profile Picture" class="rounded-circle" width="100" height="100" title="Click to change profile picture">
+                  </label>
+                  <div class="mt-2">
+                    <input type="file" class="form-control form-control-sm d-none" id="profilePicture" accept="image/*">
+                  </div>
                 </div>
-                </div>
+
 
                 <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
@@ -109,14 +112,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <div class="mb-3">
-                <label for="editPassword" class="form-label">Password</label>
-                <div class="form-group password-container" style="position: relative;">
-                <input type="password" class="form-control" name="password" id="editPassword" placeholder="Password" required>
-                <span class="password-toggle" onclick="togglePassword('editPassword')" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
-                    <i class="fas fa-eye" id="editPasswordToggleIcon"></i>
-                </span>
+                <label for="editPassword" class="form-label">Enter New Password (optional)</label>
+                  <div class="form-group password-container" style="position: relative;">
+                    <input type="password" class="form-control" name="password" id="editPassword" placeholder="Password">
+                    <span class="password-toggle" onclick="togglePassword('editPassword')" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                      <i class="fas fa-eye" id="editPasswordToggleIcon"></i>
+                    </span>
+                  </div>
                 </div>
-                </div>
+
 
                 <!-- Hidden fields: userId, createdAt, isActive -->
                 <input type="hidden" id="userId" name="userId">
@@ -201,13 +205,16 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("username").value = user.username;
       document.getElementById("email").value = user.email;
       document.getElementById("phone").value = user.phoneNumber || "";
-      document.getElementById("editPassword").value = user.password || "";
+      document.getElementById("editPassword").value = ""; // cannot show old password only update the password
       document.getElementById("createdAt").value = user.createdAt;
       document.getElementById("isActive").value = user.active;
       document.getElementById("profilePictureUrl").value = user.profilePictureUrl || "";
 
       const preview = document.getElementById("profilePreview");
-      preview.src = user.profilePictureUrl || "/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg";
+      preview.src = user.profilePictureUrl
+      ? user.profilePictureUrl
+      : "/Front_End/assets/images/default.jpg";
+
     });
   }
 });

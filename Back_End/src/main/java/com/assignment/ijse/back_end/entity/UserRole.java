@@ -1,5 +1,5 @@
-package com.assignment.ijse.securebackend.entity;
+package com.assignment.ijse.back_end.entity;
 
-public enum Role {
+public enum UserRole {
     ADMIN, USER
 }

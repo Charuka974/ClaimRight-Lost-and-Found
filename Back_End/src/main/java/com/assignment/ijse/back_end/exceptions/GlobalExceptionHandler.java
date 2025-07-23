@@ -1,10 +1,14 @@
 package com.assignment.ijse.back_end.exceptions;
 
 import com.assignment.ijse.back_end.util.APIResponse;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
@@ -46,5 +50,48 @@ public class GlobalExceptionHandler {
                 errors),
                 HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public APIResponse handleUsernameNotFoundException(UsernameNotFoundException ex) {
+        return new APIResponse(
+                404,
+                "User not found",
+                ex.getMessage());
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public APIResponse handleBadCredentialsException(BadCredentialsException ex) {
+        return new APIResponse(
+                401,
+                "Invalid credentials",
+                "Invalid username or password");
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public APIResponse handleExpiredJwtException(ExpiredJwtException ex) {
+        return new APIResponse(
+                401,
+                "Token expired",
+                "Your session has expired, please log in again");
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public APIResponse handleRuntimeException(RuntimeException ex) {
+        return new APIResponse(
+                500,
+                "Internal Server Error",
+                ex.getMessage());
+    }
+
+//    @ExceptionHandler(StorageException.class)
+//    public ResponseEntity<String> handleStorageException(StorageException ex) {
+//        // You can customize the response body as needed
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                .body("Storage error: " + ex.getMessage());
+//    }
 
 }

@@ -1,6 +1,6 @@
-package com.assignment.ijse.securebackend.config;
+package com.assignment.ijse.back_end.config;
 
-import com.assignment.ijse.securebackend.util.JwtAuthFilter;
+import com.assignment.ijse.back_end.util.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Enable CORS with custom configuration
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/claimrightauth/**").permitAll()
                 .anyRequest().authenticated())
                 .sessionManagement(
                     session -> session
@@ -56,7 +56,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://127.0.0.1:5500")); // your frontend origin
+        config.setAllowedOrigins(List.of("http://127.0.0.1:5501", "http://localhost:5501"));// your frontend origin
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowCredentials(true); // optional if using cookies

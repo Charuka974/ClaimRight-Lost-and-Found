@@ -7,5 +7,16 @@
 
 function logout() {
     localStorage.removeItem("loggedInUser");
-    window.location.href = "/Front_End/html/login-signup.html";
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("currentUser")
+
+    // Optional: Show confirmation
+    Swal.fire({
+        icon: 'success',
+        title: 'Logged Out',
+        text: 'You have been logged out successfully.'
+    }).then(() => {
+        // Redirect to login or home page
+        window.location.href = "/Front_End/html/login-signup.html";
+    });
 }

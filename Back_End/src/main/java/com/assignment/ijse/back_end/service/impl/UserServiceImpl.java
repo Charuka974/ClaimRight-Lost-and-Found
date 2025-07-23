@@ -1,13 +1,16 @@
 package com.assignment.ijse.back_end.service.impl;
 
+import com.assignment.ijse.back_end.dto.AuthResponseDTO;
 import com.assignment.ijse.back_end.dto.UserDTO;
 import com.assignment.ijse.back_end.entity.User;
 import com.assignment.ijse.back_end.exceptions.ResourceNotFound;
 import com.assignment.ijse.back_end.repository.UserRepository;
 import com.assignment.ijse.back_end.service.UserService;
+import com.assignment.ijse.back_end.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,6 +22,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
     @Override
     public UserDTO saveUser(UserDTO userDTO) {
@@ -31,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO updateUser(UserDTO userDTO) {
+    public AuthResponseDTO updateUser(UserDTO userDTO) {
         if (userDTO == null || userDTO.getUserId() == 0) {
             throw new IllegalArgumentException("UserDTO or User ID cannot be null");
         }
@@ -39,12 +44,38 @@ public class UserServiceImpl implements UserService {
         User existingUser = userRepository.findById(userDTO.getUserId())
                 .orElseThrow(() -> new ResourceNotFound("User not found with ID: " + userDTO.getUserId()));
 
+        // Map updates
         User updatedUser = modelMapper.map(userDTO, User.class);
-        updatedUser.setRole(existingUser.getRole()); // preserve role
-        updatedUser.setCreatedAt(existingUser.getCreatedAt()); // preserve createdAt
+
+        // Preserve non-editable fields
+        updatedUser.setRole(existingUser.getRole());
+        updatedUser.setCreatedAt(existingUser.getCreatedAt());
+        updatedUser.setActive(existingUser.isActive());
+
+        // Handle password
+        if (userDTO.getPassword() != null && !userDTO.getPassword().isBlank()) {
+            // Only encode if new password is different from the current one
+            if (!passwordEncoder.matches(userDTO.getPassword(), existingUser.getPassword())) {
+                updatedUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+            } else {
+                updatedUser.setPassword(existingUser.getPassword());
+            }
+        } else {
+            updatedUser.setPassword(existingUser.getPassword()); // keep current password
+        }
+
+        // Save updated user
         User savedUser = userRepository.save(updatedUser);
-        return modelMapper.map(savedUser, UserDTO.class);
+
+        // Generate a new JWT token (in case username or credentials changed)
+        String newToken = jwtUtil.generateToken(savedUser.getUsername());
+
+        // Return both the updated user and new token
+        UserDTO updatedDTO = modelMapper.map(savedUser, UserDTO.class);
+        return new AuthResponseDTO(newToken, updatedDTO);
     }
+
+
 
     @Override
     public void deleteUser(int id) {

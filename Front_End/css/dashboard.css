@@ -42,3 +42,33 @@
 .main-content-container {
     height: 100vh;
 }
+
+/* cards/ posts */
+    .post-card {
+        max-width: 600px;
+        margin: 2rem auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .post-card .card-header {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .post-card .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        object-fit: cover;
+        height: 250px;
+    }
+
+    .post-meta {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .post-footer {
+        background-color: #f1f1f1;
+        text-align: right;
+    }

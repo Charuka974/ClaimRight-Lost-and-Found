@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #e0e7ff 0%, #d1e0fd 100%);
+  /* background: linear-gradient(135deg, #e0e7ff 0%, #d1e0fd 100%); */
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns */
   grid-template-rows: auto 40px; /* First row auto height, second row smaller (80px) */
@@ -17,11 +17,23 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
   padding: 2rem;
+
+  background-image: url('/Front_End/assets/images/backgrounds/rm222batch5-kul-03.jpg');
+  background-size: cover;
+  background-position: bottom center; /* Show bottom part of the image / or center center */ 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+@media (max-width: 768px) {
+    body {
+        background-position: bottom center;
+    }
 }
 
 .bottom-row {
   grid-column: 1 / span 2; /* Span across both columns */
-  background: #f1f5ff;
+  /* background: #f1f5ff; */
+  background-color: rgba(255, 255, 255, 0.375);
   padding: 0.5rem 1rem;
   border-radius: 10px;
   text-align: center;
@@ -73,9 +85,12 @@ body {
   max-width: 420px;
   height: 600px;
   perspective: 1500px;
+  border-radius: 20px;
 }
 
 .flip-card-inner {
+  background-color: rgba(255, 255, 255, 0.375);
+  border-radius: 20px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -98,7 +113,7 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-  background: white;
+  /* background: white; */
   display: flex;
   flex-direction: column;
 }

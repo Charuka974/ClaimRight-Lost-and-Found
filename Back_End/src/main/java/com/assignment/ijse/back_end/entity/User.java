@@ -1,19 +1,17 @@
 package com.assignment.ijse.back_end.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@NoArgsConstructor
+@Builder // for custom constructors
 @Table(name = "users")
 public class User {
     @Id
@@ -23,7 +21,10 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private String role; // "USER", "ADMIN"
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role; // "USER", "ADMIN"
+
     private String phoneNumber;
     private LocalDateTime createdAt;
     private String profilePictureUrl;

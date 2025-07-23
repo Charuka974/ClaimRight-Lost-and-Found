@@ -1,5 +1,6 @@
 package com.assignment.ijse.back_end.service;
 
+import com.assignment.ijse.back_end.dto.AuthResponseDTO;
 import com.assignment.ijse.back_end.dto.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +10,7 @@ import java.util.List;
 public interface UserService {
     UserDTO saveUser(UserDTO jobDTO);
 
-    UserDTO updateUser(UserDTO jobDTO);
+    AuthResponseDTO updateUser(UserDTO jobDTO);
 
     void deleteUser(int id);
 

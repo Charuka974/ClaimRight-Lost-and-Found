@@ -11,4 +11,14 @@ body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+    background-image: url('/Front_End/assets/images/backgrounds/rm222batch5-kul-03.jpg');
+    background-size: cover;
+    background-position: bottom center; /* Show bottom part of the image / or center center */ 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@media (max-width: 768px) {
+    body {
+        background-position: bottom center;
+    }
 }

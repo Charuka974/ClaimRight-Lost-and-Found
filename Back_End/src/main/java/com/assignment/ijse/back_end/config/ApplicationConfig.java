@@ -1,6 +1,6 @@
-package com.assignment.ijse.securebackend.config;
+package com.assignment.ijse.back_end.config;
 
-import com.assignment.ijse.securebackend.repository.UserRepository;
+import com.assignment.ijse.back_end.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class ApplicationConfig {
                 .map(user ->
                         new org.springframework.security
                                 .core.userdetails.User(
-                        user.getUsername(),
+                        user.getEmail(), //originally username
                         user.getPassword(),
                         List.of(new SimpleGrantedAuthority
                                 ("ROLE_" + user.getRole()

@@ -1,4 +1,4 @@
-package com.assignment.ijse.securebackend.util;
+package com.assignment.ijse.back_end.util;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

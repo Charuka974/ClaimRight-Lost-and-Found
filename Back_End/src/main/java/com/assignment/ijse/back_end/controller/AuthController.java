@@ -1,20 +1,20 @@
-package com.assignment.ijse.securebackend.controller;
+package com.assignment.ijse.back_end.controller;
 
 
-import com.assignment.ijse.securebackend.dto.AuthDTO;
-import com.assignment.ijse.securebackend.dto.RegisterDTO;
-import com.assignment.ijse.securebackend.service.impl.AuthService;
-import com.assignment.ijse.securebackend.util.APIResponse;
+import com.assignment.ijse.back_end.dto.AuthDTO;
+import com.assignment.ijse.back_end.dto.AuthResponseDTO;
+import com.assignment.ijse.back_end.dto.RegisterDTO;
+import com.assignment.ijse.back_end.service.AuthService;
+import com.assignment.ijse.back_end.util.APIResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/claimrightauth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "*")
 public class AuthController {
     private final AuthService authService;
 
@@ -28,12 +28,10 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<APIResponse> loginUser(@RequestBody AuthDTO registerDTO) {
-        return ResponseEntity.ok(
-            new APIResponse(
-                    200,
-                    "OK",
-                    authService.authenticate(registerDTO)));
+    public ResponseEntity<APIResponse<AuthResponseDTO>> loginUser(@RequestBody AuthDTO authDTO) {
+        AuthResponseDTO response = authService.authenticate(authDTO);
+        return ResponseEntity.ok(new APIResponse<>(200, "Login successful", response));
     }
+
 
 }
