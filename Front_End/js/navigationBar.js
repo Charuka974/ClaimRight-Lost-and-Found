@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const preview = document.getElementById("profilePreview");
       preview.src = user.profilePictureUrl
       ? user.profilePictureUrl
-      : "/Front_End/assets/images/default.jpg";
+      : "/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg";
 
     });
   }
