@@ -32,4 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
+# Ignore real sensitive config
 Back_End/src/main/resources/application.properties

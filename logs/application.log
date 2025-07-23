@@ -6831,3 +6831,8 @@ Caused by: org.springframework.util.PlaceholderResolutionException: Could not re
 2025-07-23T22:08:15.963+05:30  INFO 14492 --- [Back_End] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
 2025-07-23T22:08:15.992+05:30  INFO 14492 --- [Back_End] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-07-23T22:08:15.997+05:30  INFO 14492 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Started Application in 4.737 seconds (process running for 5.458)
+2025-07-23T22:15:36.672+05:30  INFO 14492 --- [Back_End] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-23T22:15:36.716+05:30  INFO 14492 --- [Back_End] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-23T22:15:36.774+05:30  INFO 14492 --- [Back_End] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-23T22:15:36.844+05:30  INFO 14492 --- [Back_End] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-23T22:15:36.901+05:30  INFO 14492 --- [Back_End] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

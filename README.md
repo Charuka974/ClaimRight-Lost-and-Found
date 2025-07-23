@@ -7,6 +7,7 @@
 - **User Authentication**
   - User registration and login
   - Role-based access (User & Admin)
+  - Jwt tokens
   
 - **Item Management**
   - Post lost item reports (with optional prize money payment gateway)
