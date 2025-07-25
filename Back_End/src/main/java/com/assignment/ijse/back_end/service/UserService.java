@@ -12,7 +12,7 @@ public interface UserService {
 
     AuthResponseDTO updateUser(UserDTO jobDTO);
 
-    void deleteUser(int id);
+    void deleteUser(Long id);
 
     List<UserDTO> getAllUsers();
 
@@ -20,11 +20,11 @@ public interface UserService {
 
     public Page<UserDTO> searchUser(String keyword, Pageable pageable);
 
-    void changeUserStatusDeactivate(int id);
+    void changeUserStatusDeactivate(Long id);
 
-    UserDTO getUserById(int id);
+    UserDTO getUserById(Long id);
 
-    void changeUserStatusActivate(int id);
+    void changeUserStatusActivate(Long id);
 
 
     Page<UserDTO> getUsersPages(int page, int size);

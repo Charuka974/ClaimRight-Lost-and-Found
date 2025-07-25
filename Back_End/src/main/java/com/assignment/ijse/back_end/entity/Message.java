@@ -22,8 +22,8 @@ public class Message {
     private String content;
     private LocalDateTime sentAt;
 
-    @ManyToOne
-    @JoinColumn(name = "claim_id")
+    @ManyToOne(optional = true)  // or just omit, since true is default
+    @JoinColumn(name = "claim_id", nullable = true)
     private Claim claim;
 
     @ManyToOne
@@ -34,4 +34,8 @@ public class Message {
     @JoinColumn(name = "receiver_id")
     private User receiver;
 
+    // fields to track read status
+//    @Column(name = "is_read") // Avoid reserved keywords
+    private boolean isMsgRead;                 // Default: false (unread)
+    private LocalDateTime readAt;
 }

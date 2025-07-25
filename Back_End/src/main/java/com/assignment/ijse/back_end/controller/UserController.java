@@ -108,7 +108,7 @@ public class UserController {
     //    // Delete User - we use a put mapping here for delete operation
     @PutMapping("/deleteUser/{id}")
     public ResponseEntity<APIResponse<List<UserDTO>>> deleteUser(@PathVariable("id") String id) {
-        userService.deleteUser(Integer.parseInt(id));
+        userService.deleteUser(Long.valueOf(id));
         return ResponseEntity.ok(new APIResponse<>(
                 200, "User Deleted Successfully", null
         ));
@@ -117,7 +117,7 @@ public class UserController {
 
     @PatchMapping("/changestatusdeactivate/{id}")
     public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatus(@PathVariable("id") String id) {
-        userService.changeUserStatusDeactivate(Integer.parseInt(id));
+        userService.changeUserStatusDeactivate(Long.valueOf(id));
         return ResponseEntity.ok(new APIResponse<>(
                 200, "User Status Deactivated Successfully", null
         ));
@@ -125,7 +125,7 @@ public class UserController {
 
     @PatchMapping("/changestatusactivate/{id}")
     public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatusActive(@PathVariable("id") String id) {
-        userService.changeUserStatusActivate(Integer.parseInt(id));
+        userService.changeUserStatusActivate(Long.valueOf(id));
         return ResponseEntity.ok(new APIResponse<>(
                 200, "User Status Activated Successfully", null
         ));
@@ -152,7 +152,7 @@ public class UserController {
 
 
     @GetMapping("/getuserbyid/{id}")
-    public ResponseEntity<APIResponse<UserDTO>> getUserById(@PathVariable("id") int id) {
+    public ResponseEntity<APIResponse<UserDTO>> getUserById(@PathVariable("id") Long id) {
         UserDTO selectedUser = userService.getUserById(id);
         return ResponseEntity.ok(new APIResponse<>(
                 200, "User Selected Successfully", selectedUser

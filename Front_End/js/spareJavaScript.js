@@ -29,38 +29,20 @@ document.addEventListener("DOMContentLoaded", function () {
             ${
               isLoggedIn
                 ? `
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-tools"></i> Quick Actions
+              <li class="nav-item d-flex align-items-center mb-2 mb-lg-0">
+                <a class="btn btn-edit-profile btn-outline-light ms-lg-3 d-flex align-items-center gap-2 fw-bold" 
+                  href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                  <i class="bi bi-person-circle"></i>
+                  Edit Profile
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end mt-3 wide-dropdown" aria-labelledby="userDropdown">
-                  <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/report-lost.html">
-                      <i class="bi bi-exclamation-octagon-fill"></i>
-                      Report Lost Item
-                    </a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-
-                  <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/report-found.html">
-                      <i class="bi bi-check2-circle"></i>
-                      Report Found Item
-                    </a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-
-                  <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/chat-page.html">
-                      <i class="bi bi-chat-dots-fill"></i>
-                      Chat
-                    </a>
-                  </li>
-                </ul>
               </li>
-
-
+              <li class="nav-item d-flex align-items-center mb-2 mb-lg-0">
+                <a class="btn btn-logout btn-outline-light ms-lg-3 d-flex align-items-center gap-2 fw-bold" 
+                  href="#" onclick="logout()">
+                  <i class="bi bi-box-arrow-right"></i>
+                  Logout
+                </a>
+              </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="userDropdown">
                   <li>
-                    <a class="btn btn-edit-profile btn-outline-light d-flex align-items-center gap-2 fw-bold" 
+                    <a class="btn btn-edit-profile btn-outline-light ms-lg-3 d-flex align-items-center gap-2 fw-bold" 
                       href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                       <i class="bi bi-person-circle"></i>
                       Edit Profile
@@ -78,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <hr class="dropdown-divider" />
                   </li>
                   <li>
-                    <a class="btn btn-logout btn-outline-light d-flex align-items-center gap-2 fw-bold" 
+                    <a class="btn btn-logout btn-outline-light ms-lg-3 d-flex align-items-center gap-2 fw-bold" 
                       href="#" onclick="logout()">
                       <i class="bi bi-box-arrow-right"></i>
                       Logout

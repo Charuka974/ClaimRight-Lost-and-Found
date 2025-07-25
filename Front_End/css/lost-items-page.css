@@ -9,11 +9,13 @@ body::before {
   left: 50%;
   width: 300px; 
   height: 300px;
-  background: url('/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg') no-repeat center center/cover;
+  background: url('/Front_End/assets/images/ChatGPT\ Image\ Jul\ 24\,\ 2025\,\ 11_16_54\ AM.png') no-repeat center center/cover;
   border-radius: 50%; 
-  opacity: 0.3;
+  opacity: 0.9;
   transform: translate(-50%, -50%); 
   z-index: -1;
+  box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);
+  border: 4px solid white;
 }
 
 .main-content-container {

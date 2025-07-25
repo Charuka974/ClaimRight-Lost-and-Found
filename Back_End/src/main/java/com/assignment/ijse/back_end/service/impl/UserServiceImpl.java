@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
             throw new ResourceNotFound("User not found with ID: " + id);
         }
@@ -114,7 +114,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeUserStatusDeactivate(int id) {
+    public void changeUserStatusDeactivate(Long id) {
         if (!userRepository.existsById(id)) {
             throw new ResourceNotFound("User not found with ID: " + id);
         }
@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeUserStatusActivate(int id) {
+    public void changeUserStatusActivate(Long id) {
         if (!userRepository.existsById(id)) {
             throw new ResourceNotFound("User not found with ID: " + id);
         }
@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO getUserById(int id) {
+    public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFound("User not found with ID: " + id));
         return modelMapper.map(user, UserDTO.class);

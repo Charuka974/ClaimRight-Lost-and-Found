@@ -36,6 +36,19 @@
   box-shadow: 0 6px 15px rgba(67, 67, 67, 0.3);
 }
 
+.nav-item .dropdown-menu {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  width: 200px;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.wide-dropdown {
+  min-width: 250px;
+}
+
+
 /* Footer */
 footer {
   font-size: 0.9rem;

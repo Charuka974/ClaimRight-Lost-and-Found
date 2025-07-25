@@ -1,3 +1,7 @@
+:root {
+  --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
+}
+
 /* Header */
 .brand-header {
   text-align: center;
@@ -72,3 +76,27 @@
         background-color: #f1f1f1;
         text-align: right;
     }
+
+/* Chat button */
+
+.floating-chat-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.floating-chat-btn:hover {
+  background: var(--gradient-primary);
+  transform: translateY(-2px);
+}
