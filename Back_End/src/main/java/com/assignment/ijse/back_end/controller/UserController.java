@@ -2,6 +2,7 @@ package com.assignment.ijse.back_end.controller;
 
 import com.assignment.ijse.back_end.dto.AuthResponseDTO;
 import com.assignment.ijse.back_end.dto.UserDTO;
+import com.assignment.ijse.back_end.service.ImgBBUploadService;
 import com.assignment.ijse.back_end.service.UserService;
 import com.assignment.ijse.back_end.util.APIResponse;
 import com.cloudinary.Cloudinary;
@@ -29,13 +30,14 @@ import java.util.Map;
 public class UserController {
 //    @Autowired
     private final UserService userService;
+    private final ImgBBUploadService imgBBUploadService;
 
-    @Value("${cloudinary.cloud_name}")
-    private String cloudName;
-    @Value("${cloudinary.api_key}")
-    private String apiKey;
-    @Value("${cloudinary.api_secret}")
-    private String apiSecret;
+//    @Value("${cloudinary.cloud_name}")
+//    private String cloudName;
+//    @Value("${cloudinary.api_key}")
+//    private String apiKey;
+//    @Value("${cloudinary.api_secret}")
+//    private String apiSecret;
 
 
 
@@ -84,25 +86,28 @@ public class UserController {
     @PutMapping("/update")
     public ResponseEntity<APIResponse<AuthResponseDTO>> updateUser(
             @RequestPart("user") UserDTO userDTO,
-            @RequestPart(value = "profilePicture", required = false) MultipartFile profilePicture) throws IOException {
+            @RequestPart(value = "profilePicture", required = false) MultipartFile profilePicture) {
 
-        if (profilePicture != null && !profilePicture.isEmpty()) {
-            // Upload to Cloudinary
-            Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-                    "cloud_name", cloudName,
-                    "api_key", apiKey,
-                    "api_secret", apiSecret
-            ));
+        try {
+            if (profilePicture != null && !profilePicture.isEmpty()) {
+                // Upload to ImgBB using your service
+                byte[] bytes = profilePicture.getBytes();
+                String uploadedUrl = imgBBUploadService.uploadToImgBB(bytes, profilePicture.getOriginalFilename()).block();
 
-            Map uploadResult = cloudinary.uploader().upload(profilePicture.getBytes(), ObjectUtils.emptyMap());
-            String imageUrl = uploadResult.get("secure_url").toString();
-            // Set Cloudinary URL to user
-            userDTO.setProfilePictureUrl(imageUrl);
+                // Set uploaded image URL to user
+                userDTO.setProfilePictureUrl(uploadedUrl);
+            }
+
+            AuthResponseDTO response = userService.updateUser(userDTO);
+            return ResponseEntity.ok(new APIResponse<>(200, "User updated successfully", response));
+
+        } catch (Exception e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new APIResponse<>(400, "Error updating user: " + e.getMessage(), null));
         }
-
-        AuthResponseDTO response = userService.updateUser(userDTO);
-        return ResponseEntity.ok(new APIResponse<>(200, "User updated successfully", response));
     }
+
 
 
     //    // Delete User - we use a put mapping here for delete operation
