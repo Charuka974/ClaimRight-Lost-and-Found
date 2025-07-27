@@ -15,6 +15,7 @@ function toggleUserList() {
   document.querySelector(".user-list").classList.toggle("open");
 }
 
+// Load all users
 async function loadUsers() {
   const token = localStorage.getItem("accessToken");
   if (!token) {
@@ -34,14 +35,14 @@ async function loadUsers() {
     if (!response.ok) {
       if (response.status === 403 || response.status === 401) {
         console.error("Unauthorized or token expired.");
-        
-          Swal.fire({
-            icon: 'error',
-            title: 'Unauthorized!',
-            text: 'Your session has expired. Please log in again.',
-            timer: 2500,
-            showConfirmButton: false
-          });
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Unauthorized!',
+          text: 'Your session has expired. Please log in again.',
+          timer: 2500,
+          showConfirmButton: false
+        });
         return;
       } else {
         console.error(`Error loading users: ${response.status}`);
@@ -59,29 +60,8 @@ async function loadUsers() {
 
     window.allUsers = users;
 
-    const userListContainer = document.querySelector(".user-list");
-    if (!userListContainer) {
-      console.error("User list container not found in DOM.");
-      return;
-    }
-
-    userListContainer.innerHTML = "";
-
-    users.forEach(user => {
-      const userDiv = document.createElement("div");
-      userDiv.className = "user d-flex align-items-center";
-      userDiv.onclick = () => selectUser(user.username);
-      
-      userDiv.innerHTML = `
-        <img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" 
-            class="user-avatar me-2" alt="${user.username}" />
-        <span>${user.username}</span>
-      `;
-
-
-      userDiv.onclick = () => selectUser(user.username);
-      userListContainer.appendChild(userDiv);
-    });
+    // Call the new rendering function
+    renderUserList(users);
 
   } catch (err) {
     console.error("Failed to load users:", err);
@@ -93,6 +73,66 @@ async function loadUsers() {
   }
 }
 
+
+// Search users
+function filterUsers() {
+  const input = document.getElementById("userSearchInput");
+  const searchTerm = input.value.toLowerCase();
+
+  const filteredUsers = window.allUsers.filter(user => 
+    user.username.toLowerCase().includes(searchTerm) || 
+    (user.role && user.role.toLowerCase().includes(searchTerm))
+  );
+
+  renderUserList(filteredUsers);
+}
+function clearSearch() {
+  const input = document.getElementById("userSearchInput");
+  input.value = "";
+  renderUserList(window.allUsers);
+}
+
+
+// Render users
+function renderUserList(users) {
+  const usersContainer = document.getElementById("usersContainer");
+  if (!usersContainer) {
+    console.error("Users container not found in DOM.");
+    return;
+  }
+
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  usersContainer.innerHTML = "";
+
+  if (users.length === 0) {
+    usersContainer.innerHTML = "<p class='text-muted'>No users found.</p>";
+    return;
+  }
+
+  users.forEach(user => {
+    const isMe = loggedInUser && user.username === loggedInUser.username;
+    const roleTag = (user.role === 'ADMIN' || user.role === 'EMPLOYEE') ? ` (${user.role})` : '';
+    const meTag = isMe ? ' <span class="text-primary fw-bold">(Me)</span>' : '';
+
+    const userDiv = document.createElement("div");
+    userDiv.className = "user d-flex align-items-center";
+    userDiv.onclick = () => selectUser(user.username);
+
+    userDiv.innerHTML = `
+      <img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" 
+           class="user-avatar me-2" alt="${user.username}" />
+      <span>
+        ${user.username}${roleTag}${meTag}
+      </span>
+    `;
+
+    usersContainer.appendChild(userDiv);
+  });
+}
+
+
+// Select users
 async function selectUser(username, isPolling = false) {
   window.selectedChatUser = username;
 
@@ -103,11 +143,20 @@ async function selectUser(username, isPolling = false) {
   // Move this AFTER receiver is defined
   if (!isPolling) {
     const chatHeader = document.getElementById("chatHeader");
+    const isMe = receiver.username === sender.username;
+
     chatHeader.innerHTML = `
       <img src="${receiver.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" 
-           class="header-avatar me-2" alt="${receiver.username}" />
-      <span>${receiver.username}</span>
+          class="header-avatar me-2" alt="${receiver.username}" />
+      <span>
+        ${isMe 
+          ? 'My Contact' 
+          : `${receiver.username}${(receiver.role === 'ADMIN' || receiver.role === 'EMPLOYEE') ? ' (' + receiver.role + ')' : ''}`
+        }
+      </span>
     `;
+      // <span>${receiver.username}${'('+receiver.role+')'}${isMe ? ' (Me)' : ''}</span>
+
   }
 
   try {

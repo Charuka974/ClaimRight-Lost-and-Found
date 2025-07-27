@@ -4,6 +4,7 @@
     --accent: #36b9cc;
     --dark: #2e4374;
     --light: #f8f9fc;
+    --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
 }
 
 body {
@@ -21,4 +22,43 @@ body {
     body {
         background-position: bottom center;
     }
+}
+
+
+/* Floating Button */
+.floating-page-btn {
+  position: fixed;
+  /* bottom: 50px;
+  right: 30px; */
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(78, 115, 223, 0.5);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Hover effect */
+.floating-page-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(78, 115, 223, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0);
+  }
 }

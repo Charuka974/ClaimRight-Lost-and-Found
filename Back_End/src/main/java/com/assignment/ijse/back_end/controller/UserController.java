@@ -111,14 +111,14 @@ public class UserController {
 
 
     //    // Delete User - we use a put mapping here for delete operation
-    @PutMapping("/deleteUser/{id}")
-    public ResponseEntity<APIResponse<List<UserDTO>>> deleteUser(@PathVariable("id") String id) {
-        userService.deleteUser(Long.valueOf(id));
-        return ResponseEntity.ok(new APIResponse<>(
-                200, "User Deleted Successfully", null
-        ));
-
-    }
+//    @PutMapping("/deleteUser/{id}")
+//    public ResponseEntity<APIResponse<List<UserDTO>>> deleteUser(@PathVariable("id") String id) {
+//        userService.deleteUser(Long.valueOf(id));
+//        return ResponseEntity.ok(new APIResponse<>(
+//                200, "User Deleted Successfully", null
+//        ));
+//
+//    }
 
     @PatchMapping("/changestatusdeactivate/{id}")
     public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatus(@PathVariable("id") String id) {

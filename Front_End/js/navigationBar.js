@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/dashboard.html">Home</a>
+              <a class="nav-link text-white" href="/Front_End/html/dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/Front_End/html/lost-items.html">Lost Items</a>
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="text-center mb-3 position-relative" style="width: 100px; margin: 0 auto;">
                   <label for="profilePicture" style="cursor: pointer;">
                     <img
-                      src="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg"
+                      src="/Front_End/assets/images/avatar-default-icon.png"
                       id="profilePreview"
                       alt="Profile Picture"
                       class="rounded-circle border"
@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       border-radius: 50%;
                       padding: 4px;
                       box-shadow: 0 0 5px rgba(0,0,0,0.2);
+                      color: black;
                     ">
                       ✎
                     </span>
@@ -325,13 +326,14 @@ function logout() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser")
 
-    // Optional: Show confirmation
     Swal.fire({
         icon: 'success',
         title: 'Logged Out',
-        text: 'You have been logged out successfully.'
+        text: 'You have been logged out successfully.',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true
     }).then(() => {
-        // Redirect to login or home page
         window.location.href = "/Front_End/html/login-signup.html";
     });
 }

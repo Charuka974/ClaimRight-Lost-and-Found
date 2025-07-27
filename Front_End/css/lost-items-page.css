@@ -1,3 +1,7 @@
+:root {
+  --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
+}
+
 body {
     min-height: 100vh;
 }
@@ -20,4 +24,10 @@ body::before {
 
 .main-content-container {
     height: 100vh;
+}
+
+/* Floating Button */
+.floating-page-btn {
+  bottom: 50px;
+  right: 30px;
 }

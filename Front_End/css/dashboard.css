@@ -77,26 +77,13 @@
         text-align: right;
     }
 
-/* Chat button */
-
-.floating-chat-btn {
-  position: fixed;
-  bottom: 30px;
+/* Floating Button */
+.floating-user-nav-btn {
+  top: 100px;
   right: 30px;
-  background: var(--gradient-primary);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 999;
-  transition: all 0.3s ease;
 }
 
-.floating-chat-btn:hover {
-  background: var(--gradient-primary);
-  transform: translateY(-2px);
+.floating-chat-nav-btn {
+  bottom: 50px;
+  right: 30px;
 }

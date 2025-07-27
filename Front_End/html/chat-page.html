@@ -22,16 +22,34 @@
 
   <div class="chat-container">
     <button class="user-toggle-btn" onclick="toggleUserList()">☰ Chats</button>
-    <!-- Left Side: Users -->
+    <!-- Left Side Users -->
     <div class="user-list">
       <h2>Chats</h2>
-      <!-- <div class="user active" onclick="selectUser('John Doe')">John Doe</div>
-      <div class="user" onclick="selectUser('Jane Smith')">Jane Smith</div>
-      <div class="user" onclick="selectUser('Support Team')">Support Team</div> -->
-      <!-- Add more users as needed -->
+      <div class="user-search-wrapper position-relative mb-3 p-2">
+        <input 
+          type="text" 
+          id="userSearchInput" 
+          class="form-control pe-5" 
+          placeholder="Search users ..." 
+          oninput="filterUsers()"
+        />
+        <button 
+          class="btn position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent" 
+          onclick="clearSearch()" 
+          aria-label="Clear search"
+        >
+          ✖
+        </button>
+      </div>
+
+      <div id="usersContainer">
+        <!-- users will be rendered here dynamically -->
+      </div>
     </div>
 
-    <!-- Right Side: Chat Window -->
+
+
+    <!-- Right Side Chat Window -->
     <div class="chat-box">
       <!-- add the selected users name in the header -->
       <div class="chat-header" id="chatHeader"></div> 

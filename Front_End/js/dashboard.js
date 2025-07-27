@@ -1,3 +1,31 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const userJson = localStorage.getItem("loggedInUser");
+
+  if (!userJson) return;
+
+  const user = JSON.parse(userJson);
+
+  if (user.role === "ADMIN" && user.active === true) {
+    const btn = document.createElement("button");
+    btn.className = "floating-page-btn floating-user-nav-btn";
+    btn.innerHTML = `<i class="bi bi-person-circle"></i>&nbsp;&nbsp;Manage Users`;
+    btn.onclick = openUserManage; 
+
+    document.body.appendChild(btn);
+  }
+  
+});
+
+
+
+function openChat() {
+    window.location.href = "/Front_End/html/chat-page.html";
+}
+
+function openUserManage() {
+    window.location.href = "/Front_End/html/manage-users.html";
+}
+
 
 // Redirect to login if user is not logged in or when you logout
 // const user = localStorage.getItem("loggedInUser");
@@ -20,7 +48,3 @@
 //         window.location.href = "/Front_End/html/login-signup.html";
 //     });
 // }
-
-function openChat() {
-    window.location.href = "/Front_End/html/chat-page.html";
-}

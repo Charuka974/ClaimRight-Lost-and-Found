@@ -303,6 +303,9 @@
 }
 
 
+/* Search Input Container */
+
+
 
 
 /* Mobile & Tablet Responsive */
@@ -334,6 +337,14 @@
   }
 
   .chat-box {
+    width: 100%;
+  }
+
+    .user-search-box {
+    padding: 1rem;
+  }
+
+  .user-search-box input {
     width: 100%;
   }
 
