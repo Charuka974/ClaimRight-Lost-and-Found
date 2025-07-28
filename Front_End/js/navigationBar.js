@@ -258,6 +258,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("login-popup-container").innerHTML = loginPopup;
 
 
+    const loadingAnimation = `
+      <div id="loadingOverlay" style="display: none;">
+        <div class="spinner-border text-primary" role="status"></div>
+        <span class="ms-2">Updating profile...</span>
+      </div>
+    `;
+    document.getElementById("loading-animation").innerHTML = loadingAnimation;
+
+
 });
 
 

@@ -14,7 +14,6 @@ import reactor.core.scheduler.Schedulers;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("claimright/api/image")
-@CrossOrigin(origins = "*")
 @Slf4j
 public class ImageUploadController {
 

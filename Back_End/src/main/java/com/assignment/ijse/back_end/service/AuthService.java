@@ -7,6 +7,9 @@ import com.assignment.ijse.back_end.entity.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface AuthService {
-    public AuthResponseDTO authenticate(AuthDTO authDTO);
-    public String register(RegisterDTO registerDTO);
+     AuthResponseDTO authenticate(AuthDTO authDTO);
+     String register(RegisterDTO registerDTO);
+
+     String forgotPassword(String email);
+     String resetPassword(String token, String newPassword);
 }

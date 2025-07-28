@@ -15,10 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   editForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+    showLoading(); // Show loading spinner
 
     const formData = new FormData();
-
-    // Add existing image URL BEFORE appending the user object
     const existingProfileUrl = document.getElementById("profilePreview").getAttribute("src");
 
     const userObj = {
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       username: document.getElementById("username").value,
       email: document.getElementById("email").value,
       phoneNumber: document.getElementById("phone").value,
-      profilePictureUrl: existingProfileUrl  // retain existing image if no new one uploaded
+      profilePictureUrl: existingProfileUrl
     };
 
     const passwordInput = document.getElementById("editPassword").value.trim();
@@ -34,10 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       userObj.password = passwordInput;
     }
 
-    // Append user JSON first
     formData.append("user", new Blob([JSON.stringify(userObj)], { type: "application/json" }));
-
-    // Only append image if new one is selected
     const profilePictureInput = document.getElementById("profilePicture");
     if (profilePictureInput.files.length > 0) {
       formData.append("profilePicture", profilePictureInput.files[0]);
@@ -45,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const token = localStorage.getItem("accessToken");
     if (!token) {
+      hideLoading();
       await Swal.fire({
         icon: "error",
         title: "Unauthorized",
@@ -76,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result.data?.user) {
           localStorage.setItem("loggedInUser", JSON.stringify(result.data.user));
         }
+        hideLoading();
         await Swal.fire({
           icon: "success",
           title: "Profile Updated",
@@ -86,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         editProfileModal.hide();
         location.reload();
       } else {
+        hideLoading();
         Swal.fire({
           icon: "error",
           title: "Update Failed",
@@ -95,12 +94,26 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("Update error:", error);
+      hideLoading();
       Swal.fire({
         icon: "error",
         title: "Server Error",
         text: "Something went wrong while updating your profile.",
         confirmButtonColor: "#d33",
       });
+    } finally {
+      hideLoading(); // Hide loading spinner regardless of result
     }
   });
+
 });
+
+
+
+function showLoading() {
+  document.getElementById("loadingOverlay").style.display = "flex";
+}
+
+function hideLoading() {
+  document.getElementById("loadingOverlay").style.display = "none";
+}

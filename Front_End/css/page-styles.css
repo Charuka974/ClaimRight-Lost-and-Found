@@ -50,6 +50,28 @@ body {
   box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
 }
 
+
+/* Loading Animation */
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1080; /* higher than Bootstrap modal (1055+) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  pointer-events: all; /* ensure clicks don’t pass through */
+}
+
+
+
+
+
 /* Pulse animation */
 @keyframes pulse-glow {
   0% {

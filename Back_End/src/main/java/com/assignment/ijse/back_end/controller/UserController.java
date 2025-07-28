@@ -25,7 +25,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("claimright/user")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 @Slf4j
 public class UserController {
 //    @Autowired
@@ -168,7 +167,7 @@ public class UserController {
     @GetMapping("/paginatedusers")
     public ResponseEntity<APIResponse<Page<UserDTO>>> getUsersPaged(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size) {
+            @RequestParam(defaultValue = "10") int size) {
 
         Page<UserDTO> userPage = userService.getUsersPages(page, size);
 

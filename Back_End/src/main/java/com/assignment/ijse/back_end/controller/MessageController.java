@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("claimright/messages")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 @Slf4j
 public class MessageController {
 

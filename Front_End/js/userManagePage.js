@@ -72,25 +72,83 @@ async function searchUsers(keyword) {
   }
 }
 
+// function renderUsers(users) {
+//   const tbody = document.getElementById("userTableBody");
+//   tbody.innerHTML = users.map(user => `
+//     <tr>
+//       <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" class="rounded-circle shadow" width="40" height="40" /></td>
+//       <td class="fw-semibold">${user.username}</td>
+//       <td>${user.email}</td>
+//       <td>${user.phoneNumber || '-'}</td>
+//       <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">${user.active ? 'Active' : 'Inactive'}</span></td>
+//       <td><span class="text-primary">${user.role}</span></td>
+//       <td>
+//         <button class="btn btn-sm btn-outline-warning me-2" 
+//                 onclick="toggleStatus(${user.userId}, ${user.active})" 
+//                 ${user.userId === loggedUser.userId ? 'disabled title="You cannot change your own status"' : ''}>
+//           ${user.active ? 'Deactivate' : 'Activate'}
+//         </button>
+//       </td> 
+//     </tr>
+//   `).join('');
+// }
+
 function renderUsers(users) {
-  const tbody = document.getElementById("userTableBody");
-  tbody.innerHTML = users.map(user => `
-    <tr>
-      <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" class="rounded-circle shadow" width="40" height="40" /></td>
-      <td class="fw-semibold">${user.username}</td>
-      <td>${user.email}</td>
-      <td>${user.phoneNumber || '-'}</td>
-      <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">${user.active ? 'Active' : 'Inactive'}</span></td>
-      <td><span class="text-primary">${user.role}</span></td>
-      <td>
-        <button class="btn btn-sm btn-outline-warning me-2" 
-                onclick="toggleStatus(${user.userId}, ${user.active})" 
-                ${user.userId === loggedUser.userId ? 'disabled title="You cannot change your own status"' : ''}>
-          ${user.active ? 'Deactivate' : 'Activate'}
-        </button>
-      </td>
-    </tr>
-  `).join('');
+  const container = document.getElementById("userTablesByRole");
+  container.innerHTML = "";
+
+  const usersByRole = {};
+
+  users.forEach(user => {
+    const role = user.role || "UNKNOWN";
+    if (!usersByRole[role]) {
+      usersByRole[role] = [];
+    }
+    usersByRole[role].push(user);
+  });
+
+  // Define custom role order with ADMIN first
+  const roleOrder = ["ADMIN", ...Object.keys(usersByRole).filter(r => r !== "ADMIN")];
+
+  roleOrder.forEach(role => {
+    if (!usersByRole[role]) return; // Skip roles not in data
+
+    const tableHTML = `
+      <h4 class="mt-4 text-center">${role.charAt(0) + role.slice(1).toLowerCase()}s</h4>
+      <table class="table table-striped table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${usersByRole[role].map(user => `
+            <tr>
+              <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" class="rounded-circle shadow" width="40" height="40" /></td>
+              <td class="fw-semibold">${user.username}</td>
+              <td>${user.email}</td>
+              <td>${user.phoneNumber || '-'}</td>
+              <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">${user.active ? 'Active' : 'Inactive'}</span></td>
+              <td>
+                <button class="btn btn-sm ${user.active ? 'btn-warning' : 'btn-success'} me-2 d-flex align-items-center gap-1" 
+                        onclick="toggleStatus(${user.userId}, ${user.active})" 
+                        ${user.userId === loggedUser.userId ? 'disabled title="You cannot change your own status"' : ''}>
+                  <i class="bi ${user.active ? 'bi-person-dash' : 'bi-person-check'}"></i>
+                  <span class="fw-bold">${user.active ? 'Deactivate' : 'Activate'}</span>
+                </button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+    container.innerHTML += tableHTML;
+  });
 }
 
 
