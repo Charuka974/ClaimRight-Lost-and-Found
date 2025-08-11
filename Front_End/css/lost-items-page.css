@@ -22,12 +22,417 @@ body::before {
   border: 4px solid white;
 }
 
-.main-content-container {
-    height: 100vh;
-}
-
 /* Floating Button */
 .floating-page-btn {
   bottom: 50px;
   right: 30px;
+}
+
+.main-content-container {
+    min-height: 100vh;
+    padding: 5px;
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center; /* center horizontally */
+    gap: 20px; /* space between cards */
+    box-sizing: border-box;
+}
+
+/* Lost Item Card */
+.lost-item-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  width: 100%;
+  max-width: 700px; /* consistent width */
+}
+
+.lost-item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+.lost-item-image {
+  flex: 0 0 40%;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.lost-item-content {
+  flex: 1 1 60%;
+  padding: 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: white;
+  color: #333;
+  overflow-wrap: break-word;
+}
+
+
+.lost-item-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.lost-item-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.lost-item-meta {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0.4rem;
+}
+
+.lost-item-meta strong {
+  color: #444;
+}
+
+.categories {
+  margin-top: 0.8rem;
+}
+
+.category-badge {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 2px 6px rgba(78, 115, 223, 0.4);
+  transition: 0.3s ease;
+}
+
+.category-badge:hover {
+  background: linear-gradient(to right, #3b5cb8, #2b8d99);
+  cursor: default;
+}
+
+.claimed-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 0.35em 0.9em;
+  font-weight: 700;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.6);
+}
+
+/* Button style */
+.respond-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #4e73df, #36b9cc, #4e73df);
+  background-size: 300% 300%;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  cursor: pointer;
+  animation: gradientShift 2s linear infinite, glowPulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(78, 115, 223, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.respond-btn:hover {
+  animation: gradientShift 1.5s linear infinite, glowPulse 1.2s ease-in-out infinite, wiggle 0.4s ease-in-out;
+  transform: scale(1.08);
+}
+
+.respond-btn:active {
+  transform: scale(0.95);
+}
+
+/* Gradient shift animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 15px rgba(78, 115, 223, 0.6); }
+  50% { box-shadow: 0 0 25px rgba(78, 115, 223, 1); }
+  100% { box-shadow: 0 0 15px rgba(78, 115, 223, 0.6); }
+}
+
+/* Wiggle animation for hover */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1.08); }
+  25% { transform: rotate(2deg) scale(1.08); }
+  50% { transform: rotate(-2deg) scale(1.08); }
+  75% { transform: rotate(1deg) scale(1.08); }
+}
+
+/* image popup modal */
+
+/* Modal Background */
+#imageModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Modal Image */
+#imageModal .modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #bbb;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+/* Report Lost Item Modal Styling */
+#reportLostItemModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+#reportLostItemModal .modal-content {
+  max-width: 480px;
+  margin: 8% auto 4% auto;
+  padding: 25px 30px;
+  background: linear-gradient(to right, #4e72df52, #ffffffd7) !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(78, 115, 223, 0.3);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  animation: fadeInModal 0.35s ease forwards;
+}
+
+#reportLostItemModal h3 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  color: #ffffff; /* Changed from white for better readability */
+}
+
+#reportLostItemModal label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff; /* Changed to darker color for contrast */
+  margin-bottom: 6px;
+  display: block;
+}
+
+#reportLostItemModal input,
+#reportLostItemModal textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.8px solid #d1d7e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+#reportLostItemModal input:focus,
+#reportLostItemModal textarea:focus {
+  outline: none;
+  border-color: #4e73df;
+  box-shadow: 0 0 8px rgba(78, 115, 223, 0.4);
+}
+
+#reportLostItemModal textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#reportLostItemModal button {
+  margin-top: 20px;
+  width: 100%;
+  background: linear-gradient(to right, #4e73df, #36b9cc);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 0;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(54, 185, 204, 0.5);
+  transition: background-position 0.4s ease, transform 0.3s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+}
+
+#reportLostItemModal button:hover,
+#reportLostItemModal button:hover {
+  background-position: right center;
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(54, 185, 204, 0.7);
+}
+
+#reportCloseBtn {
+  color: #666;
+  font-weight: 700;
+  font-size: 30px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+#reportCloseBtn:hover {
+  color: #4e73df;
+}
+
+/* Fade-in animation for modal */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  #reportLostItemModal .modal-content {
+    width: 90%;
+    padding: 20px 20px;
+    margin-top: 15%;
+  }
+
+  #reportLostItemModal h3 {
+    font-size: 1.5rem;
+  }
+
+  #reportLostItemModal button {
+    font-size: 1rem;
+  }
+}
+
+
+#loadingOverlay{
+        position:fixed;
+        top:0; left:0;
+        width:100%; height:100%;
+        background:rgba(0,0,0,0.5);
+        z-index:9999;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        color:white;
+        font-size:1.5rem;
+}
+
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+
+  .lost-item-title {
+    font-size: 1.5rem;
+  }
+
+  .lost-item-description {
+    font-size: 0.95rem;
+  }
+
+  .lost-item-card {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .lost-item-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .lost-item-content {
+    padding: 1rem;
+  }
+
+}
+
+/* Mobile: stack image above content */
+@media (max-width: 600px) {
+  
+}
+
+@media (max-width: 480px) {
+  .lost-item-title {
+    font-size: 1.3rem;
+  }
+
+  .lost-item-description {
+    font-size: 0.9rem;
+  }
+
+  .respond-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
 }

@@ -1,9 +1,13 @@
 package com.assignment.ijse.back_end.dto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Data
 public class RegisterDTO {
     private int userId;

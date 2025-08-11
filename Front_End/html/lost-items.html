@@ -18,13 +18,96 @@
 </head>
 <body>
     <div id="navbar-container"></div>
-    <div class="main-content-container"></div>
+
+    <div class="main-content-container">
+
+      <!-- <div class="lost-item-card" id="lostItemCard">
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+          alt="Lost item image"
+          class="lost-item-image"
+          id="lostItemCardImage"
+        />
+
+        <div class="lost-item-content">
+          <h2 class="lost-item-title">Black Leather Wallet</h2>
+
+          <div class="claimed-badge" style="display:none;">Claimed</div>
+
+          <p class="lost-item-description">
+            Genuine leather wallet with multiple card slots, some cash inside, lost near Central Park.
+          </p>
+
+          <p class="lost-item-meta"><strong>Lost On:</strong> July 20, 2025</p>
+          <p class="lost-item-meta"><strong>Location:</strong> Central Park, NYC</p>
+          <p class="lost-item-meta"><strong>Owner:</strong> John Doe</p>
+
+          <div class="categories">
+            <span class="category-badge">Accessories</span>
+            <span class="category-badge">Wallets</span>
+          </div>
+
+          <button class="respond-btn">Respond</button>
+        </div>
+      </div> -->
+
+
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" alt="">
+    </div>
 
     
     <!-- Floating Report Button -->
     <button class="floating-page-btn" onclick="openReportLostItem()">
     <i class="bi bi-exclamation-octagon-fill"></i>&nbsp;&nbsp;Report a Lost Item
     </button>
+
+    <!-- Report a Lost Item Modal -->
+   <div id="reportLostItemModal" class="modal" style="display:none;">
+      <div class="modal-content" style="max-width: 500px; margin: 10% auto; padding: 20px; background: white; border-radius: 8px; position: relative;">
+        <span class="close" id="reportCloseBtn" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer;">&times;</span>
+        <h3>Report a Lost Item</h3>
+        <form id="reportLostItemForm" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="itemName" class="form-label">Item Name</label>
+            <input type="text" id="itemName" name="itemName" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="itemDescription" class="form-label">Description</label>
+            <textarea id="itemDescription" name="detailedDescription" class="form-control" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="lostLocation" class="form-label">Location Lost</label>
+            <input type="text" id="lostLocation" name="locationLost" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="lostDate" class="form-label">Date Lost</label>
+            <input type="date" id="lostDate" name="dateLost" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="imageUpload" class="form-label">Upload Image</label>
+            <input type="file" id="imageUpload" name="imageFile" class="form-control" accept="image/*" required>
+          </div>
+          <div class="mb-3">
+            <label for="selectCategory" class="form-label">Select Category</label>
+            <div id="categoryOptionsContainer"></div>
+            <div id="selectedCategoriesContainer" style="margin-bottom: 8px; min-height: 30px;"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Report</button>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" style="display: none;">
+        Submitting report...
+    </div>
+
+
 
     <div id="login-popup-container"></div>
     <div id="edit-profile-container"></div>

@@ -1,10 +1,7 @@
 package com.assignment.ijse.back_end.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,9 +9,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "categories")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
@@ -22,7 +21,10 @@ public class Category {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    private List<Item> items;
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    private List<LostItem> lostItems;
+
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    private List<FoundItem> foundItems;
 
 }

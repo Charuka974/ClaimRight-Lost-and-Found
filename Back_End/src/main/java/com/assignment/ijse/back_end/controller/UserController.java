@@ -74,7 +74,7 @@ public class UserController {
 //        ));
 //    }
 
-    @GetMapping("/getall")
+    @GetMapping("/get-all")
     public ResponseEntity<APIResponse<List<UserDTO>>> getAllUsers() {
         List<UserDTO> UserDTOs = userService.getAllUsers();
         return ResponseEntity.ok(new APIResponse<>(
@@ -110,7 +110,7 @@ public class UserController {
 
 
     //    // Delete User - we use a put mapping here for delete operation
-//    @PutMapping("/deleteUser/{id}")
+//    @PutMapping("/delete/{id}")
 //    public ResponseEntity<APIResponse<List<UserDTO>>> deleteUser(@PathVariable("id") String id) {
 //        userService.deleteUser(Long.valueOf(id));
 //        return ResponseEntity.ok(new APIResponse<>(
@@ -119,7 +119,18 @@ public class UserController {
 //
 //    }
 
-    @PatchMapping("/changestatusdeactivate/{id}")
+    @PatchMapping("/change-job-role/{id}")
+    public ResponseEntity<APIResponse<Void>> changeUserRole(
+            @PathVariable("id") Long id,
+            @RequestParam("newRole") String newRole) {
+
+        userService.changeUpdateUserRole(id, newRole);
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User role changed successfully", null
+        ));
+    }
+
+    @PatchMapping("/change-status-deactivate/{id}")
     public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatus(@PathVariable("id") String id) {
         userService.changeUserStatusDeactivate(Long.valueOf(id));
         return ResponseEntity.ok(new APIResponse<>(
@@ -127,7 +138,7 @@ public class UserController {
         ));
     }
 
-    @PatchMapping("/changestatusactivate/{id}")
+    @PatchMapping("/change-status-activate/{id}")
     public ResponseEntity<APIResponse<List<UserDTO>>> changeUserStatusActive(@PathVariable("id") String id) {
         userService.changeUserStatusActivate(Long.valueOf(id));
         return ResponseEntity.ok(new APIResponse<>(
@@ -155,7 +166,7 @@ public class UserController {
 
 
 
-    @GetMapping("/getuserbyid/{id}")
+    @GetMapping("/get-by-id/{id}")
     public ResponseEntity<APIResponse<UserDTO>> getUserById(@PathVariable("id") Long id) {
         UserDTO selectedUser = userService.getUserById(id);
         return ResponseEntity.ok(new APIResponse<>(
@@ -164,7 +175,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/paginatedusers")
+    @GetMapping("/paginated-users")
     public ResponseEntity<APIResponse<Page<UserDTO>>> getUsersPaged(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {

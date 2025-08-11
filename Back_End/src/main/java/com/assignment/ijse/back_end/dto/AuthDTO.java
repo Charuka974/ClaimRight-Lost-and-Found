@@ -1,7 +1,11 @@
 package com.assignment.ijse.back_end.dto;
 
-import lombok.Data;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Data
 public class AuthDTO {
 //    private String username;

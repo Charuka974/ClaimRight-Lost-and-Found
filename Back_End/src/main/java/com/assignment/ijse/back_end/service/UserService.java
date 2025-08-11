@@ -26,6 +26,7 @@ public interface UserService {
 
     void changeUserStatusActivate(Long id);
 
+    void changeUpdateUserRole(Long userId, String newRole);
 
     Page<UserDTO> getUsersPages(int page, int size);
 }

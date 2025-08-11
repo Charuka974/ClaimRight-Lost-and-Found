@@ -17,14 +17,14 @@ public class MessageController {
 
     private final MessageService messageService;
 
-    @PostMapping("/sendmessage")
+    @PostMapping("/send-message")
     public ResponseEntity<MessageDTO> sendMessage(@RequestBody MessageDTO messageDTO) {
         log.info("Sending message: {}", messageDTO);
         MessageDTO saved = messageService.saveMessage(messageDTO);
         return ResponseEntity.ok(saved);
     }
 
-    @GetMapping("/getmessagebyclaim/claim/{claimId}")
+    @GetMapping("/get-message-by-claim/claim/{claimId}")
     public ResponseEntity<List<MessageDTO>> getMessagesByClaim(@PathVariable Long claimId) {
         List<MessageDTO> messages = messageService.getMessagesByClaim(claimId);
         return ResponseEntity.ok(messages);
@@ -39,7 +39,7 @@ public class MessageController {
 //        return ResponseEntity.ok(messages);
 //    }
 
-    @GetMapping("/getmessages/conversation/users")
+    @GetMapping("/get-messages/conversation/users")
     public ResponseEntity<List<MessageDTO>> getConversationBetweenUsers(
             @RequestParam Long userA,
             @RequestParam Long userB) {
@@ -47,13 +47,13 @@ public class MessageController {
         return ResponseEntity.ok(messages);
     }
 
-    @PutMapping("/markread/{messageId}/read")
+    @PutMapping("/mark-read/{messageId}/read")
     public ResponseEntity<MessageDTO> markAsRead(@PathVariable Long messageId) {
         MessageDTO updated = messageService.markMessageAsRead(messageId);
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping("/deletemessage/{messageId}")
+    @DeleteMapping("/delete-message/{messageId}")
     public ResponseEntity<Void> deleteMessage(@PathVariable Long messageId) {
         messageService.deleteMessage(messageId);
         return ResponseEntity.noContent().build();

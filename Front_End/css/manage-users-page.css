@@ -178,3 +178,38 @@ img.avatar {
   color: white;
 }
 
+/*  user role update */
+.role-select {
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--accent);
+  background-color: white;
+  color: var(--dark);
+  cursor: pointer;
+  transition: 0.3s;
+  width: 80px;
+}
+
+.role-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.confirm-role-change {
+  background-color: var(--secondary);
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm-role-change:hover {
+  filter: brightness(1.1);
+}

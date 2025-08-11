@@ -31,7 +31,6 @@ public class ApplicationConfig {
                         () -> new RuntimeException
                                 ("User not found")
                 );
-
     }
 
     @Bean

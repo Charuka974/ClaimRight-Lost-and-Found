@@ -1,3 +1,5 @@
+const API_BASE = "http://localhost:8080/claimrightauth";
+
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
 
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
-        const response = await fetch("http://localhost:8080/api/claimright/user/validate", {
+        const response = await fetch(`${API_BASE}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

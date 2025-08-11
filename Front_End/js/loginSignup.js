@@ -1,3 +1,5 @@
+const API_BASE_AUTH = "http://localhost:8080/claimrightauth";
+
 $(document).ready(function () {
   
 
@@ -33,10 +35,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const username = signupForm.username.value.trim();
       const email = signupForm.email.value.trim();
       const password = signupForm.password.value.trim();
+      const confirmPassword = signupForm.confirmPassword.value.trim();
       const phoneNumber = signupForm.phoneNumber.value.trim();
-      const role = signupForm.role.value;
 
-      if (!username || !email || !password || !role) {
+      if(password !== confirmPassword) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Check Your Confirm Password',
+          text: 'Please make sure your passwords match.',
+        });
+        return;
+      }
+      
+      if (!username || !email || !password) {
         Swal.fire({
           icon: 'warning',
           title: 'Missing Information',
@@ -45,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const registerDTO = { username, email, password, phoneNumber, role };
+      const registerDTO = { username, email, password, phoneNumber};
 
       try {
-        const response = await fetch("http://localhost:8080/claimrightauth/register", {
+        const response = await fetch(`${API_BASE_AUTH}/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -102,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
-        const response = await fetch("http://localhost:8080/claimrightauth/login", {
+        const response = await fetch(`${API_BASE_AUTH}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

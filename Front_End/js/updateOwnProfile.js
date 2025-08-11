@@ -1,3 +1,5 @@
+const API_BASE_UPDATE = "http://localhost:8080/claimright";
+
 document.addEventListener("DOMContentLoaded", function () {
   const editForm = document.getElementById("editProfileForm");
 
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/claimright/user/update", {
+      const response = await fetch(`${API_BASE_UPDATE}/user/update`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${token}`,

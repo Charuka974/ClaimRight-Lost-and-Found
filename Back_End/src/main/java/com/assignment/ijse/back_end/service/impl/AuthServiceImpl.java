@@ -6,7 +6,7 @@ import com.assignment.ijse.back_end.dto.RegisterDTO;
 import com.assignment.ijse.back_end.dto.UserDTO;
 import com.assignment.ijse.back_end.entity.PasswordResetToken;
 import com.assignment.ijse.back_end.entity.User;
-import com.assignment.ijse.back_end.entity.UserRole;
+import com.assignment.ijse.back_end.entity.enums.UserRole;
 import com.assignment.ijse.back_end.repository.PasswordResetTokenRepository;
 import com.assignment.ijse.back_end.repository.UserRepository;
 import com.assignment.ijse.back_end.service.AuthService;
@@ -42,31 +42,56 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException("Invalid credentials");
         }
 
+        user.setPassword(null); // Don't expose password in response
+
         String token = jwtUtil.generateToken(user.getUsername());
         UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+        userDTO.setPassword(null); // Don't expose password in response
 
         return new AuthResponseDTO(token, userDTO);
     }
-
-
 
     @Override
     public String register(RegisterDTO registerDTO) {
         if (userRepository.findByEmail(registerDTO.getEmail()).isPresent()) {
             throw new RuntimeException("Email already exists");
         }
+
+        boolean isFirstUser = userRepository.count() == 0;
+
         User user = User.builder()
                 .username(registerDTO.getUsername())
                 .email(registerDTO.getEmail())
                 .password(passwordEncoder.encode(registerDTO.getPassword()))
-                .role(UserRole.valueOf(registerDTO.getRole()))
+                .role(isFirstUser ? UserRole.ADMIN : UserRole.USER) // ADMIN if first user
                 .phoneNumber(registerDTO.getPhoneNumber())
                 .createdAt(LocalDateTime.now())
-                .isActive("USER".equalsIgnoreCase(registerDTO.getRole()))
+                .isActive(true)
                 .build();
+
         userRepository.save(user);
         return "User registered successfully";
     }
+
+
+
+//    @Override
+//    public String register(RegisterDTO registerDTO) {
+//        if (userRepository.findByEmail(registerDTO.getEmail()).isPresent()) {
+//            throw new RuntimeException("Email already exists");
+//        }
+//        User user = User.builder()
+//                .username(registerDTO.getUsername())
+//                .email(registerDTO.getEmail())
+//                .password(passwordEncoder.encode(registerDTO.getPassword()))
+//                .role(UserRole.USER) // Default role
+//                .phoneNumber(registerDTO.getPhoneNumber())
+//                .createdAt(LocalDateTime.now())
+//                .isActive(true)
+//                .build();
+//        userRepository.save(user);
+//        return "User registered successfully";
+//    }
 
     @Override
     public String forgotPassword(String email) {
@@ -95,7 +120,41 @@ public class AuthServiceImpl implements AuthService {
         passwordResetTokenRepository.save(resetToken);
 
         String resetLink = "http://127.0.0.1:5501/Front_End/html/reset-new-password.html?token=" + token;
-        emailService.sendSimpleMail(user.getEmail(), "Reset Password", "Click to reset: " + resetLink);
+
+        String htmlContent = """
+        <div style="background-color: #f8f9fc; padding: 30px; border-radius: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2e4374; max-width: 600px; margin: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="https://i.ibb.co/twfxkRqj/Chat-GPT-Image-Jul-24-2025-11-16-54-AM.png" alt="ClaimRight Logo" style="width: 100px; border-radius: 50%%; box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);" />
+            </div>
+            <h2 style="color: #2e4374; font-weight: 700;">Password Reset Request</h2>
+            <p style="font-size: 16px; color: #333;">Hi there,</p>
+            <p style="font-size: 15px; line-height: 1.6;">
+                We received a request to reset your ClaimRight password. Click the button below to proceed:
+            </p>
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="%s" style="
+                    background-color: #4e73df;
+                    color: white;
+                    padding: 12px 25px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    display: inline-block;
+                    box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
+                ">
+                    Reset Password
+                </a>
+            </div>
+            <p style="font-size: 14px; color: #666;">
+                This link will expire in 30 minutes. If you did not request a password reset, you can safely ignore this email.
+            </p>
+            <p style="margin-top: 30px; font-size: 14px; color: #999;">
+                — ClaimRight Team
+            </p>
+        </div>
+    """.formatted(resetLink);
+
+        emailService.sendHtmlMail(user.getEmail(), "ClaimRight Reset Password", htmlContent);
 
         return "Reset email sent to " + email;
     }

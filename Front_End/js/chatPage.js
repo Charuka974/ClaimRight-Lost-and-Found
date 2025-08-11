@@ -1,13 +1,38 @@
+const API_BASE_CHAT = "http://localhost:8080/claimright";
+
 document.addEventListener("DOMContentLoaded", async function () {
   await loadUsers(); // Wait until users are loaded and window.allUsers is set
 
+  const token = localStorage.getItem("accessToken");
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  // if (!token && !loggedInUser) {
+  //   console.warn("Login first");
+
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'User not Found',
+  //     text: 'Login First',
+  //     timer: 1000,
+  //     showConfirmButton: false,
+  //     allowOutsideClick: false,
+  //     allowEscapeKey: false,
+  //     didClose: () => {
+  //       window.location.href = "/Front_End/html/login-signup.html";
+  //     }
+  //   });
+
+  //   return;
+  // }
+
+  
   if (loggedInUser && loggedInUser.username) {
     const self = window.allUsers?.find(u => u.username === loggedInUser.username);
     if (self) {
       selectUser(self.username);
     }
   }
+
 });
 
 
@@ -24,7 +49,7 @@ async function loadUsers() {
   }
 
   try {
-    const response = await fetch("http://localhost:8080/claimright/user/getall", {
+    const response = await fetch(`${API_BASE_CHAT}/user/get-all`, {  // get API_BASE - from parent
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -160,7 +185,7 @@ async function selectUser(username, isPolling = false) {
   }
 
   try {
-    const response = await fetch(`http://localhost:8080/claimright/messages/getmessages/conversation/users?userA=${sender.userId}&userB=${receiver.userId}`, {
+    const response = await fetch(`${API_BASE_CHAT}/messages/get-messages/conversation/users?userA=${sender.userId}&userB=${receiver.userId}`, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
       }
@@ -248,7 +273,7 @@ async function sendMessage() {
   };
 
   try {
-    const response = await fetch("http://localhost:8080/claimright/messages/sendmessage", {
+    const response = await fetch(`${API_BASE_CHAT}/messages/send-message`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
@@ -269,7 +294,7 @@ async function sendMessage() {
     }
 
     const result = await response.json();
-    console.log("Message sent:", result);
+    // console.log("Message sent:", result);
     messageInput.value = "";
     selectUser(receiverUsername); // Refresh chat
 
@@ -346,7 +371,7 @@ async function sendSelectedImage() {
 
 
   try {
-    const response = await fetch("http://localhost:8080/claimright/messages/sendmessage", {
+    const response = await fetch(`${API_BASE_CHAT}/messages/send-message`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
@@ -383,7 +408,7 @@ async function uploadToImgBB(file) {
   formData.append("file", file);
 
   try {
-    const response = await fetch("http://localhost:8080/claimright/api/image/upload", {
+    const response = await fetch(`${API_BASE_CHAT}/api/image/upload`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`

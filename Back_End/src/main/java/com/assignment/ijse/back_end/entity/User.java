@@ -1,5 +1,6 @@
 package com.assignment.ijse.back_end.entity;
 
+import com.assignment.ijse.back_end.entity.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,8 +31,11 @@ public class User {
     private String profilePictureUrl;
     private boolean isActive;
 
-    @OneToMany(mappedBy = "user")
-    private List<Item> items;
+    @OneToMany(mappedBy = "owner")
+    private List<LostItem> items;
+
+    @OneToMany(mappedBy = "finder")
+    private List<FoundItem> foundItems;
 
     @OneToMany(mappedBy = "claimant")
     private List<Claim> claims;

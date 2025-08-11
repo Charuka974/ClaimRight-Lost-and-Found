@@ -1,5 +1,6 @@
 package com.assignment.ijse.back_end.entity;
 
+import com.assignment.ijse.back_end.entity.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,10 @@ public class Payment {
 
     private Double amount;
     private String transactionId;
-    private String status; // "PENDING", "COMPLETED", "FAILED", "REFUNDED"
+
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus; // "PENDING", "COMPLETED", "FAILED", "REFUNDED"
+
     private LocalDateTime processedAt;
 
     @ManyToOne

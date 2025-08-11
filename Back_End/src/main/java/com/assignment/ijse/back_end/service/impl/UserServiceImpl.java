@@ -3,6 +3,7 @@ package com.assignment.ijse.back_end.service.impl;
 import com.assignment.ijse.back_end.dto.AuthResponseDTO;
 import com.assignment.ijse.back_end.dto.UserDTO;
 import com.assignment.ijse.back_end.entity.User;
+import com.assignment.ijse.back_end.entity.enums.UserRole;
 import com.assignment.ijse.back_end.exceptions.ResourceNotFound;
 import com.assignment.ijse.back_end.repository.UserRepository;
 import com.assignment.ijse.back_end.service.UserService;
@@ -142,5 +143,20 @@ public class UserServiceImpl implements UserService {
         Page<User> userPage = userRepository.findAll(pageable);
         return userPage.map(user -> modelMapper.map(user, UserDTO.class));
     }
+
+    @Override
+    public void changeUpdateUserRole(Long userId, String newRole) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFound("User not found with ID: " + userId));
+
+        try {
+            UserRole role = UserRole.valueOf(newRole.toUpperCase());
+            user.setRole(role);
+            userRepository.save(user);
+        } catch (IllegalArgumentException ex) {
+            throw new IllegalArgumentException("Invalid role: " + newRole);
+        }
+    }
+
 
 }

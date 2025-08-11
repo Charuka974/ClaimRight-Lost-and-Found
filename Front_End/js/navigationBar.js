@@ -67,7 +67,17 @@ document.addEventListener("DOMContentLoaded", function () {
                   <i class="bi bi-person-circle"></i> My Account
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="userDropdown">
-                  <li>
+                <li>
+                  <a class="btn btn-edit-profile btn-outline-light d-flex align-items-center gap-2 fw-bold" 
+                    href="/Front_End/html/my-profile-page.html">
+                    <i class="bi bi-person-lines-fill"></i>
+                    My Profile
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>  
+                <li>
                     <a class="btn btn-edit-profile btn-outline-light d-flex align-items-center gap-2 fw-bold" 
                       href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                       <i class="bi bi-person-circle"></i>
@@ -293,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const preview = document.getElementById("profilePreview");
       preview.src = user.profilePictureUrl
       ? user.profilePictureUrl
-      : "/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg";
+      : "/Front_End/assets/images/avatar-default-icon.png";
 
     });
   }

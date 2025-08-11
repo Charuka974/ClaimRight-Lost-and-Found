@@ -1,14 +1,14 @@
 package com.assignment.ijse.back_end.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
 public class MessageDTO {
     private Long messageId;
     private String content;
