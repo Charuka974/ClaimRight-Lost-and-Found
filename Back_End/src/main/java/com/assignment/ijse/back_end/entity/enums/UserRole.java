@@ -1,5 +1,5 @@
 package com.assignment.ijse.back_end.entity.enums;
 
 public enum UserRole {
-    ADMIN, USER
+    ADMIN, SEMI_ADMIN, USER
 }

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const user = JSON.parse(userJson);
 
-  if (user.role === "ADMIN" && user.active === true) {
+  if ((user.role === "ADMIN" || user.role === "SEMI_ADMIN") && user.active === true) {
     const btn = document.createElement("button");
     btn.className = "floating-page-btn floating-user-nav-btn";
     btn.innerHTML = `<i class="bi bi-person-circle"></i>&nbsp;&nbsp;Manage Users`;

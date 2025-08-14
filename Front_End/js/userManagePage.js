@@ -113,6 +113,7 @@ function renderUsers(users) {
   const container = document.getElementById("userTablesByRole");
   container.innerHTML = "";
 
+  // Group users by role
   const usersByRole = {};
   users.forEach(user => {
     const role = user.role || "UNKNOWN";
@@ -120,13 +121,22 @@ function renderUsers(users) {
     usersByRole[role].push(user);
   });
 
+  // Role display formatter (ADMIN → Admins, SEMI_ADMIN → Semi Admins)
+  const formatRoleName = role =>
+    role
+      .toLowerCase()
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ') + 's';
+
   const roleOrder = ["ADMIN", ...Object.keys(usersByRole).filter(r => r !== "ADMIN")];
+  const isSemiAdmin = loggedUser.role === "SEMI_ADMIN";
 
   roleOrder.forEach(role => {
     if (!usersByRole[role]) return;
 
     const tableHTML = `
-      <h4 class="mt-4 text-center">${role.charAt(0) + role.slice(1).toLowerCase()}s</h4>
+      <h4 class="mt-4 text-center">${formatRoleName(role)}</h4>
       <table class="table table-striped table-bordered">
         <thead class="table-light">
           <tr>
@@ -139,58 +149,101 @@ function renderUsers(users) {
           </tr>
         </thead>
         <tbody>
-          ${usersByRole[role].map(user => `
-            <tr>
-              <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" class="rounded-circle shadow" width="40" height="40" /></td>
-              <td class="fw-semibold">${user.username}</td>
-              <td>${user.email}</td>
-              <td>${user.phoneNumber || '-'}</td>
-              <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">${user.active ? 'Active' : 'Inactive'}</span></td>
-              <td>
-                <div class="action-column d-flex flex-row align-items-stretch justify-content-center gap-2">
+          ${usersByRole[role].map(user => {
+            let disableActions = false;
 
-                  <!-- Toggle Status -->
-                  <div class="status-action">
-                    <div class="small text-muted mb-1">Status</div>
-                    <button class="btn btn-sm ${user.active ? 'btn-warning' : 'btn-success'} d-flex align-items-center gap-1" 
-                            onclick="toggleStatus(${user.userId}, ${user.active})" 
-                            ${user.userId === loggedUser.userId ? 'disabled title="You cannot change your own status"' : ''}>
-                      <i class="bi ${user.active ? 'bi-person-dash' : 'bi-person-check'}"></i>
-                      <span class="fw-bold">${user.active ? 'Deactivate' : 'Activate'}</span>
-                    </button>
-                  </div>
+            if (user.userId === loggedUser.userId) {
+              // Can't change yourself
+              disableActions = true;
+            } else if (isSemiAdmin) {
+              // SEMI_ADMIN restrictions
+              if (user.role === "ADMIN" || user.role === "SEMI_ADMIN") {
+                // Can't change admin or other semi admins
+                disableActions = true;
+              }
+            }
 
-                  <div style="width: 2px; background-color: rgba(10, 10, 10, 0.644);"></div>
+            // Role dropdown options based on restrictions
+            let roleOptions = "";
+            if (isSemiAdmin) {
+              if (user.role === "USER") {
+                // Can only change USER -> USER or SEMI_ADMIN
+                roleOptions = `
+                  <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
+                  <option value="SEMI_ADMIN" ${user.role === "SEMI_ADMIN" ? "selected" : ""}>Semi Admin</option>
+                `;
+              } else {
+                // No role change allowed
+                roleOptions = `<option value="${user.role}" selected>${formatRoleName(user.role).slice(0, -1)}</option>`;
+              }
+            } else {
+              // Admin or higher: full control
+              roleOptions = `
+                <option value="ADMIN" ${user.role === "ADMIN" ? "selected" : ""}>Admin</option>
+                <option value="SEMI_ADMIN" ${user.role === "SEMI_ADMIN" ? "selected" : ""}>Semi Admin</option>
+                <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
+              `;
+            }
 
-                  <!-- Role Selector + Confirm -->
-                  <div class="role-action">
-                    <div class="small text-muted mb-1">Change Role</div>
-                    <div class="d-flex flex-row">
-                      <select class="form-select form-select-sm role-select"
-                              id="role-select-${user.userId}"
-                              ${user.userId === loggedUser.userId ? 'disabled title="You cannot change your own role"' : ''}>
-                        <option value="ADMIN" ${user.role === "ADMIN" ? "selected" : ""}>Admin</option>
-                        <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
-                      </select>
-                      <button class="action-btn confirm-role-change"
-                              onclick="confirmRoleChange(${user.userId})"
-                              title="Confirm Role Change"
-                              ${user.userId === loggedUser.userId ? 'disabled' : ''}>
-                        <i class="bi bi-check-circle"></i>
+            return `
+              <tr>
+                <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" 
+                         class="rounded-circle shadow" width="40" height="40" /></td>
+                <td class="fw-semibold">${user.username}</td>
+                <td>${user.email}</td>
+                <td>${user.phoneNumber || '-'}</td>
+                <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">
+                      ${user.active ? 'Active' : 'Inactive'}
+                    </span>
+                </td>
+                <td>
+                  <div class="action-column d-flex flex-row align-items-stretch justify-content-center gap-2">
+                    
+                    <!-- Status Toggle -->
+                    <div class="status-action">
+                      <div class="small text-muted mb-1">Status</div>
+                      <button class="btn btn-sm ${user.active ? 'btn-warning' : 'btn-success'} 
+                                     d-flex align-items-center gap-1" 
+                              onclick="toggleStatus(${user.userId}, ${user.active})" 
+                              ${disableActions ? 'disabled' : ''}>
+                        <i class="bi ${user.active ? 'bi-person-dash' : 'bi-person-check'}"></i>
+                        <span class="fw-bold">${user.active ? 'Deactivate' : 'Activate'}</span>
                       </button>
                     </div>
-                  </div>
 
-                </div>
-              </td>
-            </tr>
-          `).join("")}
+                    <div style="width: 2px; background-color: rgba(10, 10, 10, 0.644);"></div>
+
+                    <!-- Role Change -->
+                    <div class="role-action">
+                      <div class="small text-muted mb-1">Change Role</div>
+                      <div class="d-flex flex-row">
+                        <select class="form-select form-select-sm role-select"
+                                id="role-select-${user.userId}"
+                                ${disableActions ? 'disabled' : ''}>
+                          ${roleOptions}
+                        </select>
+                        <button class="action-btn confirm-role-change"
+                                onclick="confirmRoleChange(${user.userId})"
+                                ${disableActions ? 'disabled' : ''}>
+                          <i class="bi bi-check-circle"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join("")}
         </tbody>
       </table>
     `;
     container.innerHTML += tableHTML;
   });
 }
+
+
+
 
 /* -----------------------
    PAGINATION

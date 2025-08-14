@@ -24,7 +24,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private UserRole role; // "USER", "ADMIN"
+    private UserRole role; // "USER", "ADMIN", "SEMI_ADMIN"
 
     private String phoneNumber;
     private LocalDateTime createdAt;
