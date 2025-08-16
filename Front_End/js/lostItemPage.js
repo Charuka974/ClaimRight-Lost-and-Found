@@ -12,6 +12,11 @@ let selectedCategories = new Set();
 
 // --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('openModal') === 'true') {
+        openReportLostItem();
+    }
+
     loadCategories();
     loadLostItems();
 });
@@ -47,7 +52,7 @@ function renderLostItems(lostItems) {
     lostItemCard.className = "lost-item-card";
 
     lostItemCard.innerHTML = `
-      <img src="${item.imageUrl || 'default-image.jpg'}" alt="Lost item image" class="lost-item-image" />
+      <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" alt="Lost item image" class="lost-item-image" />
       <div class="lost-item-content">
         <h2 class="lost-item-title">${item.itemName}</h2>
         <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>

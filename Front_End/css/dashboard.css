@@ -1,12 +1,12 @@
 :root {
   --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(to right, #ff7e5f, #feb47b); /* warm orange gradient for found items */
 }
+
 
 /* Header */
 .brand-header {
   text-align: center;
-  margin-bottom: 3rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,41 +46,6 @@
   font-weight: bold;
 }
 
-/* Main container */
-
-.main-content-container {
-    height: 100vh;
-}
-
-/* cards/ posts */
-    .post-card {
-        max-width: 600px;
-        margin: 2rem auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .post-card .card-header {
-        background-color: #f8f9fa;
-        font-weight: bold;
-    }
-
-    .post-card .card-img-top {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        object-fit: cover;
-        height: 250px;
-    }
-
-    .post-meta {
-        font-size: 0.9rem;
-        color: #6c757d;
-    }
-
-    .post-footer {
-        background-color: #f1f1f1;
-        text-align: right;
-    }
 
 /* Floating Button */
 .floating-user-nav-btn {
@@ -92,3 +57,264 @@
   bottom: 50px;
   right: 30px;
 }
+
+/* --------------------------------------------------------------------------------------------------------------- */
+
+
+/* Main content container layout */
+.main-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* ---------- Lost Item Card ---------- */
+/* ---------- Found Item Card ---------- */
+/* Common card styles */
+.lost-item-card,
+.found-item-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  flex: 1 1 45%;
+  max-width: 45%;
+  min-width: 280px;
+  margin-bottom: 20px;
+  position: relative; /* for absolute child elements like badges */
+}
+
+/* Hover / active effect */
+.lost-item-card:hover,
+.found-item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Image */
+.lost-item-image,
+.found-item-image {
+  flex: 0 0 40%;
+  max-width: 300px;
+  max-height: 300px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Content */
+.lost-item-content,
+.found-item-content {
+  flex: 1 1 60%;
+  padding: 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+  overflow-wrap: break-word;
+  background: white;
+}
+
+/* Titles */
+.lost-item-title,
+.found-item-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+/* Descriptions */
+.lost-item-description,
+.found-item-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* Metadata */
+.lost-item-meta,
+.found-item-meta {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0.4rem;
+}
+
+.lost-item-meta strong,
+.found-item-meta strong {
+  color: #444;
+}
+
+/* Category badges */
+.lost-item-content .category-badge,
+.found-item-content .category-badge {
+  display: inline-block;
+  background: var(--gradient-orange);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 2px 6px rgba(255, 126, 95, 0.4);
+  transition: 0.3s ease;
+}
+
+/* Category badges */
+.lost-item-content .category-badge {
+  background: var(--gradient-primary);
+  box-shadow: 0 2px 6px rgba(78, 115, 223, 0.4); /* bluish shadow for lost items */
+}
+
+.found-item-content .category-badge {
+  background: var(--gradient-orange);
+  box-shadow: 0 2px 6px rgba(255, 126, 95, 0.4); /* orange shadow for found items */
+}
+
+/* Hover effect */
+.lost-item-content .category-badge:hover {
+  background: linear-gradient(to right, #4e73df, #36b9cc); /* keep bluish on hover */
+  cursor: default;
+}
+
+.found-item-content .category-badge:hover {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* keep orange on hover */
+  cursor: default;
+}
+
+/* Claimed badge */
+.claimed-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 0.35em 0.9em;
+  font-weight: 700;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.6);
+}
+
+/* Buttons */
+.lost-item-content .respond-btn,
+.found-item-content .respond-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  cursor: pointer;
+  background-size: 300% 300%;
+  transition: transform 0.3s ease;
+}
+
+.lost-item-content .respond-btn {
+  background: linear-gradient(90deg, #4e73df, #36b9cc, #4e73df);
+  animation: gradientShift 2s linear infinite, glowPulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(78, 115, 223, 0.6);
+}
+
+.found-item-content .respond-btn {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b, #ff7e5f);
+  animation: gradientShiftFound 2s linear infinite, glowPulseFound 1.5s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(255, 126, 95, 0.6);
+}
+
+.lost-item-content .respond-btn:hover {
+  transform: scale(1.08);
+  animation: gradientShift 1.5s linear infinite, glowPulse 1.2s ease-in-out infinite, wiggle 0.4s ease-in-out;
+}
+
+.found-item-content .respond-btn:hover {
+  transform: scale(1.08);
+  animation: gradientShiftFound 1.5s linear infinite, glowPulseFound 1.2s ease-in-out infinite, wiggle 0.4s ease-in-out;
+}
+
+.lost-item-content .respond-btn:active,
+.found-item-content .respond-btn:active {
+  transform: scale(0.95);
+}
+
+/* Animations */
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 15px rgba(78, 115, 223, 0.6); }
+  50% { box-shadow: 0 0 25px rgba(78, 115, 223, 1); }
+  100% { box-shadow: 0 0 15px rgba(78, 115, 223, 0.6); }
+}
+
+@keyframes gradientShiftFound {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulseFound {
+  0% { box-shadow: 0 0 15px rgba(255, 126, 95, 0.6); }
+  50% { box-shadow: 0 0 25px rgba(255, 126, 95, 1); }
+  100% { box-shadow: 0 0 15px rgba(255, 126, 95, 0.6); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1.08); }
+  25% { transform: rotate(2deg) scale(1.08); }
+  50% { transform: rotate(-2deg) scale(1.08); }
+  75% { transform: rotate(1deg) scale(1.08); }
+}
+
+/* Lost / Found type tag */
+.item-type-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.found-tag { background: #ff7e5f; }
+.lost-tag { background: #4e73df; }
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .lost-item-card,
+  .found-item-card {
+    flex: 1 1 48%;
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .lost-item-card,
+  .found-item-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+

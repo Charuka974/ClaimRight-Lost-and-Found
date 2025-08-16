@@ -188,7 +188,7 @@ img.avatar {
   color: var(--dark);
   cursor: pointer;
   transition: 0.3s;
-  width: 80px;
+  width: 120px;
 }
 
 .role-select:focus {

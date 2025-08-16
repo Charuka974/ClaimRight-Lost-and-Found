@@ -18,12 +18,122 @@
 </head>
 <body>
     <div id="navbar-container"></div>
-    <div class="main-content-container"></div>
+
+    <div class="sticky-controls">
+        <div class="dash-top-container d-flex justify-content-between align-items-center p-2">
+            <div class="sort-dropdown-container">
+                <label for="dashboard-sort">Sort By</label>
+                <select id="dashboard-sort" class="form-select">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="lost">Lost Items</option>
+                    <option value="found">Found Items</option>
+                </select>
+            </div>
+
+            <div class="dashboard-search-container">
+                <div class="search-inner-container d-flex">
+                    <input type="text" id="dashboard-search" placeholder="Search for items..." class="form-control"/>
+                    <button id="dashboard-search-btn" class="btn btn-primary ms-2"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="main-content-container">
+
+      <!-- Example Found Item Card -->
+      
+      <!-- <div class="found-item-card" id="foundItemCard">
+        <img
+          src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80"
+          alt="Found item image"
+          class="found-item-image"
+          id="foundItemCardImage"
+        />
+
+        <div class="found-item-content">
+          <h2 class="found-item-title">Gold Bracelet</h2>
+
+          <div class="claimed-badge" style="display:none;">Claimed</div>
+
+          <p class="found-item-description">
+            Gold bracelet with unique engraving found near Central Station.
+          </p>
+
+          <p class="found-item-meta"><strong>Found On:</strong> July 22, 2025</p>
+          <p class="found-item-meta"><strong>Location:</strong> Central Station, NYC</p>
+          <p class="found-item-meta"><strong>Finder:</strong> Jane Smith</p>
+
+          <div class="categories">
+            <span class="category-badge">Jewelry</span>
+            <span class="category-badge">Accessories</span>
+          </div>
+
+          <button class="respond-btn">Claim</button>
+        </div>
+      </div> -->
+     
+
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" alt="">
+    </div>
 
     <!-- Floating Report Button -->
     <button class="floating-page-btn" onclick="openReportFoundItem()">
-    <i class="bi bi-check2-circle"></i>&nbsp;&nbsp;Report a Found Item
+      <i class="bi bi-check2-circle"></i>&nbsp;&nbsp;Report a Found Item
     </button>
+
+    <!-- Report a Found Item Modal -->
+    <div id="reportFoundItemModal" class="modal" style="display:none;">
+    <div class="modal-content" style="max-width: 500px; margin: 10% auto; padding: 20px; background: white; border-radius: 8px; position: relative;">
+        <span class="close" id="reportFoundCloseBtn" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer;">&times;</span>
+        <h3>Report a Found Item</h3>
+        <form id="reportFoundItemForm" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="foundItemName" class="form-label">Item Name</label>
+            <input type="text" id="foundItemName" name="itemName" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="foundItemDescription" class="form-label">Description</label>
+            <textarea id="foundItemDescription" name="generalDescription" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="foundLocation" class="form-label">Location Found</label>
+            <input type="text" id="foundLocation" name="locationFound" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="foundDate" class="form-label">Date Found</label>
+            <input type="date" id="foundDate" name="dateFound" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="privateHint" class="form-label">Private Identifier Hint (If available)</label>
+            <input type="text" id="privateHint" name="privateIdentifierHint" class="form-control" placeholder="e.g., engraving, sticker, etc.">
+        </div>
+        <div class="mb-3">
+            <label for="foundImageUpload" class="form-label">Upload Image (Required)</label>
+            <input type="file" id="foundImageUpload" name="imageFile" class="form-control" accept="image/*" required>
+        </div>
+        <div class="mb-3">
+            <label for="selectCategory" class="form-label">Select Category</label>
+            <div id="categoryOptionsContainer"></div>
+            <div id="selectedCategoriesContainer" style="margin-bottom: 8px; min-height: 30px;"></div>
+        </div>
+        <button type="submit" class="btn btn-success">Submit Report</button>
+        </form>
+    </div>
+    </div>
+
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" style="display: none;">
+        Submitting report...
+    </div>
 
     <div id="login-popup-container"></div>
     <div id="edit-profile-container"></div>

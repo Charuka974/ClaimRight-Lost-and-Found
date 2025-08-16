@@ -50,7 +50,7 @@ function renderLostItems(lostItems, container) {
         lostItemCard.className = "lost-item-card";
 
         lostItemCard.innerHTML = `
-            <img src="${item.imageUrl || 'default-image.jpg'}" alt="Lost item image" class="lost-item-image" />
+            <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" alt="Lost item image" class="lost-item-image" />
             <div class="lost-item-content">
                 <h2 class="lost-item-title">${item.itemName}</h2>
                 <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
@@ -75,7 +75,7 @@ function renderLostItems(lostItems, container) {
         // (Optional) Attach edit button listener
         lostItemCard.querySelector(".edit-lost-item-btn")
             .addEventListener("click", () => editLostItem(item));
-    });
+    }); 
 }
 
 

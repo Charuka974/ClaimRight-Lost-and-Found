@@ -22,7 +22,6 @@
     <div id="navbar-container"></div>
 
     <div class="brand-header">
-
         <div id="app"></div>
         <script src="/Front_End/js/globeAnimation.js"></script>
 
@@ -33,31 +32,35 @@
         <p>Every item has a story.<br>Let’s help it find its way back home.</p> 
     </div>
 
+    <!-- Sticky Controls (Sort + Search) -->
+    <div class="sticky-controls">
+        <div class="dash-top-container d-flex justify-content-between align-items-center p-2">
+            <div class="sort-dropdown-container">
+                <label for="dashboard-sort">Sort By</label>
+                <select id="dashboard-sort" class="form-select">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="lost">Lost Items</option>
+                    <option value="found">Found Items</option>
+                </select>
+            </div>
+
+            <div class="dashboard-search-container">
+                <div class="search-inner-container d-flex">
+                    <input type="text" id="dashboard-search" placeholder="Search for items..." class="form-control"/>
+                    <button id="dashboard-search-btn" class="btn btn-primary ms-2"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
     <div class="main-content-container">
 
         
-        
-        <div class="card post-card">
-            <img src="" class="card-img-top" alt="Post image">
-            
-            <div class="card-header">
-                John Doe
-            </div>
-            
-            <div class="card-body">
-                <h5 class="card-title">Post Title</h5>
-                <p class="card-text">This is a short paragraph describing the post. You can use it for blog previews, announcements, or any post content.</p>
-                <p class="post-meta">Posted on July 21, 2025</p>
-                <a href="#" class="btn btn-primary btn-sm">Read More</a>
-            </div>
-            
-            <div class="card-footer post-footer">
-                <button class="btn btn-outline-primary btn-sm me-2">Like</button>
-                <button class="btn btn-outline-secondary btn-sm">Comment</button>
-            </div>
-            </div>
-
-
 
     </div>
 
@@ -87,5 +90,7 @@
     <script src="/Front_End/js/navigationBar.js"></script>
     <script src="/Front_End/js/loginSignup.js"></script>
     <script src="/Front_End/js/updateOwnProfile.js"></script>
+
+
 </body>
 </html>

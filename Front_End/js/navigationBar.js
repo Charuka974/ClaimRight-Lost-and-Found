@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3 wide-dropdown" aria-labelledby="userDropdown">
                   <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/report-lost.html">
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/lost-items.html?openModal=true">
                       <i class="bi bi-exclamation-octagon-fill"></i>
                       Report Lost Item
                     </a>
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <li><hr class="dropdown-divider" /></li>
 
                   <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/report-found.html">
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/found-items.html?openModal=true">
                       <i class="bi bi-check2-circle"></i>
                       Report Found Item
                     </a>
