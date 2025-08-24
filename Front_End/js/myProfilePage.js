@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Change Password": "change-password-modal",
         "My Claims": "my-claims-modal",
         "My Lost Items": "my-lost-items-modal",
-        "My Found Items": "my-found-items-modal"
+        "Items I Found": "my-found-items-modal"
     };
 
     const buttons = document.querySelectorAll(".menu-actions .btn");
@@ -32,7 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
                     if (modalId === "my-lost-items-modal") {
-                        loadMyLostItems(); // Load only when opening My Lost Items
+                        loadMyLostItems();
+                    }
+
+                    if (modalId === "my-found-items-modal") {
+                        loadMyFoundItems();
                     }
                 }
             }

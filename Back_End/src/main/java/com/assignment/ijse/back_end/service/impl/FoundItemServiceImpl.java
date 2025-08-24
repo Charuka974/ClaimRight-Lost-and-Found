@@ -42,7 +42,12 @@ public class FoundItemServiceImpl implements FoundItemService {
                 .map(existing -> {
                     existing.setItemName(dto.getItemName());
                     existing.setGeneralDescription(dto.getGeneralDescription());
-                    existing.setImageUrl(dto.getImageUrl());
+
+                    // Only update image if a new one is provided
+                    if (dto.getImageUrl() != null) {
+                        existing.setImageUrl(dto.getImageUrl());
+                    }
+
                     existing.setDateFound(dto.getDateFound());
                     existing.setLocationFound(dto.getLocationFound());
                     existing.setPrivateIdentifierHint(dto.getPrivateIdentifierHint());
@@ -62,11 +67,21 @@ public class FoundItemServiceImpl implements FoundItemService {
                 .orElse(null);
     }
 
+
     // -------------------- DELETE --------------------
     @Override
     public boolean deleteFoundItem(Long id) {
         if (foundItemRepository.existsById(id)) {
             foundItemRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean disableFoundItem(Long id) {
+        if (foundItemRepository.existsById(id)) {
+            foundItemRepository.deactivateFoundItem(id);
             return true;
         }
         return false;
@@ -82,7 +97,7 @@ public class FoundItemServiceImpl implements FoundItemService {
 
     @Override
     public List<FoundItemDTO> getAllFoundItems() {
-        return foundItemRepository.findAll()
+        return foundItemRepository.findByIsActiveTrue()
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -90,10 +105,7 @@ public class FoundItemServiceImpl implements FoundItemService {
 
     @Override
     public List<FoundItemDTO> getFoundItemsByFinder(Long finderId) {
-        Optional<User> finder = userRepository.findById(finderId);
-        if (finder.isEmpty()) return List.of();
-
-        return foundItemRepository.findByFinder(finder.get())
+        return foundItemRepository.findByFinderUserIdAndIsActiveTrue(finderId)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -147,6 +159,7 @@ public class FoundItemServiceImpl implements FoundItemService {
                 .postedAt(dto.getPostedAt())
                 .categories(categories)
                 .isClaimed(dto.getIsClaimed() != null ? dto.getIsClaimed() : false)
+                .isActive(true) // New items are active by default
                 .build();
     }
 
@@ -167,6 +180,7 @@ public class FoundItemServiceImpl implements FoundItemService {
                 .categoryNames(entity.getCategories() != null ?
                         entity.getCategories().stream().map(Category::getName).toList() : null)
                 .isClaimed(entity.getIsClaimed())
+                .isActive(entity.getIsActive())
                 .build();
     }
 }

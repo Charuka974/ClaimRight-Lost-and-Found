@@ -1,6 +1,7 @@
 package com.assignment.ijse.back_end.repository;
 
 import com.assignment.ijse.back_end.entity.User;
+import com.assignment.ijse.back_end.entity.enums.UserRole;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    List<User> findUsersByRole(UserRole role);
 
     List<User> findUserByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(
             String username, String email);

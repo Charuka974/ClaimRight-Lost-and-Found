@@ -29,4 +29,6 @@ public class FoundItemDTO {
     private List<String> categoryNames; // Optional — for front-end display
 
     private Boolean isClaimed;
+
+    private Boolean isActive;
 }

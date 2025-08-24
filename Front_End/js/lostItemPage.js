@@ -7,34 +7,33 @@ const reportForm = document.getElementById("reportLostItemForm");
 const categoryOptionsContainer = document.getElementById('categoryOptionsContainer');
 const selectedCategoriesContainer = document.getElementById('selectedCategoriesContainer');
 
-let categories = [];  // will hold categories fetched from backend
+let categories = [];  
 let selectedCategories = new Set();
+let allLostItemsData = [];
 
 // --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('openModal') === 'true') {
-        openReportLostItem();
-    }
+    if (urlParams.get('openModal') === 'true') openReportLostItem();
 
     loadCategories();
     loadLostItems();
 });
 
+// --- Load Lost Items ---
 async function loadLostItems() {
   try {
     const token = localStorage.getItem("accessToken");
     if (!token) throw new Error("User not logged in");
 
     const response = await fetch(API_BASE_LOSTITEM, {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
+      headers: { "Authorization": `Bearer ${token}` }
     });
 
     if (!response.ok) throw new Error("Failed to load lost items");
 
     const lostItems = await response.json();
+    allLostItemsData = lostItems; // update global array
     renderLostItems(lostItems);
 
   } catch (error) {
@@ -42,7 +41,7 @@ async function loadLostItems() {
   }
 }
 
-
+// --- Render Lost Items ---
 function renderLostItems(lostItems) {
   const container = document.querySelector(".main-content-container");
   container.innerHTML = "";
@@ -52,7 +51,8 @@ function renderLostItems(lostItems) {
     lostItemCard.className = "lost-item-card";
 
     lostItemCard.innerHTML = `
-      <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" alt="Lost item image" class="lost-item-image" />
+      <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" 
+           alt="Lost item image" class="lost-item-image" />
       <div class="lost-item-content">
         <h2 class="lost-item-title">${item.itemName}</h2>
         <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
@@ -66,7 +66,6 @@ function renderLostItems(lostItems) {
         <button class="respond-btn">Respond</button>
       </div>
     `;
-
     container.appendChild(lostItemCard);
   });
 }
@@ -80,7 +79,6 @@ reportForm.addEventListener("submit", async (e) => {
   const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   try {
-    // Show loading overlay
     loadingOverlay.style.display = "flex";
 
     const lostItemData = {
@@ -93,14 +91,10 @@ reportForm.addEventListener("submit", async (e) => {
     };
 
     const formData = new FormData();
-    formData.append(
-      "lostItem",
-      new Blob([JSON.stringify(lostItemData)], { type: "application/json" })
-    );
+    formData.append("lostItem", new Blob([JSON.stringify(lostItemData)], { type: "application/json" }));
 
-    const fileInput = reportForm.imageFile;
-    if (fileInput.files.length > 0) {
-      formData.append("imageFile", fileInput.files[0]);
+    if (reportForm.imageFile.files.length > 0) {
+      formData.append("imageFile", reportForm.imageFile.files[0]);
     }
 
     const token = localStorage.getItem("accessToken");
@@ -108,9 +102,7 @@ reportForm.addEventListener("submit", async (e) => {
 
     const response = await fetch(`${API_BASE_LOSTITEM}/report-lost-item`, {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      },
+      headers: { "Authorization": `Bearer ${token}` },
       body: formData
     });
 
@@ -119,13 +111,7 @@ reportForm.addEventListener("submit", async (e) => {
       throw new Error(errorText || "Failed to submit report");
     }
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Report Submitted',
-      text: 'Your lost item report has been successfully submitted.',
-      timer: 2000,
-      showConfirmButton: false
-    });
+    Swal.fire({ icon: 'success', title: 'Report Submitted', text: 'Your report was successful.', timer: 2000, showConfirmButton: false });
 
     reportModal.style.display = "none";
     reportForm.reset();
@@ -135,36 +121,25 @@ reportForm.addEventListener("submit", async (e) => {
     loadLostItems();
 
   } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Submission Failed',
-      text: error.message || "Something went wrong.",
-    });
+    Swal.fire({ icon: 'error', title: 'Submission Failed', text: error.message || "Something went wrong." });
   } finally {
-    // Hide loading overlay no matter what
     loadingOverlay.style.display = "none";
   }
 });
 
-
-
-// --- Load categories from backend ---
+// --- Load Categories ---
 async function loadCategories() {
   try {
     const token = localStorage.getItem("accessToken");
     if (!token) throw new Error("User not logged in");
 
     const response = await fetch('http://localhost:8080/claimright/item-categories', {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
+      headers: { "Authorization": `Bearer ${token}` }
     });
 
     if (!response.ok) throw new Error('Failed to fetch categories');
 
     categories = await response.json();
-
-    // After loading, render category buttons and selected badges
     renderCategoryOptions();
     renderSelectedCategories();
 
@@ -173,29 +148,22 @@ async function loadCategories() {
   }
 }
 
-// --- Render category options as clickable buttons ---
+// --- Render Category Options ---
 function renderCategoryOptions() {
   categoryOptionsContainer.innerHTML = '';
 
   categories.forEach(cat => {
     const btn = document.createElement('button');
     btn.textContent = cat.name;
-    btn.style.margin = '3px';
-    btn.style.padding = '5px 10px';
-    btn.style.border = '1px solid #ccc';
-    btn.style.borderRadius = '5px';
-    btn.style.fontSize = '0.8rem';
-    btn.style.width = '50%';
-    btn.style.backgroundColor = selectedCategories.has(cat.categoryId) ? '#007bff' : '#f0f0f0';
-    btn.style.color = selectedCategories.has(cat.categoryId) ? 'white' : 'black';
-    btn.style.cursor = 'pointer';
+    btn.style.cssText = `
+      margin:3px; padding:5px 10px; border:1px solid #ccc; border-radius:5px;
+      font-size:0.8rem; width:50%; cursor:pointer;
+      background-color:${selectedCategories.has(cat.categoryId) ? '#007bff' : '#f0f0f0'};
+      color:${selectedCategories.has(cat.categoryId) ? 'white' : 'black'};
+    `;
 
     btn.addEventListener('click', () => {
-      if (selectedCategories.has(cat.categoryId)) {
-        selectedCategories.delete(cat.categoryId);
-      } else {
-        selectedCategories.add(cat.categoryId);
-      }
+      selectedCategories.has(cat.categoryId) ? selectedCategories.delete(cat.categoryId) : selectedCategories.add(cat.categoryId);
       renderCategoryOptions();
       renderSelectedCategories();
     });
@@ -204,7 +172,61 @@ function renderCategoryOptions() {
   });
 }
 
-// --- Render selected categories as badges with remove "×" ---
+// --- Image Preview in report item Modal---
+const imageUpload = document.getElementById("imageUpload");
+
+// Create a preview container (just once)
+const previewContainer = document.createElement("div");
+previewContainer.id = "imagePreviewContainer";
+previewContainer.style.cssText = `
+  margin-top: 10px; 
+  text-align: center;
+`;
+
+imageUpload.parentElement.appendChild(previewContainer);
+
+imageUpload.addEventListener("change", (event) => {
+  previewContainer.innerHTML = ""; // clear old preview
+
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = document.createElement("img");
+    img.src = e.target.result;
+    img.alt = "Preview";
+    img.style.cssText = `
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: block;
+    `;
+    previewContainer.appendChild(img);
+
+    // Add "Change Image" button
+    const changeBtn = document.createElement("button");
+    changeBtn.type = "button";
+    changeBtn.textContent = "Change Image";
+    changeBtn.style.cssText = `
+      display:inline-block; 
+      background:#4e73df; 
+      color:white; 
+      border:none; 
+      border-radius:6px; 
+      padding:6px 12px; 
+      cursor:pointer;
+    `;
+    changeBtn.addEventListener("click", () => imageUpload.click());
+    previewContainer.appendChild(changeBtn);
+  };
+
+  reader.readAsDataURL(file);
+});
+
+
+// --- Render Selected Categories ---
 function renderSelectedCategories() {
   selectedCategoriesContainer.innerHTML = '';
 
@@ -215,15 +237,8 @@ function renderSelectedCategories() {
     const badge = document.createElement('span');
     badge.textContent = cat.name + ' ×';
     badge.style.cssText = `
-      display: inline-block;
-      background-color: #007bff;
-      color: white;
-      padding: 3px 8px;
-      margin: 2px;
-      border-radius: 12px;
-      font-size: 0.8em;
-      cursor: pointer;
-      user-select: none;
+      display:inline-block; background-color:#007bff; color:white; padding:3px 8px; 
+      margin:2px; border-radius:12px; font-size:0.8em; cursor:pointer; user-select:none;
     `;
 
     badge.addEventListener('click', () => {
@@ -236,36 +251,37 @@ function renderSelectedCategories() {
   });
 }
 
-// --- Open and Close Modal Handlers ---
-function openReportLostItem() {
-  reportModal.style.display = "block";
+// --- Open & Close Modal ---
+function openReportLostItem() { reportModal.style.display = "block"; }
+reportCloseBtn.addEventListener("click", () => reportModal.style.display = "none");
+window.addEventListener("click", (event) => { if (event.target === reportModal) reportModal.style.display = "none"; });
+
+// --- Search & Sort ---
+function filterItems(searchTerm) {
+  const filtered = allLostItemsData.filter(item => {
+    const title = item.itemName.toLowerCase();
+    const description = (item.detailedDescription || "").toLowerCase();
+    return title.includes(searchTerm.toLowerCase()) || description.includes(searchTerm.toLowerCase());
+  });
+  renderLostItems(filtered);
 }
 
-reportCloseBtn.addEventListener("click", () => {
-  reportModal.style.display = "none";
-});
+function sortItems(sortBy) {
+  let itemsToRender = [...allLostItemsData];
 
-window.addEventListener("click", (event) => {
-  if (event.target === reportModal) {
-    reportModal.style.display = "none";
-  }
-});
+  if (sortBy === "newest") itemsToRender.sort((a, b) => new Date(b.dateLost) - new Date(a.dateLost));
+  else if (sortBy === "oldest") itemsToRender.sort((a, b) => new Date(a.dateLost) - new Date(b.dateLost));
+  else if (sortBy === "lost") itemsToRender = itemsToRender.filter(item => !item.isFound);
+  else if (sortBy === "found") itemsToRender = itemsToRender.filter(item => item.isFound);
 
-
-// --- Image Modal Logic ---
-
-// --- Claimed badge logic ---
-const isClaimed = false; // toggle as needed
-
-if (isClaimed) {
-  const claimedBadge = document.querySelector('.claimed-badge');
-  if (claimedBadge) claimedBadge.style.display = 'block';
-
-  const card = document.getElementById("lostItemCard");
-  if (card) {
-    card.style.opacity = "0.6";
-    card.style.pointerEvents = "none";
-  }
+  renderLostItems(itemsToRender);
 }
 
+// --- Event Listeners ---
+const searchInput = document.getElementById("dashboard-search");
+const searchBtn = document.getElementById("dashboard-search-btn");
+const sortSelect = document.getElementById("dashboard-sort");
 
+searchBtn.addEventListener("click", () => filterItems(searchInput.value));
+searchInput.addEventListener("input", () => filterItems(searchInput.value));
+sortSelect.addEventListener("change", (e) => sortItems(e.target.value));

@@ -45,6 +45,36 @@ public class LostItemController {
         return ResponseEntity.ok(savedItem);
     }
 
+    @PostMapping("/update-lost-item/{id}")
+    public ResponseEntity<LostItemDTO> updateLostItem(
+            @PathVariable Long id,
+            @RequestPart("lostItem") LostItemDTO lostItemDTO,
+            @RequestPart(value = "imageFile", required = false) MultipartFile imageFile) {
+
+        log.info("Updating lost item with id {}: {}", id, lostItemDTO);
+
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                byte[] bytes = imageFile.getBytes();
+                String filename = imageFile.getOriginalFilename();
+                String imageUrl = imgBBUploadService.uploadToImgBB(bytes, filename).block();
+                lostItemDTO.setImageUrl(imageUrl);
+            } catch (IOException e) {
+                log.error("Failed to read image file", e);
+                throw new RuntimeException("Failed to read image file", e);
+            }
+        }
+
+        LostItemDTO updatedItem = lostItemService.updateLostItem(id, lostItemDTO);
+
+        if (updatedItem != null) {
+            return ResponseEntity.ok(updatedItem);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
     @GetMapping
     public ResponseEntity<List<LostItemDTO>> getAllLostItems() {
         List<LostItemDTO> lostItems = lostItemService.getAllLostItems();
@@ -57,14 +87,24 @@ public class LostItemController {
         return ResponseEntity.ok(lostItems);
     }
 
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteLostItem(@PathVariable Long id) {
+//        boolean deleted = lostItemService.deleteLostItem(id);
+//
+//        if (deleted) {
+//            return ResponseEntity.noContent().build();
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLostItem(@PathVariable Long id) {
-        boolean deleted = lostItemService.deleteLostItem(id);
-
+        boolean deleted = lostItemService.disableLostItem(id);
         if (deleted) {
-            return ResponseEntity.noContent().build(); // 204 - success, no body
+            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build(); // 404 - not found
+            return ResponseEntity.notFound().build();
         }
     }
 

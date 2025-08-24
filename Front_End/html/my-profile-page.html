@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/Front_End/css/navigation-bar.css">
     <link rel="stylesheet" href="/Front_End/css/page-styles.css">
     <link rel="stylesheet" href="/Front_End/css/my-profile-page.css">
-    <link rel="stylesheet" href="/Front_End/css/my-lost-items.css">
 
     <link rel="icon" href="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" type="image">
 
@@ -23,203 +22,260 @@
     <div id="navbar-container"></div>
 
     <div class="main-content-container">
-        <section class="profile-card">
-        <div class="profile-header">
-            <img src="/Front_End/assets/images/avatar-default-icon.png" alt="Profile Picture" class="profile-img" />
-            <h2></h2>
-            <p class="profile-email"></p>
-        </div>
-        <div class="profile-info">
-            <div><strong>Phone:</strong></div>
-            <div><strong>Member since:</strong></div>
-            <div><strong>Status:</strong> <span class="badge active"></span></div>
-        </div>
-        <div class="profile-status-info">
-            <div class="status-box">
-            <i class="fas fa-check-circle fa-2x text-success"></i>
-            <div class="status-label">Claimed</div>
-            <div class="status-value">12</div>
-            </div>
-            <div class="status-box">
-            <i class="fas fa-search fa-2x text-primary"></i>
-            <div class="status-label">Found</div>
-            <div class="status-value">8</div>
-            </div>
-            <div class="status-box">
-            <i class="fas fa-star fa-2x text-warning"></i>
-            <div class="status-label">Reputation</div>
-            <div class="status-value">4.9</div>
-            </div>
-        </div>
-        </section>
+        <div class="inner-container">
 
-        <section class="section-menu">
-        <div class="menu-actions">
-            <button class="btn btn-outline-primary" id="openEditProfileBtn"><i class="fas fa-user-edit me-2"></i>Edit Profile</button>
-            <button class="btn btn-outline-secondary" id="openChangePasswordBtn"><i class="fas fa-key me-2"></i>Change Password</button>
-            <button class="btn btn-outline-success" id="openMyLostItemsBtn"><i class="fas fa-clipboard-list me-2"></i>My Lost Items</button>
-            <button class="btn btn-outline-success" id="openMyClaimsBtn"><i class="fas fa-clipboard-list me-2"></i>My Claims</button>
-            <button class="btn btn-outline-info" id="openMyFoundItemsBtn"><i class="fas fa-box-open me-2" ></i>My Found Items</button>
-            <button class="btn btn-outline-danger" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Logout</button>
-        </div>
-        </section>
-
-        <div class="bottom-container">
-
-            <div class="bottom-left-container">
-
-                <!-- Edit Profile Modal -->
-                <div id="update-profile-modal" class="custom-modal d-none">
-                    <h4>Edit Profile</h4>
-                    <form>
-                        <div class="mb-3">
-                            <label for="profilePictureEditUpdate" class="form-label">Profile Picture</label>
-                            <input type="file" class="form-control" id="profilePictureEditUpdate" accept="image/*">
-                            <img id="profilePreviewUpdate" src="/Front_End/assets/images/avatar-default-icon.png" 
-                                alt="Profile Preview" style="max-width: 100px; margin-top: 10px;">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <img src="/Front_End/assets/images/avatar-default-icon.png" alt="Profile Picture" class="profile-img" />
+                            <h2></h2>
+                            <p class="profile-email"></p>
                         </div>
-                        <div class="mb-3">
-                            <label for="edit-name-update" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="edit-name-update" value="John Doe">
+                        <div class="profile-info">
+                            <div><strong>Phone:</strong></div>
+                            <div><strong>Member since:</strong></div>
+                            <div><strong>Status:</strong> <span class="badge active"></span></div>
                         </div>
-                        <div class="mb-3">
-                            <label for="edit-email-update" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="edit-email-update" value="johndoe@example.com">
+                        <div class="profile-status-info">
+                            <div class="status-box">
+                            <i class="fas fa-check-circle fa-2x text-success"></i>
+                            <div class="status-label">Claimed</div>
+                            <div class="status-value">12</div>
+                            </div>
+                            <div class="status-box">
+                            <i class="fas fa-search fa-2x text-primary"></i>
+                            <div class="status-label">Found</div>
+                            <div class="status-value">8</div>
+                            </div>
+                            <div class="status-box">
+                            <i class="fas fa-star fa-2x text-warning"></i>
+                            <div class="status-label">Reputation</div>
+                            <div class="status-value">4.9</div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="edit-phone-update" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="edit-phone-update" value="+1 234 567 8901">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </form>
-                </div>
-
-
-                <!-- Change Password Modal -->
-                <div id="change-password-modal" class="custom-modal d-none">
-                    <h4>Change Password</h4>
-                    <form>
-                    <div class="mb-3">
-                        <label for="current-password" class="form-label">Current Password</label>
-                        <input type="password" class="form-control" id="current-password">
                     </div>
-                    <div class="mb-3">
-                        <label for="new-password" class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="new-password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirm-password" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm-password">
-                    </div>
-                    <button type="submit" class="btn btn-success">Change Password</button>
-                    </form>
-                </div>
 
-                <!-- My Claims Modal -->
-                <div id="my-claims-modal" class="custom-modal d-none">
-                    <h4>My Claims</h4>
-                    <ul class="list-group">
-                    <li class="list-group-item">Black Backpack - Submitted</li>
-                    <li class="list-group-item">AirPods - Approved</li>
-                    <li class="list-group-item">Blue Jacket - Rejected</li>
-                    </ul>
-                </div>
-
-                <!-- My Lost Items Modal -->
-                <div id="my-lost-items-modal" class="custom-modal d-none">
-                    <h4>My Lost Items</h4>
-                    <div id="myLostItemContainer">
+                <div class="section-menu">
+                    <div class="menu-actions">
+                        <button class="btn btn-outline-primary" id="openEditProfileBtn"><i class="fas fa-user-edit me-2"></i>Edit Profile</button>
+                        <button class="btn btn-outline-secondary" id="openChangePasswordBtn"><i class="fas fa-key me-2"></i>Change Password</button>
+                        <button class="btn btn-outline-success" id="openMyLostItemsBtn"><i class="fas fa-clipboard-list me-2"></i>My Lost Items</button>
+                        <button class="btn btn-outline-success" id="openMyClaimsBtn"><i class="fas fa-clipboard-list me-2"></i>My Claims</button>
+                        <button class="btn btn-outline-info" id="openMyFoundItemsBtn"><i class="fas fa-box-open me-2" ></i>Items I Found</button>
                     </div>
                 </div>
+ 
+            <div class="bottom-container">
 
-                <!-- My Found Items Modal -->
-                <div id="my-found-items-modal" class="custom-modal d-none">
-                    <h4>My Found Items</h4>
-                    <ul class="list-group">
-                    <li class="list-group-item">Red Wallet - Claimed</li>
-                    <li class="list-group-item">iPhone 13 - Pending Review</li>
-                    </ul>
+                <div class="bottom-left-container">
+
+                    <!-- Edit Profile Modal -->
+                    <div id="update-profile-modal" class="custom-modal d-none">
+                        <h4 class="text-center">Edit Profile</h4>
+                        <form>
+                            <div class="mb-3">
+                                <label for="profilePictureEditUpdate" class="form-label">Profile Picture</label>
+                                <input type="file" class="form-control" id="profilePictureEditUpdate" accept="image/*">
+                                <img id="profilePreviewUpdate" src="/Front_End/assets/images/avatar-default-icon.png" 
+                                    alt="Profile Preview" style="max-width: 100px; margin-top: 10px;">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-name-update" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="edit-name-update" value="John Doe">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-email-update" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="edit-email-update" value="johndoe@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-phone-update" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="edit-phone-update" value="+1 234 567 8901">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+
+
+                    <!-- Change Password Modal -->
+                    <div id="change-password-modal" class="custom-modal d-none">
+                        <h4 class="text-center">Change Password</h4>
+                        <form>
+                        <div class="mb-3">
+                            <label for="current-password" class="form-label">Current Password</label>
+                            <input type="password" class="form-control" id="current-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password">
+                        </div>
+                        <button type="submit" class="btn btn-success">Change Password</button>
+                        </form>
+                    </div>
+
+                    <!-- My Claims Modal -->
+                    <div id="my-claims-modal" class="custom-modal d-none">
+                        <h4 class="text-center">My Claims</h4>
+                        <ul class="list-group">
+                        <li class="list-group-item">Black Backpack - Submitted</li>
+                        <li class="list-group-item">AirPods - Approved</li>
+                        <li class="list-group-item">Blue Jacket - Rejected</li>
+                        </ul>
+                    </div>
+
+                    <!-- My Lost Items Modal -->
+                    <div id="my-lost-items-modal" class="custom-modal d-none">
+                        <h4 class="text-center">My Lost Items</h4>
+                        <div id="myLostItemContainer">
+                        </div>
+                    </div>
+
+                    <!-- My Found Items Modal -->
+                    <div id="my-found-items-modal" class="custom-modal d-none">
+                        <h4 class="text-center">My Found Items</h4>
+                        <div id="myFoundItemContainer">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="notifications">
+                    <h3><i class="bi bi-bell-fill"></i> Recent Notifications</h3>
+                    
+                    <!-- Matching item found -->
+                    <div class="notification-item">
+                        <i class="bi bi-search icon-default"></i>
+                        <div class="notification-content">
+                            <p class="message">A matching item has been found for your lost wallet.</p>
+                            <span class="time">Just now</span>
+                        </div>
+                    </div>
+
+                    <!-- Claim successfully submitted -->
+                    <div class="notification-item">
+                        <i class="bi bi-send-check-fill success"></i>
+                        <div class="notification-content">
+                            <p class="message">Your claim for "Black Backpack" was submitted successfully.</p>
+                            <span class="time">10 minutes ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Claim reviewed -->
+                    <div class="notification-item">
+                        <i class="bi bi-check-circle-fill success"></i>
+                        <div class="notification-content">
+                            <p class="message">Your claim for "AirPods" has been reviewed and approved.</p>
+                            <span class="time">Today, 9:14 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Claim rejected -->
+                    <div class="notification-item">
+                        <i class="bi bi-x-circle-fill icon-warning"></i>
+                        <div class="notification-content">
+                            <p class="message">Your claim for "Blue Jacket" has been rejected. Please review the requirements.</p>
+                            <span class="time">Yesterday</span>
+                        </div>
+                    </div>
+
+                    <!-- Claim review request from others -->
+                    <div class="notification-item">
+                        <i class="bi bi-person-lines-fill icon-default"></i>
+                        <div class="notification-content">
+                            <p class="message">You have a new review request from another user on "Lost iPhone 13".</p>
+                            <span class="time">3 hours ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat message -->
+                    <div class="notification-item">
+                        <i class="bi bi-chat-dots-fill icon-default"></i>
+                        <div class="notification-content">
+                            <p class="message">You received a new message from Sarah: "Hi, I think I found your bag!"</p>
+                            <span class="time">15 minutes ago</span>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
 
-
-
-            <div class="notifications">
-                <h3><i class="bi bi-bell-fill"></i> Recent Notifications</h3>
-                
-                <!-- Matching item found -->
-                <div class="notification-item">
-                <i class="bi bi-search icon-default"></i>
-                <div class="notification-content">
-                    <p class="message">A matching item has been found for your lost wallet.</p>
-                    <span class="time">Just now</span>
-                </div>
-                </div>
-
-                <!-- Claim successfully submitted -->
-                <div class="notification-item">
-                <i class="bi bi-send-check-fill success"></i>
-                <div class="notification-content">
-                    <p class="message">Your claim for "Black Backpack" was submitted successfully.</p>
-                    <span class="time">10 minutes ago</span>
-                </div>
-                </div>
-
-                <!-- Claim reviewed -->
-                <div class="notification-item">
-                <i class="bi bi-check-circle-fill success"></i>
-                <div class="notification-content">
-                    <p class="message">Your claim for "AirPods" has been reviewed and approved.</p>
-                    <span class="time">Today, 9:14 AM</span>
-                </div>
-                </div>
-
-                <!-- Claim rejected -->
-                <div class="notification-item">
-                <i class="bi bi-x-circle-fill icon-warning"></i>
-                <div class="notification-content">
-                    <p class="message">Your claim for "Blue Jacket" has been rejected. Please review the requirements.</p>
-                    <span class="time">Yesterday</span>
-                </div>
-                </div>
-
-                <!-- Claim review request from others -->
-                <div class="notification-item">
-                <i class="bi bi-person-lines-fill icon-default"></i>
-                <div class="notification-content">
-                    <p class="message">You have a new review request from another user on "Lost iPhone 13".</p>
-                    <span class="time">3 hours ago</span>
-                </div>
-                </div>
-
-                <!-- Chat message -->
-                <div class="notification-item">
-                <i class="bi bi-chat-dots-fill icon-default"></i>
-                <div class="notification-content">
-                    <p class="message">You received a new message from Sarah: "Hi, I think I found your bag!"</p>
-                    <span class="time">15 minutes ago</span>
-                </div>
-            </div>
-
-        </diiv>
 
         </div>
-
-        
 
     </div>
+
+    <div id="editMyItemModal" class="modal" style="display:none;">
+        <div class="modal-content" style="max-width: 500px; margin: 10% auto; padding: 20px; background: white; border-radius: 8px; position: relative;">
+            <span class="close" id="editCloseBtn" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer;">&times;</span>
+            <h3>Edit Item</h3>
+            <form id="editItemForm" enctype="multipart/form-data">
+            <input type="hidden" id="editItemId">
+            <input type="hidden" id="editItemType">
+
+            <div class="mb-3">
+                <label for="editItemName" class="form-label">Item Name</label>
+                <input type="text" id="editItemName" name="itemName" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="editItemDescription" class="form-label">Description</label>
+                <textarea id="editItemDescription" name="detailedDescription" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="editItemLocation" class="form-label">Location</label>
+                <input type="text" id="editItemLocation" name="locationLost" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="editItemDate" class="form-label">Date</label>
+                <input type="date" id="editItemDate" name="dateLost" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="editImageUpload" class="form-label">
+                    Upload Image (Optional)
+                    <br>
+                    <span class="label-instructions">Upload a clear image of your item.</span>
+                </label>
+                <input type="file" id="editImageUpload" name="imageFile" class="form-control" accept="image/*">
+                
+                <div id="editImagePreviewContainer" style="margin-top: 10px; display: none;">
+                    <img id="editImagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-bottom: 10px;">
+                    <button type="button" id="editRemoveImageBtn" class="btn btn-sm btn-outline-danger">Remove</button>
+                    <button type="button" id="editChangeImageBtn" class="btn btn-sm btn-outline-primary">Change Image</button>
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="editSelectCategory" class="form-label">Select Category</label>
+                <div id="editCategoryOptionsContainer"></div>
+                <div id="editSelectedCategoriesContainer" style="margin-bottom: 8px; min-height: 30px;"></div>
+            </div>
+
+            <button id="editSubmitButton" type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
 
   <button class="floating-page-btn" onclick="openChat()">
     <i class="bi bi-chat-fill"></i>&nbsp;&nbsp;Chat
   </button>
 
+  
 
-    <!-- Login popup -->
+
+
     <div id="login-popup-container"></div>
-    <!-- Edit profile popup -->
     <div id="edit-profile-container"></div>
-    <div id="footer-container"></div>
+    <div id="footer-container"></div>    
     <div id="loading-animation"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -231,6 +287,6 @@
     <script src="/Front_End/js/navigationBar.js"></script>
     <script src="/Front_End/js/loginSignup.js"></script>
     <script src="/Front_End/js/updateOwnProfile.js"></script>
-    <script src="/Front_End/js/myLostItems.js"></script>
+    <script src="/Front_End/js/myLostAndFoundItems.js"></script>
 </body>
 </html>

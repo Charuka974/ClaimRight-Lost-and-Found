@@ -83,13 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
 /* -----------------------
    FETCH USERS
 ----------------------- */
-async function fetchUsers(page) {
-  currentPage = page;
+async function fetchUsers() {
   try {
-    const res = await apiFetch(`${API_BASE_USER}/paginated-users?page=${page}&size=5`);
+    const res = await apiFetch(`${API_BASE_USER}/get-all`);
+
     const { data } = await res.json();
-    renderUsers(data.content);
-    renderPagination(data.totalPages, page);
+    renderUsers(data);
   } catch (err) {
     console.error("Failed to fetch users", err);
   }
@@ -97,10 +96,9 @@ async function fetchUsers(page) {
 
 async function searchUsers(keyword) {
   try {
-    const res = await apiFetch(`${API_BASE_USER}/search/${encodeURIComponent(keyword)}?page=0&size=5`);
+    const res = await apiFetch(`${API_BASE_USER}/search/${encodeURIComponent(keyword)}`);
     const { data } = await res.json();
-    renderUsers(data.content);
-    renderPagination(data.totalPages, 0);
+    renderUsers(data);  // ✅ data is already an array
   } catch {
     Swal.fire("Error", "Search failed", "error");
   }
@@ -110,156 +108,146 @@ async function searchUsers(keyword) {
    RENDER USERS
 ----------------------- */
 function renderUsers(users) {
-  const container = document.getElementById("userTablesByRole");
-  container.innerHTML = "";
+  // Clear each container separately
+  document.getElementById("adminUserTable").innerHTML = "";
+  document.getElementById("semiAdminUserTable").innerHTML = "";
+  document.getElementById("NormalUserTable").innerHTML = "";
 
   // Group users by role
-  const usersByRole = {};
+  const usersByRole = { ADMIN: [], SEMI_ADMIN: [], USER: [] };
   users.forEach(user => {
-    const role = user.role || "UNKNOWN";
-    if (!usersByRole[role]) usersByRole[role] = [];
-    usersByRole[role].push(user);
+    const role = user.role || "USER";
+    if (usersByRole[role]) {
+      usersByRole[role].push(user);
+    }
   });
 
-  // Role display formatter (ADMIN → Admins, SEMI_ADMIN → Semi Admins)
-  const formatRoleName = role =>
-    role
-      .toLowerCase()
-      .split('_')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ') + 's';
-
-  const roleOrder = ["ADMIN", ...Object.keys(usersByRole).filter(r => r !== "ADMIN")];
   const isSemiAdmin = loggedUser.role === "SEMI_ADMIN";
 
-  roleOrder.forEach(role => {
-    if (!usersByRole[role]) return;
-
-    const tableHTML = `
-      <h4 class="mt-4 text-center">${formatRoleName(role)}</h4>
-      <table class="table table-striped table-bordered">
-        <thead class="table-light">
-          <tr>
-            <th>Avatar</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${usersByRole[role].map(user => {
-            let disableActions = false;
-
-            if (user.userId === loggedUser.userId) {
-              // Can't change yourself
-              disableActions = true;
-            } else if (isSemiAdmin) {
-              // SEMI_ADMIN restrictions
-              if (user.role === "ADMIN" || user.role === "SEMI_ADMIN") {
-                // Can't change admin or other semi admins
-                disableActions = true;
-              }
-            }
-
-            // Role dropdown options based on restrictions
-            let roleOptions = "";
-            if (isSemiAdmin) {
-              if (user.role === "USER") {
-                // Can only change USER -> USER or SEMI_ADMIN
-                roleOptions = `
-                  <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
-                  <option value="SEMI_ADMIN" ${user.role === "SEMI_ADMIN" ? "selected" : ""}>Semi Admin</option>
-                `;
-              } else {
-                // No role change allowed
-                roleOptions = `<option value="${user.role}" selected>${formatRoleName(user.role).slice(0, -1)}</option>`;
-              }
-            } else {
-              // Admin or higher: full control
-              roleOptions = `
-                <option value="ADMIN" ${user.role === "ADMIN" ? "selected" : ""}>Admin</option>
-                <option value="SEMI_ADMIN" ${user.role === "SEMI_ADMIN" ? "selected" : ""}>Semi Admin</option>
-                <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
-              `;
-            }
-
-            return `
-              <tr>
-                <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" 
-                         class="rounded-circle shadow" width="40" height="40" /></td>
-                <td class="fw-semibold">${user.username}</td>
-                <td>${user.email}</td>
-                <td>${user.phoneNumber || '-'}</td>
-                <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">
-                      ${user.active ? 'Active' : 'Inactive'}
-                    </span>
-                </td>
-                <td>
-                  <div class="action-column d-flex flex-row align-items-stretch justify-content-center gap-2">
-                    
-                    <!-- Status Toggle -->
-                    <div class="status-action">
-                      <div class="small text-muted mb-1">Status</div>
-                      <button class="btn btn-sm ${user.active ? 'btn-warning' : 'btn-success'} 
-                                     d-flex align-items-center gap-1" 
-                              onclick="toggleStatus(${user.userId}, ${user.active})" 
-                              ${disableActions ? 'disabled' : ''}>
-                        <i class="bi ${user.active ? 'bi-person-dash' : 'bi-person-check'}"></i>
-                        <span class="fw-bold">${user.active ? 'Deactivate' : 'Activate'}</span>
-                      </button>
-                    </div>
-
-                    <div style="width: 2px; background-color: rgba(10, 10, 10, 0.644);"></div>
-
-                    <!-- Role Change -->
-                    <div class="role-action">
-                      <div class="small text-muted mb-1">Change Role</div>
-                      <div class="d-flex flex-row">
-                        <select class="form-select form-select-sm role-select"
-                                id="role-select-${user.userId}"
-                                ${disableActions ? 'disabled' : ''}>
-                          ${roleOptions}
-                        </select>
-                        <button class="action-btn confirm-role-change"
-                                onclick="confirmRoleChange(${user.userId})"
-                                ${disableActions ? 'disabled' : ''}>
-                          <i class="bi bi-check-circle"></i>
-                        </button>
-                      </div>
-                    </div>
-
-                  </div>
-                </td>
-              </tr>
-            `;
-          }).join("")}
-        </tbody>
-      </table>
-    `;
-    container.innerHTML += tableHTML;
-  });
-}
-
-
-
-
-/* -----------------------
-   PAGINATION
------------------------ */
-function renderPagination(totalPages, activePage) {
-  const pagination = document.getElementById("paginationContainer");
-  pagination.innerHTML = "";
-
-  for (let i = 0; i < totalPages; i++) {
-    const li = document.createElement("li");
-    li.className = `page-item ${i === activePage ? "active" : ""}`;
-    li.innerHTML = `<a class="page-link" href="#">${i + 1}</a>`;
-    li.onclick = () => fetchUsers(i);
-    pagination.appendChild(li);
+  // Render into separate divs
+  if (usersByRole["ADMIN"].length > 0) {
+    renderTable("Admins", usersByRole["ADMIN"], document.getElementById("adminUserTable"), isSemiAdmin);
+  }
+  if (usersByRole["SEMI_ADMIN"].length > 0) {
+    renderTable("Semi Admins", usersByRole["SEMI_ADMIN"], document.getElementById("semiAdminUserTable"), isSemiAdmin);
+  }
+  if (usersByRole["USER"].length > 0) {
+    renderTable("Users", usersByRole["USER"], document.getElementById("NormalUserTable"), isSemiAdmin);
   }
 }
+
+/* -----------------------
+   HELPERS
+----------------------- */
+function formatRoleName(role) {
+  return role
+    .toLowerCase()
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ') + 's';
+}
+
+function getRoleOptions(user, isSemiAdmin) {
+  if (isSemiAdmin) {
+    if (user.role === "USER") {
+      return `
+        <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
+        <option value="SEMI_ADMIN" ${user.role === "SEMI_ADMIN" ? "selected" : ""}>Semi Admin</option>
+      `;
+    } else {
+      return `<option value="${user.role}" selected>${formatRoleName(user.role).slice(0, -1)}</option>`;
+    }
+  } else {
+    return `
+      <option value="ADMIN" ${user.role === "ADMIN" ? "selected" : ""}>Admin</option>
+      <option value="SEMI_ADMIN" ${user.role === "SEMI_ADMIN" ? "selected" : ""}>Semi Admin</option>
+      <option value="USER" ${user.role === "USER" ? "selected" : ""}>User</option>
+    `;
+  }
+}
+
+function renderTable(title, users, container, isSemiAdmin) {
+  const tableHTML = `
+    <h4 class="mt-4 text-center"><b>${title}</b></h4>
+    <table class="table table-striped table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Avatar</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${users.map(user => {
+          let disableActions = false;
+
+          if (user.userId === loggedUser.userId) {
+            disableActions = true;
+          } else if (isSemiAdmin && (user.role === "ADMIN" || user.role === "SEMI_ADMIN")) {
+            disableActions = true;
+          }
+
+          const roleOptions = getRoleOptions(user, isSemiAdmin);
+
+          return `
+            <tr>
+              <td><img src="${user.profilePictureUrl || '/Front_End/assets/images/avatar-default-icon.png'}" 
+                       class="rounded-circle shadow" width="40" height="40" /></td>
+              <td class="fw-semibold">${user.username}</td>
+              <td>${user.email}</td>
+              <td>${user.phoneNumber || '-'}</td>
+              <td><span class="badge bg-${user.active ? 'success' : 'secondary'}">
+                    ${user.active ? 'Active' : 'Inactive'}
+                  </span>
+              </td>
+              <td>
+                <div class="action-column d-flex flex-row align-items-stretch justify-content-center gap-2">
+                  
+                  <!-- Status Toggle -->
+                  <div class="status-action">
+                    <div class="small text-muted mb-1">Status</div>
+                    <button class="btn btn-sm ${user.active ? 'btn-warning' : 'btn-success'} 
+                                   d-flex align-items-center gap-1" 
+                            onclick="toggleStatus(${user.userId}, ${user.active})" 
+                            ${disableActions ? 'disabled' : ''}>
+                      <i class="bi ${user.active ? 'bi-person-dash' : 'bi-person-check'}"></i>
+                      <span class="fw-bold">${user.active ? 'Deactivate' : 'Activate'}</span>
+                    </button>
+                  </div>
+
+                  <div style="width: 2px; background-color: rgba(10, 10, 10, 0.644);"></div>
+
+                  <!-- Role Change -->
+                  <div class="role-action">
+                    <div class="small text-muted mb-1">Change Role</div>
+                    <div class="d-flex flex-row">
+                      <select class="form-select form-select-sm role-select"
+                              id="role-select-${user.userId}"
+                              ${disableActions ? 'disabled' : ''}>
+                        ${roleOptions}
+                      </select>
+                      <button class="action-btn confirm-role-change"
+                              onclick="confirmRoleChange(${user.userId})"
+                              ${disableActions ? 'disabled' : ''}>
+                        <i class="bi bi-check-circle"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join("")}
+      </tbody>
+    </table>
+  `;
+  container.innerHTML += tableHTML;
+}
+
 
 /* -----------------------
    ACTIONS

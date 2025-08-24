@@ -115,3 +115,12 @@ const sortSelect = document.getElementById("dashboard-sort");
 searchBtn.addEventListener("click", () => filterItems(searchInput.value));
 searchInput.addEventListener("input", () => filterItems(searchInput.value));
 sortSelect.addEventListener("change", (e) => sortItems(e.target.value));
+
+
+function openChat() {
+    window.location.href = "/Front_End/html/chat-page.html";
+}
+
+function openUserManage() {
+    window.location.href = "/Front_End/html/manage-users.html";
+}

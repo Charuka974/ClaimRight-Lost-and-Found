@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/dashboard.html">Dashboard</a>
+              <a class="nav-link text-white" href="/Front_End/html/dashboard.html"><b>Dashboard</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/lost-items.html">Lost Items</a>
+              <a class="nav-link text-white" href="/Front_End/html/lost-items.html"><b>Lost Items</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/found-items.html">Found Items</a>
+              <a class="nav-link text-white" href="/Front_End/html/found-items.html"><b>Found Items</b></a>
             </li>
 
             ${

@@ -28,4 +28,6 @@ public class LostItemDTO {
     private List<String> categoryNames; // Optional — for UI display
 
     private Boolean isClaimed;
+
+    private Boolean isActive;
 }

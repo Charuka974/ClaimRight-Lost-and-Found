@@ -5,6 +5,7 @@
   --dark: #2e4374;
   --light: #f8f9fc;
   --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(to right, #ff7e5f, #feb47b);
 }
 
 body {
@@ -14,7 +15,7 @@ body {
   padding: 0;
 }
 
-.main-content-container {
+.main-content-container .inner-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -284,7 +285,7 @@ body {
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  }
+}
 
 @keyframes pulse-glow {
   0% {
@@ -311,4 +312,490 @@ body {
     width: 100%;
     max-width: 100%;
   }
+}
+
+
+button.btn {
+  border-radius: 12px; /* smoother look */
+  padding: 10px 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+button.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+#openEditProfileBtn {
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+}
+
+#openChangePasswordBtn {
+  background: linear-gradient(45deg, #6c757d, #9ca3af);
+  color: white;
+  border: none;
+}
+
+#openMyLostItemsBtn {
+  background: linear-gradient(45deg, #28a745, #34d399);
+  color: white;
+  border: none;
+}
+
+#openMyClaimsBtn {
+  background: linear-gradient(45deg, #198754, #20c997);
+  color: white;
+  border: none;
+}
+
+#openMyFoundItemsBtn {
+  background: linear-gradient(45deg, #17a2b8, #38bdf8);
+  color: white;
+  border: none;
+}
+
+
+/* Edit Item modal */
+/* Edit Item Modal Styling */
+#editMyItemModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+} 
+
+#editMyItemModal .modal-content {
+  max-width: 480px;
+  margin: 8% auto 4% auto;
+  padding: 25px 30px;
+  background: linear-gradient(to right, #4e72df52, #ffffffd7) !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(78, 115, 223, 0.3);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  animation: fadeInModal 0.35s ease forwards;
+}
+
+#editMyItemModal h3 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-align: center;
+}
+
+#editMyItemModal label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+  display: block;
+}
+
+#editMyItemModal input,
+#editMyItemModal textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.8px solid #d1d7e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+#editMyItemModal input:focus,
+#editMyItemModal textarea:focus {
+  outline: none;
+  border-color: #4e73df;
+  box-shadow: 0 0 8px rgba(78, 115, 223, 0.4);
+}
+
+#editMyItemModal textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#editMyItemModal #editSubmitButton {
+  margin-top: 20px;
+  width: 100%;
+  background: linear-gradient(to right, #4e73df, #36b9cc);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 0;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(54, 185, 204, 0.5);
+  transition: background-position 0.4s ease, transform 0.3s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+}
+
+#editMyItemModal #editSubmitButton:hover {
+  background-position: right center;
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(54, 185, 204, 0.7);
+}
+
+#editMyItemModal button {
+  background: linear-gradient(to right, #4e73df, #36b9cc);
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(54, 185, 204, 0.5);
+  transition: background-position 0.4s ease, transform 0.3s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+}
+
+#editMyItemModal button:hover,
+#editMyItemModal button:hover {
+  background-position: right center;
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(54, 185, 204, 0.7);
+}
+
+#editCloseBtn {
+  color: #666;
+  font-weight: 700;
+  font-size: 30px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+#editCloseBtn:hover {
+  color: #4e73df;
+}
+
+#editMyItemModal #imagePreview {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border: 1px solid #ddd;
+}
+
+#editMyItemModal #removeImageBtn {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+#editMyItemModal .label-instructions {
+  display: inline-block;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 8px 12px;
+  border-left: 4px solid #ffc107;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  #editMyItemModal .modal-content {
+    width: 90%;
+    padding: 20px;
+    margin-top: 15%;
+  }
+
+  #editMyItemModal h3 {
+    font-size: 1.5rem;
+  }
+
+  #editMyItemModal button {
+    font-size: 1rem;
+  }
+}
+
+
+
+/* Item Cards */
+
+/* ---------------------------------------------------------------------------------- */
+
+/* --- Containers --- */
+#myLostItemContainer,
+#myFoundItemContainer {
+    padding: 5px;
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center; /* center horizontally */
+    gap: 20px; /* space between cards */
+    box-sizing: border-box;
+}
+
+/* --- Common Card Styles --- */
+.lost-item-card,
+.found-item-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 700px; /* consistent width */
+}
+
+.lost-item-card {
+    background: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.found-item-card {
+    background: #fefefe;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.lost-item-card:hover,
+.found-item-card:hover {
+    transform: translateY(-6px);
+}
+
+.lost-item-card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+.found-item-card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Images --- */
+.lost-item-image,
+.found-item-image {
+    flex: 0 0 40%;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+/* --- Content --- */
+.lost-item-content,
+.found-item-content {
+    flex: 1 1 60%;
+    padding: 1.8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #333;
+    overflow-wrap: break-word;
+    background: white;
+}
+
+.found-item-content {
+    background: #fff;
+}
+
+/* --- Titles --- */
+.lost-item-title,
+.found-item-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+}
+
+/* --- Description --- */
+.lost-item-description,
+.found-item-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* --- Meta --- */
+.lost-item-meta,
+.found-item-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.4rem;
+}
+
+.lost-item-meta strong,
+.found-item-meta strong {
+    color: #444;
+}
+
+/* --- Categories --- */
+.categories {
+    margin-top: 0.8rem;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.4rem;
+    box-shadow: 0 2px 6px rgba(78, 115, 223, 0.4);
+    transition: 0.3s ease;
+    color: white;
+}
+
+.lost-item-card .category-badge {
+    background: var(--gradient-primary);
+}
+
+.lost-item-card .category-badge:hover {
+    background: linear-gradient(to right, #3b5cb8, #2b8d99);
+}
+
+.found-item-card .category-badge {
+    background: var(--gradient-orange);
+}
+
+.found-item-card .category-badge:hover {
+    background: linear-gradient(to right, #ff9a3c, #ff6b6b);
+}
+
+.claimed-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.35em 0.9em;
+    font-weight: 700;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.lost-item-card .claimed-badge {
+    background: #28a745;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.6);
+}
+
+.found-item-card .claimed-badge {
+    background: #17a2b8;
+    box-shadow: 0 4px 10px rgba(23, 162, 184, 0.6);
+}
+
+/* --- Buttons --- */
+.edit-lost-item-btn,
+.edit-found-item-btn,
+.delete-lost-item-btn,
+.delete-found-item-btn {
+    margin-top: 1rem;
+    padding: 0.4rem 1.4rem;
+    border: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border-radius: 25px;
+    cursor: pointer;
+    background-size: 300% 300%;
+    transition: transform 0.3s ease;
+    animation: gradientShift 2s linear infinite;
+}
+
+.edit-lost-item-btn {
+    background: linear-gradient(90deg, #1cc88a, #17a673, #1cc88a);
+    box-shadow: 0 0 15px rgba(28, 200, 138, 0.6);
+    animation: gradientShift 2s linear infinite, glowGreen 1.5s ease-in-out infinite;
+}
+
+.edit-lost-item-btn:hover {
+    animation: gradientShift 1.5s linear infinite, glowGreen 1.2s ease-in-out infinite, gentlePulse 0.6s ease-in-out infinite;
+    transform: scale(1.05);
+}
+
+.delete-lost-item-btn {
+    background: linear-gradient(90deg, #e74a3b, #ff6b6b, #e74a3b);
+    box-shadow: 0 0 15px rgba(231, 74, 59, 0.6);
+    animation: gradientShift 2s linear infinite, glowRed 1.5s ease-in-out infinite;
+}
+
+.delete-lost-item-btn:hover {
+    animation: gradientShift 1.5s linear infinite, glowRed 1.2s ease-in-out infinite, warningShake 0.4s ease-in-out;
+    transform: scale(1.05);
+}
+
+.edit-found-item-btn {
+    background: linear-gradient(90deg, #4e73df, #224abe, #4e73df);
+    box-shadow: 0 0 15px rgba(78, 115, 223, 0.6);
+    animation: gradientShift 2s linear infinite, glowBlue 1.5s ease-in-out infinite;
+}
+
+.edit-found-item-btn:hover {
+    animation: gradientShift 1.5s linear infinite, glowBlue 1.2s ease-in-out infinite, gentlePulse 0.6s ease-in-out infinite;
+    transform: scale(1.05);
+}
+
+.delete-found-item-btn {
+    background: linear-gradient(90deg, #f6c23e, #f4b619, #f6c23e);
+    box-shadow: 0 0 15px rgba(246, 194, 62, 0.6);
+    animation: gradientShift 2s linear infinite, glowYellow 1.5s ease-in-out infinite;
+}
+
+.delete-found-item-btn:hover {
+    animation: gradientShift 1.5s linear infinite, glowYellow 1.2s ease-in-out infinite, warningShake 0.4s ease-in-out;
+    transform: scale(1.05);
+}
+
+/* --- Animations --- */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glowGreen {
+    0%, 100% { box-shadow: 0 0 15px rgba(28, 200, 138, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(28, 200, 138, 1); }
+}
+
+@keyframes glowRed {
+    0%, 100% { box-shadow: 0 0 15px rgba(231, 74, 59, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(231, 74, 59, 1); }
+}
+
+@keyframes glowBlue {
+    0%, 100% { box-shadow: 0 0 15px rgba(78, 115, 223, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(78, 115, 223, 1); }
+}
+
+@keyframes glowYellow {
+    0%, 100% { box-shadow: 0 0 15px rgba(246, 194, 62, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(246, 194, 62, 1); }
+}
+
+@keyframes gentlePulse {
+    0%, 100% { transform: scale(1.05); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes warningShake {
+    0%, 100% { transform: rotate(0deg) scale(1.05); }
+    25% { transform: rotate(2deg) scale(1.05); }
+    50% { transform: rotate(-2deg) scale(1.05); }
+    75% { transform: rotate(1deg) scale(1.05); }
 }

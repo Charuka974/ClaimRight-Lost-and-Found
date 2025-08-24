@@ -44,6 +44,37 @@ public class FoundItemController {
         return ResponseEntity.ok(savedItem);
     }
 
+    @PostMapping("/update-found-item/{id}")
+    public ResponseEntity<FoundItemDTO> updateFoundItem(
+            @PathVariable Long id,
+            @RequestPart("foundItem") FoundItemDTO foundItemDTO,
+            @RequestPart(value = "imageFile", required = false) MultipartFile imageFile) {
+
+        log.info("Updating found item with id {}: {}", id, foundItemDTO);
+
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                byte[] bytes = imageFile.getBytes();
+                String filename = imageFile.getOriginalFilename();
+                // Upload image (blocking call for simplicity)
+                String imageUrl = imgBBUploadService.uploadToImgBB(bytes, filename).block();
+                foundItemDTO.setImageUrl(imageUrl);
+            } catch (IOException e) {
+                log.error("Failed to read image file", e);
+                throw new RuntimeException("Failed to read image file", e);
+            }
+        }
+
+        FoundItemDTO updatedItem = foundItemService.updateFoundItem(id, foundItemDTO);
+
+        if (updatedItem != null) {
+            return ResponseEntity.ok(updatedItem);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
     @GetMapping
     public ResponseEntity<List<FoundItemDTO>> getAllFoundItems() {
         List<FoundItemDTO> foundItems = foundItemService.getAllFoundItems();
@@ -56,16 +87,27 @@ public class FoundItemController {
         return ResponseEntity.ok(foundItems);
     }
 
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteFoundItem(@PathVariable Long id) {
+//        boolean deleted = foundItemService.deleteFoundItem(id);
+//
+//        if (deleted) {
+//            return ResponseEntity.noContent().build();
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFoundItem(@PathVariable Long id) {
-        boolean deleted = foundItemService.deleteFoundItem(id);
-
+        boolean deleted = foundItemService.disableFoundItem(id);
         if (deleted) {
-            return ResponseEntity.noContent().build(); // 204 - success, no body
+            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build(); // 404 - not found
+            return ResponseEntity.notFound().build();
         }
     }
+
 
     @PatchMapping("/{id}/claim")
     public ResponseEntity<FoundItemDTO> markItemAsClaimed(@PathVariable Long id) {

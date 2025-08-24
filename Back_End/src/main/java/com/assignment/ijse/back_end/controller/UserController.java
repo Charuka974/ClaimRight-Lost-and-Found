@@ -146,8 +146,8 @@ public class UserController {
         ));
     }
 
-    @GetMapping("/search/{keyword}")
-    public ResponseEntity<APIResponse<Page<UserDTO>>> searchUser(
+    @GetMapping("/search-paginated/{keyword}")
+    public ResponseEntity<APIResponse<Page<UserDTO>>> searchUserPaginated(
             @PathVariable("keyword") String keyword,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
@@ -164,6 +164,15 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<APIResponse<List<UserDTO>>> searchUser(
+            @PathVariable("keyword") String keyword) {
+
+        List<UserDTO> searchUser = userService.searchUser(keyword);
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User List Fetched Successfully", searchUser
+        ));
+    }
 
 
     @GetMapping("/get-by-id/{id}")
@@ -171,6 +180,19 @@ public class UserController {
         UserDTO selectedUser = userService.getUserById(id);
         return ResponseEntity.ok(new APIResponse<>(
                 200, "User Selected Successfully", selectedUser
+        ));
+    }
+
+    @GetMapping("/get-users-by-role/{role}")
+    public ResponseEntity<APIResponse<List<UserDTO>>> getUsersByRole(@PathVariable("role") String role) {
+        List<UserDTO> UserDTOs = userService.getUsersByRole(role);
+        if (UserDTOs.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new APIResponse<>(
+                    404, "No users found with role: " + role, null
+            ));
+        }
+        return ResponseEntity.ok(new APIResponse<>(
+                200, "User List Fetched Successfully", UserDTOs
         ));
     }
 

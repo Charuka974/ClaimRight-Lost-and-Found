@@ -11,6 +11,8 @@ public interface FoundItemService {
 
     boolean deleteFoundItem(Long id);
 
+    boolean disableFoundItem(Long id);
+
     FoundItemDTO getFoundItemById(Long id);
 
     List<FoundItemDTO> getAllFoundItems();

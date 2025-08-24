@@ -95,6 +95,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDTO> getUsersByRole(String role) {
+        if (role == null || role.trim().isEmpty()) {
+            throw new IllegalArgumentException("Role cannot be null or empty");
+        }
+        UserRole userRole;
+        try {
+            userRole = UserRole.valueOf(role.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid role: " + role);
+        }
+        List<User> users = userRepository.findUsersByRole(userRole);
+        return users.stream()
+                .map(user -> modelMapper.map(user, UserDTO.class))
+                .toList();
+    }
+
+    @Override
     public List<UserDTO> searchUser(String keyword) {
         if (keyword == null || keyword.trim().isEmpty()) {
             throw new IllegalArgumentException("Search keyword cannot be null or empty");

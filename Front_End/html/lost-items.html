@@ -26,8 +26,6 @@
                 <select id="dashboard-sort" class="form-select">
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
-                    <option value="lost">Lost Items</option>
-                    <option value="found">Found Items</option>
                 </select>
             </div>
 
@@ -39,6 +37,7 @@
             </div>
         </div>
     </div>
+    <div class="sticky-sentinel"></div>
 
 
     <div class="main-content-container">
@@ -110,8 +109,13 @@
             <input type="date" id="lostDate" name="dateLost" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label for="imageUpload" class="form-label">Upload Image (If available)</label>
-            <input type="file" id="imageUpload" name="imageFile" class="form-control" accept="image/*"> <!-- not required for now -->
+            <label for="imageUpload" class="form-label">Upload Image (If available)
+              <br><span class="label-instructions">Upload a clear image of your item. Make sure to include any unique identifiers (scratches, logos, engravings, etc.) that can prove it belongs to you.</span></label>
+            <input type="file" id="imageUpload" name="imageFile" class="form-control" accept="image/*">
+            <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
+              <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-bottom: 10px;">
+              <button type="button" id="removeImageBtn" class="btn btn-sm btn-outline-danger">Remove</button>
+            </div>
           </div>
           <div class="mb-3">
             <label for="selectCategory" class="form-label">Select Category</label>
@@ -143,5 +147,6 @@
     <script src="/Front_End/js/navigationBar.js"></script>
     <script src="/Front_End/js/loginSignup.js"></script>
     <script src="/Front_End/js/updateOwnProfile.js"></script>
+    <script src="/Front_End/js/pageCommon.js"></script>
 </body>
 </html>

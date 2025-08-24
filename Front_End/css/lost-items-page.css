@@ -344,6 +344,30 @@ body::before {
   color: #4e73df;
 }
 
+#imagePreview {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border: 1px solid #ddd;
+}
+
+#removeImageBtn {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.label-instructions {
+  display: inline-block;
+  background-color: #fff3cd; 
+  color: #856404;             
+  padding: 8px 12px;
+  border-left: 4px solid #ffc107;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 /* Fade-in animation for modal */
 @keyframes fadeInModal {
   from {

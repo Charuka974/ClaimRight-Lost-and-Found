@@ -91,11 +91,16 @@ body {
     position: sticky;
     top: 0; 
     z-index: 999;
-    background: rgba(255, 255, 255, 0.568); 
-
     padding: 0.5rem 0;
+    transition: background-color 0.3s ease;
+    background-color: transparent; /* default when not stuck */
+}
+
+.sticky-controls.stuck {
+    background-color: rgba(255, 255, 255, 0.7); /* background appears when stuck */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 
 .sticky-controls .dash-top-container {
     display: grid;
@@ -117,19 +122,21 @@ body {
 /* Left column: Sort dropdown */
 .sort-dropdown-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center; /* center horizontally */
     justify-content: center; /* center vertically */
     width: 100%;
     max-width: 250px;
     margin: 0 auto;
+    gap: 10px;
 }
 
 .sort-dropdown-container label {
-    margin-bottom: 0.25rem;
+    /* margin-bottom: 0.25rem; */
     font-weight: bold;
     color: #6c757d;
     font-size: 1.1rem;
+    width: 90px;
 }
 
 #dashboard-sort {
@@ -156,6 +163,7 @@ body {
   color: #6c757d;
 }
 
+
 /* Search bar (right column) */
 .dashboard-search-container {
     display: flex;
@@ -177,7 +185,7 @@ body {
 
 #dashboard-search {
     flex: 1;
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 1rem;
     border-radius: 25px;
     border: 1px solid #ccc;
     font-size: 1rem;

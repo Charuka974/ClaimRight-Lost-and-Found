@@ -42,6 +42,9 @@ public class FoundItem {
     @Column(nullable = false)
     private Boolean isClaimed = false; // default false
 
+    @Column(nullable = false)
+    private Boolean isActive = true; // default true
+
     @PrePersist
     protected void onCreate() {
         postedAt = LocalDateTime.now();

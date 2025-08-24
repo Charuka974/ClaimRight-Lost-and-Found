@@ -16,6 +16,8 @@ public interface UserService {
 
     List<UserDTO> getAllUsers();
 
+    List<UserDTO> getUsersByRole(String role);
+
     List<UserDTO> searchUser(String keyword);
 
     public Page<UserDTO> searchUser(String keyword, Pageable pageable);

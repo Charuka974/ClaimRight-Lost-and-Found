@@ -25,7 +25,6 @@ public class LostItemServiceImpl implements LostItemService {
     @Override
     public LostItemDTO createLostItem(LostItemDTO lostItemDTO) {
         LostItem lostItem = mapToEntity(lostItemDTO);
-
         // Set owner if provided
         if (lostItemDTO.getOwnerId() != null) {
             User owner = userRepository.findById(lostItemDTO.getOwnerId())
@@ -43,7 +42,12 @@ public class LostItemServiceImpl implements LostItemService {
 
         existing.setItemName(lostItemDTO.getItemName());
         existing.setDetailedDescription(lostItemDTO.getDetailedDescription());
-        existing.setImageUrl(lostItemDTO.getImageUrl());
+
+        // Only update image if a new one is provided
+        if (lostItemDTO.getImageUrl() != null) {
+            existing.setImageUrl(lostItemDTO.getImageUrl());
+        }
+
         existing.setDateLost(lostItemDTO.getDateLost());
         existing.setLocationLost(lostItemDTO.getLocationLost());
 
@@ -65,10 +69,20 @@ public class LostItemServiceImpl implements LostItemService {
         return mapToDTO(lostItemRepository.save(existing));
     }
 
+
     @Override
     public boolean deleteLostItem(Long id) {
         if (lostItemRepository.existsById(id)) {
             lostItemRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean disableLostItem(Long id) {
+        if (lostItemRepository.existsById(id)) {
+            lostItemRepository.deactivateLostItem(id);
             return true;
         }
         return false;
@@ -83,7 +97,7 @@ public class LostItemServiceImpl implements LostItemService {
 
     @Override
     public List<LostItemDTO> getAllLostItems() {
-        return lostItemRepository.findAll()
+        return lostItemRepository.findByIsActiveTrue()
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -91,7 +105,7 @@ public class LostItemServiceImpl implements LostItemService {
 
     @Override
     public List<LostItemDTO> getLostItemsByOwner(Long ownerId) {
-        return lostItemRepository.findByOwnerUserId(ownerId)
+        return lostItemRepository.findByOwnerUserIdAndIsActiveTrue(ownerId)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -131,6 +145,7 @@ public class LostItemServiceImpl implements LostItemService {
                         ? entity.getCategories().stream().map(Category::getName).collect(Collectors.toList())
                         : List.of())
                 .isClaimed(entity.getIsClaimed())
+                .isActive(entity.getIsActive())
                 .build();
     }
 
@@ -143,6 +158,7 @@ public class LostItemServiceImpl implements LostItemService {
                 .dateLost(dto.getDateLost())
                 .locationLost(dto.getLocationLost())
                 .isClaimed(dto.getIsClaimed() != null ? dto.getIsClaimed() : false)
+                .isActive(true) // New items are active by default
                 .build();
 
         // Map category IDs to actual Category entities if provided
