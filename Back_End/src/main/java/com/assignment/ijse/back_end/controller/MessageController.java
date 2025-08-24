@@ -1,12 +1,15 @@
 package com.assignment.ijse.back_end.controller;
 
 import com.assignment.ijse.back_end.dto.MessageDTO;
+import com.assignment.ijse.back_end.service.ImgBBUploadService;
 import com.assignment.ijse.back_end.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -16,13 +19,29 @@ import java.util.List;
 public class MessageController {
 
     private final MessageService messageService;
+    private final ImgBBUploadService imgBBUploadService;
 
     @PostMapping("/send-message")
-    public ResponseEntity<MessageDTO> sendMessage(@RequestBody MessageDTO messageDTO) {
-        log.info("Sending message: {}", messageDTO);
+    public ResponseEntity<MessageDTO> sendMessage(
+            @RequestPart("message") MessageDTO messageDTO,
+            @RequestPart(value = "imageFile", required = false) MultipartFile imageFile) {
+
+        // Handle image if present
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                byte[] bytes = imageFile.getBytes();
+                String filename = imageFile.getOriginalFilename();
+                String imageUrl = imgBBUploadService.uploadToImgBB(bytes, filename).block();
+                messageDTO.setContent("@@__claimRight_img__@@:" + imageUrl);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to read image file", e);
+            }
+        }
+
         MessageDTO saved = messageService.saveMessage(messageDTO);
         return ResponseEntity.ok(saved);
     }
+
 
     @GetMapping("/get-message-by-claim/claim/{claimId}")
     public ResponseEntity<List<MessageDTO>> getMessagesByClaim(@PathVariable Long claimId) {

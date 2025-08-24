@@ -385,3 +385,59 @@
   }
 
 }
+
+.message {
+  cursor: pointer;
+}
+
+/* .message.sent {
+  background-color: #d1f7c4;
+  align-self: flex-end;
+}
+
+.message.received {
+  background-color: #f0f0f0;
+  align-self: flex-start;
+} */
+
+.msg-delete-btn {
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  padding: 4px 6px;
+  line-height: 1;
+  cursor: pointer;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  z-index: 10;
+  transition: transform 0.1s ease;
+}
+
+.msg-delete-btn::after {
+  content: "Delete message";
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #000000;
+  color: white;
+  padding: 6px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.6rem;
+  z-index: 2000;
+}
+
+.msg-delete-btn:hover::after {
+  display: block;
+}
+
+#chatSendingOverlay {
+  z-index: 2000;
+}

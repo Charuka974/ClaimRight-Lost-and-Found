@@ -49,7 +49,7 @@ async function loadUsers() {
   }
 
   try {
-    const response = await fetch(`${API_BASE_CHAT}/user/get-all`, {  // get API_BASE - from parent
+    const response = await fetch(`${API_BASE_CHAT}/user/get-all`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -85,7 +85,6 @@ async function loadUsers() {
 
     window.allUsers = users;
 
-    // Call the new rendering function
     renderUserList(users);
 
   } catch (err) {
@@ -181,7 +180,6 @@ async function selectUser(username, isPolling = false) {
       </span>
     `;
       // <span>${receiver.username}${'('+receiver.role+')'}${isMe ? ' (Me)' : ''}</span>
-
   }
 
   try {
@@ -208,8 +206,9 @@ async function selectUser(username, isPolling = false) {
 
     messages.forEach(msg => {
       const msgDiv = document.createElement("div");
-      msgDiv.className = msg.senderId === sender.userId ? "message sent" : "message received";
+      msgDiv.className = msg.senderId === sender.userId ? "message sent position-relative" : "message received position-relative";
 
+      // Message content
       if (msg.content.startsWith("@@__claimRight_img__@@:")) {
         const img = document.createElement("img");
         const imgUrl = msg.content.replace("@@__claimRight_img__@@:", "");
@@ -222,10 +221,33 @@ async function selectUser(username, isPolling = false) {
           const modal = new bootstrap.Modal(document.getElementById("chatImageViewModal"));
           modal.show();
         });
-
         msgDiv.appendChild(img);
       } else {
         msgDiv.innerText = msg.content;
+      }
+
+      // Only add delete button for own messages
+      if (msg.senderId === sender.userId) {
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "msg-delete-btn";
+        deleteBtn.innerText = "🗑";
+        deleteBtn.onclick = () => deleteMessage(msg.messageId, receiver.username);
+
+        // Initially hidden
+        deleteBtn.style.display = "none";
+
+        msgDiv.appendChild(deleteBtn);
+
+        // Show delete button when message is clicked
+        msgDiv.addEventListener("click", (e) => {
+          // Prevent this click from propagating to the document
+          e.stopPropagation();
+          
+          // hide all other delete buttons
+          document.querySelectorAll(".msg-delete-btn").forEach(btn => btn.style.display = "none");
+          deleteBtn.style.display = "block";
+        });
+
       }
 
       chatMessages.appendChild(msgDiv);
@@ -238,75 +260,11 @@ async function selectUser(username, isPolling = false) {
   }
 }
 
+// Hide delete buttons when clicking outside any message
+document.addEventListener("click", () => {
+  document.querySelectorAll(".msg-delete-btn").forEach(btn => btn.style.display = "none");
+});
 
-async function sendMessage() {
-  const messageInput = document.getElementById("messageInput");
-  const messageText = messageInput.value.trim();
-
-  const sender = JSON.parse(localStorage.getItem("loggedInUser"));
-  const receiverUsername = window.selectedChatUser;
-
-  if (!messageText || !sender || !receiverUsername) {
-    console.error("Missing message text, sender info, or selected user.");
-    return;
-  }
-
-  const receiverUser = window.allUsers.find(user => user.username === receiverUsername);
-  if (!receiverUser) {
-    console.error("Receiver user not found.");
-    Swal.fire({
-      icon: 'error',
-      title: 'User not found',
-      text: 'Could not find the selected user.',
-    });
-    return;
-  }
-
-  const messageDTO = {
-    content: messageText,
-    claimId: 0, // change dynamically if needed
-    senderId: sender.userId,
-    receiverId: receiverUser.userId,
-    isMsgRead: false,
-    sentAt: new Date().toISOString(),
-    readAt: null
-  };
-
-  try {
-    const response = await fetch(`${API_BASE_CHAT}/messages/send-message`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(messageDTO)
-    });
-
-    if (!response.ok) {
-      const errText = await response.text();
-      console.error("Failed to send message:", errText);
-      Swal.fire({
-        icon: 'error',
-        title: 'Failed to send',
-        text: errText || 'Server error while sending the message.',
-      });
-      return;
-    }
-
-    const result = await response.json();
-    // console.log("Message sent:", result);
-    messageInput.value = "";
-    selectUser(receiverUsername); // Refresh chat
-
-  } catch (err) {
-    console.error("Network or server error:", err);
-    Swal.fire({
-      icon: 'error',
-      title: 'Network Error',
-      text: 'Message could not be sent. Try again later.',
-    });
-  }
-}
 
 // POLLING: Every 3 seconds, fetch new messages if a user is selected
 setInterval(() => {
@@ -319,10 +277,79 @@ setInterval(() => {
 // Open image in preview
 let selectedImageFile = null;
 
+async function sendMessageOrImage() {
+  const messageInput = document.getElementById("messageInput");
+  const messageText = messageInput.value.trim();
+  const sender = JSON.parse(localStorage.getItem("loggedInUser"));
+  const receiverUser = window.allUsers.find(u => u.username === window.selectedChatUser);
+
+  if (!sender || !receiverUser) return;
+
+  // Prevent sending empty message if no image is selected
+  if (!messageText && !selectedImageFile) return;
+
+  const loadingOverlay = document.getElementById("chatSendingOverlay");
+
+  // Show overlay only when actually sending
+  if (loadingOverlay) loadingOverlay.style.display = "flex";
+
+  try {
+    const messageDTO = {
+      content: messageText || "",
+      claimId: 0,
+      senderId: sender.userId,
+      receiverId: receiverUser.userId,
+      isMsgRead: false,
+      sentAt: new Date().toISOString(),
+      readAt: null
+    };
+
+    const formData = new FormData();
+    formData.append("message", new Blob([JSON.stringify(messageDTO)], { type: "application/json" }));
+    if (selectedImageFile) {
+      formData.append("imageFile", selectedImageFile);
+    }
+
+    const response = await fetch(`${API_BASE_CHAT}/messages/send-message`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+      },
+      body: formData
+    });
+
+    if (loadingOverlay) loadingOverlay.style.display = "none"; // hide overlay after send attempt
+
+    if (response.ok) {
+      messageInput.value = "";
+      if (selectedImageFile) {
+        const modal = bootstrap.Modal.getInstance(document.getElementById("imagePreviewModal"));
+        modal.hide();
+        clearSelectedImage();
+      }
+      selectUser(receiverUser.username);
+    } else {
+      const errorText = await response.text();
+      Swal.fire("Error", errorText || "Failed to send message.", "error");
+    }
+  } catch (err) {
+    if (loadingOverlay) loadingOverlay.style.display = "none";
+    console.error(err);
+    Swal.fire("Network error", "Could not send message.", "error");
+  }
+}
+
+
+// Clear selected image
+function clearSelectedImage() {
+  selectedImageFile = null;
+  document.getElementById("modalImagePreview").src = "";
+  document.getElementById("fileInput").value = "";
+}
+
 function handleFileUpload(event) {
   const file = event.target.files[0];
   if (!file) return;
-
   selectedImageFile = file;
 
   const reader = new FileReader();
@@ -336,98 +363,47 @@ function handleFileUpload(event) {
   reader.readAsDataURL(file);
 }
 
-
-// Clear selected image
-function clearSelectedImage() {
-  selectedImageFile = null;
-  document.getElementById("modalImagePreview").src = "";
-  document.getElementById("fileInput").value = "";
-}
-
-// Send image
-async function sendSelectedImage() {
-  if (!selectedImageFile) return;
-
-  const imgUrl = await uploadToImgBB(selectedImageFile);
-  if (!imgUrl) {
-    Swal.fire("Upload failed", "Could not upload the image.", "error");
-    return;
-  }
-
-  const sender = JSON.parse(localStorage.getItem("loggedInUser"));
-  const receiverUsername = window.selectedChatUser;
-  const receiverUser = window.allUsers.find(u => u.username === receiverUsername);
-  if (!sender || !receiverUser) return;
-
-  const messageDTO = {
-    content: `@@__claimRight_img__@@:${imgUrl}`, // Use marker to identify image content
-    claimId: 0,
-    senderId: sender.userId,
-    receiverId: receiverUser.userId,
-    isMsgRead: false,
-    sentAt: new Date().toISOString(),
-    readAt: null
-  };
-
-
-  try {
-    const response = await fetch(`${API_BASE_CHAT}/messages/send-message`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(messageDTO)
-    });
-
-    if (response.ok) {
-      const modal = bootstrap.Modal.getInstance(document.getElementById("imagePreviewModal"));
-      modal.hide();
-      clearSelectedImage();
-      selectUser(receiverUsername); // reload chat
-    } else {
-      const errorText = await response.text();
-      Swal.fire("Error", errorText || "Failed to send image.", "error");
-    }
-  } catch (error) {
-    console.error("Error sending image:", error);
-    Swal.fire("Network error", "Could not send image.", "error");
-  }
-}
-
-
-// Upload image to imgBB
-async function uploadToImgBB(file) {
+async function deleteMessage(messageId, receiverUsername) {
   const token = localStorage.getItem("accessToken");
-  if (!token) {
-    console.error("No access token");
-    return null;
-  }
+  if (!token) return;
 
-  const formData = new FormData();
-  formData.append("file", file);
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This action will permanently delete the message.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "Cancel"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch(`${API_BASE_CHAT}/messages/delete-message/${messageId}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
 
-  try {
-    const response = await fetch(`${API_BASE_CHAT}/api/image/upload`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      },
-      body: formData
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Upload failed:", errorText);
-      return null;
+        if (response.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'Message removed successfully.',
+            timer: 1000,
+            showConfirmButton: false
+          });
+          // Refresh chat after deletion
+          selectUser(receiverUsername);
+        } else {
+          const errText = await response.text();
+          Swal.fire("Error", errText || "Failed to delete message.", "error");
+        }
+      } catch (err) {
+        console.error("Error deleting message:", err);
+        Swal.fire("Network error", "Could not delete message.", "error");
+      }
     }
-
-    const result = await response.text(); // Controller returns plain text (image URL)
-    return result;
-
-  } catch (error) {
-    console.error("Error uploading to backend:", error);
-    return null;
-  }
+  });
 }
-
