@@ -1,0 +1,138 @@
+:root {
+  --gradient-primary: linear-gradient(90deg, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(90deg, #ff7e5f, #feb47b);
+  --text-dark: #222;
+  --text-muted: #6c757d;
+  --bg-light: #f8f9fa;
+}
+
+/* General page styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  scroll-behavior: smooth;
+}
+
+/* Hero section */
+.main-content-container section {
+  position: relative;
+  overflow: hidden;
+}
+
+.right-text-container {
+  background-color: rgba(255, 255, 255, 0.529);
+  padding: 20px 10px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.right-text-container:hover {
+  box-shadow: 0 12px 35px rgba(78,115,223,0.35);
+}
+
+.main-content-container h1 {
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.2rem;
+  animation: fadeInUp 1s ease;
+}
+
+.main-content-container p.lead {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.6;
+  animation: fadeIn 1.2s ease;
+}
+
+/* Image styling */
+.main-content-container img {
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.main-content-container img:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 12px 35px rgba(78,115,223,0.35);
+}
+
+.top-container {
+  width: 100%;
+}
+
+/* Why Choose section */
+.bg-light {
+  background: rgba(255, 255, 255, 0.529) !important;
+  position: relative;
+}
+
+.bg-light h2 {
+  font-weight: 700;
+  background: var(--gradient-orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* Cards inside Why Choose */
+.bg-light .row .col-md-4 div {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+.bg-light .row .col-md-4 div:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Icons inside cards */
+.bg-light .row .col-md-4 i {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.bg-light .row .col-md-4 div:hover i {
+  transform: rotate(8deg) scale(1.2);
+  background: var(--gradient-orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card text */
+.bg-light .row .col-md-4 h5 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.bg-light .row .col-md-4 p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .main-content-container img {
+    margin-bottom: 20px;
+  }
+}

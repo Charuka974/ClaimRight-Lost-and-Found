@@ -10,7 +10,7 @@ const API_BASE_FOUNDITEM = 'http://localhost:8080/claimright/found-item';
 const myLostItemContainer = document.getElementById('myLostItemContainer');
 const myFoundItemContainer = document.getElementById('myFoundItemContainer');
 const editItemModal = document.getElementById("editMyItemModal");
-
+const loadingScreen = document.getElementById("EditingloadingScreen");
 
 
 // ===============================
@@ -317,11 +317,13 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
         generalDescription: document.getElementById("editItemDescription").value,
         locationLost: type === "lost" ? document.getElementById("editItemLocation").value : undefined,
         locationFound: type === "found" ? document.getElementById("editItemLocation").value : undefined,
-        dateLost: type === "lost" ? document.getElementById("editItemDate").value : undefined,
-        dateFound: type === "found" ? document.getElementById("editItemDate").value + "T00:00:00" : undefined,
-        isClaimed: document.getElementById("editItemIsClaimed") 
-            ? document.getElementById("editItemIsClaimed").checked 
-            : false
+        dateLost: type === "lost" 
+        ? document.getElementById("editItemDate").value + "T" + (document.getElementById("editItemTime").value || "00:00") + ":00" 
+        : undefined,
+        dateFound: type === "found" 
+        ? document.getElementById("editItemDate").value + "T" + (document.getElementById("editItemTime").value || "00:00") + ":00" 
+        : undefined,
+        isClaimed: document.getElementById("editItemIsClaimed") ? document.getElementById("editItemIsClaimed").checked : false
     };
 
     const partName = type === "lost" ? "lostItem" : "foundItem";
@@ -335,6 +337,8 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
     try {
         const token = localStorage.getItem("accessToken");
 
+        if (loadingScreen) loadingScreen.style.display = "flex";
+
         const response = await fetch(`${editApiBase}/${itemId}`, {
             method: "POST",
             headers: { "Authorization": `Bearer ${token}` },
@@ -345,7 +349,15 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
 
         Swal.fire({ icon: 'success', title: 'Updated!', text: 'Item updated successfully.', timer: 1500, showConfirmButton: false });
         editItemModal.style.display = "none";
+
+        editItemModal.style.display = "none";
         reloadFn();
+
+        // Reset form and clear old image
+        document.getElementById("editItemForm").reset();
+        editImageUpload.value = "";
+        editImagePreview.src = "";
+        editImagePreviewContainer.style.display = "none";
 
     } catch (error) {
         console.error(error);
@@ -354,6 +366,7 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
         if (loadingScreen) loadingScreen.style.display = "none";
     }
 });
+
 
 
 // Edit modal Image 

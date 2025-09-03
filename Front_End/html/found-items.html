@@ -116,11 +116,21 @@
         </div>
         <div class="mb-3">
             <label for="foundImageUpload" class="form-label">Upload Image (Required)
-                <br><span class="label-instructions">Upload a clear image of the item, but avoid showing unique identifiers (scratches, logos, engravings, etc.). These details should only be confirmed by the rightful owner when claiming.</span></label>
-            <input type="file" id="foundImageUpload" name="imageFile" class="form-control" accept="image/*" required>
-            <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
-              <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-bottom: 10px;">
-              <button type="button" id="removeImageBtn" class="btn btn-sm btn-outline-danger">Remove</button>
+                <br>
+                <span class="label-instructions">
+                Upload a clear image of the item, but avoid showing unique identifiers (scratches, logos, engravings, etc.).
+                These details should only be confirmed by the rightful owner when claiming.
+                </span>
+            </label>
+            <!-- File Input (unchanged) -->
+            <input type="file" id="foundImageUpload" name="imageFile" class="form-control d-none" accept="image/*" required>
+            <!-- Drag & Drop Zone -->
+            <div id="foundDropZone" style="margin-top:10px; padding:30px; border:2px dashed #ccc; border-radius:8px; text-align:center; cursor:pointer;">
+                Drag & Drop Image Here or Click to Browse
+            </div>
+            <div id="foundImagePreviewContainer" style="margin-top: 10px; display: none;">
+                <img id="foundImagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-bottom: 10px;">
+                <button type="button" id="foundRemoveImageBtn" class="btn btn-sm btn-outline-danger">Remove</button>
             </div>
         </div>
         <div class="mb-3">

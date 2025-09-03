@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -34,5 +35,10 @@ public interface LostItemRepository extends JpaRepository<LostItem, Long> {
     @Transactional
     @Query("UPDATE LostItem l SET l.isActive = false WHERE l.id = :id")
     void deactivateLostItem(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM LostItem li WHERE (li.isClaimed = true OR li.isActive = false) AND li.postedAt <= :cutoffDate")
+    void deleteExpiredItems(LocalDateTime cutoffDate);
 
 }

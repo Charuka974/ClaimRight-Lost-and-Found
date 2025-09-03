@@ -11,6 +11,7 @@ import com.assignment.ijse.back_end.service.LostItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -169,6 +170,11 @@ public class LostItemServiceImpl implements LostItemService {
         }
 
         return lostItem;
+    }
+
+    public void deleteExpiredItems() {
+        LocalDateTime cutoffDate = LocalDateTime.now().minusDays(30);
+        lostItemRepository.deleteExpiredItems(cutoffDate);
     }
 
 }

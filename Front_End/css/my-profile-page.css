@@ -799,3 +799,8 @@ button.btn:hover {
     50% { transform: rotate(-2deg) scale(1.05); }
     75% { transform: rotate(1deg) scale(1.05); }
 }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

@@ -2,6 +2,7 @@ package com.assignment.ijse.back_end.exceptions;
 
 import com.assignment.ijse.back_end.util.APIResponse;
 import io.jsonwebtoken.ExpiredJwtException;
+import org.apache.http.auth.InvalidCredentialsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -93,5 +94,12 @@ public class GlobalExceptionHandler {
 //        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 //                .body("Storage error: " + ex.getMessage());
 //    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<APIResponse<Object>> handleInvalidCredentials(InvalidCredentialsException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new APIResponse<>(400, "Incorrect email or password", null));
+    }
 
 }

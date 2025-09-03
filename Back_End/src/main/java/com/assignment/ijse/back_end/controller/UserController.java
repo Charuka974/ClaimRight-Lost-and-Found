@@ -1,6 +1,7 @@
 package com.assignment.ijse.back_end.controller;
 
 import com.assignment.ijse.back_end.dto.AuthResponseDTO;
+import com.assignment.ijse.back_end.dto.PasswordChangeDTO;
 import com.assignment.ijse.back_end.dto.UserDTO;
 import com.assignment.ijse.back_end.service.ImgBBUploadService;
 import com.assignment.ijse.back_end.service.UserService;
@@ -82,6 +83,28 @@ public class UserController {
         ));
     }
 
+    @PutMapping("/change-password")
+    public ResponseEntity<APIResponse<String>> changePassword(@RequestBody PasswordChangeDTO dto) {
+        try {
+            // Validate current password
+            boolean valid = userService.validateCurrentPassword(Long.valueOf(dto.getUserId()), dto.getCurrentPassword());
+            if (!valid) {
+                return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(new APIResponse<>(400, "Current password is incorrect", null));
+            }
+
+            // Update password
+            userService.updatePassword(Long.valueOf(dto.getUserId()), dto.getNewPassword());
+
+            return ResponseEntity.ok(new APIResponse<>(200, "Password changed successfully", null));
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new APIResponse<>(500, "Error changing password: " + e.getMessage(), null));
+        }
+    }
+
     @PutMapping("/update")
     public ResponseEntity<APIResponse<AuthResponseDTO>> updateUser(
             @RequestPart("user") UserDTO userDTO,
@@ -106,7 +129,6 @@ public class UserController {
                     .body(new APIResponse<>(400, "Error updating user: " + e.getMessage(), null));
         }
     }
-
 
 
     //    // Delete User - we use a put mapping here for delete operation

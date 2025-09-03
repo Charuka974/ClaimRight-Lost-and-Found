@@ -69,6 +69,7 @@
     gap: 20px;
     padding: 20px;
     justify-content: center;
+    min-height: 100vh;
 }
 
 /* ---------- Lost Item Card ---------- */
@@ -80,9 +81,8 @@
   flex-direction: row;
   align-items: stretch;
   background: white;
-  border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow: visible;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   flex: 1 1 45%;
@@ -90,6 +90,7 @@
   min-width: 280px;
   margin-bottom: 20px;
   position: relative; /* for absolute child elements like badges */
+  border-radius: 12px;
 }
 
 /* Hover / active effect */
@@ -109,6 +110,21 @@
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
+  animation: float 4s ease-in-out infinite;
+}
+.lost-item-image {
+  box-shadow: 
+    0 12px 30px rgba(78, 115, 223, 0.7), /* main shadow */
+    0 6px 20px rgba(54, 185, 204, 0.5);   /* secondary glow */
+}
+.found-item-image {
+  box-shadow: 
+    0 12px 30px rgba(255, 126, 95, 0.7),
+    0 6px 20px rgba(254, 180, 123, 0.5);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* Content */
@@ -122,6 +138,7 @@
   color: #333;
   overflow-wrap: break-word;
   background: white;
+  border-radius: 12px;
 }
 
 /* Titles */
@@ -152,7 +169,7 @@
   margin-bottom: 0.4rem;
 }
 
-.lost-item-meta strong,
+.lost-item-meta strong, 
 .found-item-meta strong {
   color: #444;
 }
@@ -319,3 +336,17 @@
 }
 
 
+
+
+.octagon{
+  clip-path: polygon(
+    0% 0,   /* Top-left cut (moves right from 0,0) */
+    90% 0,   /* Top-right cut (moves left from 100%,0) */
+    100% 10%,/* Right-top cut (moves down from top-right corner) */
+    100% 90%,/* Right-bottom cut (moves up from bottom-right corner) */
+    90% 100%,/* Bottom-right cut (moves left from bottom edge) */
+    10% 100%,/* Bottom-left cut (moves right from bottom edge) */
+    0 90%,   /* Left-bottom cut (moves up from bottom-left corner) */
+    0 10%    /* Left-top cut (moves down from top-left corner) */
+  );
+}

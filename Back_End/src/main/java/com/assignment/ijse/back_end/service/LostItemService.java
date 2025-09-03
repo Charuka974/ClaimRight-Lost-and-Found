@@ -21,6 +21,8 @@ public interface LostItemService {
 
     LostItemDTO markAsClaimed(Long id);
 
-    public boolean disableLostItem(Long id);
+    boolean disableLostItem(Long id);
+
+    void deleteExpiredItems();
 
 }

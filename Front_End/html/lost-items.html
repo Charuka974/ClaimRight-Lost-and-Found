@@ -110,8 +110,14 @@
           </div>
           <div class="mb-3">
             <label for="imageUpload" class="form-label">Upload Image (If available)
-              <br><span class="label-instructions">Upload a clear image of your item. Make sure to include any unique identifiers (scratches, logos, engravings, etc.) that can prove it belongs to you.</span></label>
-            <input type="file" id="imageUpload" name="imageFile" class="form-control" accept="image/*">
+              <br><span class="label-instructions">Upload a clear image of your item. Make sure to include any unique identifiers (scratches, logos, engravings, etc.) that can prove it belongs to you.</span>
+            </label>
+            <!-- File Input (unchanged) -->
+            <input type="file" id="imageUpload" name="imageFile" class="form-control d-none" accept="image/*">
+            <!-- Drag & Drop Zone -->
+            <div id="dropZone" style="margin-top:10px; padding:30px; border:2px dashed #ccc; border-radius:8px; text-align:center; cursor:pointer;">
+              Drag & Drop Image Here or Click to Browse
+            </div>
             <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
               <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-bottom: 10px;">
               <button type="button" id="removeImageBtn" class="btn btn-sm btn-outline-danger">Remove</button>

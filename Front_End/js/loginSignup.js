@@ -97,61 +97,75 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
 
   if (loginForm) {
-    loginForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
+      loginForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-      const email = loginForm.email.value.trim();
-      const password = loginForm.password.value.trim();
+          const email = loginForm.email.value.trim();
+          const password = loginForm.password.value.trim();
 
-      if (!email || !password) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Missing Fields',
-          text: 'Please enter both email and password.'
-        });
-        return;
-      }
+          if (!email || !password) {
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Missing Fields',
+                  text: 'Please enter both email and password.'
+              });
+              return;
+          }
 
-      try {
-        const response = await fetch(`${API_BASE_AUTH}/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ email, password })
-        });
+          try {
+              const response = await fetch(`${API_BASE_AUTH}/login`, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({ email, password })
+              });
 
-        const result = await response.json();
-        const token = result.data.accessToken;
-        const user = result.data.user;
+              const result = await response.json();
 
-        if (!response.ok) {
-          throw new Error(result.message || "Invalid email or password");
-        }
+              if (!response.ok) {
+                  // Handle invalid credentials (usually 400) separately
+                  if (response.status === 400) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Login Failed',
+                          text: result.message || "Incorrect email or password"
+                      });
+                  } else {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Login Failed',
+                          text: "Incorrect email or password"
+                      });
+                  }
+                  return;
+              }
 
-        
+              // Login successful
+              const token = result.data.accessToken;
+              const user = result.data.user;
 
-        localStorage.setItem("accessToken", token);
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
+              localStorage.setItem("accessToken", token);
+              localStorage.setItem("loggedInUser", JSON.stringify(user));
 
-        Swal.fire({
-          icon: 'success',
-          title: 'Login Successful',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          window.location.href = "/Front_End/html/dashboard.html";
-        });
+              Swal.fire({
+                  icon: 'success',
+                  title: 'Login Successful',
+                  showConfirmButton: false,
+                  timer: 1500
+              }).then(() => {
+                  window.location.href = "/Front_End/html/dashboard.html";
+              });
 
-      } catch (error) {
-        console.error("Login error:", error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Login Failed',
-          text: error.message || "Something went wrong"
-        });
-      }
-    });
+          } catch (error) {
+              console.error("Login error:", error);
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Login Failed',
+                  text: "Something went wrong. Please try again later."
+              });
+          }
+      });
   }
 
 

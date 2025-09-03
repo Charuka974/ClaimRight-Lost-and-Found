@@ -1,4 +1,5 @@
 const API_BASE_LOSTITEM = 'http://localhost:8080/claimright/lost-item';
+const API_ITEM_CAT = 'http://localhost:8080/claimright/item-categories';
 
 const reportModal = document.getElementById("reportLostItemModal");
 const reportCloseBtn = document.getElementById("reportCloseBtn");
@@ -51,7 +52,7 @@ function renderLostItems(lostItems) {
     lostItemCard.className = "lost-item-card";
 
     lostItemCard.innerHTML = `
-      <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" 
+      <img src="${item.imageUrl || '/Front_End/assets/images/noImageAvalable.png'}" 
            alt="Lost item image" class="lost-item-image" />
       <div class="lost-item-content">
         <h2 class="lost-item-title">${item.itemName}</h2>
@@ -133,7 +134,7 @@ async function loadCategories() {
     const token = localStorage.getItem("accessToken");
     if (!token) throw new Error("User not logged in");
 
-    const response = await fetch('http://localhost:8080/claimright/item-categories', {
+    const response = await fetch(API_ITEM_CAT, {
       headers: { "Authorization": `Bearer ${token}` }
     });
 
@@ -285,3 +286,67 @@ const sortSelect = document.getElementById("dashboard-sort");
 searchBtn.addEventListener("click", () => filterItems(searchInput.value));
 searchInput.addEventListener("input", () => filterItems(searchInput.value));
 sortSelect.addEventListener("change", (e) => sortItems(e.target.value));
+
+
+// --- Image Upload & Preview ---
+// const imageUpload = document.getElementById("imageUpload");
+const dropZone = document.getElementById("dropZone");
+// const previewContainer = document.getElementById("imagePreviewContainer");
+const previewImage = document.getElementById("imagePreview");
+const removeImageBtn = document.getElementById("removeImageBtn");
+
+// Show preview when selecting an image
+imageUpload.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    previewImage.src = e.target.result;
+    previewContainer.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+});
+
+// Drag & Drop events
+["dragenter", "dragover"].forEach(eventName => {
+  dropZone.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropZone.style.borderColor = "#0d6efd";
+    dropZone.style.background = "#f0f8ff";
+  });
+});
+
+["dragleave", "drop"].forEach(eventName => {
+  dropZone.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropZone.style.borderColor = "#ccc";
+    dropZone.style.background = "transparent";
+  });
+});
+
+// Handle file drop
+dropZone.addEventListener("drop", (e) => {
+  const files = e.dataTransfer.files;
+  if (files.length > 0 && files[0].type.startsWith("image/")) {
+    imageUpload.files = files; // Sync dropped file with input
+    imageUpload.dispatchEvent(new Event("change")); // Trigger preview
+  }
+});
+
+// Clicking drop zone opens file picker
+dropZone.addEventListener("click", () => imageUpload.click());
+
+// Remove image
+removeImageBtn.addEventListener("click", () => {
+  imageUpload.value = "";
+  previewImage.src = "";
+  previewContainer.style.display = "none";
+});
+
+// Block future dates
+const lostDateInput = document.getElementById("lostDate");
+const today = new Date().toISOString().split("T")[0]; 
+lostDateInput.max = today;

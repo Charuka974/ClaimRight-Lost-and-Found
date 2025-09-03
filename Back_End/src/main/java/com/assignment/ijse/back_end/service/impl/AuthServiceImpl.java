@@ -44,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
 
         user.setPassword(null); // Don't expose password in response
 
-        String token = jwtUtil.generateToken(user.getUsername());
+        String token = jwtUtil.generateToken(user.getEmail());
         UserDTO userDTO = modelMapper.map(user, UserDTO.class);
         userDTO.setPassword(null); // Don't expose password in response
 

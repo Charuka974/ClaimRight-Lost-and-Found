@@ -67,53 +67,112 @@
             <div class="bottom-container">
 
                 <div class="bottom-left-container">
-
+ 
                     <!-- Edit Profile Modal -->
                     <div id="update-profile-modal" class="custom-modal d-none">
-                        <h4 class="text-center">Edit Profile</h4>
-                        <form>
-                            <div class="mb-3">
-                                <label for="profilePictureEditUpdate" class="form-label">Profile Picture</label>
-                                <input type="file" class="form-control" id="profilePictureEditUpdate" accept="image/*">
-                                <img id="profilePreviewUpdate" src="/Front_End/assets/images/avatar-default-icon.png" 
-                                    alt="Profile Preview" style="max-width: 100px; margin-top: 10px;">
+                        <h4 class="text-center fw-bold">Edit Profile</h4>
+                        <form id="editMyProfileForm" enctype="multipart/form-data">
+                            <div class="text-center mb-3 position-relative" style="width: 100px; margin: 0 auto;">
+                                <label for="updateProfilePicture" style="cursor: pointer;">
+                                    <img
+                                        src="/Front_End/assets/images/avatar-default-icon.png"
+                                        id="updateProfilePreview"
+                                        alt="Profile Picture"
+                                        class="rounded-circle border"
+                                        width="100"
+                                        height="100"
+                                        title="Click to change profile picture"
+                                    />
+                                    <span style="
+                                        position: absolute;
+                                        bottom: 0;
+                                        right: 0;
+                                        background-color: white;
+                                        border-radius: 50%;
+                                        padding: 4px;
+                                        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+                                        color: black;
+                                    ">
+                                        ✎
+                                    </span>
+                                </label>
+                                <input 
+                                    type="file" 
+                                    class="form-control form-control-sm d-none" 
+                                    id="updateProfilePicture" 
+                                    name="updateProfilePicture"
+                                    accept="image/*"
+                                >
                             </div>
+
                             <div class="mb-3">
-                                <label for="edit-name-update" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="edit-name-update" value="John Doe">
+                                <label for="updateUsername" class="form-label fw-bold">Username</label>
+                                <input type="text" class="form-control" id="updateUsername" name="username" required>
                             </div>
+
                             <div class="mb-3">
-                                <label for="edit-email-update" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="edit-email-update" value="johndoe@example.com">
+                                <label for="updateEmail" class="form-label fw-bold">Email address</label>
+                                <input type="email" class="form-control" id="updateEmail" name="email" required>
                             </div>
+
                             <div class="mb-3">
-                                <label for="edit-phone-update" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="edit-phone-update" value="+1 234 567 8901">
+                                <label for="updatePhone" class="form-label fw-bold">Phone</label>
+                                <input type="text" class="form-control" id="updatePhone" name="phoneNumber" placeholder="+123456789">
                             </div>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+
+                            <!-- Hidden fields: userId, createdAt, isActive -->
+                            <input type="hidden" id="updateUserId" name="userId">
+                            <input type="hidden" id="updateCreatedAt" name="createdAt">
+                            <input type="hidden" id="updateIsActive" name="isActive">
+                            <input type="hidden" id="updateProfilePictureUrl" name="profilePictureUrl">
                         </form>
+
+                        <button type="submit" form="editMyProfileForm" class="btn btn-primary w-100">Save Changes</button>
                     </div>
 
 
                     <!-- Change Password Modal -->
                     <div id="change-password-modal" class="custom-modal d-none">
                         <h4 class="text-center">Change Password</h4>
-                        <form>
-                        <div class="mb-3">
-                            <label for="current-password" class="form-label">Current Password</label>
-                            <input type="password" class="form-control" id="current-password">
-                        </div>
-                        <div class="mb-3">
-                            <label for="new-password" class="form-label">New Password</label>
-                            <input type="password" class="form-control" id="new-password">
-                        </div>
-                        <div class="mb-3">
-                            <label for="confirm-password" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm-password">
-                        </div>
-                        <button type="submit" class="btn btn-success">Change Password</button>
+                        <form id="changePasswordForm">
+                            
+                            <!-- Current Password -->
+                            <div class="mb-3">
+                            <label for="current-password" class="form-label fw-bold">Current Password</label>
+                            <div class="form-group password-container" style="position: relative;">
+                                <input type="password" class="form-control" id="current-password" name="currentPassword" required>
+                                <span class="password-toggle" onclick="togglePassword('current-password')" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                                <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                            </div>
+
+                            <!-- New Password -->
+                            <div class="mb-3">
+                            <label for="new-password" class="form-label fw-bold">New Password</label>
+                            <div class="form-group password-container" style="position: relative;">
+                                <input type="password" class="form-control" id="new-password" name="newPassword" required>
+                                <span class="password-toggle" onclick="togglePassword('new-password')" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                                <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                            </div>
+
+                            <!-- Confirm New Password -->
+                            <div class="mb-3">
+                            <label for="confirm-password" class="form-label fw-bold">Confirm New Password</label>
+                            <div class="form-group password-container" style="position: relative;">
+                                <input type="password" class="form-control" id="confirm-password" name="confirmPassword" required>
+                                <span class="password-toggle" onclick="togglePassword('confirm-password')" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                                <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">Change Password</button>
                         </form>
                     </div>
+
 
                     <!-- My Claims Modal -->
                     <div id="my-claims-modal" class="custom-modal d-none">
@@ -233,8 +292,13 @@
             </div>
 
             <div class="mb-3">
-                <label for="editItemDate" class="form-label">Date</label>
+                <label for="editItemDate" class="form-label">Date Found/Date Lost</label>
                 <input type="date" id="editItemDate" name="dateLost" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="editItemTime" class="form-label">Time Found/Time Lost (Optional)</label>
+                <input type="time" id="editItemTime" name="timeLost" class="form-control">
             </div>
 
             <div class="mb-3">
@@ -263,6 +327,27 @@
             </form>
         </div>
     </div>
+
+    <!-- Loading Screen -->
+    <div id="EditingloadingScreen" 
+        style="display: none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.5); 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 9999;">
+        
+        <div style="background: white; padding: 20px 30px; border-radius: 10px; text-align: center;">
+            <div class="spinner" 
+                style="width: 40px; height: 40px; border: 4px solid #ddd; border-top: 4px solid #3498db; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;">
+            </div>
+            <p style="margin-top: 10px; font-size: 16px;">Updating...</p>
+        </div>
+    </div>
+
+
 
 
   <button class="floating-page-btn" onclick="openChat()">

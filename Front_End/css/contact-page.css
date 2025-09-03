@@ -1,0 +1,153 @@
+:root {
+  --gradient-primary: linear-gradient(90deg, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(90deg, #ff7e5f, #feb47b);
+  --text-dark: #222;
+  --text-muted: #6c757d;
+  --bg-light: #f8f9fa;
+}
+
+/* General Page Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  scroll-behavior: smooth;
+}
+
+/* Section Title */
+h1 {
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 1s ease;
+}
+
+/* Contact Card */
+.contact-card {
+  background: #fff;
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+/* Form Styling */
+form label {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+form .form-control {
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+form .form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 8px rgba(78, 115, 223, 0.3);
+}
+
+form button {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(78, 115, 223, 0.5);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(78, 115, 223, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0);
+  }
+}
+
+form button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
+}
+
+
+/* Contact Info Styling */
+.contact-card p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+.contact-card i {
+  background: var(--gradient-orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.2rem;
+}
+
+/* Social Links */
+.contact-card .d-flex a {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.contact-card .d-flex a:hover {
+  transform: scale(1.2);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Floating Chat Button */
+.floating-page-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.floating-page-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-card {
+    margin-bottom: 20px;
+  }
+}
+
+.floating-chat-nav-btn {
+  bottom: 50px;
+  right: 30px;
+}

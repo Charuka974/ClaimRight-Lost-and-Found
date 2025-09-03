@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("claimright/messages")
@@ -41,6 +42,19 @@ public class MessageController {
         MessageDTO saved = messageService.saveMessage(messageDTO);
         return ResponseEntity.ok(saved);
     }
+
+    @PostMapping("/upload-image")
+    public ResponseEntity<Map<String, String>> uploadImage(@RequestPart("imageFile") MultipartFile imageFile) {
+        try {
+            byte[] bytes = imageFile.getBytes();
+            String filename = imageFile.getOriginalFilename();
+            String imageUrl = imgBBUploadService.uploadToImgBB(bytes, filename).block();
+            return ResponseEntity.ok(Map.of("imageUrl", imageUrl));
+        } catch (IOException e) {
+            return ResponseEntity.status(500).body(Map.of("error", "Failed to upload image"));
+        }
+    }
+
 
 
     @GetMapping("/get-message-by-claim/claim/{claimId}")

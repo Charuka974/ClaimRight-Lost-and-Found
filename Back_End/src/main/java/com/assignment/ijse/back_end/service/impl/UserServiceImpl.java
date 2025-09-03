@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(updatedUser);
 
         // Generate a new JWT token (in case username or credentials changed)
-        String newToken = jwtUtil.generateToken(savedUser.getUsername());
+        String newToken = jwtUtil.generateToken(savedUser.getEmail());
 
         // Return both the updated user and new token
         UserDTO updatedDTO = modelMapper.map(savedUser, UserDTO.class);
@@ -174,6 +174,29 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Invalid role: " + newRole);
         }
     }
+
+    @Override
+    public boolean validateCurrentPassword(Long userId, String currentPassword) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFound("User not found with ID: " + userId));
+
+        return passwordEncoder.matches(currentPassword, user.getPassword());
+    }
+
+    @Override
+    public void updatePassword(Long userId, String newPassword) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFound("User not found with ID: " + userId));
+
+        if (newPassword == null || newPassword.isBlank()) {
+            throw new IllegalArgumentException("New password cannot be empty");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
+
 
 
 }

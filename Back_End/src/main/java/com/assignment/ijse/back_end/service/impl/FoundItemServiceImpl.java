@@ -183,4 +183,10 @@ public class FoundItemServiceImpl implements FoundItemService {
                 .isActive(entity.getIsActive())
                 .build();
     }
+
+    public void deleteExpiredItems() {
+        LocalDateTime cutoffDate = LocalDateTime.now().minusDays(30);
+        foundItemRepository.deleteExpiredItems(cutoffDate);
+    }
+
 }

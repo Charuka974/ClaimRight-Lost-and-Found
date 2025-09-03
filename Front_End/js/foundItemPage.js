@@ -1,5 +1,5 @@
 const API_BASE_FOUNDITEM = 'http://localhost:8080/claimright/found-item';
-const API_BASE_CATEGORIES = 'http://localhost:8080/claimright/item-categories';
+const API_ITEM_CAT = 'http://localhost:8080/claimright/item-categories';
 
 const reportModal = document.getElementById("reportFoundItemModal");
 const reportCloseBtn = document.getElementById("reportFoundCloseBtn");
@@ -54,7 +54,7 @@ function renderFoundItems(foundItems) {
         foundItemCard.className = "found-item-card";
 
         foundItemCard.innerHTML = `
-            <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" alt="Found item image" class="found-item-image" />
+            <img src="${item.imageUrl || '/Front_End/assets/images/noImageAvalable.png'}" alt="Found item image" class="found-item-image" />
             <div class="found-item-content">
                 <h2 class="found-item-title">${item.itemName}</h2>
                 <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
@@ -150,7 +150,7 @@ async function loadCategories() {
         const token = localStorage.getItem("accessToken");
         if (!token) throw new Error("User not logged in");
 
-        const response = await fetch(API_BASE_CATEGORIES, {
+        const response = await fetch(API_ITEM_CAT, {
             headers: { "Authorization": `Bearer ${token}` }
         });
 
@@ -281,54 +281,65 @@ sortSelect.addEventListener("change", (e) => sortItems(e.target.value));
 
 
 // --- Image Preview in report item Modal---
-const imageUpload = document.getElementById("foundImageUpload");
+// --- Found Item Drag & Drop Upload ---
+const foundImageUpload = document.getElementById("foundImageUpload");
+const foundDropZone = document.getElementById("foundDropZone");
+const foundPreviewContainer = document.getElementById("foundImagePreviewContainer");
+const foundPreviewImage = document.getElementById("foundImagePreview");
+const foundRemoveImageBtn = document.getElementById("foundRemoveImageBtn");
 
-// Create a preview container (just once)
-const previewContainer = document.createElement("div");
-previewContainer.id = "imagePreviewContainer";
-previewContainer.style.cssText = `
-  margin-top: 10px; 
-  text-align: center;
-`;
-
-imageUpload.parentElement.appendChild(previewContainer);
-
-imageUpload.addEventListener("change", (event) => {
-  previewContainer.innerHTML = ""; // clear old preview
-
+// Show preview on file select
+foundImageUpload.addEventListener("change", (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
   const reader = new FileReader();
   reader.onload = (e) => {
-    const img = document.createElement("img");
-    img.src = e.target.result;
-    img.alt = "Preview";
-    img.style.cssText = `
-      max-width: 100%;
-      max-height: 200px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      display: block;
-    `;
-    previewContainer.appendChild(img);
-
-    // Add "Change Image" button
-    const changeBtn = document.createElement("button");
-    changeBtn.type = "button";
-    changeBtn.textContent = "Change Image";
-    changeBtn.style.cssText = `
-      display:inline-block; 
-      background:#4e73df; 
-      color:white; 
-      border:none; 
-      border-radius:6px; 
-      padding:6px 12px; 
-      cursor:pointer;
-    `;
-    changeBtn.addEventListener("click", () => imageUpload.click());
-    previewContainer.appendChild(changeBtn);
+    foundPreviewImage.src = e.target.result;
+    foundPreviewContainer.style.display = "block";
   };
-
   reader.readAsDataURL(file);
 });
+
+// Drag & Drop events
+["dragenter", "dragover"].forEach(eventName => {
+  foundDropZone.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    foundDropZone.style.borderColor = "#0d6efd";
+    foundDropZone.style.background = "#f0f8ff";
+  });
+});
+
+["dragleave", "drop"].forEach(eventName => {
+  foundDropZone.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    foundDropZone.style.borderColor = "#ccc";
+    foundDropZone.style.background = "transparent";
+  });
+});
+
+// Handle file drop
+foundDropZone.addEventListener("drop", (e) => {
+  const files = e.dataTransfer.files;
+  if (files.length > 0 && files[0].type.startsWith("image/")) {
+    foundImageUpload.files = files; // Sync with input
+    foundImageUpload.dispatchEvent(new Event("change")); // Trigger preview
+  }
+});
+
+// Clicking drop zone opens file picker
+foundDropZone.addEventListener("click", () => foundImageUpload.click());
+
+// Remove image
+foundRemoveImageBtn.addEventListener("click", () => {
+  foundImageUpload.value = "";
+  foundPreviewImage.src = "";
+  foundPreviewContainer.style.display = "none";
+});
+
+// Block future dates
+const lostDateInput = document.getElementById("foundDate");
+const today = new Date().toISOString().split("T")[0]; 
+lostDateInput.max = today;

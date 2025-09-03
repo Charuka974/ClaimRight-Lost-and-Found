@@ -25,6 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <li class="nav-item">
               <a class="nav-link text-white" href="/Front_End/html/found-items.html"><b>Found Items</b></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Front_End/html/about-page.html"><b>About</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Front_End/html/contact-us-page.html"><b>Contact Us</b></a>
+            </li>
 
             ${
               isLoggedIn
@@ -140,9 +146,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         
-            <div class="modal-header">
-            <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header justify-content-center position-relative">
+                <h5 class="modal-title fw-bold" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close position-absolute end-0 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
             <div class="modal-body">
@@ -178,21 +184,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label fw-bold">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
                 </div>
 
                 <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label fw-bold">Email address</label>
                 <input type="email" class="form-control" id="email" name="email" required>
                 </div>
 
                 <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label fw-bold">Phone</label>
                 <input type="text" class="form-control" id="phone" name="phoneNumber" placeholder="+123456789">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 d-none">
                 <label for="editPassword" class="form-label">Enter New Password (optional)</label>
                   <div class="form-group password-container" style="position: relative;">
                     <input type="password" class="form-control" name="password" id="editPassword" placeholder="Password">

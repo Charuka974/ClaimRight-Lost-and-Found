@@ -1,6 +1,14 @@
 # ClaimRight - Lost & Found Management System
 
+---
+
+📺 **Watch the Demo Video on YouTube**:  
+👉 [![Watch on YouTube](https://img.shields.io/badge/▶️%20Watch%20Demo%20Video-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+---
+
 ## Project Overview
+
 **ClaimRight** is a centralized web-based system designed to simplify the process of reporting, searching, and claiming lost and found items. The system aims to reduce fraudulent claims and efficiently return lost items to their rightful owners through a secure platform.
 
 ## Features

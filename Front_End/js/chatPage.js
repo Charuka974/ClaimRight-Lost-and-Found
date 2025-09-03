@@ -1,4 +1,5 @@
 const API_BASE_CHAT = "http://localhost:8080/claimright";
+const API_CHAT_WEB_SOCKET = "http://localhost:8080/claimright-web-socket";
 
 document.addEventListener("DOMContentLoaded", async function () {
   await loadUsers(); // Wait until users are loaded and window.allUsers is set
@@ -33,7 +34,81 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
+  connectWebSocket();
+
 });
+
+//----------------------------------------------------------------------------------------------------------------//
+let stompClient = null;
+
+function connectWebSocket() {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedInUser) return;
+
+  const socket = new SockJS(`${API_CHAT_WEB_SOCKET}/ws-chat`);
+  stompClient = Stomp.over(socket);
+
+  stompClient.connect({}, () => {
+    console.log("Connected to WebSocket");
+
+    // Subscribe to messages for this user
+    stompClient.subscribe(`/topic/messages/${loggedInUser.userId}`, (msg) => {
+      const message = JSON.parse(msg.body);
+
+      // Show message if it's part of the current chat
+      if (
+        (window.selectedChatUserId === message.senderId) || 
+        (window.selectedChatUserId === message.receiverId)
+      ) {
+          appendMessageToChat(message);
+      } else {
+          showNewMessageNotification(message);
+      }
+    });
+
+  });
+}
+
+function sendWebSocketMessage(messageDTO, imageFile = null) {
+  if (!stompClient || !stompClient.connected) {
+    console.error("WebSocket not connected");
+    return;
+  }
+
+  if (imageFile) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const base64 = e.target.result;
+      messageDTO.content = "@@__claimRight_img__@@:" + base64;
+      stompClient.send("/app/send", {}, JSON.stringify(messageDTO));
+    };
+    reader.readAsDataURL(imageFile);
+  } else {
+    stompClient.send("/app/send", {}, JSON.stringify(messageDTO));
+  }
+}
+
+// Utility to append message to chat window
+function appendMessageToChat(msg) {
+  const chatMessages = document.getElementById("chatMessages");
+  const sender = JSON.parse(localStorage.getItem("loggedInUser"));
+  const msgDiv = document.createElement("div");
+  msgDiv.className = msg.senderId === sender.userId ? "message sent" : "message received";
+
+  if (msg.content.startsWith("@@__claimRight_img__@@:")) {
+    const img = document.createElement("img");
+    img.src = msg.content.replace("@@__claimRight_img__@@:", "");
+    img.className = "chat-image";
+    msgDiv.appendChild(img);
+  } else {
+    msgDiv.innerText = msg.content;
+  }
+
+  chatMessages.appendChild(msgDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+//----------------------------------------------------------------------------------------------------------------//
 
 
 function toggleUserList() {
@@ -97,7 +172,6 @@ async function loadUsers() {
   }
 }
 
-
 // Search users
 function filterUsers() {
   const input = document.getElementById("userSearchInput");
@@ -115,7 +189,6 @@ function clearSearch() {
   input.value = "";
   renderUserList(window.allUsers);
 }
-
 
 // Render users
 function renderUserList(users) {
@@ -155,14 +228,15 @@ function renderUserList(users) {
   });
 }
 
-
 // Select users
 async function selectUser(username, isPolling = false) {
-  window.selectedChatUser = username;
+  window.selectedChatUser = username;// keep for display
 
   const sender = JSON.parse(localStorage.getItem("loggedInUser"));
   const receiver = window.allUsers.find(user => user.username === username);
   if (!sender || !receiver) return;
+
+  window.selectedChatUserId = receiver.userId;
 
   // Move this AFTER receiver is defined
   if (!isPolling) {
@@ -265,15 +339,6 @@ document.addEventListener("click", () => {
   document.querySelectorAll(".msg-delete-btn").forEach(btn => btn.style.display = "none");
 });
 
-
-// POLLING: Every 3 seconds, fetch new messages if a user is selected
-setInterval(() => {
-  if (window.selectedChatUser) {
-    selectUser(window.selectedChatUser, true); // true = polling mode
-  }
-}, 2000);
-
-
 // Open image in preview
 let selectedImageFile = null;
 
@@ -284,18 +349,40 @@ async function sendMessageOrImage() {
   const receiverUser = window.allUsers.find(u => u.username === window.selectedChatUser);
 
   if (!sender || !receiverUser) return;
-
-  // Prevent sending empty message if no image is selected
   if (!messageText && !selectedImageFile) return;
 
   const loadingOverlay = document.getElementById("chatSendingOverlay");
-
-  // Show overlay only when actually sending
   if (loadingOverlay) loadingOverlay.style.display = "flex";
 
   try {
+    let contentToSend = messageText || "";
+
+    // Upload image if present
+    if (selectedImageFile) {
+      const formData = new FormData();
+      formData.append("imageFile", selectedImageFile);
+
+      const response = await fetch(`${API_BASE_CHAT}/messages/upload-image`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+        },
+        body: formData
+      });
+
+      if (!response.ok) throw new Error("Failed to upload image");
+      const result = await response.json();
+      contentToSend = "@@__claimRight_img__@@:" + result.imageUrl;
+
+      // Close the image preview modal after uploading
+      const imagePreviewModalEl = document.getElementById("imagePreviewModal");
+      const modalInstance = bootstrap.Modal.getInstance(imagePreviewModalEl);
+      if (modalInstance) modalInstance.hide();
+    }
+
+    // Send message via WebSocket
     const messageDTO = {
-      content: messageText || "",
+      content: contentToSend,
       claimId: 0,
       senderId: sender.userId,
       receiverId: receiverUser.userId,
@@ -304,38 +391,17 @@ async function sendMessageOrImage() {
       readAt: null
     };
 
-    const formData = new FormData();
-    formData.append("message", new Blob([JSON.stringify(messageDTO)], { type: "application/json" }));
-    if (selectedImageFile) {
-      formData.append("imageFile", selectedImageFile);
-    }
+    sendWebSocketMessage(messageDTO);
 
-    const response = await fetch(`${API_BASE_CHAT}/messages/send-message`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
-      },
-      body: formData
-    });
+    // Clear input and selected image
+    messageInput.value = "";
+    if (selectedImageFile) clearSelectedImage();
+    if (loadingOverlay) loadingOverlay.style.display = "none";
 
-    if (loadingOverlay) loadingOverlay.style.display = "none"; // hide overlay after send attempt
-
-    if (response.ok) {
-      messageInput.value = "";
-      if (selectedImageFile) {
-        const modal = bootstrap.Modal.getInstance(document.getElementById("imagePreviewModal"));
-        modal.hide();
-        clearSelectedImage();
-      }
-      selectUser(receiverUser.username);
-    } else {
-      const errorText = await response.text();
-      Swal.fire("Error", errorText || "Failed to send message.", "error");
-    }
   } catch (err) {
     if (loadingOverlay) loadingOverlay.style.display = "none";
     console.error(err);
-    Swal.fire("Network error", "Could not send message.", "error");
+    Swal.fire("Error", err.message, "error");
   }
 }
 
@@ -407,3 +473,14 @@ async function deleteMessage(messageId, receiverUsername) {
     }
   });
 }
+
+
+
+// // Clean up WebSocket connection when the page is closed or refreshed
+// window.addEventListener("beforeunload", () => {
+//   if (stompClient && stompClient.connected) {
+//     stompClient.disconnect(() => {
+//       console.log("WebSocket disconnected before page unload.");
+//     });
+//   }
+// });

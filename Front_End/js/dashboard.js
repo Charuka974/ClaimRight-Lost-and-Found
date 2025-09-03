@@ -62,7 +62,7 @@ function renderAllItems(items) {
 
     card.innerHTML = `
       <div class="item-type-tag ${item.type}-tag">${item.type === "found" ? "Found" : "Lost"}</div>
-      <img src="${item.imageUrl || '/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png'}" 
+      <img src="${item.imageUrl || '/Front_End/assets/images/noImageAvalable.png'}" 
            alt="${item.type} item image" class="${item.type}-item-image" />
       <div class="${item.type}-item-content">
         <h2 class="${item.type}-item-title">${item.itemName}</h2>
@@ -78,6 +78,7 @@ function renderAllItems(items) {
       </div>
     `;
     cardContainer.appendChild(card);
+    
   });
 }
 

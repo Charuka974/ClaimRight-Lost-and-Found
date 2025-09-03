@@ -31,4 +31,9 @@ public interface UserService {
     void changeUpdateUserRole(Long userId, String newRole);
 
     Page<UserDTO> getUsersPages(int page, int size);
+
+    boolean validateCurrentPassword(Long userId, String currentPassword);
+
+    void updatePassword(Long userId, String newPassword);
+
 }

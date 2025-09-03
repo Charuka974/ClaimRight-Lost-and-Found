@@ -50,6 +50,18 @@ body {
   box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
 }
 
+/* Pulse animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(78, 115, 223, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0);
+  }
+}
 
 /* Loading Animation */
 #loadingOverlay {
@@ -66,23 +78,6 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   pointer-events: all; /* ensure clicks don’t pass through */
-}
-
-
-
-
-
-/* Pulse animation */
-@keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 0 15px rgba(78, 115, 223, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(78, 115, 223, 0);
-  }
 }
 
 

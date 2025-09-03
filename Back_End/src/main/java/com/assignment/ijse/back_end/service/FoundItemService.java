@@ -22,4 +22,7 @@ public interface FoundItemService {
     List<FoundItemDTO> searchFoundItems(String keyword);
 
     FoundItemDTO markAsClaimed(Long id);
+
+    void deleteExpiredItems();
+
 }

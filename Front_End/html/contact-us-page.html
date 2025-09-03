@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaimRight - Contact Us</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/Front_End/css/navigation-bar.css">
+  <link rel="stylesheet" href="/Front_End/css/page-styles.css">
+  <link rel="stylesheet" href="/Front_End/css/contact-page.css">
+
+  <link rel="icon" href="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" type="image">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="main-content-container">
+    <!-- Contact Section -->
+    <section class="container py-5">
+      <div class="text-center mb-5 fade-in">
+        <h1 class="fw-bold text-primary">Contact Us</h1>
+        <p class="text-muted">Have a question or need help? We're just a message away.</p>
+      </div>
+
+      <div class="row g-5">
+        <!-- Contact Form -->
+        <div class="col-lg-7 fade-in">
+          <div class="p-4 rounded-4 shadow contact-card">
+            <h4 class="mb-4 fw-bold">Send us a message</h4>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="contactUsYourName" placeholder="Enter your name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="contactUsYourEmail" placeholder="Enter your email" required>
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="contactUsSubject" placeholder="Message subject" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="contactUsMessage" rows="5" placeholder="Write your message here..." required></textarea>
+              </div>
+              <button type="submit" class="fw-bold w-75 mx-auto d-block mt-4">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-5 fade-in">
+          <div class="p-4 rounded-4 shadow contact-card">
+            <h4 class="mb-4 fw-bold">Get in touch</h4>
+            <p><i class="bi bi-geo-alt-fill text-primary"></i> &nbsp; 123 ClaimRight Street, Your City</p>
+            <p><i class="bi bi-envelope-fill text-primary"></i> &nbsp; support@claimright.com</p>
+            <p><i class="bi bi-telephone-fill text-primary"></i> &nbsp; +1 (800) 123-4567</p>
+            <hr>
+            <h5 class="fw-bold">Follow us</h5>
+            <div class="d-flex gap-3 mt-2">
+              <a href="#" class="text-decoration-none text-primary fs-4"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-decoration-none text-primary fs-4"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-decoration-none text-primary fs-4"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-decoration-none text-primary fs-4"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <button class="floating-page-btn floating-chat-nav-btn" onclick="openChat()">
+    <i class="bi bi-chat-fill"></i>&nbsp;&nbsp;Chat
+  </button>
+
+  <div id="login-popup-container"></div>
+  <div id="edit-profile-container"></div>
+  <div id="footer-container"></div>    
+  <div id="loading-animation"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/Front_End/js/navigationBar.js"></script>
+  <script src="/Front_End/js/loginSignup.js"></script>
+  <script src="/Front_End/js/updateOwnProfile.js"></script>
+  <script src="/Front_End/js/contactUsPage.js"></script>
+</body>
+</html>
