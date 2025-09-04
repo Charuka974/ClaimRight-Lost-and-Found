@@ -84,6 +84,13 @@
    ```
    http://localhost:8080
    ```
+   
+7. Set up the application.properties at 
+
+   ```
+    src/main/resources/application.properties` with your database credentials:
+   ```
+
 
 ## Project Structure
 ```

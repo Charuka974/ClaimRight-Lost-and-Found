@@ -34,81 +34,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  connectWebSocket();
+  // connectWebSocket();
 
 });
-
-//----------------------------------------------------------------------------------------------------------------//
-let stompClient = null;
-
-function connectWebSocket() {
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  if (!loggedInUser) return;
-
-  const socket = new SockJS(`${API_CHAT_WEB_SOCKET}/ws-chat`);
-  stompClient = Stomp.over(socket);
-
-  stompClient.connect({}, () => {
-    console.log("Connected to WebSocket");
-
-    // Subscribe to messages for this user
-    stompClient.subscribe(`/topic/messages/${loggedInUser.userId}`, (msg) => {
-      const message = JSON.parse(msg.body);
-
-      // Show message if it's part of the current chat
-      if (
-        (window.selectedChatUserId === message.senderId) || 
-        (window.selectedChatUserId === message.receiverId)
-      ) {
-          appendMessageToChat(message);
-      } else {
-          showNewMessageNotification(message);
-      }
-    });
-
-  });
-}
-
-function sendWebSocketMessage(messageDTO, imageFile = null) {
-  if (!stompClient || !stompClient.connected) {
-    console.error("WebSocket not connected");
-    return;
-  }
-
-  if (imageFile) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const base64 = e.target.result;
-      messageDTO.content = "@@__claimRight_img__@@:" + base64;
-      stompClient.send("/app/send", {}, JSON.stringify(messageDTO));
-    };
-    reader.readAsDataURL(imageFile);
-  } else {
-    stompClient.send("/app/send", {}, JSON.stringify(messageDTO));
-  }
-}
-
-// Utility to append message to chat window
-function appendMessageToChat(msg) {
-  const chatMessages = document.getElementById("chatMessages");
-  const sender = JSON.parse(localStorage.getItem("loggedInUser"));
-  const msgDiv = document.createElement("div");
-  msgDiv.className = msg.senderId === sender.userId ? "message sent" : "message received";
-
-  if (msg.content.startsWith("@@__claimRight_img__@@:")) {
-    const img = document.createElement("img");
-    img.src = msg.content.replace("@@__claimRight_img__@@:", "");
-    img.className = "chat-image";
-    msgDiv.appendChild(img);
-  } else {
-    msgDiv.innerText = msg.content;
-  }
-
-  chatMessages.appendChild(msgDiv);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-//----------------------------------------------------------------------------------------------------------------//
 
 
 function toggleUserList() {
@@ -161,6 +89,7 @@ async function loadUsers() {
     window.allUsers = users;
 
     renderUserList(users);
+    connectWebSocket();
 
   } catch (err) {
     console.error("Failed to load users:", err);
@@ -209,7 +138,7 @@ function renderUserList(users) {
 
   users.forEach(user => {
     const isMe = loggedInUser && user.username === loggedInUser.username;
-    const roleTag = (user.role === 'ADMIN' || user.role === 'EMPLOYEE') ? ` (${user.role})` : '';
+    const roleTag = (user.role === 'ADMIN' || user.role === 'SEMI_ADMIN') ? ' (Admin)' : '';
     const meTag = isMe ? ' <span class="text-primary fw-bold">(Me)</span>' : '';
 
     const userDiv = document.createElement("div");
@@ -226,6 +155,8 @@ function renderUserList(users) {
 
     usersContainer.appendChild(userDiv);
   });
+
+  console.log("Users Loaded");
 }
 
 // Select users
@@ -333,6 +264,85 @@ async function selectUser(username, isPolling = false) {
     console.error("Error loading messages:", err);
   }
 }
+
+
+// Web Socket
+//----------------------------------------------------------------------------------------------------------------//
+let stompClient = null;
+
+function connectWebSocket() {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedInUser) return;
+
+  const socket = new SockJS(`${API_CHAT_WEB_SOCKET}/ws-chat`);
+  stompClient = Stomp.over(socket);
+
+  // Stop writing logs
+  stompClient.debug = () => {};
+
+  stompClient.connect({}, () => {
+    console.log("Connected to ClaimRight Chat");
+
+    // Subscribe to messages for this user
+    stompClient.subscribe(`/topic/messages/${loggedInUser.userId}`, (msg) => {
+      const message = JSON.parse(msg.body);
+
+      // Show message if it's part of the current chat
+      if (
+        (window.selectedChatUserId === message.senderId) || 
+        (window.selectedChatUserId === message.receiverId)
+      ) {
+          appendMessageToChat(message);
+      } else {
+          showNewMessageNotification(message);
+      }
+    });
+
+  });
+}
+
+function sendWebSocketMessage(messageDTO, imageFile = null) {
+  if (!stompClient || !stompClient.connected) {
+    console.error("WebSocket not connected");
+    return;
+  }
+
+  if (imageFile) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const base64 = e.target.result;
+      messageDTO.content = "@@__claimRight_img__@@:" + base64;
+      stompClient.send("/app/send", {}, JSON.stringify(messageDTO));
+    };
+    reader.readAsDataURL(imageFile);
+  } else {
+    stompClient.send("/app/send", {}, JSON.stringify(messageDTO));
+  }
+}
+
+// Utility to append message to chat window
+function appendMessageToChat(msg) {
+  const chatMessages = document.getElementById("chatMessages");
+  const sender = JSON.parse(localStorage.getItem("loggedInUser"));
+  const msgDiv = document.createElement("div");
+  msgDiv.className = msg.senderId === sender.userId ? "message sent" : "message received";
+
+  if (msg.content.startsWith("@@__claimRight_img__@@:")) {
+    const img = document.createElement("img");
+    img.src = msg.content.replace("@@__claimRight_img__@@:", "");
+    img.className = "chat-image";
+    msgDiv.appendChild(img);
+  } else {
+    msgDiv.innerText = msg.content;
+  }
+
+  chatMessages.appendChild(msgDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+//----------------------------------------------------------------------------------------------------------------//
+
+
 
 // Hide delete buttons when clicking outside any message
 document.addEventListener("click", () => {
