@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   const token = localStorage.getItem("accessToken");
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
+  const scannedUserId = localStorage.getItem("scannedUserId");
+
   // if (!token && !loggedInUser) {
   //   console.warn("Login first");
 
@@ -26,9 +28,19 @@ document.addEventListener("DOMContentLoaded", async function () {
   //   return;
   // }
 
-  
-  if (loggedInUser && loggedInUser.username) {
-    const self = window.allUsers?.find(u => u.username === loggedInUser.username);
+  // If we have a scanned user, select them
+  if (scannedUserId && window.allUsers) {
+    const scannedUser = window.allUsers.find(u => u.userId == scannedUserId);
+    if (scannedUser) {
+      // Select scanned user and update chat header
+      selectUser(scannedUser.username);
+    }
+
+    // Clear after use
+    localStorage.removeItem("scannedUserId");
+  } else if (loggedInUser && loggedInUser.username) {
+    // Otherwise, optionally select self for default view
+    const self = window.allUsers.find(u => u.username === loggedInUser.username);
     if (self) {
       selectUser(self.username);
     }
@@ -37,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // connectWebSocket();
 
 });
+
 
 
 function toggleUserList() {

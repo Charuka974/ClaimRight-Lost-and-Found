@@ -63,6 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
                       Chat
                     </a>
                   </li>
+                  <li><hr class="dropdown-divider" /></li>
+
+                  <li>
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/qr-code-page.html">
+                      <i class="bi bi-qr-code"></i>
+                      QR Codes
+                    </a>
+                  </li>
                 </ul>
               </li>
 

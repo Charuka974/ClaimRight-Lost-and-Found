@@ -124,7 +124,7 @@ public class AuthServiceImpl implements AuthService {
         String htmlContent = """
         <div style="background-color: #f8f9fc; padding: 30px; border-radius: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2e4374; max-width: 600px; margin: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
             <div style="text-align: center; margin-bottom: 20px;">
-                <img src="https://i.ibb.co/twfxkRqj/Chat-GPT-Image-Jul-24-2025-11-16-54-AM.png" alt="ClaimRight Logo" style="width: 100px; border-radius: 50%%; box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);" />
+                <img src="https://i.ibb.co/yFJ1PVNP/Chat-GPT-Image-Jul-24-2025-11-16-54-AM.png" alt="ClaimRight Logo" style="width: 100px; border-radius: 50%%; box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);" />
             </div>
             <h2 style="color: #2e4374; font-weight: 700;">Password Reset Request</h2>
             <p style="font-size: 16px; color: #333;">Hi there,</p>

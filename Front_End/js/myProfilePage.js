@@ -303,8 +303,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-
-
 });
 
+
+function openChat() {
+    window.location.href = "/Front_End/html/chat-page.html";
+}
+
+function openQRGenerator() {
+  window.location.href = "/Front_End/html/qr-code-page.html#qrGeneratorCard";
+}
 

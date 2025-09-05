@@ -1,0 +1,371 @@
+:root {
+  --primary: #4e73df;
+  --secondary: #1cc88a;
+  --accent: #36b9cc;
+  --dark: #2e4374;
+  --light: #f8f9fc;
+  --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+body {
+  background-color: var(--light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content-container .inner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+
+/* Floating Chat Button */
+.floating-page-btn {
+  position: fixed;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(78, 115, 223, 0.5);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.floating-page-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
+}
+
+#qrButton{
+  bottom: 150px;
+  right: 30px;
+}
+
+
+.main-content-container {
+  padding: 3rem 1rem;
+}
+
+.main-content-container h2 {
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* Card styling */
+.card {
+  border: none;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(78,115,223,0.25);
+}
+
+.card h4 {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Form inputs */
+input.form-control {
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+input.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(78,115,223,0.3);
+  outline: none;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(78,115,223,0.4);
+}
+
+.btn-success {
+  background: var(--secondary);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background: #17a673;
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(28,200,138,0.4);
+}
+
+/* QR Canvas */
+#qrCanvas {
+  padding: 10px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* QR Scanner */
+#reader {
+  width: 320px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(78, 115, 223, 0.25);
+  border: 3px solid var(--primary);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#reader:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(78, 115, 223, 0.35);
+}
+
+/* Optional: add a gradient border glow */
+#reader::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 18px;
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(8px);
+}
+
+/* === QR Scanner Container === */
+#reader {
+  width: 320px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(78, 115, 223, 0.25);
+  border: 3px solid var(--primary);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#reader:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(78, 115, 223, 0.35);
+}
+
+/* === Buttons inside QR scanner (Scan file, Start camera, Stop, etc.) === */
+#reader button {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#reader button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(78, 115, 223, 0.4);
+}
+
+/* === File input (Scan an Image File) === */
+#reader input[type="file"] {
+  display: block;
+  margin: 10px auto;
+  padding: 0.6rem;
+  border: 2px dashed var(--accent);
+  border-radius: 10px;
+  background: #f8f9fc;
+  color: var(--dark);
+  font-weight: 500;
+  transition: border-color 0.3s ease, 0.3s ease;
+}
+
+#reader input[type="file"]:hover {
+  border-color: var(--primary);
+  background: #eef3ff;
+}
+
+/* === Camera Permission Overlay === */
+#reader__dashboard_section_csr, 
+#reader__camera_permission_button {
+  text-align: center;
+}
+
+#reader__camera_permission_button {
+  background: var(--secondary) !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#reader__camera_permission_button:hover {
+  background: #17a673 !important;
+  box-shadow: 0 6px 15px rgba(28,200,138,0.4);
+  transform: scale(1.05);
+}
+
+#qrSannerCard{
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center buttons inside QR Generator card */
+#qrGeneratorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* space between elements */
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(78, 115, 223, 0.25);
+  padding: 2rem 1.5rem;
+}
+
+/* Input field */
+#qrGeneratorCard input.form-control {
+  max-width: 100%;
+  width: 320px;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+#qrGeneratorCard input.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(78,115,223,0.3);
+  outline: none;
+}
+
+/* Buttons */
+#qrGeneratorCard .btn {
+  width: 200px; /* fixed width for uniformity */
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#qrGeneratorCard .btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+}
+
+#qrGeneratorCard .btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(78,115,223,0.4);
+}
+
+#qrGeneratorCard .btn-success {
+  background: var(--secondary);
+  border: none;
+}
+
+#qrGeneratorCard .btn-success:hover {
+  background: #17a673;
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(28,200,138,0.4);
+}
+
+/* Canvas */
+#qrGeneratorCard #qrCanvas {
+  margin-top: 1rem;
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+
+.sticker-options-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f8f9fc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sticker-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.sticker-label input[type="color"],
+.sticker-label input[type="number"],
+.sticker-label input[type="file"] {
+    margin-left: 10px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.sticker-label input[type="color"]:hover,
+.sticker-label input[type="number"]:hover,
+.sticker-label input[type="file"]:hover {
+    border-color: #3498db;
+}
+
+#logoPreviewContainer {
+    text-align: center;
+}
+
+#logoPreview {
+    max-width: 150px;
+    max-height: 100px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    object-fit: contain;
+}

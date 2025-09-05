@@ -257,8 +257,6 @@ body {
 /* Floating Chat Button */
 .floating-page-btn {
   position: fixed;
-  bottom: 50px;
-  right: 30px;
   background: var(--gradient-primary);
   color: white;
   border: none;
@@ -276,6 +274,16 @@ body {
 .floating-page-btn:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
+}
+
+#qrButton{
+  bottom: 150px;
+  right: 30px;
+}
+
+#chatButton{
+  bottom: 50px;
+  right: 30px;
 }
 
 .custom-modal {
@@ -803,4 +811,21 @@ button.btn:hover {
 @keyframes spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+
+#EditingloadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1080; /* higher than Bootstrap modal (1055+) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  pointer-events: all; /* ensure clicks don’t pass through */
 }
