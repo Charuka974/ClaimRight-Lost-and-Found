@@ -1,0 +1,84 @@
+:root {
+  --gradient-primary: linear-gradient(90deg, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(90deg, #ff7e5f, #feb47b);
+  --text-dark: #222;
+  --text-muted: #6c757d;
+  --bg-light: #f8f9fa;
+}
+
+.main-content-container {
+  min-height: 100vh;
+}
+
+/* Security info modal */
+.secure-modal {
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.secure-modal-header {
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: bold;
+  padding: 15px 20px;
+}
+
+.secure-modal-footer {
+  padding: 12px 20px;
+}
+
+/* Text + icons inside modal */
+.secure-modal .modal-body p {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.secure-icon {
+  font-size: 1.3rem; /* larger icons */
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* Modal Title Styling */
+.secure-modal-header .modal-title {
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Secure Payment Info List */
+.secure-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.secure-icon {
+  font-size: 1.3rem;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+
+
+.floating-help-nav-btn {
+  bottom: 50px;
+  right: 30px;
+}
+
+.floating-secure-nav-btn {
+  bottom: 150px;
+  right: 30px;
+}
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

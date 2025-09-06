@@ -81,6 +81,16 @@ public class LostItemController {
         return ResponseEntity.ok(lostItems);
     }
 
+    @GetMapping("/item-id/{id}")
+    public ResponseEntity<LostItemDTO> getLostItemById(@PathVariable Long id) {
+        LostItemDTO item = lostItemService.getLostItemById(id);
+        if (item != null) {
+            return ResponseEntity.ok(item);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/owner/{ownerId}")
     public ResponseEntity<List<LostItemDTO>> getLostItemsByOwner(@PathVariable Long ownerId) {
         List<LostItemDTO> lostItems = lostItemService.getLostItemsByOwner(ownerId);

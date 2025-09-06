@@ -58,7 +58,6 @@ function renderAllItems(items) {
   items.forEach(item => {
     const card = document.createElement("div");
     card.className = item.type === "found" ? "found-item-card" : "lost-item-card";
-    card.dataset.date = item.date;
 
     card.innerHTML = `
       <div class="item-type-tag ${item.type}-tag">${item.type === "found" ? "Found" : "Lost"}</div>
@@ -67,20 +66,37 @@ function renderAllItems(items) {
       <div class="${item.type}-item-content">
         <h2 class="${item.type}-item-title">${item.itemName}</h2>
         <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
-        <p class="${item.type}-item-description">${item.type === "found" ? item.generalDescription : item.detailedDescription}</p>
+        <p class="${item.type}-item-description">${item.type === "found" ? (item.generalDescription || "") : (item.detailedDescription || "")}</p>
+        
+        <!-- Reward display for lost items -->
+        ${item.type === "lost" && item.reward ? `<p class="${item.type}-item-meta"><strong>Reward:</strong> $${parseFloat(item.reward).toFixed(2)}</p>` : ''}
+
         <p class="${item.type}-item-meta"><strong>${item.type === "found" ? "Found On:" : "Lost On:"}</strong> ${item.date ? new Date(item.date).toLocaleDateString() : 'N/A'}</p>
-        <p class="${item.type}-item-meta"><strong>Location:</strong> ${item.type === "found" ? item.locationFound : item.locationLost}</p>
-        <p class="${item.type}-item-meta"><strong>${item.type === "found" ? "Finder:" : "Owner:"}</strong> ${item.type === "found" ? item.finderName : item.ownerName || 'Unknown'}</p>
+        <p class="${item.type}-item-meta"><strong>Location:</strong> ${item.type === "found" ? item.locationFound || 'N/A' : item.locationLost || 'N/A'}</p>
+        <p class="${item.type}-item-meta"><strong>${item.type === "found" ? "Finder:" : "Owner:"}</strong> ${item.type === "found" ? (item.finderName || 'Unknown') : (item.ownerName || 'Unknown')}</p>
         <div class="categories">
-          ${item.categoryNames.map(cat => `<span class="category-badge">${cat}</span>`).join('')}
+          ${(item.categoryNames || []).map(cat => `<span class="category-badge">${cat}</span>`).join('')}
         </div>
-        <button class="respond-btn">${item.type === "found" ? "Claim Item" : "Respond"}</button>
+        <button class="respond-btn" 
+                data-id="${item.id}" 
+                data-type="${item.type}">
+          ${item.type === "found" ? "Claim Item" : "Respond"}
+        </button>
       </div>
     `;
+
     cardContainer.appendChild(card);
-    
+
+    // Attach click listener directly
+    const button = card.querySelector(".respond-btn");
+    button.addEventListener("click", function() {
+      const itemId = this.getAttribute("data-id");
+      const itemType = this.getAttribute("data-type");
+      window.location.href = `/Front_End/html/claim-respond-page.html?type=${itemType}&id=${itemId}`;
+    });
   });
 }
+
 
 function filterItems(searchTerm) {
   const filtered = allItemsData.filter(item => {

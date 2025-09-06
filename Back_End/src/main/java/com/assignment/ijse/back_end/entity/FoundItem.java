@@ -45,6 +45,9 @@ public class FoundItem {
     @Column(nullable = false)
     private Boolean isActive = true; // default true
 
+    @Column(nullable = false)
+    private Integer priority = 0; // 0 = low, 1 = medium, 2 = high
+
     @PrePersist
     protected void onCreate() {
         postedAt = LocalDateTime.now();

@@ -139,7 +139,7 @@ body {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
-  padding: 2rem;
+  /* padding: 2rem; */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -147,6 +147,10 @@ body {
   scrollbar-color: var(--primary) transparent;
 }
 
+.custom-modal {
+  border: none !important;
+}
+ 
 /* Notifications */
 .notifications {
   flex: 1 1 30%;
@@ -828,4 +832,48 @@ button.btn:hover {
   font-weight: 600;
   font-size: 1.2rem;
   pointer-events: all; /* ensure clicks don’t pass through */
+}
+
+/* Responsive Item Cards */
+@media (max-width: 992px) {
+  .lost-item-card,
+  .found-item-card {
+    flex-direction: column;
+    max-width: 100%; /* take full width */
+  }
+
+  .lost-item-image,
+  .found-item-image {
+    width: 100%;
+    height: auto;
+    /* max-height: 250px;  */
+    /* border-radius: 12px 12px 0 0;  */
+  }
+
+  .lost-item-content,
+  .found-item-content {
+    padding: 1.2rem 1rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 576px) {
+  .lost-item-title,
+  .found-item-title {
+    font-size: 1.3rem;
+  }
+
+  .lost-item-description,
+  .found-item-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .edit-lost-item-btn,
+  .edit-found-item-btn,
+  .delete-lost-item-btn,
+  .delete-found-item-btn {
+    width: 100%; /* full width buttons */
+    margin-top: 0.6rem;
+  }
 }

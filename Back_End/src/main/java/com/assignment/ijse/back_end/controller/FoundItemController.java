@@ -81,6 +81,16 @@ public class FoundItemController {
         return ResponseEntity.ok(foundItems);
     }
 
+    @GetMapping("/item-id/{id}")
+    public ResponseEntity<FoundItemDTO> getFoundItemById(@PathVariable Long id) {
+        FoundItemDTO item = foundItemService.getFoundItemById(id);
+        if (item != null) {
+            return ResponseEntity.ok(item);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/finder/{finderId}")
     public ResponseEntity<List<FoundItemDTO>> getFoundItemsByFinder(@PathVariable Long finderId) {
         List<FoundItemDTO> foundItems = foundItemService.getFoundItemsByFinder(finderId);

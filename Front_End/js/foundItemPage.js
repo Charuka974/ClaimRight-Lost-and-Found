@@ -46,32 +46,44 @@ async function loadFoundItems() {
 
 // --- Render Found Items ---
 function renderFoundItems(foundItems) {
-    const container = document.querySelector(".main-content-container");
-    container.innerHTML = "";
+  const container = document.querySelector(".main-content-container");
+  container.innerHTML = "";
 
-    foundItems.forEach(item => {
-        const foundItemCard = document.createElement("div");
-        foundItemCard.className = "found-item-card";
+  foundItems.forEach(item => {
+    const foundItemCard = document.createElement("div");
+    foundItemCard.className = "found-item-card";
 
-        foundItemCard.innerHTML = `
-            <img src="${item.imageUrl || '/Front_End/assets/images/noImageAvalable.png'}" alt="Found item image" class="found-item-image" />
-            <div class="found-item-content">
-                <h2 class="found-item-title">${item.itemName}</h2>
-                <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
-                <p class="found-item-description">${item.generalDescription}</p>
-                <p class="found-item-meta"><strong>Found On:</strong> ${item.dateFound ? new Date(item.dateFound).toLocaleDateString() : 'N/A'}</p>
-                <p class="found-item-meta"><strong>Location:</strong> ${item.locationFound}</p>
-                <p class="found-item-meta"><strong>Finder:</strong> ${item.finderName || 'Unknown'}</p>
-                <div class="categories">
-                    ${item.categoryNames.map(cat => `<span class="category-badge">${cat}</span>`).join('')}
-                </div>
-                <button class="respond-btn">Claim Item</button>
-            </div>
-        `;
+    foundItemCard.innerHTML = `
+      <img src="${item.imageUrl || '/Front_End/assets/images/noImageAvalable.png'}" alt="Found item image" class="found-item-image" />
+      <div class="found-item-content">
+        <h2 class="found-item-title">${item.itemName}</h2>
+        <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
+        <p class="found-item-description">${item.generalDescription}</p>
+        <p class="found-item-meta"><strong>Found On:</strong> ${item.dateFound ? new Date(item.dateFound).toLocaleDateString() : 'N/A'}</p>
+        <p class="found-item-meta"><strong>Location:</strong> ${item.locationFound}</p>
+        <p class="found-item-meta"><strong>Finder:</strong> ${item.finderName || 'Unknown'}</p>
+        <div class="categories">
+          ${item.categoryNames.map(cat => `<span class="category-badge">${cat}</span>`).join('')}
+        </div>
+        <button class="respond-btn" 
+                data-id="${item.id}" 
+                data-type="found">
+          Claim Item
+        </button>
+      </div>
+    `;
 
-        container.appendChild(foundItemCard);
+    // attach event listener per card
+    foundItemCard.querySelector(".respond-btn").addEventListener("click", function() {
+      const itemId = this.getAttribute("data-id");
+      const itemType = this.getAttribute("data-type");
+      window.location.href = `/Front_End/html/claim-respond-page.html?type=${itemType}&id=${itemId}`;
     });
+
+    container.appendChild(foundItemCard);
+  });
 }
+
 
 // --- Report Found Item Form Submit ---
 const loadingOverlay = document.getElementById("loadingOverlay");

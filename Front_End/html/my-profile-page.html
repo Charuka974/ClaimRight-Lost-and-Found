@@ -133,7 +133,7 @@
 
                     <!-- Change Password Modal -->
                     <div id="change-password-modal" class="custom-modal d-none">
-                        <h4 class="text-center">Change Password</h4>
+                        <h4 class="text-center fw-bold">Change Password</h4>
                         <form id="changePasswordForm">
                             
                             <!-- Current Password -->
@@ -176,7 +176,7 @@
 
                     <!-- My Claims Modal -->
                     <div id="my-claims-modal" class="custom-modal d-none">
-                        <h4 class="text-center">My Claims</h4>
+                        <h4 class="text-center fw-bold">My Claims</h4>
                         <ul class="list-group">
                         <li class="list-group-item">Black Backpack - Submitted</li>
                         <li class="list-group-item">AirPods - Approved</li>
@@ -186,14 +186,14 @@
 
                     <!-- My Lost Items Modal -->
                     <div id="my-lost-items-modal" class="custom-modal d-none">
-                        <h4 class="text-center">My Lost Items</h4>
+                        <h4 class="text-center fw-bold">My Lost Items</h4>
                         <div id="myLostItemContainer">
                         </div>
                     </div>
 
                     <!-- My Found Items Modal -->
                     <div id="my-found-items-modal" class="custom-modal d-none">
-                        <h4 class="text-center">My Found Items</h4>
+                        <h4 class="text-center fw-bold">My Found Items</h4>
                         <div id="myFoundItemContainer">
                         </div>
                     </div>
@@ -271,7 +271,7 @@
     <div id="editMyItemModal" class="modal" style="display:none;">
         <div class="modal-content" style="max-width: 500px; margin: 10% auto; padding: 20px; background: white; border-radius: 8px; position: relative;">
             <span class="close" id="editCloseBtn" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer;">&times;</span>
-            <h3>Edit Item</h3>
+            <h3 class="fw-bold">Edit Item</h3>
             <form id="editItemForm" enctype="multipart/form-data">
             <input type="hidden" id="editItemId">
             <input type="hidden" id="editItemType">
@@ -316,6 +316,10 @@
                 </div>
             </div>
 
+            <div id="editItemRewardContainer" class="mb-3">
+                <label for="editItemReward" class="form-label">Reward For Lost Item (Optional)</label>
+                <input type="number" id="editItemReward" name="reward" class="form-control" step="0.01" min="0" placeholder="Enter reward amount">
+            </div>
 
             <div class="mb-3">
                 <label for="editSelectCategory" class="form-label">Select Category</label>

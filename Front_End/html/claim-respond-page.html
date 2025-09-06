@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaimRight - Claim Respond</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/Front_End/css/navigation-bar.css">
+  <link rel="stylesheet" href="/Front_End/css/page-styles.css">
+  <link rel="stylesheet" href="/Front_End/css/claim-respond-page.css">
+
+  <link rel="icon" href="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" type="image">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="page-header-container text-center">
+    <h1 id="page-header-title" class="display-5"></h1>
+    <p id="page-header-subtitle" class="text-muted"></p>
+  </div>
+
+
+  <div class="main-content-container">
+    
+  </div>
+
+  <button class="floating-page-btn floating-chat-nav-btn" onclick="openFloatOption()">
+    <i class="bi bi-chat-fill"></i>&nbsp;&nbsp;Chat
+  </button>
+
+  <div id="loadingOverlay" 
+        style="display: none">
+        
+        <div style="padding: 20px 30px; border-radius: 10px; text-align: center;">
+            <div class="spinner" 
+                style="width: 40px; height: 40px; border: 4px solid #ddd; border-top: 4px solid #3498db; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;">
+            </div>
+            <p style="margin-top: 10px; font-size: 16px;">Sending...</p>
+        </div>
+  </div>
+
+
+    <div id="login-popup-container"></div>
+    <div id="edit-profile-container"></div>
+    <div id="footer-container"></div>    
+    <div id="loading-animation"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Front_End/js/claimRespond.js"></script>
+    <script src="/Front_End/js/navigationBar.js"></script>
+    <script src="/Front_End/js/loginSignup.js"></script>
+    <script src="/Front_End/js/updateOwnProfile.js"></script>
+    
+</body>
+</html>

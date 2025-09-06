@@ -58,15 +58,31 @@ function renderLostItems(lostItems) {
         <h2 class="lost-item-title">${item.itemName}</h2>
         <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
         <p class="lost-item-description">${item.detailedDescription}</p>
+        
+        ${item.reward ? `<p class="lost-item-meta"><strong>Reward:</strong> $${parseFloat(item.reward).toFixed(2)}</p>` : ''}
+
         <p class="lost-item-meta"><strong>Lost On:</strong> ${item.dateLost ? new Date(item.dateLost).toLocaleDateString() : 'N/A'}</p>
         <p class="lost-item-meta"><strong>Location:</strong> ${item.locationLost}</p>
         <p class="lost-item-meta"><strong>Owner:</strong> ${item.ownerName || 'Unknown'}</p>
+        
         <div class="categories">
           ${item.categoryNames.map(cat => `<span class="category-badge">${cat}</span>`).join('')}
         </div>
-        <button class="respond-btn">Respond</button>
+        <button class="respond-btn" 
+                data-id="${item.id}" 
+                data-type="lost">
+          Respond
+        </button>
       </div>
     `;
+
+    // attach event listener per card
+    lostItemCard.querySelector(".respond-btn").addEventListener("click", function() {
+      const itemId = this.getAttribute("data-id");
+      const itemType = this.getAttribute("data-type");
+      window.location.href = `/Front_End/html/claim-respond-page.html?type=${itemType}&id=${itemId}`;
+    });
+
     container.appendChild(lostItemCard);
   });
 }
@@ -87,6 +103,7 @@ reportForm.addEventListener("submit", async (e) => {
       detailedDescription: reportForm.detailedDescription.value,
       locationLost: reportForm.locationLost.value,
       dateLost: reportForm.dateLost.value ? new Date(reportForm.dateLost.value).toISOString() : null,
+      reward: reportForm.reward.value ? parseFloat(reportForm.reward.value) : null,
       categoryIds: Array.from(selectedCategories),
       ownerId: loggedUser ? loggedUser.userId : null
     };

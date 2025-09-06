@@ -160,6 +160,7 @@ public class FoundItemServiceImpl implements FoundItemService {
                 .categories(categories)
                 .isClaimed(dto.getIsClaimed() != null ? dto.getIsClaimed() : false)
                 .isActive(true) // New items are active by default
+                .priority(dto.getPriority() != null ? dto.getPriority() : 0)
                 .build();
     }
 
@@ -181,6 +182,7 @@ public class FoundItemServiceImpl implements FoundItemService {
                         entity.getCategories().stream().map(Category::getName).toList() : null)
                 .isClaimed(entity.getIsClaimed())
                 .isActive(entity.getIsActive())
+                .priority(entity.getPriority())
                 .build();
     }
 

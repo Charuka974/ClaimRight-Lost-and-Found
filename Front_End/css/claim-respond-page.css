@@ -1,0 +1,188 @@
+:root {
+  --gradient-primary: linear-gradient(90deg, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(90deg, #ff7e5f, #feb47b);
+  --text-dark: #222;
+  --text-muted: #6c757d;
+  --bg-light: #f8f9fa;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+.main-content-container {
+  min-height: 100vh;
+}
+
+.page-header-container {
+  background: #f8f9fa;
+  padding: 20px 15px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.page-header-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.page-header-container p {
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.floating-chat-nav-btn {
+  bottom: 50px;
+  right: 30px;
+}
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+} 
+
+
+/* Loading item styles */
+.claim-respond-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.claim-respond-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+.claim-respond-content {
+    width: 100%;
+}
+
+.claim-respond-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.claimed-badge {
+  background: #dc3545;
+  color: white;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.claim-respond-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.claim-respond-meta {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.categories {
+  margin-top: 12px;
+}
+
+/* Base respond button */
+.respond-action-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-size: 200% 200%;
+  width: 80%;
+}
+
+/* Category badges */
+.category-badge {
+  display: inline-block;
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin: 3px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Found type */
+.found-btn, .found-badge {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  animation: gradientShiftFound 2s linear infinite, glowPulseFound 1.5s ease-in-out infinite;
+}
+
+.found-btn:hover, .found-badge:hover {
+  animation: gradientShiftFound 1.5s linear infinite, glowPulseFound 1.2s ease-in-out infinite, wiggle 0.5s ease-in-out;
+  transform: scale(1.08) rotate(0deg);
+}
+
+/* Lost type */
+.lost-btn, .lost-badge {
+  background: linear-gradient(90deg, #4e73df, #36b9cc);
+  animation: gradientShift 2s linear infinite, glowPulse 1.5s ease-in-out infinite;
+}
+
+.lost-btn:hover, .lost-badge:hover {
+  animation: gradientShift 1.5s linear infinite, glowPulse 1.2s ease-in-out infinite, wiggle 0.5s ease-in-out;
+  transform: scale(1.08) rotate(0deg);
+}
+
+/* Keyframes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientShiftFound {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(78, 115, 223, 0.6); }
+  50% { box-shadow: 0 0 20px rgba(78, 115, 223, 0.9); }
+}
+
+@keyframes glowPulseFound {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 126, 95, 0.6); }
+  50% { box-shadow: 0 0 20px rgba(255, 126, 95, 0.9); }
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}

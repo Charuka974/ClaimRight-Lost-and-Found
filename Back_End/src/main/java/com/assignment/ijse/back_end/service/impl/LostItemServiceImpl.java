@@ -41,34 +41,38 @@ public class LostItemServiceImpl implements LostItemService {
         LostItem existing = lostItemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Lost item not found"));
 
+        // Update basic fields
         existing.setItemName(lostItemDTO.getItemName());
         existing.setDetailedDescription(lostItemDTO.getDetailedDescription());
-
-        // Only update image if a new one is provided
-        if (lostItemDTO.getImageUrl() != null) {
-            existing.setImageUrl(lostItemDTO.getImageUrl());
-        }
-
         existing.setDateLost(lostItemDTO.getDateLost());
         existing.setLocationLost(lostItemDTO.getLocationLost());
+        existing.setReward(lostItemDTO.getReward() != null ? java.math.BigDecimal.valueOf(lostItemDTO.getReward()) : null);
 
+        // Update claimed status if provided
         if (lostItemDTO.getIsClaimed() != null) {
             existing.setIsClaimed(lostItemDTO.getIsClaimed());
         }
 
+        // Update image only if new URL provided
+        if (lostItemDTO.getImageUrl() != null) {
+            existing.setImageUrl(lostItemDTO.getImageUrl());
+        }
+
+        // Update categories if provided
         if (lostItemDTO.getCategoryIds() != null) {
             List<Category> categories = categoryRepository.findAllById(lostItemDTO.getCategoryIds());
             existing.setCategories(categories);
         }
 
+        // Update owner if provided
         if (lostItemDTO.getOwnerId() != null) {
             User owner = userRepository.findById(lostItemDTO.getOwnerId())
                     .orElseThrow(() -> new RuntimeException("Owner not found"));
             existing.setOwner(owner);
         }
-
         return mapToDTO(lostItemRepository.save(existing));
     }
+
 
 
     @Override
@@ -147,6 +151,8 @@ public class LostItemServiceImpl implements LostItemService {
                         : List.of())
                 .isClaimed(entity.getIsClaimed())
                 .isActive(entity.getIsActive())
+                .reward(entity.getReward() != null ? entity.getReward().doubleValue() : null)
+                .priority(entity.getPriority())
                 .build();
     }
 
@@ -160,6 +166,8 @@ public class LostItemServiceImpl implements LostItemService {
                 .locationLost(dto.getLocationLost())
                 .isClaimed(dto.getIsClaimed() != null ? dto.getIsClaimed() : false)
                 .isActive(true) // New items are active by default
+                .reward(dto.getReward() != null ? java.math.BigDecimal.valueOf(dto.getReward()) : null)
+                .priority(dto.getPriority() != null ? dto.getPriority() : 0)
                 .build();
 
         // Map category IDs to actual Category entities if provided

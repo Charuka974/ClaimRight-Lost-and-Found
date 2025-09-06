@@ -3,6 +3,7 @@ package com.assignment.ijse.back_end.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -43,6 +44,12 @@ public class LostItem {
 
     @Column(nullable = false)
     private Boolean isActive = true; // default true
+
+    @Column(nullable = true, precision = 10, scale = 2)
+    private BigDecimal reward;
+
+    @Column(nullable = false)
+    private Integer priority = 0; // 0 = low, 1 = medium, 2 = high
 
     @PrePersist
     protected void onCreate() {

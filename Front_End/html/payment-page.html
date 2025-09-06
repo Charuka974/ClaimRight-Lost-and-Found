@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaimRight - Payments</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/Front_End/css/navigation-bar.css">
+  <link rel="stylesheet" href="/Front_End/css/page-styles.css">
+  <link rel="stylesheet" href="/Front_End/css/payment-page.css">
+
+  <link rel="icon" href="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" type="image">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="main-content-container">
+
+  </div>
+
+  <!-- Secure Payment Info Modal -->
+  <div class="modal fade" id="securePaymentModal" tabindex="-1" aria-labelledby="securePaymentLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content secure-modal">
+        <!-- Header -->
+        <div class="modal-header secure-modal-header d-flex justify-content-between align-items-center">
+          <i class="bi bi-shield-lock-fill fs-4"></i>
+          <h5 class="modal-title mx-auto" id="securePaymentLabel">
+            Secure Payment Information
+          </h5>
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+            <ul class="list-unstyled secure-list">
+              <li>
+                <i class="bi bi-shield-lock-fill secure-icon text-primary"></i>
+                <strong>SSL Encryption:</strong> All transactions are encrypted using SSL (Secure Socket Layer) to protect your sensitive information.
+              </li>
+              <li>
+                <i class="bi bi-lock-fill secure-icon text-success"></i>
+                <strong>No Storage of Card Data:</strong> We never store your credit or debit card details on our servers.
+              </li>
+              <li>
+                <i class="bi bi-shield-check secure-icon text-info"></i>
+                <strong>Trusted Providers:</strong> Payments are processed via leading gateways such as <strong>Stripe</strong> and <strong>PayPal</strong>.
+              </li>
+              <li>
+                <i class="bi bi-credit-card-2-front-fill secure-icon text-warning"></i>
+                <strong>Multiple Payment Options:</strong> Pay safely with Visa, MasterCard, or digital wallets.
+              </li>
+              <li>
+                <i class="bi bi-person-check-fill secure-icon text-danger"></i>
+                <strong>Buyer Protection:</strong> You are protected in case of disputes or failed transactions.
+              </li>
+            </ul>
+            <p class="text-muted small mt-2">
+              Have questions? Our support team is available 24/7 to assist you.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer secure-modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="/Front_End/html/chat-page.html" class="btn btn-primary">
+            <i class="bi bi-chat-dots-fill"></i> Contact Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button class="floating-page-btn floating-help-nav-btn" onclick="openFloatOptionHelp()">
+    <i class="bi bi-question-circle-fill"></i>&nbsp;&nbsp;Need Help?
+  </button>
+
+  <button class="floating-page-btn floating-secure-nav-btn" onclick="openFloatOptionSecure()">
+    <i class="bi bi-shield-lock-fill"></i>&nbsp;&nbsp;Secure Payment Info
+  </button>
+
+  <div id="loadingOverlay" 
+        style="display: none">
+        
+        <div style="padding: 20px 30px; border-radius: 10px; text-align: center;">
+            <div class="spinner" 
+                style="width: 40px; height: 40px; border: 4px solid #ddd; border-top: 4px solid #3498db; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;">
+            </div>
+            <p style="margin-top: 10px; font-size: 16px;">Loading...</p>
+        </div>
+  </div>
+
+    <div id="login-popup-container"></div>
+    <div id="edit-profile-container"></div>
+    <div id="footer-container"></div>    
+    <div id="loading-animation"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Front_End/js/paymentPage.js"></script>
+    <script src="/Front_End/js/navigationBar.js"></script>
+    <script src="/Front_End/js/loginSignup.js"></script>
+    <script src="/Front_End/js/updateOwnProfile.js"></script>
+    
+</body>
+</html>

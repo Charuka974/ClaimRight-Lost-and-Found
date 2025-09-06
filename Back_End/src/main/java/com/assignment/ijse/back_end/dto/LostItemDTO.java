@@ -30,4 +30,7 @@ public class LostItemDTO {
     private Boolean isClaimed;
 
     private Boolean isActive;
+
+    private Double reward; // Changed to Double for simplicity in DTO
+    private Integer priority; // 0 = low, 1 = medium, 2 = high
 }

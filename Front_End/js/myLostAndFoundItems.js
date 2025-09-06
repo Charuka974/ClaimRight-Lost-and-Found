@@ -67,7 +67,7 @@ function renderItems(items, container, type) {
         container.innerHTML = `<p class="no-items-message">No ${type} items yet.</p>`;
         return;
     }
-
+ 
     items.forEach(item => {
         const card = document.createElement("div");
         card.className = `${type}-item-card`;
@@ -82,6 +82,9 @@ function renderItems(items, container, type) {
                 <p class="${type}-item-meta"><strong>${type === "lost" ? "Lost On" : "Found On"}:</strong> ${item.dateLost || item.dateFound ? new Date(item.dateLost || item.dateFound).toLocaleDateString() : 'N/A'}</p>
                 <p class="${type}-item-meta"><strong>Location:</strong> ${item.locationLost || item.locationFound}</p>
                 <p class="${type}-item-meta"><strong>${type === "lost" ? "Owner" : "Finder"}:</strong> ${item.ownerName || item.finderName || 'Unknown'}</p>
+                ${type === "lost" && item.reward
+                ? `<p class="${type}-item-meta"><strong>Reward:</strong> $${parseFloat(item.reward).toFixed(2)}</p>`
+                : ''}
                 <div class="categories">
                     ${item.categoryNames.map(cat => `<span class="category-badge">${cat}</span>`).join('')}
                 </div>
@@ -256,7 +259,6 @@ function populateEditModalCategories(itemCategoryIds) {
 const editMyItemModal = document.getElementById("editMyItemModal");
 const editCloseBtn = document.getElementById("editCloseBtn");
 
-// Open modal function (reuse from your previous code)
 // Open modal function
 async function openEditModal(item, type) {
     editMyItemModal.style.display = "block";
@@ -268,6 +270,15 @@ async function openEditModal(item, type) {
     document.getElementById("editItemLocation").value = item.locationLost || item.locationFound;
     document.getElementById("editItemDate").value = (item.dateLost || item.dateFound) ? new Date(item.dateLost || item.dateFound).toISOString().split("T")[0] : "";
 
+    // Populate reward for lost items
+    const rewardContainer = document.getElementById("editItemRewardContainer");
+    if (type === "lost") {
+        rewardContainer.style.display = "block"; // show for lost items
+        document.getElementById("editItemReward").value = item.reward ? parseFloat(item.reward).toFixed(2) : "";
+    } else {
+        rewardContainer.style.display = "none"; // hide for found items
+    }
+
     // Show image preview if available
     if (item.imageUrl) {
         editImagePreview.src = item.imageUrl;
@@ -276,10 +287,8 @@ async function openEditModal(item, type) {
         editImagePreviewContainer.style.display = "none";
     }
 
-    // --- Load categories and populate modal ---
-    await loadCategories(); // fetch categories from backend
-
-    // Populate selected categories for this item
+    // Load categories and populate selected ones
+    await loadCategories();
     populateEditModalCategories(item.categoryIds || []);
 }
 
@@ -318,12 +327,18 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
         locationLost: type === "lost" ? document.getElementById("editItemLocation").value : undefined,
         locationFound: type === "found" ? document.getElementById("editItemLocation").value : undefined,
         dateLost: type === "lost" 
-        ? document.getElementById("editItemDate").value + "T" + (document.getElementById("editItemTime").value || "00:00") + ":00" 
-        : undefined,
+            ? document.getElementById("editItemDate").value + "T" + (document.getElementById("editItemTime").value || "00:00") + ":00" 
+            : undefined,
         dateFound: type === "found" 
-        ? document.getElementById("editItemDate").value + "T" + (document.getElementById("editItemTime").value || "00:00") + ":00" 
+            ? document.getElementById("editItemDate").value + "T" + (document.getElementById("editItemTime").value || "00:00") + ":00" 
+            : undefined,
+        isClaimed: document.getElementById("editItemIsClaimed") ? document.getElementById("editItemIsClaimed").checked : false,
+
+        // Add reward for lost items
+        reward: type === "lost" 
+        ? (document.getElementById("editItemReward").value ? parseFloat(document.getElementById("editItemReward").value) : null) 
         : undefined,
-        isClaimed: document.getElementById("editItemIsClaimed") ? document.getElementById("editItemIsClaimed").checked : false
+        categoryIds: Array.from(selectedCategories)
     };
 
     const partName = type === "lost" ? "lostItem" : "foundItem";
@@ -349,8 +364,6 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
 
         Swal.fire({ icon: 'success', title: 'Updated!', text: 'Item updated successfully.', timer: 1500, showConfirmButton: false });
         editItemModal.style.display = "none";
-
-        editItemModal.style.display = "none";
         reloadFn();
 
         // Reset form and clear old image
@@ -366,7 +379,6 @@ document.getElementById("editItemForm").addEventListener("submit", async (e) => 
         if (loadingScreen) loadingScreen.style.display = "none";
     }
 });
-
 
 
 // Edit modal Image 

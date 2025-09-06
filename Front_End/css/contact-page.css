@@ -106,25 +106,6 @@ form button:hover {
   -webkit-text-fill-color: transparent;
 }
 
-/* Floating Chat Button */
-.floating-page-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--gradient-primary);
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 50px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.floating-page-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-}
-
 /* Animations */
 .fade-in {
   opacity: 0;

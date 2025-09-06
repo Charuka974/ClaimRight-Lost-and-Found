@@ -31,4 +31,6 @@ public class FoundItemDTO {
     private Boolean isClaimed;
 
     private Boolean isActive;
+
+    private Integer priority; // 0 = low, 1 = medium, 2 = high
 }

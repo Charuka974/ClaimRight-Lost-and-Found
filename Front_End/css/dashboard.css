@@ -1,9 +1,18 @@
 :root {
   --gradient-primary: linear-gradient(to right, #4e73df, #36b9cc);
-  --gradient-orange: linear-gradient(to right, #ff7e5f, #feb47b); /* warm orange gradient for found items */
+  --gradient-orange: linear-gradient(to right, #ff7e5f, #feb47b);
 }
 
+/* Global reset & box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+/* --------------------------------------------------------------------------------------------------------------- */
 /* Header */
 .brand-header {
   text-align: center;
@@ -22,7 +31,6 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  /* border-color: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); */
 }
 
 .brand-logo img {
@@ -47,8 +55,7 @@
   font-weight: bold;
 }
 
-
-/* Floating Button */
+/* Floating Buttons */
 .floating-user-nav-btn {
   top: 100px;
   right: 30px;
@@ -60,21 +67,21 @@
 }
 
 /* --------------------------------------------------------------------------------------------------------------- */
-
-
-/* Main content container layout */
+/* Main content container */
 .main-content-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
 
-/* ---------- Lost Item Card ---------- */
-/* ---------- Found Item Card ---------- */
+/* --------------------------------------------------------------------------------------------------------------- */
 /* Common card styles */
+/* Base card sizing */
 .lost-item-card,
 .found-item-card {
   display: flex;
@@ -82,66 +89,91 @@
   align-items: stretch;
   background: white;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  overflow: visible;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  flex: 1 1 45%;
-  max-width: 45%;
-  min-width: 280px;
-  margin-bottom: 20px;
-  position: relative; /* for absolute child elements like badges */
   border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;     /* keep a nice cap for desktop */
+  flex: 1 1 48%;        /* allow 2 cards per row */
+  margin-bottom: 16px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover / active effect */
 .lost-item-card:hover,
 .found-item-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
 }
 
-/* Image */
+/* --------------------------------------------------------------------------------------------------------------- */
+/* Card images */
 .lost-item-image,
 .found-item-image {
-  flex: 0 0 40%;
-  max-width: 300px;
-  max-height: 300px;
-  width: 100%;
-  height: 100%;
+  width: 40%;
+  max-width: 250px;
+  height: auto;
   object-fit: cover;
   border-radius: 12px;
   animation: float 4s ease-in-out infinite;
 }
+
 .lost-item-image {
-  box-shadow: 
-    0 12px 30px rgba(78, 115, 223, 0.7), /* main shadow */
-    0 6px 20px rgba(54, 185, 204, 0.5);   /* secondary glow */
+  box-shadow:
+    0 12px 30px rgba(78, 115, 223, 0.7),
+    0 6px 20px rgba(54, 185, 204, 0.5);
 }
+
 .found-item-image {
-  box-shadow: 
+  box-shadow:
     0 12px 30px rgba(255, 126, 95, 0.7),
     0 6px 20px rgba(254, 180, 123, 0.5);
 }
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-6px); }
 }
 
-/* Content */
+/* --------------------------------------------------------------------------------------------------------------- */
+/* Card content */
+/* Main content container - fix spacing */
 .lost-item-content,
 .found-item-content {
   flex: 1 1 60%;
   padding: 1.8rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0.75rem; /* natural spacing instead of space-between */
   color: #333;
   overflow-wrap: break-word;
   background: white;
   border-radius: 12px;
 }
 
-/* Titles */
+/* Override only for very small screens */
+@media (max-width: 768px) {
+  .lost-item-card,
+  .found-item-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 465px) {
+  .lost-item-card,
+  .found-item-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .lost-item-image,
+  .found-item-image {
+    max-width: 100%;
+  }
+}
+
+
 .lost-item-title,
 .found-item-title {
   font-size: 1.8rem;
@@ -151,7 +183,6 @@
   letter-spacing: 0.03em;
 }
 
-/* Descriptions */
 .lost-item-description,
 .found-item-description {
   font-size: 1rem;
@@ -161,7 +192,6 @@
   flex-grow: 1;
 }
 
-/* Metadata */
 .lost-item-meta,
 .found-item-meta {
   font-size: 0.9rem;
@@ -169,49 +199,39 @@
   margin-bottom: 0.4rem;
 }
 
-.lost-item-meta strong, 
+.lost-item-meta strong,
 .found-item-meta strong {
   color: #444;
 }
 
-/* Category badges */
+/* --------------------------------------------------------------------------------------------------------------- */
+/* Badges */
 .lost-item-content .category-badge,
 .found-item-content .category-badge {
   display: inline-block;
-  background: var(--gradient-orange);
   color: white;
   padding: 0.3rem 0.8rem;
   font-size: 0.8rem;
   border-radius: 20px;
   margin-right: 0.5rem;
   margin-bottom: 0.4rem;
-  box-shadow: 0 2px 6px rgba(255, 126, 95, 0.4);
   transition: 0.3s ease;
 }
 
-/* Category badges */
 .lost-item-content .category-badge {
   background: var(--gradient-primary);
-  box-shadow: 0 2px 6px rgba(78, 115, 223, 0.4); /* bluish shadow for lost items */
+  box-shadow: 0 2px 6px rgba(78, 115, 223, 0.4);
 }
 
 .found-item-content .category-badge {
   background: var(--gradient-orange);
-  box-shadow: 0 2px 6px rgba(255, 126, 95, 0.4); /* orange shadow for found items */
+  box-shadow: 0 2px 6px rgba(255, 126, 95, 0.4);
 }
 
-/* Hover effect */
-.lost-item-content .category-badge:hover {
-  background: linear-gradient(to right, #4e73df, #36b9cc); /* keep bluish on hover */
+.category-badge:hover {
   cursor: default;
 }
 
-.found-item-content .category-badge:hover {
-  background: linear-gradient(to right, #ff7e5f, #feb47b); /* keep orange on hover */
-  cursor: default;
-}
-
-/* Claimed badge */
 .claimed-badge {
   position: absolute;
   top: 20px;
@@ -225,6 +245,24 @@
   box-shadow: 0 4px 10px rgba(40, 167, 69, 0.6);
 }
 
+.item-type-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.found-tag { background: #ff7e5f; }
+.lost-tag { background: #4e73df; }
+
+/* --------------------------------------------------------------------------------------------------------------- */
 /* Buttons */
 .lost-item-content .respond-btn,
 .found-item-content .respond-btn {
@@ -262,12 +300,11 @@
   animation: gradientShiftFound 1.5s linear infinite, glowPulseFound 1.2s ease-in-out infinite, wiggle 0.4s ease-in-out;
 }
 
-.lost-item-content .respond-btn:active,
-.found-item-content .respond-btn:active {
+.respond-btn:active {
   transform: scale(0.95);
 }
 
-/* Animations */
+/* --------------------------------------------------------------------------------------------------------------- */
 /* Animations */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -300,24 +337,18 @@
   75% { transform: rotate(1deg) scale(1.08); }
 }
 
-/* Lost / Found type tag */
-.item-type-tag {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: white;
-  border-radius: 12px;
-  text-transform: uppercase;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 10;
+/* --------------------------------------------------------------------------------------------------------------- */
+/* Octagon */
+.octagon {
+  clip-path: polygon(
+    0% 0, 90% 0, 100% 10%, 100% 90%,
+    90% 100%, 10% 100%, 0 90%, 0 10%
+  );
+  width: 100%;
+  height: auto;
 }
 
-.found-tag { background: #ff7e5f; }
-.lost-tag { background: #4e73df; }
-
+/* --------------------------------------------------------------------------------------------------------------- */
 /* Responsive layout */
 @media (max-width: 1024px) {
   .lost-item-card,
@@ -330,23 +361,114 @@
 @media (max-width: 768px) {
   .lost-item-card,
   .found-item-card {
+    flex-direction: column;
     flex: 1 1 100%;
     max-width: 100%;
+  }
+
+  .lost-item-image,
+  .found-item-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+  }
+
+  .lost-item-content,
+  .found-item-content {
+    padding: 1rem;
+  }
+
+  .lost-item-title,
+  .found-item-title {
+    font-size: 1.5rem;
+  }
+
+  .lost-item-description,
+  .found-item-description {
+    font-size: 0.95rem;
+  }
+
+  .lost-item-meta,
+  .found-item-meta {
+    font-size: 0.8rem;
+  }
+
+  .respond-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .claimed-badge {
+    top: 10px;
+    right: 10px;
+    padding: 0.3em 0.7em;
+    font-size: 0.75rem;
+  }
+
+  .item-type-tag {
+    top: 10px;
+    left: 10px;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-content-container {
+    gap: 10px;
+    padding: 5px;
+  }
+
+  .lost-item-content,
+  .found-item-content {
+    padding: 0.8rem 1rem;
+  }
+
+  .lost-item-title,
+  .found-item-title {
+    font-size: 1.2rem;
+  }
+
+  .lost-item-description,
+  .found-item-description {
+    font-size: 0.85rem;
+  }
+
+  .lost-item-meta,
+  .found-item-meta {
+    font-size: 0.75rem;
+  }
+
+  .respond-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 
+.main-content-container {
+  max-width: 100%;
+}
 
-.octagon{
-  clip-path: polygon(
-    0% 0,   /* Top-left cut (moves right from 0,0) */
-    90% 0,   /* Top-right cut (moves left from 100%,0) */
-    100% 10%,/* Right-top cut (moves down from top-right corner) */
-    100% 90%,/* Right-bottom cut (moves up from bottom-right corner) */
-    90% 100%,/* Bottom-right cut (moves left from bottom edge) */
-    10% 100%,/* Bottom-left cut (moves right from bottom edge) */
-    0 90%,   /* Left-bottom cut (moves up from bottom-left corner) */
-    0 10%    /* Left-top cut (moves down from top-left corner) */
-  );
+/* Only restrict cards and images on very small screens */
+@media (max-width: 465px) {
+  .lost-item-card,
+  .found-item-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .lost-item-image,
+  .found-item-image {
+    width: 100%;       /* take full width */
+    max-width: 100%;   /* prevent pushing container wider */
+    height: auto;      /* keep proportions */
+  }
 }
