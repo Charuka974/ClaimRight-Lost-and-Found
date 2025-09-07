@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
               <a class="nav-link text-white" href="/Front_End/html/found-items.html"><b>Found Items</b></a>
             </li>
             <li class="nav-item">
+              <a class="nav-link text-white" href="/Front_End/html/claim-view-verify.html"><b>Claims</b></a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link text-white" href="/Front_End/html/about-page.html"><b>About</b></a>
             </li>
             <li class="nav-item">
@@ -61,6 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/chat-page.html">
                       <i class="bi bi-chat-dots-fill"></i>
                       Chat
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+
+                  <li>
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/claim-view-verify.html">
+                      <i class="bi bi-journal-check"></i>
+                      Claims
                     </a>
                   </li>
                   <li><hr class="dropdown-divider" /></li>

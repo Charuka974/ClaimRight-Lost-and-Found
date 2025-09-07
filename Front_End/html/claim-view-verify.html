@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaimRight - Claim View / Verify</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/Front_End/css/navigation-bar.css">
+  <link rel="stylesheet" href="/Front_End/css/page-styles.css">
+  <link rel="stylesheet" href="/Front_End/css/claim-view-verify-page.css">
+
+  <link rel="icon" href="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" type="image">
+</head>
+<body>
+  <div id="navbar-container"></div>
+ 
+  <div class="main-content-container">
+
+    <h2 class="fw-bold text-center sectionHeader">Claims To Verify (Claims I Recieved)</h2>
+    <div class="main-content-top-container">
+
+    </div>
+
+    <br>
+    <h2 class="fw-bold text-center sectionHeader">My claims</h2>
+    <div class="main-content-bottom-container">
+      
+    </div>
+
+  </div>
+
+  <!-- Verify Claim Modal -->
+    <div class="modal fade" id="verifyClaimModal" tabindex="-1" aria-labelledby="verifyClaimModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="fw-bold" id="verifyClaimModalLabel">Verify Claim</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Claim details go here -->
+                <div id="verifyClaimContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="approveClaimBtn" type="button" class="btn btn-success">Approve</button>
+                <button id="rejectClaimBtn" type="button" class="btn btn-danger">Reject</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+  <button class="floating-page-btn floating-chat-nav-btn" onclick="openFloatOption()">
+    <i class="bi bi-chat-fill"></i>&nbsp;&nbsp;Chat
+  </button>
+
+  <div id="loadingOverlay" style="display:none;">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <p>Sending...</p>
+    </div>
+  </div>
+
+
+
+    <div id="login-popup-container"></div>
+    <div id="edit-profile-container"></div>
+    <div id="footer-container"></div>    
+    <div id="loading-animation"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Front_End/js/claimViewVerify.js"></script>
+    <script src="/Front_End/js/navigationBar.js"></script>
+    <script src="/Front_End/js/loginSignup.js"></script>
+    <script src="/Front_End/js/updateOwnProfile.js"></script>
+    
+</body>
+</html>

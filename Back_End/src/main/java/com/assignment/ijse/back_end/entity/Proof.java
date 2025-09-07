@@ -20,7 +20,11 @@ public class Proof {
     private Long proofId;
 
     private String filePath;
+
+    @Lob
+    @Column(name = "description")
     private String description;
+
     private LocalDateTime uploadedAt;
 
     @ManyToOne

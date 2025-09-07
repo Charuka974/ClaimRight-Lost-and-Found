@@ -877,3 +877,37 @@ button.btn:hover {
     margin-top: 0.6rem;
   }
 }
+
+
+/* Container to center the button */
+.my-claims-container {
+    margin: 1rem 0;
+}
+
+/* Custom styled button */
+.btn-my-claims {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-my-claims:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-my-claims i {
+    font-size: 1.1rem;
+}

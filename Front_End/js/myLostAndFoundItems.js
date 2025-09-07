@@ -79,7 +79,7 @@ function renderItems(items, container, type) {
                 <h2 class="${type}-item-title">${item.itemName}</h2>
                 <div class="claimed-badge" style="display:${item.isClaimed ? 'block' : 'none'};">Claimed</div>
                 <p class="${type}-item-description">${type === "lost" ? item.detailedDescription : item.generalDescription}</p>
-                <p class="${type}-item-meta"><strong>${type === "lost" ? "Lost On" : "Found On"}:</strong> ${item.dateLost || item.dateFound ? new Date(item.dateLost || item.dateFound).toLocaleDateString() : 'N/A'}</p>
+                <p class="${type}-item-meta"><strong>${type === "lost" ? "Lost On" : "Found On"}:</strong> ${item.dateLost || item.dateFound ? new Date(item.dateLost || item.dateFound).toLocaleString() : 'N/A'}</p>
                 <p class="${type}-item-meta"><strong>Location:</strong> ${item.locationLost || item.locationFound}</p>
                 <p class="${type}-item-meta"><strong>${type === "lost" ? "Owner" : "Finder"}:</strong> ${item.ownerName || item.finderName || 'Unknown'}</p>
                 ${type === "lost" && item.reward
@@ -268,7 +268,18 @@ async function openEditModal(item, type) {
     document.getElementById("editItemName").value = item.itemName;
     document.getElementById("editItemDescription").value = type === "lost" ? item.detailedDescription : item.generalDescription;
     document.getElementById("editItemLocation").value = item.locationLost || item.locationFound;
-    document.getElementById("editItemDate").value = (item.dateLost || item.dateFound) ? new Date(item.dateLost || item.dateFound).toISOString().split("T")[0] : "";
+
+    const dateObj = new Date(item.dateLost || item.dateFound);
+
+    document.getElementById("editItemDate").value =
+    dateObj ? dateObj.toISOString().split("T")[0] : "";
+
+    // Local time (HH:mm)
+    document.getElementById("editItemTime").value =
+    dateObj
+        ? String(dateObj.getHours()).padStart(2, "0") + ":" + String(dateObj.getMinutes()).padStart(2, "0")
+        : "";
+
 
     // Populate reward for lost items
     const rewardContainer = document.getElementById("editItemRewardContainer");

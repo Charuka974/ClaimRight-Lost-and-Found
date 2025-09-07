@@ -1,6 +1,7 @@
 package com.assignment.ijse.back_end.entity;
 
 import com.assignment.ijse.back_end.entity.enums.ClaimStatus;
+import com.assignment.ijse.back_end.entity.enums.ExchangeMethod;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,9 +30,19 @@ public class Claim {
     // PENDING, FINDER_APPROVED, ADMIN_APPROVED, FINDER_REJECTED, ADMIN_REJECTED, COMPLETED
 
     private String verificationLevel;
-    // FINDER_ONLY, ADMIN_ONLY, DUAL_APPROVAL
+    // USER_ONLY, ADMIN_ONLY, DUAL_APPROVAL
 
     private LocalDateTime createdAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private ExchangeMethod exchangeMethod;
+    // PUBLIC_PLACE, COURIER_SERVICE, MAILING
+
+    @Column(length = 500)
+    private String exchangeDetails;
+    // Flexible description (address, tracking, meeting point)
+
 
     /**
      * If this is a claim on a FOUND item,

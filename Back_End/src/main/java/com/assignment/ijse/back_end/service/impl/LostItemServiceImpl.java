@@ -73,8 +73,6 @@ public class LostItemServiceImpl implements LostItemService {
         return mapToDTO(lostItemRepository.save(existing));
     }
 
-
-
     @Override
     public boolean deleteLostItem(Long id) {
         if (lostItemRepository.existsById(id)) {

@@ -113,7 +113,7 @@
   max-width: 250px;
   height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-bottom-right-radius: 12px;
   animation: float 4s ease-in-out infinite;
 }
 
@@ -372,11 +372,12 @@
     max-width: 100%;
     height: auto;
     margin-bottom: 1rem;
-    border-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
   }
 
   .lost-item-content,
-  .found-item-content {
+  .found-item-content { 
     padding: 1rem;
   }
 
@@ -472,3 +473,21 @@ html, body {
     height: auto;      /* keep proportions */
   }
 }
+
+
+.sticky-controls {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0);
+  z-index: 200;
+}
+
+.sticky-controls.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: white;
+}
+
+

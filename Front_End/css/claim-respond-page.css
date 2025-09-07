@@ -186,3 +186,181 @@ body {
   75% { transform: rotate(2deg); }
   100% { transform: rotate(0deg); }
 }
+
+
+/* Fullscreen loading overlay */
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+/* Inner loading box */
+#loadingOverlay .loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: white;
+}
+
+
+/* Spinner animation */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ddd;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+#loadingOverlay p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Claim form card */
+.card.shadow.p-4 {
+  border-radius: 15px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+#claimFormTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4e73df;
+}
+
+#claimForm .form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+#claimForm textarea,
+#claimForm input[type="file"],
+#claimForm .form-control,
+#claimForm .form-select {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+#claimForm textarea:focus,
+#claimForm .form-control:focus,
+#claimForm .form-select:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 5px rgba(78,115,223,0.3);
+}
+
+/* Submit button */
+#claimForm button[type="submit"] {
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 12px;
+  background: linear-gradient(90deg, #4e73df, #36b9cc);
+  border: none;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#claimForm button[type="submit"]:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(78,115,223,0.4);
+}
+
+/* Proof image previews */
+#previewImages img {
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+#claimTypeLabel.form-control-plaintext {
+  display: inline-block !important;
+  width: auto !important;
+  padding-left: 0 !important;
+}
+
+
+/* Drag & Drop Area */
+#dropArea {
+  min-height: 150px; /* larger height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #4e73df; /* stronger color */
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  font-weight: 500;
+  color: #555;
+}
+
+#dropArea:hover {
+  background-color: #e9f0ff;
+  border-color: #36b9cc;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(78, 115, 223, 0.2);
+}
+
+#dropArea.drag-over {
+  background-color: #d0e4ff;
+  border-color: #4e73df;
+  box-shadow: 0 6px 15px rgba(78, 115, 223, 0.3);
+}
+
+/* Make input invisible but clickable */
+#dropArea input[type="file"] {
+  display: none;
+}
+
+/* Responsive previews */
+#previewImages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#previewImages img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#previewImages img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+
+.label-instructions {
+    display: inline-block;
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 8px 12px;
+    border-left: 4px solid #ffc107;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}

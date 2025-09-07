@@ -55,7 +55,21 @@
     </div>
     <div class="sticky-sentinel"></div>
 
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const sticky = document.querySelector(".sticky-controls");
+        const stickyOffset = sticky.offsetTop; // distance from top of page
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY >= stickyOffset) {
+            sticky.classList.add("fixed");
+            } else {
+            sticky.classList.remove("fixed");
+            }
+        });
+        });
+    </script>
+ 
 
 
 

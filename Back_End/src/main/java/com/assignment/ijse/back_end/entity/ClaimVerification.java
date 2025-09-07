@@ -19,7 +19,7 @@ public class ClaimVerification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long verificationId;
 
-    private String verificationType; // "FINDER_VERIFICATION", "ADMIN_VERIFICATION"
+    private String verificationType; // "USER_VERIFICATION", "ADMIN_VERIFICATION"
     private Boolean isApproved;
     private String comments;
     private LocalDateTime verifiedAt;
