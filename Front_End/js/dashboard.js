@@ -1,5 +1,7 @@
 const API_BASE_FOUNDITEM = 'http://localhost:8080/claimright/found-item';
 const API_BASE_LOSTITEM = 'http://localhost:8080/claimright/lost-item';
+const API_BASE_CHAT = "http://localhost:8080/claimright/messages";
+const API_BASE_CLAIMS = 'http://localhost:8080/claimright/claims';
 
 const cardContainer = document.querySelector(".main-content-container");
 
@@ -13,15 +15,101 @@ document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(userJson);
 
   if ((user.role === "ADMIN" || user.role === "SEMI_ADMIN") && user.active === true) {
+    // Manage User Button
     const btn = document.createElement("button");
     btn.className = "floating-page-btn floating-user-nav-btn";
     btn.innerHTML = `<i class="bi bi-person-circle"></i>&nbsp;&nbsp;Manage Users`;
     btn.onclick = openUserManage; 
     document.body.appendChild(btn);
-  }
 
+    // Claims Button with Notification Badge
+    const claimsBtn = document.createElement("button");
+    claimsBtn.className = "floating-page-btn floating-claims-nav-btn";
+    claimsBtn.innerHTML = `
+      <i class="bi bi-file-earmark-text"></i>&nbsp;&nbsp;Claims
+      <span id="claims-notification" 
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size: 0.75rem;">
+        0
+      </span>`;
+    claimsBtn.onclick = openClaimsPage;
+    document.body.appendChild(claimsBtn);
+
+    // Settings Button
+    const settingsBtn = document.createElement("button");
+    settingsBtn.className = "floating-page-btn floating-settings-nav-btn";
+    settingsBtn.innerHTML = `<i class="bi bi bi-gear"></i>&nbsp;&nbsp;Settings`;
+    settingsBtn.onclick = openSettings; 
+    document.body.appendChild(settingsBtn);
+
+  }
+ 
   loadAllItems();
+  updateClaimsNotification();
+  updateChatNotification();
 });
+
+async function updateClaimsNotification() {
+    try {
+        const token = localStorage.getItem("accessToken");
+        const response = await fetch(`${API_BASE_CLAIMS}/admin`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch claims");
+
+        const claims = await response.json();
+
+        // Only include claims that need admin verification
+        const adminClaims = claims.filter(c =>
+            (c.verificationLevel === "ADMIN_ONLY" || c.verificationLevel === "DUAL_APPROVAL") &&
+            c.claimStatus === "PENDING"
+        );
+
+        const pendingCount = adminClaims.length;
+
+        const badge = document.getElementById("claims-notification");
+
+        if (!badge) return; // << added check
+
+        badge.textContent = pendingCount;
+
+        // hide badge if count = 0
+        badge.style.display = pendingCount > 0 ? "inline-block" : "none";
+
+    } catch (err) {
+        console.error("Failed to load claims count", err);
+    }
+}
+
+
+async function updateChatNotification() {
+  const userJson = localStorage.getItem("loggedInUser");
+  if (!userJson) return;
+
+  const user = JSON.parse(userJson);
+  const userId = user.userId;
+
+  try {
+    const token = localStorage.getItem("accessToken");
+    const response = await fetch(`${API_BASE_CHAT}/unread/${userId}`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+
+    if (!response.ok) throw new Error("Failed to fetch chat notifications");
+
+    const unreadCount = await response.json(); // backend returns a number
+
+    const badge = document.getElementById("chat-notification");
+    if (!badge) return; // in case the button doesn't exist yet
+    badge.textContent = unreadCount;
+    badge.style.display = unreadCount > 0 ? "inline-block" : "none";
+
+  } catch (err) {
+    console.error("Failed to load chat notifications", err);
+  }
+}
+
 
 async function loadAllItems() {
   try {
@@ -77,11 +165,14 @@ function renderAllItems(items) {
         <div class="categories">
           ${(item.categoryNames || []).map(cat => `<span class="category-badge">${cat}</span>`).join('')}
         </div>
-        <button class="respond-btn" 
+
+        <button class="respond-btn"  
                 data-id="${item.id}" 
-                data-type="${item.type}">
+                data-type="${item.type}"
+                ${item.isClaimed ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : ''}>
           ${item.type === "found" ? "Claim Item" : "Respond"}
         </button>
+
       </div>
     `;
 
@@ -141,3 +232,12 @@ function openChat() {
 function openUserManage() {
     window.location.href = "/Front_End/html/manage-users.html";
 }
+
+function openClaimsPage() {
+    window.location.href = "/Front_End/html/admin-claim-view.html";
+}
+
+function openSettings() {
+    window.location.href = "/Front_End/html/admin-settings-page.html";
+}
+

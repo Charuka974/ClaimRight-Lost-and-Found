@@ -5,6 +5,7 @@ import com.assignment.ijse.back_end.dto.ClaimVerificationDTO;
 import com.assignment.ijse.back_end.dto.ProofDTO;
 import com.assignment.ijse.back_end.entity.*;
 import com.assignment.ijse.back_end.entity.enums.ClaimStatus;
+import com.assignment.ijse.back_end.entity.enums.DeleteResult;
 import com.assignment.ijse.back_end.entity.enums.ExchangeMethod;
 import com.assignment.ijse.back_end.repository.ClaimRepository;
 import com.assignment.ijse.back_end.repository.FoundItemRepository;
@@ -39,7 +40,7 @@ public class ClaimServiceImpl implements ClaimService {
     @Transactional
     @Override
     public ClaimDTO createClaim(ClaimDTO dto) {
-        //set the auto data
+        // Auto-set initial data
         dto.setClaimStatus(ClaimStatus.PENDING);
         dto.setCreatedAt(LocalDateTime.now());
         dto.setVerificationLevel("USER_ONLY");
@@ -57,6 +58,12 @@ public class ClaimServiceImpl implements ClaimService {
         if (dto.getFoundItemId() != null) {
             FoundItem foundItem = foundItemRepository.findById(dto.getFoundItemId())
                     .orElseThrow(() -> new RuntimeException("Found item not found"));
+
+            if (Boolean.TRUE.equals(foundItem.getIsClaimed())) {
+                // Item already claimed → do not save, return null or throw exception
+                throw new RuntimeException("This found item has already been claimed.");
+            }
+
             claim.setFoundItem(foundItem);
         }
 
@@ -64,11 +71,14 @@ public class ClaimServiceImpl implements ClaimService {
         if (dto.getLostItemId() != null) {
             LostItem lostItem = lostItemRepository.findById(dto.getLostItemId())
                     .orElseThrow(() -> new RuntimeException("Lost item not found"));
+
+            if (Boolean.TRUE.equals(lostItem.getIsClaimed())) {
+                // Item already claimed → do not save, return null or throw exception
+                throw new RuntimeException("This lost item has already been claimed.");
+            }
+
             claim.setLostItem(lostItem);
         }
-
-        claim.setClaimStatus(ClaimStatus.PENDING);
-        claim.setCreatedAt(LocalDateTime.now());
 
         // Attach verifications (optional)
         if (dto.getVerifications() != null) {
@@ -79,7 +89,7 @@ public class ClaimServiceImpl implements ClaimService {
             claim.setVerifications(verifications);
         }
 
-        // Save claim first
+        // Save claim
         Claim savedClaim = claimRepository.save(claim);
 
         // Handle proofs via ProofService
@@ -89,8 +99,10 @@ public class ClaimServiceImpl implements ClaimService {
                 proofService.createProof(proofDTO); // if this throws -> rollback
             }
         }
+
         return mapToDTO(savedClaim);
     }
+
 
     @Override
     public Optional<ClaimDTO> getClaimById(Long id) {
@@ -104,13 +116,48 @@ public class ClaimServiceImpl implements ClaimService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public ClaimDTO updateClaimStatus(Long claimId, ClaimStatus status) {
+        System.out.println("Attempting to update claim with ID: " + claimId + " to status: " + status);
+
         Claim claim = claimRepository.findById(claimId)
                 .orElseThrow(() -> new RuntimeException("Claim not found"));
+
+        System.out.println("Fetched claim: " + claim);
+        System.out.println("Current status: " + claim.getClaimStatus());
+
         claim.setClaimStatus(status);
-        return mapToDTO(claimRepository.save(claim));
+        System.out.println("Updated claim status to: " + claim.getClaimStatus());
+
+        // If status is COMPLETED, mark related items as claimed
+        if (status == ClaimStatus.COMPLETED) {
+            if (claim.getLostItem() != null) {
+                System.out.println("Marking related lost item as claimed: " + claim.getLostItem().getId());
+                claim.getLostItem().setIsClaimed(true);
+                lostItemRepository.save(claim.getLostItem());
+            } else {
+                System.out.println("No lost item associated with this claim.");
+            }
+
+            if (claim.getFoundItem() != null) {
+                System.out.println("Marking related found item as claimed: " + claim.getFoundItem().getId());
+                claim.getFoundItem().setIsClaimed(true);
+                foundItemRepository.save(claim.getFoundItem());
+            } else {
+                System.out.println("No found item associated with this claim.");
+            }
+        }
+
+        Claim savedClaim = claimRepository.save(claim);
+        System.out.println("Claim saved successfully: " + savedClaim);
+
+        ClaimDTO dto = mapToDTO(savedClaim);
+        System.out.println("Mapped DTO: " + dto);
+
+        return dto;
     }
+
 
     @Override
     public ClaimDTO setExchangeMethod(Long claimId, ExchangeMethod method, String details) {
@@ -141,13 +188,30 @@ public class ClaimServiceImpl implements ClaimService {
     }
 
     @Override
-    public boolean deleteClaim(Long id) {
-        if (claimRepository.existsById(id)) {
-            claimRepository.deactivateClaim(id);
-            return true;
+    @Transactional
+    public DeleteResult deleteClaim(Long claimId) {
+        Claim claim = claimRepository.findById(claimId).orElse(null);
+        if (claim == null) return DeleteResult.NOT_FOUND;
+
+        if (claim.getClaimStatus() == ClaimStatus.FINDER_APPROVED ||
+                claim.getClaimStatus() == ClaimStatus.ADMIN_APPROVED ||
+                claim.getClaimStatus() == ClaimStatus.COMPLETED) {
+            return DeleteResult.FORBIDDEN;
         }
-        return false;
+
+        claimRepository.delete(claim);
+        return DeleteResult.DELETED;
     }
+
+    @Override
+    @Transactional
+    public void deactivateClaim(Long claimId) {
+        Claim claim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new RuntimeException("Claim not found"));
+
+        claimRepository.deactivateClaimById(claimId);
+    }
+
 
     @Override
     public List<ClaimDTO> getClaimsByClaimant(Long userId) {
@@ -186,6 +250,22 @@ public class ClaimServiceImpl implements ClaimService {
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ClaimDTO updateVerificationLevel(Long claimId, String newLevel) {
+        if (!newLevel.equals("USER_ONLY") && !newLevel.equals("ADMIN_ONLY") && !newLevel.equals("DUAL_APPROVAL")) {
+            throw new IllegalArgumentException("Invalid verification level: " + newLevel);
+        }
+
+        Claim claim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new RuntimeException("Claim not found"));
+        claimRepository.updateVerificationLevel(claimId, newLevel);
+
+        Claim updatedClaim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new RuntimeException("Claim not found after update"));
+        return mapToDTO(updatedClaim);
+    }
+
 
     // ---------------- Utility Mappers ----------------
     private ClaimDTO mapToDTO(Claim claim) {

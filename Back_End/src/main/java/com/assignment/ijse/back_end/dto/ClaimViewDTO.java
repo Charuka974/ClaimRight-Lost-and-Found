@@ -17,7 +17,7 @@ public class ClaimViewDTO {
     private Long claimId;
     private String claimType; // FOUND or LOST
     private ClaimStatus claimStatus;
-    private String verificationLevel; // FINDER_ONLY, ADMIN_ONLY, DUAL_APPROVAL
+    private String verificationLevel; // USER_ONLY, ADMIN_ONLY, DUAL_APPROVAL
     private LocalDateTime createdAt;
 
     private ExchangeMethod exchangeMethod;

@@ -43,6 +43,8 @@ public class Claim {
     private String exchangeDetails;
     // Flexible description (address, tracking, meeting point)
 
+    @Column(nullable = false)
+    private Boolean isActive = true;
 
     /**
      * If this is a claim on a FOUND item,

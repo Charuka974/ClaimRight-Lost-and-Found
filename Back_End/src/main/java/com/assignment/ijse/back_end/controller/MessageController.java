@@ -55,6 +55,19 @@ public class MessageController {
         }
     }
 
+    @GetMapping("/unread/{userId}")
+    public ResponseEntity<Long> getUnreadMessages(@PathVariable Long userId) {
+        long count = messageService.countUnreadMessagesForUser(userId);
+        return ResponseEntity.ok(count);
+    }
+
+    @PutMapping("/mark-read/conversation")
+    public ResponseEntity<Void> markConversationAsRead(
+            @RequestParam Long userA,
+            @RequestParam Long userB) {
+        messageService.markConversationAsRead(userA, userB);
+        return ResponseEntity.noContent().build();
+    }
 
 
     @GetMapping("/get-message-by-claim/claim/{claimId}")
@@ -62,6 +75,14 @@ public class MessageController {
         List<MessageDTO> messages = messageService.getMessagesByClaim(claimId);
         return ResponseEntity.ok(messages);
     }
+
+    // Get unread messages count per sender for a given user
+    @GetMapping("/unread-by-sender/{userId}")
+    public ResponseEntity<List<Map<String, Object>>> getUnreadMessagesBySender(@PathVariable Long userId) {
+        List<Map<String, Object>> unreadCounts = messageService.getUnreadMessagesCountGroupedBySender(userId);
+        return ResponseEntity.ok(unreadCounts);
+    }
+
 
 //    @GetMapping("/getmessages/conversation")
 //    public ResponseEntity<List<MessageDTO>> getMessagesByConversation(

@@ -141,7 +141,7 @@ body::before {
 }
 
 .claimed-badge {
-  position: absolute;
+  position: relative;
   top: 20px;
   right: 20px;
   background: #28a745;
@@ -151,6 +151,7 @@ body::before {
   border-radius: 30px;
   font-size: 0.85rem;
   box-shadow: 0 4px 10px rgba(40, 167, 69, 0.6);
+  text-align: center;
 }
 
 /* Button style */

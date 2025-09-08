@@ -13,9 +13,11 @@ import com.assignment.ijse.back_end.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -114,5 +116,32 @@ public class MessageServiceImpl implements MessageService {
         }
         messageRepository.deleteById(messageId);
     }
+
+    @Override
+    public long countUnreadMessagesForUser(Long userId) {
+        return messageRepository.countUnreadMessagesForUser(userId);
+    }
+
+    @Transactional
+    @Override
+    public void markConversationAsRead(Long userA, Long userB) {
+        List<Message> messages = messageRepository.findConversationBetweenUsers(userA, userB);
+
+        messages.stream()
+                .filter(msg -> !msg.isMsgRead() && msg.getReceiver().getUserId().equals(userA)) // only mark messages **to userA** as read
+                .forEach(msg -> {
+                    msg.setMsgRead(true);
+                    msg.setReadAt(LocalDateTime.now());
+                });
+
+        messageRepository.saveAll(messages);
+    }
+
+
+    @Override
+    public List<Map<String, Object>> getUnreadMessagesCountGroupedBySender(Long receiverId) {
+        return messageRepository.countUnreadMessagesGroupedBySender(receiverId);
+    }
+
 
 }

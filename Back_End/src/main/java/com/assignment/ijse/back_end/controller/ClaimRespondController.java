@@ -3,11 +3,13 @@ package com.assignment.ijse.back_end.controller;
 import com.assignment.ijse.back_end.dto.ClaimDTO;
 import com.assignment.ijse.back_end.dto.ProofDTO;
 import com.assignment.ijse.back_end.entity.enums.ClaimStatus;
+import com.assignment.ijse.back_end.entity.enums.DeleteResult;
 import com.assignment.ijse.back_end.entity.enums.ExchangeMethod;
 import com.assignment.ijse.back_end.service.ClaimService;
 import com.assignment.ijse.back_end.service.ImgBBUploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -135,9 +137,22 @@ public class ClaimRespondController {
     // ---------------- Delete Claim ----------------
     @DeleteMapping("/{claimId}")
     public ResponseEntity<Void> deleteClaim(@PathVariable Long claimId) {
-        boolean deleted = claimService.deleteClaim(claimId);
-        if (deleted) return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
+        DeleteResult result = claimService.deleteClaim(claimId);
+
+        return switch (result) {
+            case NOT_FOUND -> ResponseEntity.notFound().build();
+            case FORBIDDEN -> ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            case DELETED -> ResponseEntity.noContent().build();
+        };
     }
+
+    @PutMapping("/update-verification/{claimId}")
+    public ResponseEntity<ClaimDTO> updateVerificationLevel(
+            @PathVariable Long claimId,
+            @RequestParam String newLevel) {
+        ClaimDTO updated = claimService.updateVerificationLevel(claimId, newLevel);
+        return ResponseEntity.ok(updated);
+    }
+
 
 }

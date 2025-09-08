@@ -70,7 +70,8 @@ function renderLostItems(lostItems) {
         </div>
         <button class="respond-btn" 
                 data-id="${item.id}" 
-                data-type="lost">
+                data-type="lost"
+                ${item.isClaimed ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : ''}>
           Respond
         </button>
       </div>

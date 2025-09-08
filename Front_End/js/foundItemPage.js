@@ -67,8 +67,9 @@ function renderFoundItems(foundItems) {
         </div>
         <button class="respond-btn" 
                 data-id="${item.id}" 
-                data-type="found">
-          Claim Item
+                data-type="found"
+                ${item.isClaimed ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : ''}>
+        Claim Item
         </button>
       </div>
     `;

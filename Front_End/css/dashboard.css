@@ -61,9 +61,19 @@
   right: 30px;
 }
 
+.floating-claims-nav-btn {
+  top: 200px;
+  right: 30px;  
+}
+
 .floating-chat-nav-btn {
   bottom: 50px;
   right: 30px;
+}
+
+.floating-settings-nav-btn {
+  bottom: 50px;
+  left: 30px;
 }
 
 /* --------------------------------------------------------------------------------------------------------------- */
@@ -75,7 +85,7 @@
   padding: 10px;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   overflow-x: hidden; /* prevent horizontal scroll */
 }
 
@@ -111,6 +121,7 @@
 .found-item-image {
   width: 40%;
   max-width: 250px;
+  max-height: 300px;
   height: auto;
   object-fit: cover;
   border-bottom-right-radius: 12px;
@@ -189,7 +200,7 @@
   color: #555;
   line-height: 1.5;
   margin-bottom: 1rem;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 .lost-item-meta,

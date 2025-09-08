@@ -50,4 +50,16 @@ public interface ClaimRepository extends JpaRepository<Claim, Long> {
     @Query("SELECT c FROM Claim c WHERE c.foundItem.finder.userId = :userId")
     List<Claim> findByFoundItemFinderId(@Param("userId") Long userId);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE Claim c SET c.isActive = false WHERE c.claimId = :id")
+    void deactivateClaimById(@Param("id") Long id);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Claim c SET c.verificationLevel = :newLevel WHERE c.claimId = :id")
+    void updateVerificationLevel(@Param("id") Long id, @Param("newLevel") String newLevel);
+
+
+
 }

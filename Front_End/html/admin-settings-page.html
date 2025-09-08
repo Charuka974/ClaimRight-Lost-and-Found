@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaimRight - Settings</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/Front_End/css/navigation-bar.css">
+  <link rel="stylesheet" href="/Front_End/css/page-styles.css">
+  <link rel="stylesheet" href="/Front_End/css/setting-page.css">
+
+  <link rel="icon" href="/Front_End/assets/images/Leonardo_Phoenix_09_Design_a_modern_clean_logo_for_a_Lost_and_0.jpg" type="image">
+</head>
+<body>
+  <div id="navbar-container"></div>
+ 
+  <h2 class="fw-bold text-center sectionHeader">⚙️ Admin Settings</h2>
+
+  <div class="main-content-container">
+
+    <!-- Category Management -->
+    <div class="settings-card">
+      <div class="settings-header gradient-primary">
+        <i class="bi bi-tags-fill me-2"></i> Manage Categories
+      </div>
+      <div class="settings-body">
+        <ul id="category-list" class="list-group mb-3">
+          <!-- Categories dynamically inserted here -->
+        </ul>
+        <form id="addCategoryForm" class="input-group">
+          <input type="text" id="newCategoryName" class="form-control" placeholder="Category name">
+          <input type="text" id="newCategoryDesc" class="form-control" placeholder="Category description (optional)">
+          <button class="btn cat-add-btn" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Verification Settings -->
+    <!-- <div class="settings-card">
+      <div class="settings-header gradient-orange">
+        <i class="bi bi-shield-check me-2"></i> Default Verification Level
+      </div>
+      <div class="settings-body">
+        <select id="default-verification" class="form-select">
+          <option value="USER_ONLY">User Only</option>
+          <option value="ADMIN_ONLY">Admin Only</option>
+          <option value="DUAL_APPROVAL">Dual Approval</option>
+        </select>
+        <button class="btn btn-success mt-3" onclick="saveVerificationLevel()">Save</button>
+      </div>
+    </div> -->
+
+    <!-- Exchange Method Settings -->
+    <!-- <div class="settings-card">
+      <div class="settings-header gradient-primary">
+        <i class="bi bi-truck me-2"></i> Manage Exchange Methods
+      </div>
+      <div class="settings-body">
+        <ul id="exchange-list" class="list-group mb-3">
+        </ul>
+        <div class="input-group">
+          <input type="text" id="new-exchange" class="form-control" placeholder="New exchange method">
+          <button class="btn btn-primary" onclick="addExchangeMethod()">Add</button>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+
+  <div id="loadingOverlay" style="display:none;">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <p>Sending...</p>
+    </div>
+  </div>
+
+
+
+    <div id="login-popup-container"></div>
+    <div id="edit-profile-container"></div>
+    <div id="footer-container"></div>    
+    <div id="loading-animation"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Front_End/js/settingsPage.js"></script>
+    <script src="/Front_End/js/navigationBar.js"></script>
+    <script src="/Front_End/js/loginSignup.js"></script>
+    <script src="/Front_End/js/updateOwnProfile.js"></script>
+    
+</body>
+</html>

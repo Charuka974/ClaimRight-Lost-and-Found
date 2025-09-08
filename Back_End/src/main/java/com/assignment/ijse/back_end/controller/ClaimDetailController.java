@@ -34,5 +34,18 @@ public class ClaimDetailController {
         }
     }
 
+    @GetMapping("/admin")
+    public ResponseEntity<List<ClaimViewDTO>> getAllClaims() {
+        try {
+            List<ClaimViewDTO> claims = claimDetailService.getAllClaims();
+            return ResponseEntity.ok(claims);
+        } catch (Exception e) {
+            log.error("Error fetching claims", e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+
+
 
 }

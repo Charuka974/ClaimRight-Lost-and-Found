@@ -8,4 +8,6 @@ public interface ClaimDetailService {
 
     public List<ClaimViewDTO> getClaimsForUser(Long userId);
 
+    public List<ClaimViewDTO> getAllClaims();
+
 }

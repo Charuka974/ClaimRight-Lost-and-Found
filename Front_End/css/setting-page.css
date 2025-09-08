@@ -1,0 +1,135 @@
+:root {
+  --gradient-primary: linear-gradient(90deg, #4e73df, #36b9cc);
+  --gradient-orange: linear-gradient(90deg, #ff7e5f, #feb47b);
+  --text-dark: #222;
+  --text-muted: #6c757d;
+  --bg-light: #f8f9fa;
+  --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Page Header */
+.sectionHeader {
+  margin-top: 20px;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 1s ease;
+}
+
+/* Main Layout */
+.main-content-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Settings Card */
+.settings-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.settings-header {
+  padding: 12px 18px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-orange {
+  background: var(--gradient-orange);
+}
+
+.settings-body {
+  padding: 20px;
+}
+
+/* Category & Exchange list */
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item button {
+  border: none;
+  background: transparent;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.cat-add-btn {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(78, 115, 223, 0.5);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.cat-add-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(78, 115, 223, 0.7);
+}
+
+
+
+/* Category Action Buttons */
+.category-actions{
+  display: flex;
+}
+
+.category-actions .btn {
+  border-radius: 8px;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Edit button */
+.category-actions .btn-edit {
+  background: var(--gradient-primary);
+  color: #fff;
+  border: none;
+}
+.category-actions .btn-edit:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);
+}
+
+/* Delete button */
+.category-actions .btn-delete {
+  background: var(--gradient-orange);
+  color: #fff;
+  border: none;
+}
+.category-actions .btn-delete:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 10px rgba(255, 126, 95, 0.3);
+}
