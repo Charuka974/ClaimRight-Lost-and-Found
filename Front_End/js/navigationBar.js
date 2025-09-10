@@ -26,9 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
               <a class="nav-link text-white" href="/Front_End/html/found-items.html"><b>Found Items</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/claim-view-verify.html"><b>Claims</b></a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link text-white" href="/Front_End/html/about-page.html"><b>About</b></a>
             </li>
             <li class="nav-item">
@@ -71,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <li>
                     <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/claim-view-verify.html">
                       <i class="bi bi-journal-check"></i>
-                      Claims
+                      My Claims
                     </a>
                   </li>
                   <li><hr class="dropdown-divider" /></li>
@@ -80,6 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/qr-code-page.html">
                       <i class="bi bi-qr-code"></i>
                       QR Codes
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+
+                  <li>
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/payment-page.html">
+                      <i class="bi bi-credit-card"></i>
+                      Payments 
                     </a>
                   </li>
                 </ul>
@@ -302,6 +307,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loading-animation").innerHTML = loadingAnimation;
 
 
+// <i class="bi bi-cash-stack"></i>
+// <i class="bi bi-currency-dollar"></i>
+// <i class="bi bi-wallet2"></i>
+
 });
 
 
@@ -386,3 +395,4 @@ function logout() {
 function signinRedirect() {
   window.location.href = "/Front_End/html/login-signup.html";
 }
+

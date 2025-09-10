@@ -127,7 +127,7 @@ document.getElementById("claimForm").addEventListener("submit", async function(e
   const files = document.querySelector("input[name='proofFiles']").files;
 
   // Validation based on item type
-  if (!desc) {
+  if (!desc) { 
     Swal.fire({
       icon: "warning",
       title: "Missing Description",

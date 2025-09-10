@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +21,9 @@ public class Message {
     private Long messageId;
 
     private String content;
+
+    @CreationTimestamp
+    @Column(nullable = false)
     private LocalDateTime sentAt;
 
     @ManyToOne(optional = true)  // or just omit, since true is default
@@ -38,4 +42,5 @@ public class Message {
 //    @Column(name = "is_read") // Avoid reserved keywords
     private boolean isMsgRead;                 // Default: false (unread)
     private LocalDateTime readAt;
+
 }

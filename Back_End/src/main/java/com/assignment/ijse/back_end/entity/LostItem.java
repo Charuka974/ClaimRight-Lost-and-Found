@@ -2,6 +2,7 @@ package com.assignment.ijse.back_end.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -29,6 +30,8 @@ public class LostItem {
     @ManyToOne
     private User owner;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private LocalDateTime postedAt;
 
     @ManyToMany
@@ -51,8 +54,13 @@ public class LostItem {
     @Column(nullable = false)
     private Integer priority = 0; // 0 = low, 1 = medium, 2 = high
 
-    @PrePersist
-    protected void onCreate() {
-        postedAt = LocalDateTime.now();
-    }
+//    @PrePersist
+//    protected void onCreate() {
+//        postedAt = LocalDateTime.now();
+//    }
+
+    @OneToMany(mappedBy = "lostItem")
+    private List<Payment> payments;  // payments linked to this lost item (e.g. rewards or priority boosts)
+
+
 }

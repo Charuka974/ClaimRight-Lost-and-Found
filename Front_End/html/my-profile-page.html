@@ -59,7 +59,7 @@
                         <button class="btn btn-outline-primary" id="openEditProfileBtn"><i class="fas fa-user-edit me-2"></i>Edit Profile</button>
                         <button class="btn btn-outline-secondary" id="openChangePasswordBtn"><i class="fas fa-key me-2"></i>Change Password</button>
                         <button class="btn btn-outline-success" id="openMyLostItemsBtn"><i class="fas fa-clipboard-list me-2"></i>My Lost Items</button>
-                        <button class="btn btn-outline-success" id="openMyClaimsBtn"><i class="fas fa-clipboard-list me-2"></i>My Claims</button>
+                        <button class="btn btn-outline-success" id="openMyClaimsBtn" onclick="redirectToMyClaims()"><i class="fas fa-clipboard-list me-2"></i>My Claims</button>
                         <button class="btn btn-outline-info" id="openMyFoundItemsBtn"><i class="fas fa-box-open me-2" ></i>Items I Found</button>
                     </div>
                 </div>
@@ -202,60 +202,68 @@
 
                 <div class="notifications">
                     <h3><i class="bi bi-bell-fill"></i> Recent Notifications</h3>
+
+                    <div class="notification-item">
+                        <i class="bi bi-circle icon-default"></i>
+                        <div class="notification-content">
+                            <p class="message">Feature still in development phase.</p>
+                            <span class="time"></span>
+                        </div>
+                    </div>
                     
                     <!-- Matching item found -->
-                    <div class="notification-item">
+                    <!-- <div class="notification-item">
                         <i class="bi bi-search icon-default"></i>
                         <div class="notification-content">
                             <p class="message">A matching item has been found for your lost wallet.</p>
                             <span class="time">Just now</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Claim successfully submitted -->
-                    <div class="notification-item">
+                    <!-- <div class="notification-item">
                         <i class="bi bi-send-check-fill success"></i>
                         <div class="notification-content">
                             <p class="message">Your claim for "Black Backpack" was submitted successfully.</p>
                             <span class="time">10 minutes ago</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Claim reviewed -->
-                    <div class="notification-item">
+                    <!-- <div class="notification-item">
                         <i class="bi bi-check-circle-fill success"></i>
                         <div class="notification-content">
                             <p class="message">Your claim for "AirPods" has been reviewed and approved.</p>
                             <span class="time">Today, 9:14 AM</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Claim rejected -->
-                    <div class="notification-item">
+                    <!-- <div class="notification-item">
                         <i class="bi bi-x-circle-fill icon-warning"></i>
                         <div class="notification-content">
                             <p class="message">Your claim for "Blue Jacket" has been rejected. Please review the requirements.</p>
                             <span class="time">Yesterday</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Claim review request from others -->
-                    <div class="notification-item">
+                    <!-- <div class="notification-item">
                         <i class="bi bi-person-lines-fill icon-default"></i>
                         <div class="notification-content">
                             <p class="message">You have a new review request from another user on "Lost iPhone 13".</p>
                             <span class="time">3 hours ago</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Chat message -->
-                    <div class="notification-item">
+                    <!-- <div class="notification-item">
                         <i class="bi bi-chat-dots-fill icon-default"></i>
                         <div class="notification-content">
                             <p class="message">You received a new message from Sarah: "Hi, I think I found your bag!"</p>
                             <span class="time">15 minutes ago</span>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 

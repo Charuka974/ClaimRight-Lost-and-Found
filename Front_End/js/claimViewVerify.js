@@ -204,6 +204,22 @@ const renderClaims = (container, claimsList, isRecipientView) => {
 
         }
 
+        // Adjust display role text for lost/found items
+        let roleLabel = displayRole;
+        if (claim.claimType.toLowerCase() === "lost" && displayRole === "Claimer") {
+            roleLabel = "Finder";
+        } else if (claim.claimType.toLowerCase() === "found" && displayRole === "Claimer") {
+            roleLabel = "Owner";
+        }
+
+        // Adjust timestamp label
+        let timeLabel = "Claimed At";
+        if (claim.claimType.toLowerCase() === "lost") {
+            timeLabel = "Informed At";
+        } else if (claim.claimType.toLowerCase() === "found") {
+            timeLabel = "Requested At";
+        }
+
         claimCard.innerHTML = `
             <div class="row">
                 <div class="col-md-3">
@@ -221,8 +237,8 @@ const renderClaims = (container, claimsList, isRecipientView) => {
                         .map(cat => `<span class="category-badge ${claim.claimType.toLowerCase()}">${cat}</span>`).join('')}
                     </p>
                     <br>
-                    <p><strong>${displayRole}:</strong> ${displayName}</p>
-                    <p><strong>Claimed At:</strong> ${new Date(claim.createdAt).toLocaleString()}</p>
+                    <p><strong>${roleLabel}:</strong> ${displayName}</p>
+                    <p><strong>${timeLabel}:</strong> ${new Date(claim.createdAt).toLocaleString()}</p>
                     <p><strong>Status:</strong> ${claim.claimStatus}</p>
                     <p><strong>Exchange Method:</strong> ${claim.exchangeMethod || 'N/A'}</p>
                     <p><strong>Exchange Details:</strong> ${claim.exchangeDetails || 'N/A'}</p>
@@ -503,4 +519,9 @@ async function deleteClaim(claimId, modalInstance) {
             text: "Failed to delete claim. Please try again later."
         });
     }
+}
+
+
+function openChat() {
+    window.location.href = "/Front_End/html/chat-page.html";
 }

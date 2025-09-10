@@ -34,7 +34,7 @@ async function loadAllClaims() {
 
         // Separate claims that require admin verification
         const claimsToVerify = claims.filter(claim => 
-            claim.verificationLevel === "ADMIN_ONLY" || claim.verificationLevel === "DUAL_APPROVAL"
+            claim.verificationLevel === "ADMIN_ONLY" || claim.verificationLevel === "DUAL_APPROVAL" 
         );
 
         // Claims that are just general/all claims
@@ -128,43 +128,8 @@ const renderClaims = (container, claimsList, showVerify) => {
 };
 
 
-
-async function verifyClaim(claimId, isApproved, modalInstance) {
-    try {
-        const token = localStorage.getItem("accessToken");
-        const response = await fetch(`${API_BASE_CLAIMS}/verify/${claimId}`, {
-            method: "POST",
-            headers: { 
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ approved: isApproved })
-        });
-
-        if (!response.ok) throw new Error("Failed to verify claim");
-
-        Swal.fire({
-            icon: "success",
-            title: isApproved ? "Claim Approved!" : "Claim Rejected!",
-            timer: 2000,
-            showConfirmButton: false
-        });
-
-        modalInstance.hide(); 
-        loadUserClaims(); // reload claims to update status
-    } catch (error) {
-        console.error(error);
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Failed to verify claim. Try again later."
-        });
-    }
-}
-
 function openVerifyModal(claim) {
     const modalContent = document.getElementById("verifyClaimContentInner");
-
     const itemImage = claim.itemImageUrl || '/Front_End/assets/images/noImageAvalable.png';
     const isImage = url => /\.(jpeg|jpg|gif|png|webp|bmp|svg)$/i.test(url);
 
@@ -176,9 +141,12 @@ function openVerifyModal(claim) {
         <p><strong>Type:</strong> ${claim.claimType}</p>
         <p><strong>Claimer:</strong> ${claim.claimantName}</p>
         <p><strong>Recipient:</strong> ${claim.recipientName || 'N/A'}</p>
+        <br>
+        <p><strong>Item:</strong> ${claim.itemName}</p>
         <p><strong>Description:</strong> ${claim.itemDescription}</p>
         <p><strong>Location:</strong> ${claim.itemLocation}</p>
         <p><strong>Categories:</strong> ${(claim.itemCategoryNames || []).join(', ')}</p>
+        <br>
         <p><strong>Exchange Method:</strong> ${claim.exchangeMethod || 'N/A'}</p>
         <p><strong>Exchange Details:</strong> ${claim.exchangeDetails || 'N/A'}</p>
         <hr>
@@ -188,9 +156,14 @@ function openVerifyModal(claim) {
                 const filePath = p.filePath || "";
                 const description = p.description || "No description provided";
                 if (isImage(filePath)) {
-                    return `<div class="proof-thumbnail"><a href="${filePath}" target="_blank"><img src="${filePath}" alt="${description}"></a><div class="description">${description}</div></div>`;
+                    return `<div class="proof-thumbnail">
+                                <a href="${filePath}" target="_blank">
+                                    <img src="${filePath}" alt="${description}">
+                                </a>
+                                <div class="description">${description}</div>
+                            </div>`;
                 } else {
-                    return `<div class="proof-text"><a href="${filePath}" target="_blank">${description}</a></div>`;
+                    return `<div class="proof-text">${description}</div>`; // show description as text only
                 }
             }).join('')}
         </div>
@@ -199,9 +172,65 @@ function openVerifyModal(claim) {
     const verifyModal = new bootstrap.Modal(document.getElementById('verifyClaimModal'));
     verifyModal.show();
 
-    document.getElementById("approveClaimBtn").onclick = () => verifyClaim(claim.claimId, true, verifyModal);
-    document.getElementById("rejectClaimBtn").onclick = () => verifyClaim(claim.claimId, false, verifyModal);
+    document.getElementById("approveClaimBtn").onclick = () => verifyClaim(claim.claimId, true, verifyModal, claim);
+    document.getElementById("rejectClaimBtn").onclick = () => verifyClaim(claim.claimId, false, verifyModal, claim);
 }
+
+
+async function verifyClaim(claimId, isApproved, modalInstance, claim) {
+    try {
+        const token = localStorage.getItem("accessToken");
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        let newStatus;
+
+        // Admin verification logic
+        if (loggedInUser.role && loggedInUser.role.toUpperCase() === "ADMIN") {
+            newStatus = isApproved ? "ADMIN_APPROVED" : "ADMIN_REJECTED";
+        }
+        // Recipient verifying
+        else if (claim.recipientId === loggedInUser.userId) {
+            newStatus = isApproved ? "APPROVED" : "REJECTED";
+        }
+        // Claimant completing
+        else if (claim.claimantId === loggedInUser.userId && isApproved) {
+            newStatus = "COMPLETED";
+        }
+        else {
+            throw new Error("You are not allowed to perform this action.");
+        }
+
+        const response = await fetch(
+            `${API_BASE_CLAIMS_RESPOND}/update-status/${claimId}?status=${newStatus}`,
+            {
+                method: "PATCH",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        if (!response.ok) throw new Error("Failed to update claim status");
+
+        Swal.fire({
+            icon: "success",
+            title: `${newStatus.replace("_", " ")}!`,
+            timer: 2000,
+            showConfirmButton: false
+        });
+
+        modalInstance.hide();
+        loadAllClaims(); // refresh UI
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error.message || "Failed to update claim status."
+        });
+    }
+}
+
 
 
 async function deleteClaim(claimId, modalInstance) {
@@ -209,9 +238,7 @@ async function deleteClaim(claimId, modalInstance) {
         const token = localStorage.getItem("accessToken");
         const response = await fetch(`${API_BASE_CLAIMS_RESPOND}/${claimId}`, {
             method: "DELETE",
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
+            headers: { "Authorization": `Bearer ${token}` }
         });
 
         if (response.status === 204) {
@@ -222,28 +249,24 @@ async function deleteClaim(claimId, modalInstance) {
                 showConfirmButton: false
             });
             modalInstance.hide();
-            loadUserClaims(); // refresh claim list
-        } 
-        else if (response.status === 403) {
+            loadAllClaims();
+        } else if (response.status === 403) {
             Swal.fire({
                 icon: "warning",
                 title: "Action not allowed",
                 text: "This claim cannot be deleted because it has already been approved or completed."
             });
-        } 
-        else if (response.status === 404) {
+        } else if (response.status === 404) {
             Swal.fire({
                 icon: "error",
                 title: "Not Found",
                 text: "This claim does not exist or may have been deleted already."
             });
-        } 
-        else {
+        } else {
             throw new Error("Unexpected response");
         }
-
     } catch (error) {
-        console.error(error);
+        console.error(error); 
         Swal.fire({
             icon: "error",
             title: "Error",

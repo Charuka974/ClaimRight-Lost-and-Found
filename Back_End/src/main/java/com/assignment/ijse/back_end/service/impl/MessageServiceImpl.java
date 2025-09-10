@@ -45,7 +45,7 @@ public class MessageServiceImpl implements MessageService {
 
         Message message = new Message();
         message.setContent(messageDTO.getContent());
-        message.setSentAt(messageDTO.getSentAt() != null ? messageDTO.getSentAt() : LocalDateTime.now());
+//        message.setSentAt(messageDTO.getSentAt() != null ? messageDTO.getSentAt() : LocalDateTime.now());
         message.setClaim(claim); // May be null
         message.setSender(sender);
         message.setReceiver(receiver);

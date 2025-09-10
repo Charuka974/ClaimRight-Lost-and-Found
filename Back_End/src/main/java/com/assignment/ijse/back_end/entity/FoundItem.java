@@ -2,6 +2,7 @@ package com.assignment.ijse.back_end.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,6 +30,8 @@ public class FoundItem {
     @ManyToOne
     private User finder;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private LocalDateTime postedAt;
 
     @ManyToMany
@@ -48,8 +51,13 @@ public class FoundItem {
     @Column(nullable = false)
     private Integer priority = 0; // 0 = low, 1 = medium, 2 = high
 
-    @PrePersist
-    protected void onCreate() {
-        postedAt = LocalDateTime.now();
-    }
+//    @PrePersist
+//    protected void onCreate() {
+//        postedAt = LocalDateTime.now();
+//    }
+
+    @OneToMany(mappedBy = "foundItem")
+    private List<Payment> payments;  // payments linked to this found item (optional)
+
+
 }

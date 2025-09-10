@@ -26,7 +26,7 @@ public class ProofServiceImpl implements ProofService {
         Proof proof = new Proof();
         proof.setFilePath(dto.getFilePath());
         proof.setDescription(dto.getDescription());
-        proof.setUploadedAt(dto.getUploadedAt() != null ? dto.getUploadedAt() : LocalDateTime.now());
+//        proof.setUploadedAt(dto.getUploadedAt() != null ? dto.getUploadedAt() : LocalDateTime.now());
 
         if (dto.getClaimId() != null) {
             Claim claim = claimRepository.findById(dto.getClaimId())

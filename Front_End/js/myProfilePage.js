@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalMap = {
         "Edit Profile": "update-profile-modal",
         "Change Password": "change-password-modal",
-        "My Claims": "my-claims-modal",
+        // "My Claims": "my-claims-modal",
         "My Lost Items": "my-lost-items-modal",
         "Items I Found": "my-found-items-modal"
     };
@@ -314,3 +314,6 @@ function openQRGenerator() {
   window.location.href = "/Front_End/html/qr-code-page.html#qrGeneratorCard";
 }
 
+function redirectToMyClaims() {
+  window.location.href = "/Front_End/html/claim-view-verify.html";
+}

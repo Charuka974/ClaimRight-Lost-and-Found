@@ -82,3 +82,89 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
+/* Payment Card Styles */
+.secure-modal {
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.secure-modal-header {
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: bold;
+  padding: 15px 20px;
+}
+
+.payment-card {
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 25px;
+  margin-top: 20px;
+}
+
+#payment-element {
+  padding: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+#submit-payment {
+  font-weight: 600;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: 0.2s ease, transform 0.2s ease;
+}
+
+#submit-payment:hover {
+  background: #36b9cc;
+  transform: translateY(-2px);
+}
+
+
+
+/* Testing table */
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  background-color: #1e1e2f; /* dark background */
+  color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #343a40;
+  color: #fff;
+}
+
+table thead th {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #495057;
+  cursor: pointer;
+}
+
+table tbody tr:last-child {
+  border-bottom: none;
+}
+
+table tbody td {
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.2s;
+}
+
+table tbody tr:hover td {
+  background-color: #495057;
+}

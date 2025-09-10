@@ -42,7 +42,7 @@ public class ClaimServiceImpl implements ClaimService {
     public ClaimDTO createClaim(ClaimDTO dto) {
         // Auto-set initial data
         dto.setClaimStatus(ClaimStatus.PENDING);
-        dto.setCreatedAt(LocalDateTime.now());
+//        dto.setCreatedAt(LocalDateTime.now());
         dto.setVerificationLevel("USER_ONLY");
 
         Claim claim = mapToEntity(dto);
@@ -127,25 +127,34 @@ public class ClaimServiceImpl implements ClaimService {
         System.out.println("Fetched claim: " + claim);
         System.out.println("Current status: " + claim.getClaimStatus());
 
+        // If claim is already completed and request is to complete again → just return it
+        if (claim.getClaimStatus() == ClaimStatus.COMPLETED && status == ClaimStatus.COMPLETED) {
+            System.out.println("Claim is already completed. Returning existing claim without changes.");
+            return mapToDTO(claim);
+        }
+
+        // If claim is already completed but request is for another status → block it
+        if (claim.getClaimStatus() == ClaimStatus.COMPLETED) {
+            System.out.println("Cannot change status of an already completed claim.");
+            return mapToDTO(claim);
+        }
+
+        // Update to new status
         claim.setClaimStatus(status);
         System.out.println("Updated claim status to: " + claim.getClaimStatus());
 
-        // If status is COMPLETED, mark related items as claimed
+        // If status is COMPLETED, mark related items
         if (status == ClaimStatus.COMPLETED) {
             if (claim.getLostItem() != null) {
                 System.out.println("Marking related lost item as claimed: " + claim.getLostItem().getId());
                 claim.getLostItem().setIsClaimed(true);
                 lostItemRepository.save(claim.getLostItem());
-            } else {
-                System.out.println("No lost item associated with this claim.");
             }
 
             if (claim.getFoundItem() != null) {
                 System.out.println("Marking related found item as claimed: " + claim.getFoundItem().getId());
                 claim.getFoundItem().setIsClaimed(true);
                 foundItemRepository.save(claim.getFoundItem());
-            } else {
-                System.out.println("No found item associated with this claim.");
             }
         }
 
@@ -157,6 +166,7 @@ public class ClaimServiceImpl implements ClaimService {
 
         return dto;
     }
+
 
 
     @Override

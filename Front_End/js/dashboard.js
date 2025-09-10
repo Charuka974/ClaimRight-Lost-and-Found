@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateChatNotification();
 });
 
+
 async function updateClaimsNotification() {
     try {
         const token = localStorage.getItem("accessToken");
@@ -58,29 +59,37 @@ async function updateClaimsNotification() {
 
         if (!response.ok) throw new Error("Failed to fetch claims");
 
-        const claims = await response.json();
+        let claims = await response.json();
 
-        // Only include claims that need admin verification
-        const adminClaims = claims.filter(c =>
-            (c.verificationLevel === "ADMIN_ONLY" || c.verificationLevel === "DUAL_APPROVAL") &&
-            c.claimStatus === "PENDING"
-        );
+        // Deduplicate by claimId (prevents double-counting)
+        claims = Array.from(new Map(claims.map(c => [c.claimId, c])).values());
+
+        // Filter only claims needing admin verification
+        const adminClaims = claims.filter(c => {
+            const status = (c.claimStatus || "").trim().toUpperCase();
+            const level = (c.verificationLevel || "").trim().toUpperCase();
+            // return (level === "ADMIN_ONLY" || level === "DUAL_APPROVAL") && status === "PENDING";
+            return (level === "ADMIN_ONLY" || level === "DUAL_APPROVAL") && (status === "PENDING" || status === "OWNER_APPROVED" || status === "FINDER_APPROVED");
+        });
 
         const pendingCount = adminClaims.length;
 
         const badge = document.getElementById("claims-notification");
+        if (!badge) return;
 
-        if (!badge) return; // << added check
-
-        badge.textContent = pendingCount;
-
-        // hide badge if count = 0
+        // Always reset then set
+        badge.textContent = String(pendingCount);
         badge.style.display = pendingCount > 0 ? "inline-block" : "none";
+
+        // Debug logging (remove in production)
+        // console.log("Total claims:", claims.length);
+        // console.log("Admin claims:", adminClaims.length, adminClaims);
 
     } catch (err) {
         console.error("Failed to load claims count", err);
     }
 }
+
 
 
 async function updateChatNotification() {
