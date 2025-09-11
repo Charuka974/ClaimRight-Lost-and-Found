@@ -19,7 +19,8 @@
 <body>
     <div id="navbar-container"></div>
 
-    <div class="sticky-controls">
+    <h1 class="mb-4 fw-bold text-center page-header-title fade-in">Found Items</h1>
+    <div class="sticky-controls fade-in">
         <div class="dash-top-container d-flex justify-content-between align-items-center p-2">
             <div class="sort-dropdown-container">
                 <label for="dashboard-sort">Sort By</label>
@@ -40,7 +41,7 @@
     <div class="sticky-sentinel"></div>
 
     
-    <div class="main-content-container">
+    <div class="main-content-container fade-in">
 
       <!-- Example Found Item Card -->
       <!-- <div class="found-item-card" id="foundItemCard">
@@ -102,7 +103,13 @@
             <textarea id="foundItemDescription" name="generalDescription" class="form-control" rows="3" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="foundLocation" class="form-label">Location Found</label>
+            <label for="foundLocation" class="form-label">Location Found
+                <br>
+                <span class="label-instructions">
+                Enter the location where you lost the item as clearly as possible.  
+                (e.g., "Colombo Fort Railway Station, near platform 3" instead of just "Colombo")
+                </span>
+            </label>
             <input type="text" id="foundLocation" name="locationFound" class="form-control" required>
         </div>
         <div class="mb-3">

@@ -3,6 +3,11 @@ const API_BASE_LOSTITEM = 'http://localhost:8080/claimright/lost-item';
 const API_BASE_CHAT = "http://localhost:8080/claimright/messages";
 const API_BASE_CLAIMS = 'http://localhost:8080/claimright/claims';
 
+const API_LANDING_LOSTITEMS = 'http://localhost:8080/claimright-landing-page/lost';
+const API_LANDING_FOUNDITEMS = 'http://localhost:8080/claimright-landing-page/found';
+const API_LANDING_CATEGORIES = 'http://localhost:8080/claimright-landing-page/category';
+
+
 const cardContainer = document.querySelector(".main-content-container");
 
 let allItemsData = []; // Store full item list
@@ -10,7 +15,13 @@ let allItemsData = []; // Store full item list
 document.addEventListener("DOMContentLoaded", function () {
   const userJson = localStorage.getItem("loggedInUser");
 
-  if (!userJson) return;
+  // if (!userJson) return;
+  if (!userJson) {
+    // No user logged in / show public landing items
+    loadCategoriesDropdown();
+    loadAllItemsLanding();
+    return; 
+  }
 
   const user = JSON.parse(userJson);
 
@@ -60,9 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
  
-  loadAllItems();
+  // loadAllItems();
   updateClaimsNotification();
   updateChatNotification();
+
+  loadAllItemsLanding();
+
 });
 
 
@@ -136,6 +150,50 @@ async function updateChatNotification() {
 }
 
 
+// Category Filter
+async function loadCategoriesDropdown() {
+  try {
+    const response = await fetch(API_LANDING_CATEGORIES); // public endpoint
+    if (!response.ok) throw new Error('Failed to fetch categories');
+
+    const categories = await response.json(); // [{categoryId, name}, ...]
+
+    const categorySelect = document.getElementById("dashboard-category");
+    // Clear old options (except "All Categories")
+    categorySelect.innerHTML = '<option value="all">All Categories</option>';
+
+    categories.forEach(cat => {
+      const option = document.createElement("option");
+      option.value = cat.name;  // use name for filtering
+      option.textContent = cat.name;
+      categorySelect.appendChild(option);
+    });
+
+  } catch (err) {
+    console.error("Error loading categories:", err);
+  }
+}
+
+const categorySelect = document.getElementById("dashboard-category");
+categorySelect.addEventListener("change", (e) => sortItemsByCategory(e.target.value));
+
+function sortItemsByCategory(category) {
+  if (!category || category.toLowerCase() === "all") {
+    renderAllItems(allItemsData);
+    return;
+  }
+
+  const filteredItems = allItemsData.filter(item => {
+    const categories = item.categoryNames || [];
+    return categories.some(cat => cat.toLowerCase() === category.toLowerCase());
+  });
+
+  renderAllItems(filteredItems);
+}
+
+
+
+
 async function loadAllItems() {
   try {
     const token = localStorage.getItem("accessToken");
@@ -164,6 +222,36 @@ async function loadAllItems() {
     console.error(error);
   }
 }
+
+
+// Landing page Data Load
+async function loadAllItemsLanding() {
+  try {
+    // Public landing page does NOT require token
+    const [foundRes, lostRes] = await Promise.all([
+      fetch(API_LANDING_FOUNDITEMS), // public endpoint
+      fetch(API_LANDING_LOSTITEMS)   // public endpoint
+    ]);
+
+    if (!foundRes.ok || !lostRes.ok) throw new Error("Failed to load items");
+
+    const [foundItems, lostItems] = await Promise.all([foundRes.json(), lostRes.json()]);
+
+    allItemsData = [
+      ...foundItems.map(item => ({ ...item, type: "found", date: item.dateFound })),
+      ...lostItems.map(item => ({ ...item, type: "lost", date: item.dateLost }))
+    ];
+
+    // Default sort: newest to oldest
+    allItemsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    renderAllItems(allItemsData);
+
+  } catch (error) {
+    console.error("Error loading items for landing page:", error);
+  }
+}
+
 
 function renderAllItems(items) {
   cardContainer.innerHTML = "";

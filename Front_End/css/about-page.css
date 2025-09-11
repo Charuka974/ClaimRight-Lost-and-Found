@@ -5,7 +5,7 @@
   --text-dark: #222;
   --text-muted: #6c757d;
   --bg-light: #f8f9fa;
-}
+} 
 
 /* General page styling */
 body {
@@ -19,6 +19,8 @@ body {
   background-position: bottom center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 768px) {
@@ -262,4 +264,20 @@ body {
   .main-content-container p.lead {
     font-size: 1.1rem;
   }
+}
+
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

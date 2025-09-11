@@ -502,3 +502,122 @@ html, body {
 }
 
 
+.sort-dropdown-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-dropdown-container label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+#dashboard-category {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #6c757d;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+#dashboard-category:focus {
+    border: none;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(78, 115, 223, 0.6);
+}
+
+#dashboard-category option{
+  font-weight: bold;
+  color: #6c757d;
+}
+
+
+/* Dash */
+.dash-top-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+}
+
+.dashboard-search-container {
+  flex: 1 1 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-inner-container {
+  display: flex;
+  gap: 0.3rem;
+  width: 100%;
+}
+
+.search-inner-container input {
+  flex: 1;
+}
+
+
+@media (max-width: 768px) {
+  .sort-dropdown-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .dashboard-search-container {
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .sort-dropdown-container select,
+  .sort-dropdown-container label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 465px) {
+  .sort-dropdown-container select {
+    min-width: 100%;
+  }
+
+  .sort-dropdown-container label {
+    font-size: 0.8rem;
+  }
+
+  .dashboard-search-container input {
+    font-size: 0.85rem;
+  }
+
+  .dashboard-search-container button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

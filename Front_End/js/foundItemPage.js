@@ -14,6 +14,24 @@ let allFoundItemsData = [];
 
 // --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
+
+    const userJsonCheck = localStorage.getItem("loggedInUser");
+    if (!userJsonCheck) {
+        Swal.fire({
+            icon: 'info',
+            title: 'You are not logged in!',
+            text: 'Please log in to access full features.',
+            confirmButtonText: 'OK',
+            timer: 3000,
+            timerProgressBar: true
+        }).then(() => {
+            // Redirect after alert closes
+            window.location.href = "/Front_End/html/dashboard.html";
+        });
+    }
+
+
+
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('openModal') === 'true') {
         openReportFoundItem();

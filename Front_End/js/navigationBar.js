@@ -476,6 +476,7 @@ function signinRedirect() {
 
 
 // Claims Notification
+const API_BASE_CLAIMS_NOTIFY = 'http://localhost:8080/claimright/claims';
 
 async function loadUserClaimsNotification() {
     const userJson = localStorage.getItem("loggedInUser");
@@ -486,7 +487,7 @@ async function loadUserClaimsNotification() {
         const token = localStorage.getItem("accessToken");
         if (!token) throw new Error("User not logged in");
 
-        const response = await fetch(`${API_BASE_CLAIMS}/user/${loggedInUser.userId}`, {
+        const response = await fetch(`${API_BASE_CLAIMS_NOTIFY}/user/${loggedInUser.userId}`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
 

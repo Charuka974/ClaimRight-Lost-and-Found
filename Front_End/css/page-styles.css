@@ -127,8 +127,6 @@ body {
 }
 
 .sort-dropdown-container label {
-    /* margin-bottom: 0.25rem; */
-    font-weight: bold;
     color: #6c757d;
     font-size: 1.1rem;
     width: 90px;
@@ -232,4 +230,29 @@ body {
         flex-direction: column;
         gap: 0.5rem;
     }
+}
+
+
+.page-header-title {
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    font-size: 2.8rem;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

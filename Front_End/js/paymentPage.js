@@ -78,7 +78,7 @@ async function createPaymentIntent(amount, type, payerId, receiverId, lostItemId
     overlay.style.display = "none"; // hide loading overlay
   }
 }
- 
+  
 
 async function pay() {
   const overlay = document.getElementById("loadingOverlay");

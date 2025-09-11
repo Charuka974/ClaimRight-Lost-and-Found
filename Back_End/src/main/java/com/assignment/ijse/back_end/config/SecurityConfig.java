@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Enable CORS with custom configuration
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/claimrightauth/**").permitAll()
+                    .requestMatchers("/claimright-landing-page/**").permitAll()
                     .requestMatchers("/claimright-web-socket/ws-chat/**").permitAll() // allow handshake
                     .requestMatchers("/topic/**", "/app/**").permitAll() // allow public access to messaging endpoints
                     .anyRequest().authenticated())

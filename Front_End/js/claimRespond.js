@@ -7,20 +7,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   const itemType = urlParams.get("type"); // "found" or "lost"
   const itemId = urlParams.get("id");
 
+
   const userJson = localStorage.getItem("loggedInUser");
-  if (!userJson) {
     if (!userJson) {
-          Swal.fire({
-            icon: "warning",
-            title: "Login Required",
-            text: "Please log in to submit a claim.",
-            confirmButtonColor: "#3085d6"
-          });
-      return;
+        Swal.fire({
+            icon: 'warning',
+            title: 'Login Required!',
+            text: 'Please log in to submit a claim.',
+            confirmButtonText: 'OK',
+            timer: 3000,
+            timerProgressBar: true
+        }).then(() => {
+            // Redirect after alert closes
+            window.location.href = "/Front_End/html/dashboard.html";
+        });
     }
 
-    return;
-  }
   const loggedInUser = JSON.parse(userJson);
 
   const headerTitle = document.getElementById("page-header-title");

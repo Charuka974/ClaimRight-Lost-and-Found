@@ -19,7 +19,8 @@
 <body>
     <div id="navbar-container"></div>
 
-    <div class="sticky-controls">
+    <h1 class="mb-4 fw-bold text-center page-header-title fade-in">Lost Items</h1>
+    <div class="sticky-controls fade-in">
         <div class="dash-top-container d-flex justify-content-between align-items-center p-2">
             <div class="sort-dropdown-container">
                 <label for="dashboard-sort">Sort By</label>
@@ -40,7 +41,7 @@
     <div class="sticky-sentinel"></div>
 
 
-    <div class="main-content-container">
+    <div class="main-content-container fade-in">
 
       <!-- <div class="lost-item-card" id="lostItemCard">
         <img
@@ -101,7 +102,13 @@
             <textarea id="itemDescription" name="detailedDescription" class="form-control" rows="3" required></textarea>
           </div>
           <div class="mb-3">
-            <label for="lostLocation" class="form-label">Location Lost</label>
+            <label for="lostLocation" class="form-label">Location Lost
+              <br>
+                <span class="label-instructions">
+                Enter the location where you lost the item as clearly as possible.  
+                (e.g., "Colombo Fort Railway Station, near platform 3" instead of just "Colombo")
+                </span>
+            </label>
             <input type="text" id="lostLocation" name="locationLost" class="form-control" required>
           </div>
           <div class="mb-3">
@@ -121,7 +128,7 @@
             <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
               <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-bottom: 10px;">
               <button type="button" id="removeImageBtn" class="btn btn-sm btn-outline-danger">Remove</button>
-            </div>
+            </div> 
           </div>
           <div class="mb-3">
             <label for="reward" class="form-label">Reward (Optional)</label>

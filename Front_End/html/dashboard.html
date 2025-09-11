@@ -21,7 +21,7 @@
 <body>
     <div id="navbar-container"></div>
 
-    <div class="brand-header">
+    <div class="brand-header fade-in">
         <div id="app"></div>
         <script src="/Front_End/js/globeAnimation.js"></script>
 
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Sticky Controls (Sort + Search) -->
-    <div class="sticky-controls">
+    <div class="sticky-controls fade-in">
         <div class="dash-top-container d-flex justify-content-between align-items-center p-2">
             <div class="sort-dropdown-container">
                 <label for="dashboard-sort">Sort By</label>
@@ -42,6 +42,11 @@
                     <option value="oldest">Oldest</option>
                     <option value="lost">Lost Items</option>
                     <option value="found">Found Items</option>
+                </select>
+
+                <label for="dashboard-category">Category</label>
+                <select id="dashboard-category" class="form-select">
+                    <option value="all">All Categories</option>
                 </select>
             </div>
 
@@ -73,7 +78,7 @@
 
 
 
-    <div class="main-content-container">
+    <div class="main-content-container fade-in">
 
     </div>
 
