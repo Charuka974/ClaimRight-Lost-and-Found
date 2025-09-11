@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   // NAVBAR
-    const user = localStorage.getItem("loggedInUser");
+  const user = localStorage.getItem("loggedInUser");
+  const userObj = user ? JSON.parse(user) : null;
 
   // Dynamically build navbar based on login status
   const isLoggedIn = !!user;
 
   const navbar = `
-    <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+    <nav class="navbar navbar-expand-md custom-navbar shadow-sm">
       <div class="container-fluid">
         <a class="navbar-brand fw-bold text-white" href="/Front_End/html/dashboard.html">ClaimRight</a>
         <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -17,19 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/dashboard.html"><b>Dashboard</b></a>
+              <a class="nav-link text-white" href="/Front_End/html/dashboard.html"><i class="bi bi-speedometer2"></i> <b>Dashboard</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/lost-items.html"><b>Lost Items</b></a>
+              <a class="nav-link text-white" href="/Front_End/html/lost-items.html"><i class="bi bi-search-heart"></i> <b>Lost Items</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/found-items.html"><b>Found Items</b></a>
+              <a class="nav-link text-white" href="/Front_End/html/found-items.html"><i class="bi bi-binoculars"></i> <b>Found Items</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/about-page.html"><b>About</b></a>
+              <a class="nav-link text-white" href="/Front_End/html/about-page.html"><i class="bi bi-info-circle"></i> <b>About</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/contact-us-page.html"><b>Contact Us</b></a>
+              <a class="nav-link text-white" href="/Front_End/html/contact-us-page.html"><i class="bi bi-envelope"></i> <b>Contact Us</b></a>
             </li>
 
             ${
@@ -37,9 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? `
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-tools"></i> Quick Actions
+                <a class="nav-link dropdown-toggle text-white fw-bold position-relative" 
+                  href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-lightning-charge-fill"></i> <b>Quick Actions</b>
+                  <span id="claims-notification-inline"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 0.65rem;">
+                    0
+                  </span>
                 </a>
+
                 <ul class="dropdown-menu dropdown-menu-end mt-3 wide-dropdown" aria-labelledby="userDropdown">
                   <li>
                     <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/lost-items.html?openModal=true">
@@ -66,9 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
                   <li><hr class="dropdown-divider" /></li>
 
                   <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/claim-view-verify.html">
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold position-relative" 
+                      href="/Front_End/html/claim-view-verify.html">
                       <i class="bi bi-journal-check"></i>
                       My Claims
+                      <span id="claims-notification" 
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.7rem;">
+                        0
+                      </span>
                     </a>
                   </li>
                   <li><hr class="dropdown-divider" /></li>
@@ -94,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-person-circle"></i> My Account
+                  <i class="bi bi-person-circle"></i> <b>${userObj.username}</b>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="userDropdown">
                 <li>
@@ -155,13 +169,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // FOOTER
   const footer = `
-    <footer class="bg-dark text-white py-3 mt-5 shadow-sm">
-      <div class="container text-center">
-        <p class="mb-0">&copy; ${new Date().getFullYear()} ClaimRight. All rights reserved.</p>
-        <small>Helping people reconnect with what matters.</small>
-      </div>
-    </footer>
-  `;
+        <footer class="claimright-footer">
+            <div class="footer-container">
+                <div class="footer-section footer-about">
+                    <h3>About ClaimRight</h3>
+                    <p>ClaimRight is a trusted platform dedicated to reuniting people with their lost belongings. We believe every item has a story and deserve to find its way back home.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Lost Items</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Found Items</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Recovery Street, Colombo, Sri Lanka</p>
+                    <p><i class="fas fa-phone"></i> +94 77 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> help@claimright.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+                
+                <div class="footer-section footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on recovered items and success stories.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <p>By subscribing, you agree to our <a href="#" style="color: #3498db;">Privacy Policy</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; ${new Date().getFullYear()} ClaimRight. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>Helping people reconnect with what matters.</p>
+            </div>
+        </footer>
+        `;
+        
+  // Insert footer into the container
   document.getElementById("footer-container").innerHTML = footer;
 
   // Edit Profile Popup
@@ -314,6 +372,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+            
+});
+
+
 
 // Set Current data of the user
 document.addEventListener("DOMContentLoaded", function () {
@@ -341,6 +404,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
   }
+
+
+  const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    alert(`Thank you for subscribing with: ${emailInput.value}`);
+                    emailInput.value = '';
+                });
+  }
+
+  loadUserClaimsNotification();
+
 });
 
 document.addEventListener("change", function (e) {
@@ -395,4 +472,67 @@ function logout() {
 function signinRedirect() {
   window.location.href = "/Front_End/html/login-signup.html";
 }
+
+
+
+// Claims Notification
+
+async function loadUserClaimsNotification() {
+    const userJson = localStorage.getItem("loggedInUser");
+    if (!userJson) return;
+
+    try {
+        const loggedInUser = JSON.parse(userJson);
+        const token = localStorage.getItem("accessToken");
+        if (!token) throw new Error("User not logged in");
+
+        const response = await fetch(`${API_BASE_CLAIMS}/user/${loggedInUser.userId}`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch claims");
+
+        const claims = await response.json();
+
+        // Separate received vs sent claims
+        const receivedClaims = claims.filter(claim => claim.recipientId === loggedInUser.userId);
+        const sentClaims = claims.filter(claim => claim.claimantId === loggedInUser.userId);
+
+        // Calculate notification count
+        const notifCount =
+            sentClaims.filter(c => c.claimStatus !== "PENDING").length +
+            receivedClaims.filter(c => c.claimStatus === "PENDING").length;
+
+        updateClaimsNotification(notifCount);
+
+    } catch (error) {
+        console.error("Notification load failed:", error);
+        updateClaimsNotification(0); // fallback: hide badges
+    }
+}
+
+function updateClaimsNotification(count) {
+    const badge1 = document.getElementById("claims-notification");
+    const badge2 = document.getElementById("claims-notification-inline");
+
+    if (badge1) badge1.textContent = count;
+    if (badge2) badge2.textContent = count;
+
+    // Hide both if 0
+    [badge1, badge2].forEach(badge => {
+        if (badge) badge.style.display = count > 0 ? "inline-block" : "none";
+    });
+
+    // Hide Quick Actions badge when dropdown is expanded
+    const quickActions = document.getElementById("userDropdown");
+    if (quickActions) {
+        quickActions.addEventListener("show.bs.dropdown", () => {
+            if (badge2) badge2.style.display = "none";
+        });
+        quickActions.addEventListener("hide.bs.dropdown", () => {
+            if (badge2 && count > 0) badge2.style.display = "inline-block";
+        });
+    }
+}
+
 

@@ -19,12 +19,13 @@
   <div id="navbar-container"></div>
 
   <div class="main-content-container">
-    <section class="container py-5 top-container">
+    <!-- Hero Section -->
+    <section class="container py-5 top-container" data-aos="fade-up">
       <div class="row align-items-center">
-        <div class="col-md-6 text-center">
+        <div class="col-md-6 text-center" data-aos="fade-right" data-aos-delay="200">
           <img src="/Front_End/assets/images/ChatGPT Image Jul 24, 2025, 11_16_54 AM.png" class="img-fluid" alt="Lost and Found">
         </div>
-        <div class="col-md-6 right-text-container">
+        <div class="col-md-6 right-text-container" data-aos="fade-left" data-aos-delay="300">
           <h1 class="mb-4 fw-bold text-primary text-center">About ClaimRight</h1>
           <p class="lead text-center">
             Lost something?<br>
@@ -34,47 +35,131 @@
           <p class="lead text-center">
             Every item has a story.<br>
             Let’s help it find its way back home.
-          </p>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At <strong>ClaimRight</strong>, we believe in the power of community. 
+          </p> 
+          <p class="text-justify">
+            At <strong>ClaimRight</strong>, we believe in the power of community. 
             Our mission is to reunite people with their belongings—whether it’s a cherished keepsake, 
             an important document, or something you use every day.  
             With a secure platform and an easy process, ClaimRight ensures that every found item 
             has the best chance of being returned to its rightful owner.  
           </p>
-          <p class="text-center">
+          <p class="text-center fw-bold">
             Together, we make lost and found easier, safer, and more reliable.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="bg-light py-5">
+    <!-- Stats Section -->
+    <section class="stats-section" data-aos="fade-up">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-3 col-6 stat-item">
+            <div class="stat-number" data-count="15280">15,280+</div>
+            <div class="stat-label">Items Reunited</div>
+          </div>
+          <div class="col-md-3 col-6 stat-item">
+            <div class="stat-number" data-count="9540">9,540+</div>
+            <div class="stat-label">Happy Users</div>
+          </div>
+          <div class="col-md-3 col-6 stat-item">
+            <div class="stat-number" data-count="124">124+</div>
+            <div class="stat-label">Cities Served</div>
+          </div>
+          <div class="col-md-3 col-6 stat-item">
+            <div class="stat-number" data-count="98">98%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5" data-aos="fade-up">
       <div class="container text-center">
-        <h2 class="fw-bold mb-4">Why Choose ClaimRight?</h2>
+        <h2 class="fw-bold mb-5">Why Choose ClaimRight?</h2>
         <div class="row g-4">
-          <div class="col-md-4">
-            <div class="p-4 border rounded-4 shadow-sm h-100">
-              <i class="bi bi-search fs-1 text-primary mb-3"></i>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <i class="bi bi-search feature-icon"></i>
               <h5>Easy Search</h5>
-              <p>Quickly browse or report lost items in just a few clicks.</p>
+              <p>Quickly browse or report lost items in just a few clicks with our intuitive interface.</p>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="p-4 border rounded-4 shadow-sm h-100">
-              <i class="bi bi-shield-check fs-1 text-primary mb-3"></i>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <i class="bi bi-shield-check feature-icon"></i>
               <h5>Safe & Secure</h5>
-              <p>Your data and items are protected with top-notch security measures.</p>
+              <p>Your data and items are protected with top-notch security measures and encryption.</p>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="p-4 border rounded-4 shadow-sm h-100">
-              <i class="bi bi-people fs-1 text-primary mb-3"></i>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <i class="bi bi-people feature-icon"></i>
               <h5>Community Driven</h5>
               <p>Our platform thrives on trust and collaboration to reunite owners with their belongings.</p>
             </div>
           </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <i class="bi bi-chat-dots feature-icon"></i>
+              <h5>Direct Communication</h5>
+              <p>Chat directly with finders or owners to arrange safe returns of items.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <i class="bi bi-geo-alt feature-icon"></i>
+              <h5>Location Tracking</h5>
+              <p>Pinpoint exactly where items were found or lost with our mapping technology.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <i class="bi bi-award feature-icon"></i>
+              <h5>Reward System</h5>
+              <p>Offer or claim rewards for returned items to incentivize the community.</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" data-aos="fade-up">
+      <div class="container text-center">
+        <h2 class="fw-bold mb-5">Our Team</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-3 col-sm-6 team-member" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="team-img" alt="Team Member">
+            <h5>John Smith</h5>
+            <p>Founder & CEO</p>
+          </div>
+          <div class="col-md-3 col-sm-6 team-member" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="team-img" alt="Team Member">
+            <h5>Sarah Johnson</h5>
+            <p>Head of Development</p>
+          </div>
+          <div class="col-md-3 col-sm-6 team-member" data-aos="fade-up" data-aos-delay="300">
+            <img src="https://randomuser.me/api/portraits/men/22.jpg" class="team-img" alt="Team Member">
+            <h5>Michael Chen</h5>
+            <p>Community Manager</p>
+          </div>
+          <div class="col-md-3 col-sm-6 team-member" data-aos="fade-up" data-aos-delay="400">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="team-img" alt="Team Member">
+            <h5>Emily Rodriguez</h5>
+            <p>Customer Support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" data-aos="fade-up">
+      <div class="container">
+        <h2 class="fw-bold mb-3">Ready to Get Started?</h2>
+        <p class="lead mb-4">Join thousands of satisfied users who have reclaimed their lost items</p>
+        <button class="btn cta-button" onclick="location.href='/Front_End/html/login-signup.html'">Join ClaimRight Today</button>
       </div>
     </section>
   </div>
@@ -88,9 +173,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="/Front_End/js/navigationBar.js"></script>
+    <script src="/Front_End/js/navigationBar.js"></script>
     <script src="/Front_End/js/loginSignup.js"></script>
     <script src="/Front_End/js/updateOwnProfile.js"></script>
-    <!-- <script src="/Front_End/js/aboutPage.js"></script> -->
+    <script src="/Front_End/js/aboutPage.js"></script>
 </body>
 </html>

@@ -6,13 +6,29 @@ const API_BASE_CLAIMS = 'http://localhost:8080/claimright/claims';
 const cardContainer = document.querySelector(".main-content-container");
 
 let allItemsData = []; // Store full item list
-
+ 
 document.addEventListener("DOMContentLoaded", function () {
   const userJson = localStorage.getItem("loggedInUser");
 
   if (!userJson) return;
 
   const user = JSON.parse(userJson);
+
+  if ((user.role === "ADMIN" || user.role === "SEMI_ADMIN" || user.role === "USER") && user.active === true) {
+    // Chat Button with Notification Badge
+    const chatBtn = document.createElement("button");
+    chatBtn.className = "floating-page-btn floating-chat-nav-btn";
+    chatBtn.innerHTML = `
+      <i class="bi bi-chat-fill"></i>&nbsp;&nbsp;Chat
+      <span id="chat-notification" 
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size: 0.75rem;">
+          0
+      </span>
+    `;
+    chatBtn.onclick = openChat;
+    document.body.appendChild(chatBtn);
+  }
 
   if ((user.role === "ADMIN" || user.role === "SEMI_ADMIN") && user.active === true) {
     // Manage User Button
