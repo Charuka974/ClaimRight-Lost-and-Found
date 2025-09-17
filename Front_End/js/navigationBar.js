@@ -185,11 +185,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="footer-section footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Lost Items</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Found Items</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="/Front_End/html/dashboard.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+                        <li><a href="/Front_End/html/lost-items.html"><i class="fas fa-chevron-right"></i> Lost Items</a></li>
+                        <li><a href="/Front_End/html/found-items.html"><i class="fas fa-chevron-right"></i> Found Items</a></li>
+                        <li><a href="/Front_End/html/about-page.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="/Front_End/html/contact-us-page.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="/Front_End/html/instructions-page.html"><i class="fas fa-chevron-right"></i> How It Works</a></li>
                     </ul>
                 </div>
                 

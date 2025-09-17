@@ -79,7 +79,7 @@ async function createPaymentIntent(amount, type, payerId, receiverId, lostItemId
   }
 }
   
-
+ 
 async function pay() {
   const overlay = document.getElementById("loadingOverlay");
   overlay.style.display = "flex"; // show loading overlay
@@ -143,7 +143,12 @@ function openPaymentModal() {
     return;
   }
 
-  const modal = new bootstrap.Modal(document.getElementById('securePaymentModal'));
+  const modal = new bootstrap.Modal(document.getElementById('securePaymentModal'), {
+    backdrop: false,   // no backdrop created
+    keyboard: true     // allow Esc key to close
+  });
+
+  // const modal = new bootstrap.Modal(document.getElementById('securePaymentModal'));
   document.getElementById('payment-amount').textContent = `$${amount}`; // display in modal
   modal.show();
 }

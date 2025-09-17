@@ -1,0 +1,133 @@
+:root {
+  --gradient-primary: linear-gradient(135deg, #4e73df, #36b9cc);
+  --gradient-accent: linear-gradient(135deg, #ff7e5f, #feb47b);
+  --bg-light: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-dark: #1f1f1f;
+  --text-muted: #6c757d;
+  --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  /* background: var(--bg-light); */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container Spacing */
+.main-content-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* Info Cards */
+.info-card {
+  border-radius: 18px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-soft);
+  padding: 30px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+.info-card:hover::before {
+  opacity: 0.05;
+}
+
+.info-card .info-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  z-index: 1;
+}
+
+.info-card h5 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  z-index: 1;
+}
+
+.info-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  z-index: 1;
+}
+
+/* Guidelines Card */
+.guidelines-card {
+  border-radius: 18px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-soft);
+  padding: 30px;
+  margin-top: 40px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.guidelines-card h4 {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.secure-list {
+  padding-left: 0;
+}
+
+.secure-list li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  text-align: left;        
+  margin: 0 auto;          
+  max-width: 500px;          
+}
+
+.secure-icon {
+  flex-shrink: 0; 
+  margin-right: 12px;
+}
+
+
+
+.secure-icon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 {
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 1s ease;
+}

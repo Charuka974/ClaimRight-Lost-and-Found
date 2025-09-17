@@ -274,3 +274,8 @@ async function deleteClaim(claimId, modalInstance) {
         });
     }
 }
+
+
+function openChat() {
+    window.location.href = "/Front_End/html/chat-page.html";
+}

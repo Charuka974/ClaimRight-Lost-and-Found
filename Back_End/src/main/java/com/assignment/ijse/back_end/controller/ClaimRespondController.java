@@ -154,5 +154,18 @@ public class ClaimRespondController {
         return ResponseEntity.ok(updated);
     }
 
+    @PutMapping("/update-exchange/{claimId}")
+    public ResponseEntity<ClaimDTO> updateExchange(
+            @PathVariable Long claimId,
+            @RequestBody ClaimDTO claimDTO) {
+
+        ClaimDTO updatedClaim = claimService.setExchangeMethod(
+                claimId,
+                claimDTO.getExchangeMethod(),
+                claimDTO.getExchangeDetails()
+        );
+
+        return ResponseEntity.ok(updatedClaim);
+    }
 
 }

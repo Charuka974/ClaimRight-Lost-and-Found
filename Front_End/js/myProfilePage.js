@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load profile card immediately
     loadProfileCard();
+    updateProfileStats(); // Update profile statistics
 
     buttons.forEach(button => {
         button.addEventListener("click", () => {
@@ -67,12 +68,23 @@ document.addEventListener("DOMContentLoaded", function () {
         if (profileName) profileName.textContent = user.username || user.fullName || "Unnamed User";
         if (profileEmail) profileEmail.textContent = user.email || "No email provided";
 
-        const phoneField = document.querySelector(".profile-info div:nth-child(1)");
-        const memberSinceField = document.querySelector(".profile-info div:nth-child(2)");
+        const phoneField = document.getElementById("profile-phone");
+        const memberSinceField = document.getElementById("profile-member-since");
         const statusBadge = document.querySelector(".profile-info .badge");
 
         if (phoneField) phoneField.innerHTML = `<strong>Phone:</strong> ${user.phoneNumber || "N/A"}`;
-        if (memberSinceField) memberSinceField.innerHTML = `<strong>Member since:</strong> ${user.createdAt || "Unknown"}`;
+        if (memberSinceField) {
+        let createdDate = "Unknown";
+            if (user.createdAt) {
+                const dateObj = new Date(user.createdAt);
+                createdDate = dateObj.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+                });
+            }
+            memberSinceField.innerHTML = `<strong>Member since:</strong> ${createdDate}`;
+        }
         if (statusBadge) {
             statusBadge.textContent = user.active ? "Active" : "Inactive";
             statusBadge.classList.toggle("active", user.active);
@@ -222,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({
                 icon: "error",
                 title: "Server Error",
-                text: "Something went wrong while updating your profile.",
+                text: "Something went wrong while updating your profile.", 
                 confirmButtonColor: "#d33",
             });
         } finally {
@@ -316,4 +328,80 @@ function openQRGenerator() {
 
 function redirectToMyClaims() {
   window.location.href = "/Front_End/html/claim-view-verify.html";
+}
+
+
+
+
+// Update profile statistics (claims made, items found, reputation)
+// ------------------------
+async function updateProfileStats() {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!token || !loggedUser) throw new Error("User not logged in");
+
+    // Fetch claims
+    const claimsRes = await fetch(`${API_BASE_CLAIMS_NOTIFY}/user/${loggedUser.userId}`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+    if (!claimsRes.ok) throw new Error("Failed to fetch claims");
+    const claims = await claimsRes.json();
+
+    const claimedCount = claims.filter(c => 
+        c.claimStatus === "FINDER_APPROVED" ||
+        c.claimStatus === "COMPLETED" ||
+        c.claimStatus === "ADMIN_APPROVED" ||
+        c.claimStatus === "DUAL_APPROVED").length;
+
+    // Fetch found items
+    const foundRes = await fetch(`${API_BASE_FOUNDITEM}/finder/${loggedUser.userId}`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+    if (!foundRes.ok) throw new Error("Failed to fetch found items");
+    const foundItems = await foundRes.json();
+
+    const foundCount = foundItems.length;
+
+    // Reputation (basic example ratio of approved claims / total claims)
+    // let reputation = 0.0;
+    // if (claims.length > 0) {
+    //   const positive = claims.filter(c => c.claimStatus === "APPROVED" || c.claimStatus === "COMPLETED").length;
+    //   reputation = (positive / claims.length) * 5; // scale to 5-star system
+    // }
+    let reputation = 0.0;
+    // Special case: give full reputation to Charuka Hansaja (ADMIN, ID 1)
+    if (
+        loggedUser.userId === 1 &&
+        loggedUser.username === "Charuka Hansaja" &&
+        loggedUser.role === "ADMIN"
+    ) {
+        reputation = 5.0;
+    } else if (claims.length > 0) {
+        const positive = claims.filter(
+        c => c.claimStatus === "APPROVED" || c.claimStatus === "COMPLETED"
+    ).length;
+        reputation = (positive / claims.length) * 5; // scale to 5-star system
+    }
+
+
+    // Update DOM
+    document.getElementById("stat-claimed").textContent = claimedCount;
+    document.getElementById("stat-found").textContent = foundCount;
+
+    const reputationCircle = document.querySelector("#stat-reputation .circle");
+    const reputationText = document.querySelector("#stat-reputation .percentage");
+
+    const percentage = (reputation / 5) * 100; // scale to 0–100
+    reputationCircle.setAttribute("stroke-dasharray", `${percentage}, 100`);
+    reputationText.textContent = reputation.toFixed(1);
+
+
+  } catch (error) {
+    console.error("Failed to update profile stats:", error);
+    // fallback: reset to 0
+    document.getElementById("stat-claimed").textContent = "0";
+    document.getElementById("stat-found").textContent = "0";
+    document.getElementById("stat-reputation").textContent = "0.0";
+  }
 }

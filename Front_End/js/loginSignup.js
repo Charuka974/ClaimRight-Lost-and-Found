@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
           confirmButtonText: 'Go to Login'
         }).then(() => {
           flipCard(); // Flip to login view
+          window.open("/Front_End/html/instructions-page.html", "_blank"); // open instructions in new tab
           signupForm.reset();
         });
 

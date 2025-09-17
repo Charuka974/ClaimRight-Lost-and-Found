@@ -27,10 +27,10 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public PaymentIntent handlePayment(PaymentDTO dto) throws StripeException {
-        // 1. Create Stripe payment intent
+        // Create Stripe payment intent
         PaymentIntent intent = stripeService.createPayment(dto.getAmount(), "usd");
 
-        // 2. Map DTO → Entity
+        // Map DTO to Entity
         Payment payment = new Payment();
         payment.setAmount(dto.getAmount());
         payment.setType(PaymentType.valueOf(dto.getType().toUpperCase()));
@@ -54,8 +54,7 @@ public class PaymentServiceImpl implements PaymentService {
                     .orElseThrow(() -> new RuntimeException("Found item not found with ID: " + dto.getFoundItemId())));
         }
 
-
-        // 3. Save entity
+        // Save entity
         paymentRepository.save(payment);
 
         return intent;

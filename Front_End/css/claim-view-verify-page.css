@@ -580,6 +580,29 @@ body {
     box-shadow: 0 2px 6px rgba(40,167,69,0.4);
 }
 
+.btn-exchange-claim {
+    background: linear-gradient(45deg, #6f42c1, #b197fc); /* purple */
+    color: #fff;
+    font-weight: bold;
+    border-radius: 14px;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    box-shadow: 0 4px 10px rgba(111,66,193,0.4);
+    transition: all 0.25s ease-in-out;
+}
+
+.btn-exchange-claim:hover {
+    background: linear-gradient(45deg, #5a32a3, #9c88ff);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(111,66,193,0.6);
+}
+
+.btn-exchange-claim:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 6px rgba(111,66,193,0.4);
+}
+
+
 /* Dropdown container inside claim card */
 .claim-card select {
     display: inline-block;
@@ -616,4 +639,92 @@ body {
 /* Optional: match spacing with text */
 .claim-card p strong {
     margin-right: 5px;
+}
+
+
+/* Exchange Modal */
+#exchangeModal .modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+
+#exchangeModal .modal-header {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+
+#exchangeModal .modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+#exchangeModal .btn-close {
+  filter: brightness(0) invert(1); /* make close button white */
+  opacity: 1;
+}
+
+#exchangeModal .btn-close:hover {
+  filter: brightness(0.8) invert(1);
+  transform: scale(1.1);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#exchangeModal .modal-body {
+  padding: 1.5rem;
+}
+
+#exchangeModal .form-label {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+#exchangeModal .form-select,
+#exchangeModal .form-control {
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#exchangeModal .form-select:focus,
+#exchangeModal .form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.2rem rgba(78,115,223,0.25);
+}
+
+/* Footer buttons */
+#exchangeModal .modal-footer .btn {
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.55rem 1.3rem;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+#exchangeModal .modal-footer .btn-primary {
+  background: linear-gradient(45deg, #4e73df, #36b9cc);
+  border: none;
+}
+
+#exchangeModal .modal-footer .btn-primary:hover {
+  background: linear-gradient(45deg, #3b5cd0, #2bb8c9);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 14px rgba(78,115,223,0.35);
+}
+
+#exchangeModal .modal-footer .btn-secondary {
+  background: linear-gradient(45deg, #6c757d, #868e96);
+  border: none;
+  color: #fff;
+}
+
+#exchangeModal .modal-footer .btn-secondary:hover {
+  background: linear-gradient(45deg, #5a6268, #737b83);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(108, 117, 125, 0.35);
 }

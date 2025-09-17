@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const claimsBtn = document.createElement("button");
     claimsBtn.className = "floating-page-btn floating-claims-nav-btn";
     claimsBtn.innerHTML = `
-      <i class="bi bi-file-earmark-text"></i>&nbsp;&nbsp;Claims
-      <span id="claims-notification" 
+      <i class="bi bi-file-earmark-text"></i>&nbsp;&nbsp;Claims to Verify
+      <span id="admin-claims-notification" 
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             style="font-size: 0.75rem;">
         0
@@ -72,54 +72,76 @@ document.addEventListener("DOMContentLoaded", function () {
   }
  
   // loadAllItems();
-  updateClaimsNotification();
+  updateAdminClaimsNotification();
   updateChatNotification();
-
+  loadCategoriesDropdown();
   loadAllItemsLanding();
 
 });
 
 
-async function updateClaimsNotification() {
-    try {
-        const token = localStorage.getItem("accessToken");
-        const response = await fetch(`${API_BASE_CLAIMS}/admin`, {
-            headers: { "Authorization": `Bearer ${token}` }
-        });
+async function updateAdminClaimsNotification() {
+  console.log("Updating claims notification...");
 
-        if (!response.ok) throw new Error("Failed to fetch claims");
-
-        let claims = await response.json();
-
-        // Deduplicate by claimId (prevents double-counting)
-        claims = Array.from(new Map(claims.map(c => [c.claimId, c])).values());
-
-        // Filter only claims needing admin verification
-        const adminClaims = claims.filter(c => {
-            const status = (c.claimStatus || "").trim().toUpperCase();
-            const level = (c.verificationLevel || "").trim().toUpperCase();
-            // return (level === "ADMIN_ONLY" || level === "DUAL_APPROVAL") && status === "PENDING";
-            return (level === "ADMIN_ONLY" || level === "DUAL_APPROVAL") && (status === "PENDING" || status === "OWNER_APPROVED" || status === "FINDER_APPROVED");
-        });
-
-        const pendingCount = adminClaims.length;
-
-        const badge = document.getElementById("claims-notification");
-        if (!badge) return;
-
-        // Always reset then set
-        badge.textContent = String(pendingCount);
-        badge.style.display = pendingCount > 0 ? "inline-block" : "none";
-
-        // Debug logging (remove in production)
-        // console.log("Total claims:", claims.length);
-        // console.log("Admin claims:", adminClaims.length, adminClaims);
-
-    } catch (err) {
-        console.error("Failed to load claims count", err);
+  try {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      console.warn("No access token found, skipping claims notification");
+      return;
     }
-}
 
+    const response = await fetch(`${API_BASE_CLAIMS}/admin`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch claims: ${response.status} ${response.statusText}`);
+    }
+
+    let claims = await response.json();
+
+    // Deduplicate by claimId (safety)
+    claims = Array.from(new Map(claims.map(c => [c.claimId, c])).values());
+
+    // Debug: show a sample claim
+    if (claims.length > 0) {
+      console.log("Sample claim from server:", claims[0]);
+    } else {
+      console.log("No claims received from server.");
+    }
+
+    // Filter only admin-relevant claims
+    const adminClaims = claims.filter(c => {
+      // claimStatus comes from backend as a STRING (e.g. "PENDING")
+      const status = (c.claimStatus || "").toString().trim().toUpperCase();
+      const level = (c.verificationLevel || "").trim().toUpperCase();
+
+      const needsAdmin = (level === "ADMIN_ONLY" || level === "DUAL_APPROVAL");
+      // const isPending = (status === "PENDING" || status === "OWNER_APPROVED" || status === "FINDER_APPROVED");
+      const isPending = true; // Show all statuses for admin review
+
+      return needsAdmin && isPending;
+    });
+
+    const pendingCount = adminClaims.length;
+
+    const badge = document.getElementById("admin-claims-notification");
+    if (!badge) {
+      console.warn("Admin claims badge element not found in DOM");
+      return;
+    }
+
+    badge.textContent = String(pendingCount);
+    badge.style.display = pendingCount > 0 ? "inline-block" : "none";
+
+    // Debug logging
+    console.log("Total claims:", claims.length);
+    console.log("Admin claims needing attention:", pendingCount, adminClaims);
+
+  } catch (err) {
+    console.error("Failed to load claims count:", err);
+  }
+}
 
 
 async function updateChatNotification() {

@@ -24,35 +24,59 @@
     <div class="main-content-container fade-in">
         <div class="inner-container">
 
-                    <div class="profile-card">
+                    <div class="profile-card background-image-modal">
                         <div class="profile-header">
                             <img src="/Front_End/assets/images/avatar-default-icon.png" alt="Profile Picture" class="profile-img" />
                             <h2></h2>
                             <p class="profile-email"></p>
                         </div>
                         <div class="profile-info">
-                            <div><strong>Phone:</strong></div>
-                            <div><strong>Member since:</strong></div>
-                            <div><strong>Status:</strong> <span class="badge active"></span></div>
+                            <div id="profile-phone"><strong>Phone:</strong></div>
+                            <div id="profile-member-since"><strong>Member since:</strong></div>
+                            <div id="profile-status"><strong>Status:</strong> <span class="badge active"></span></div>
                         </div>
                         <div class="profile-status-info">
                             <div class="status-box">
-                            <i class="fas fa-check-circle fa-2x text-success"></i>
-                            <div class="status-label">Claimed</div>
-                            <div class="status-value">12</div>
+                                <i class="fas fa-check-circle fa-2x text-light"></i>
+                                <div class="status-label">Claimed</div>
+                                <div id="stat-claimed" class="status-value">0</div>
                             </div>
                             <div class="status-box">
-                            <i class="fas fa-search fa-2x text-primary"></i>
-                            <div class="status-label">Found</div>
-                            <div class="status-value">8</div>
+                                <i class="fas fa-search fa-2x text-light"></i>
+                                <div class="status-label">Found</div>
+                                <div id="stat-found" class="status-value">0</div>
                             </div>
                             <div class="status-box">
-                            <i class="fas fa-star fa-2x text-warning"></i>
-                            <div class="status-label">Reputation</div>
-                            <div class="status-value">4.9</div>
+                                <div class="status-label">Reputation</div>
+                                <div id="stat-reputation" class="reputation-circle">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <defs>
+                                        <linearGradient id="cyberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00f0ff" />
+                                        <stop offset="100%" stop-color="#ff00ff" />
+                                        </linearGradient>
+                                    </defs>
+
+                                    <!-- Background circle -->
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+
+                                    <!-- Progress circle -->
+                                    <path class="circle"
+                                        stroke-dasharray="0,100"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+
+                                    <!-- Dynamic text -->
+                                    <text x="18" y="20.35" class="percentage">0.0</text>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
                 <div class="section-menu">
                     <div class="menu-actions">
@@ -66,10 +90,10 @@
  
             <div class="bottom-container">
 
-                <div class="bottom-left-container">
+                <div class="bottom-left-container background-image-modal">
  
                     <!-- Edit Profile Modal -->
-                    <div id="update-profile-modal" class="custom-modal d-none">
+                    <div id="update-profile-modal" class="custom-modal d-none background-image-modal">
                         <h4 class="text-center fw-bold">Edit Profile</h4>
                         <form id="editMyProfileForm" enctype="multipart/form-data">
                             <div class="text-center mb-3 position-relative" style="width: 100px; margin: 0 auto;">
@@ -127,12 +151,12 @@
                             <input type="hidden" id="updateProfilePictureUrl" name="profilePictureUrl">
                         </form>
 
-                        <button type="submit" form="editMyProfileForm" class="btn btn-primary w-100">Save Changes</button>
+                        <button type="submit" form="editMyProfileForm" class="btn w-100" id="saveProfileChangesBtn">Save Changes</button>
                     </div>
 
 
                     <!-- Change Password Modal -->
-                    <div id="change-password-modal" class="custom-modal d-none">
+                    <div id="change-password-modal" class="custom-modal d-none background-image-modal">
                         <h4 class="text-center fw-bold">Change Password</h4>
                         <form id="changePasswordForm">
                             
@@ -169,13 +193,13 @@
                             </div>
                             </div>
 
-                            <button type="submit" class="btn btn-success w-100">Change Password</button>
+                            <button type="submit" class="btn w-100" id="changePasswordBtn">Change Password</button>
                         </form>
                     </div>
 
 
                     <!-- My Claims Modal -->
-                    <div id="my-claims-modal" class="custom-modal d-none">
+                    <div id="my-claims-modal" class="custom-modal d-none background-image-modal">
                         <h4 class="text-center fw-bold">My Claims</h4>
                         <a href="/Front_End/html/claim-view-verify.html" class="btn btn-my-claims">
                             <i class="bi bi-card-checklist"></i> My Claims
@@ -183,14 +207,14 @@
                     </div>
 
                     <!-- My Lost Items Modal -->
-                    <div id="my-lost-items-modal" class="custom-modal d-none">
+                    <div id="my-lost-items-modal" class="custom-modal d-none background-image-modal">
                         <h4 class="text-center fw-bold">My Lost Items</h4>
                         <div id="myLostItemContainer">
                         </div>
                     </div>
 
                     <!-- My Found Items Modal -->
-                    <div id="my-found-items-modal" class="custom-modal d-none">
+                    <div id="my-found-items-modal" class="custom-modal d-none background-image-modal">
                         <h4 class="text-center fw-bold">My Found Items</h4>
                         <div id="myFoundItemContainer">
                         </div>
@@ -200,7 +224,7 @@
 
 
 
-                <div class="notifications">
+                <div class="notifications background-image-modal">
                     <h3><i class="bi bi-bell-fill"></i> Recent Notifications</h3>
 
                     <div class="notification-item">

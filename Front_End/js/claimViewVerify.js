@@ -52,121 +52,6 @@ async function loadUserClaims() {
 }
 
 
-// const renderClaims = (container, claimsList, isRecipientView) => {
-//     if (claimsList.length === 0) {
-//         container.innerHTML = `<div class="alert alert-info text-center">No claims found.</div>`;
-//         return;
-//     }
-
-//     container.innerHTML = '';
-//     claimsList.forEach(claim => {
-//         const claimCard = document.createElement("div");
-//         claimCard.className = "claim-card mb-3 p-3 border rounded";
-
-//         const itemImage = claim.itemImageUrl || '/Front_End/assets/images/noImageAvalable.png';
-
-//         const displayName = isRecipientView
-//             ? claim.claimantName
-//             : claim.recipientName;
-
-//         const displayRole = isRecipientView
-//             ? "Claimer"
-//             : (claim.claimType.toLowerCase() === "lost" ? "Owner" : "Finder");
-
-//         // Buttons
-//         let actionButtons = '';
-//         if (isRecipientView) {
-//             actionButtons = `<button class="btn mt-2 verify-claim-btn" data-claim='${JSON.stringify(claim)}'>
-//                                 Verify Claim
-//                              </button>`;
-
-//         } else {
-//             actionButtons = `
-//                 <button class="btn mt-2 btn-update-claim" data-claim='${JSON.stringify(claim)}'>
-//                     Update
-//                 </button>
-//                 <button class="btn mt-2 btn-delete-claim ms-2" data-claim='${JSON.stringify(claim)}'>
-//                     Delete
-//                 </button>
-//             `;
-//         }
-
-//         claimCard.innerHTML = `
-//             <div class="row">
-//                 <div class="col-md-3">
-//                     <img src="${itemImage}" class="img-fluid rounded" alt="Item Image">
-//                 </div>
-//                 <div class="col-md-9">
-//                     <h5 class="fw-bold">${claim.itemName}</h5>
-//                     <p><strong>Type:</strong> 
-//                         <span class="claim-type-badge ${claim.claimType.toLowerCase()}">
-//                             ${claim.claimType} Item
-//                         </span>
-//                     </p>
-//                     <p><strong>Description:</strong> ${claim.itemDescription}</p>
-//                     <p><strong>${claim.claimType} At:</strong> ${new Date(claim.itemDate).toLocaleString()}</p>
-//                     <p><strong>Location:</strong> ${claim.itemLocation}</p>
-//                     <p class="categories"><strong>Categories:</strong> ${(claim.itemCategoryNames || [])
-//                         .map(cat => `<span class="category-badge ${claim.claimType.toLowerCase()}">${cat}</span>`)
-//                         .join('')}
-//                     </p>
-//                     <br>
-//                     <p><strong>${displayRole}:</strong> ${displayName}</p>
-//                     <p><strong>Claimed At:</strong> ${new Date(claim.createdAt).toLocaleString()}</p>
-//                     <p><strong>Status:</strong> ${claim.claimStatus}</p>
-//                     <p><strong>Exchange Method:</strong> ${claim.exchangeMethod || 'N/A'}</p>
-//                     <p><strong>Exchange Details:</strong> ${claim.exchangeDetails || 'N/A'}</p>
-//                     ${actionButtons}
-//                 </div>
-//             </div>
-//         `;
-
-//         container.appendChild(claimCard);
-//     });
-
-
-//     // Attach event listeners
-//     if (isRecipientView) {
-//         document.querySelectorAll(".verify-claim-btn").forEach(btn => {
-//             btn.addEventListener("click", (e) => {
-//                 const claim = JSON.parse(e.currentTarget.getAttribute("data-claim"));
-//                 openVerifyModal(claim);
-//             });
-//         });
-
-//     } else {
-//         // Update button
-//         document.querySelectorAll(".btn-update-claim").forEach(btn => {
-//             btn.addEventListener("click", (e) => {
-//                 const claim = JSON.parse(e.currentTarget.getAttribute("data-claim"));
-//                 openUpdateModal(claim); // implement your modal
-//             });
-//         });
-//         // Delete button
-//         document.querySelectorAll(".btn-delete-claim").forEach(btn => {
-//             btn.addEventListener("click", (e) => {
-//                 const claim = JSON.parse(e.currentTarget.getAttribute("data-claim"));
-                
-//                 Swal.fire({
-//                     title: "Are you sure?",
-//                     text: "This will delete the claim permanently.",
-//                     icon: "warning",
-//                     showCancelButton: true,
-//                     confirmButtonText: "Yes, delete it",
-//                     cancelButtonText: "Cancel"
-//                 }).then((result) => {
-//                     if (result.isConfirmed) {
-//                         deleteClaim(claim.claimId, { hide: () => {} }); 
-//                     }
-//                 });
-//             });
-//         });
-
-//     }
-
-// };
-
-
 const renderClaims = (container, claimsList, isRecipientView) => {
     if (claimsList.length === 0) {
         container.innerHTML = `<div class="alert alert-info text-center">No claims found.</div>`;
@@ -185,10 +70,14 @@ const renderClaims = (container, claimsList, isRecipientView) => {
         // Buttons
         let actionButtons = '';
         if (isRecipientView) {
-            actionButtons = `<button class="btn mt-2 verify-claim-btn" data-claim='${JSON.stringify(claim)}'>Verify Claim</button>`;
+            actionButtons = `
+            <button class="btn mt-2 btn-exchange-claim ms-2" data-claim='${JSON.stringify(claim)}'>Exchange Details</button>
+            <button class="btn mt-2 verify-claim-btn" data-claim='${JSON.stringify(claim)}'>Verify Claim</button>
+            `;
         } else {
             actionButtons = `
-                <button class="btn mt-2 btn-update-claim" data-claim='${JSON.stringify(claim)}'>Update</button>
+                <button class="btn mt-2 btn-update-claim d-none" data-claim='${JSON.stringify(claim)}'>Update</button>
+                <button class="btn mt-2 btn-exchange-claim ms-2" data-claim='${JSON.stringify(claim)}'>Exchange Details</button>
                 <button class="btn mt-2 btn-delete-claim ms-2" data-claim='${JSON.stringify(claim)}'>Delete</button>
             `;
 
@@ -292,6 +181,7 @@ const renderClaims = (container, claimsList, isRecipientView) => {
                 openUpdateModal(claim);
             });
         });
+
         // Delete button
         document.querySelectorAll(".btn-delete-claim").forEach(btn => {
             btn.addEventListener("click", (e) => {
@@ -326,6 +216,32 @@ const renderClaims = (container, claimsList, isRecipientView) => {
             });
         });
     }
+
+    // Handle Add / Update Exchange button
+        document.querySelectorAll(".btn-exchange-claim").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const claim = JSON.parse(e.currentTarget.getAttribute("data-claim"));
+
+                // Pre-fill modal fields if claim already has data
+                document.getElementById("exchangeMethodInput").value = claim.exchangeMethod || "";
+                document.getElementById("exchangeDetailsInput").value = claim.exchangeDetails || "";
+
+                // Save action
+                document.getElementById("saveExchangeBtn").onclick = () => {
+                    const newMethod = document.getElementById("exchangeMethodInput").value;
+                    const newDetails = document.getElementById("exchangeDetailsInput").value;
+                    const modalInstance = bootstrap.Modal.getInstance(document.getElementById("exchangeModal"));
+
+                    updateExchangeDetails(claim.claimId, newMethod, newDetails, modalInstance);
+                };
+
+                // Show modal
+                const modal = new bootstrap.Modal(document.getElementById("exchangeModal"));
+                modal.show();
+            });
+        });
+
+
 };
 
 
@@ -522,6 +438,54 @@ async function deleteClaim(claimId, modalInstance) {
 }
 
 
+
+
+async function updateExchangeDetails(claimId, newMethod, newDetails, modalInstance) {
+    try {
+        const token = localStorage.getItem("accessToken");
+        if (!token) throw new Error("User not logged in");
+
+        const response = await fetch(`${API_BASE_CLAIMS_RESPOND}/update-exchange/${claimId}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                exchangeMethod: newMethod,
+                exchangeDetails: newDetails
+            })
+        });
+
+        if (!response.ok) throw new Error("Failed to update exchange details");
+
+        const updatedClaim = await response.json();
+
+        Swal.fire({
+            icon: "success",
+            title: "Exchange details updated!",
+            timer: 2000,
+            showConfirmButton: false
+        });
+
+        if (modalInstance) modalInstance.hide();
+        loadUserClaims(); // refresh claims list
+
+        return updatedClaim;
+
+    } catch (error) {
+        console.error("Error updating exchange details:", error);
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error.message || "Failed to update exchange details."
+        });
+    }
+}
+
+
+
 function openChat() {
     window.location.href = "/Front_End/html/chat-page.html";
 }
+
