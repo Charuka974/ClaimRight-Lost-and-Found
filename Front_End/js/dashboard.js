@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 async function updateAdminClaimsNotification() {
-  console.log("Updating claims notification...");
+  // console.log("Updating claims notification...");
 
   try {
     const token = localStorage.getItem("accessToken");
@@ -104,11 +104,11 @@ async function updateAdminClaimsNotification() {
     claims = Array.from(new Map(claims.map(c => [c.claimId, c])).values());
 
     // Debug: show a sample claim
-    if (claims.length > 0) {
-      console.log("Sample claim from server:", claims[0]);
-    } else {
-      console.log("No claims received from server.");
-    }
+    // if (claims.length > 0) {
+    //   console.log("Sample claim from server:", claims[0]);
+    // } else {
+    //   console.log("No claims received from server.");
+    // }
 
     // Filter only admin-relevant claims
     const adminClaims = claims.filter(c => {
@@ -117,8 +117,8 @@ async function updateAdminClaimsNotification() {
       const level = (c.verificationLevel || "").trim().toUpperCase();
 
       const needsAdmin = (level === "ADMIN_ONLY" || level === "DUAL_APPROVAL");
-      // const isPending = (status === "PENDING" || status === "OWNER_APPROVED" || status === "FINDER_APPROVED");
-      const isPending = true; // Show all statuses for admin review
+      const isPending = (status === "PENDING" || status === "OWNER_APPROVED" || status === "FINDER_APPROVED");
+      // const isPending = true; // Show all statuses for admin review
 
       return needsAdmin && isPending;
     });
@@ -127,7 +127,7 @@ async function updateAdminClaimsNotification() {
 
     const badge = document.getElementById("admin-claims-notification");
     if (!badge) {
-      console.warn("Admin claims badge element not found in DOM");
+      // console.warn("Admin claims badge element not found in DOM");
       return;
     }
 
@@ -135,8 +135,8 @@ async function updateAdminClaimsNotification() {
     badge.style.display = pendingCount > 0 ? "inline-block" : "none";
 
     // Debug logging
-    console.log("Total claims:", claims.length);
-    console.log("Admin claims needing attention:", pendingCount, adminClaims);
+    // console.log("Total claims:", claims.length);
+    // console.log("Admin claims needing attention:", pendingCount, adminClaims);
 
   } catch (err) {
     console.error("Failed to load claims count:", err);

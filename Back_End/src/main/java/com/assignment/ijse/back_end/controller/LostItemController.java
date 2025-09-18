@@ -74,6 +74,22 @@ public class LostItemController {
         }
     }
 
+    @PostMapping("/update-lost-item-reward/{id}")
+    public ResponseEntity<LostItemDTO> updateLostItemReward(
+            @PathVariable Long id,
+            @RequestBody Double reward) {
+
+        log.info("Updating reward for lost item {}: {}", id, reward);
+
+        LostItemDTO updatedItem = lostItemService.updateReward(id, reward);
+
+        if (updatedItem != null) {
+            return ResponseEntity.ok(updatedItem);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     @GetMapping
     public ResponseEntity<List<LostItemDTO>> getAllLostItems() {

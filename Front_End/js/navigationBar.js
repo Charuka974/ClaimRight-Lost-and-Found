@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <a class="nav-link text-white" href="/Front_End/html/dashboard.html"><i class="bi bi-speedometer2"></i> <b>Dashboard</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/Front_End/html/lost-items.html"><i class="bi bi-search-heart"></i> <b>Lost Items</b></a>
+              <a class="nav-link text-white" href="/Front_End/html/lost-items-improved.html"><i class="bi bi-search-heart"></i> <b>Lost Items</b></a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/Front_End/html/found-items.html"><i class="bi bi-binoculars"></i> <b>Found Items</b></a>
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <ul class="dropdown-menu dropdown-menu-end mt-3 wide-dropdown" aria-labelledby="userDropdown">
                   <li>
-                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/lost-items.html?openModal=true">
+                    <a class="btn btn-outline-light d-flex align-items-center gap-2 fw-bold" href="/Front_End/html/lost-items-improved.html?openModal=true">
                       <i class="bi bi-exclamation-octagon-fill"></i>
                       Report Lost Item
                     </a>
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="/Front_End/html/dashboard.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
-                        <li><a href="/Front_End/html/lost-items.html"><i class="fas fa-chevron-right"></i> Lost Items</a></li>
+                        <li><a href="/Front_End/html/lost-items-improved.html"><i class="fas fa-chevron-right"></i> Lost Items</a></li>
                         <li><a href="/Front_End/html/found-items.html"><i class="fas fa-chevron-right"></i> Found Items</a></li>
                         <li><a href="/Front_End/html/about-page.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="/Front_End/html/contact-us-page.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>

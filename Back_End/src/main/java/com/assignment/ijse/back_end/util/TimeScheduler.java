@@ -14,11 +14,12 @@ public class TimeScheduler {
     private final FoundItemService foundItemService;
 
     // Runs every day at midnight
-//    @Scheduled(cron = "0 0 0 * * ?")
-//    public void cleanupExpiredItems() {
-//        lostItemService.deleteExpiredItems();
-//        foundItemService.deleteExpiredItems();
-//    }
+    @Scheduled(cron = "0 0 0 1 * ?")
+    public void cleanupExpiredItems() {
+        System.out.println("Scheduled task running: Cleaning up expired items...");
+        lostItemService.deleteExpiredItems();
+        foundItemService.deleteExpiredItems();
+    }
 
 //    @Scheduled(cron = "0 * * * * ?") // Minute by minute
 //    public void cleanupExpiredItems() {

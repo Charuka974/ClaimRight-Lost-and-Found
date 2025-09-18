@@ -71,6 +71,28 @@ const renderClaims = (container, claimsList, showVerify) => {
             <button class="btn mt-2 btn-delete-claim ms-2" data-claim='${JSON.stringify(claim)}'>Delete</button>
         `;
 
+                // Exchange method mapping
+        const exchangeMethodLabels = {
+            "PUBLIC_PLACE": "Public Place",
+            "COURIER_SERVICE": "Courier Service",
+            "MAILING": "Through Mail"
+        };
+        const exchangeMethodText = exchangeMethodLabels[claim.exchangeMethod] || 'N/A';
+
+        // Status label with color coding
+        const statusLabels = {
+            "PENDING": { label: "Pending", color: "grey" },
+            "FINDER_APPROVED": { label: "Finder Approved", color: "green" },
+            "ADMIN_APPROVED": { label: "Admin Approved", color: "green" },
+            "OWNER_APPROVED": { label: "Owner Approved", color: "green" },
+            "FINDER_REJECTED": { label: "Finder Rejected", color: "red" },
+            "ADMIN_REJECTED": { label: "Admin Rejected", color: "red" },
+            "OWNER_REJECTED": { label: "Owner Rejected", color: "red" },
+            "COMPLETED": { label: "Completed", color: "green" }
+        };
+        const statusInfo = statusLabels[claim.claimStatus] || { label: claim.claimStatus, color: "black" };
+
+
         claimCard.innerHTML = `
             <div class="row">
                 <div class="col-md-3">
@@ -86,8 +108,20 @@ const renderClaims = (container, claimsList, showVerify) => {
                     <p><strong>Claimant:</strong> ${claim.claimantName}</p>
                     <p><strong>Recipient:</strong> ${claim.recipientName || 'N/A'}</p>
                     <p><strong>Claimed At:</strong> ${new Date(claim.createdAt).toLocaleString()}</p>
-                    <p><strong>Status:</strong> ${claim.claimStatus}</p>
-                    <p><strong>Exchange Method:</strong> ${claim.exchangeMethod || 'N/A'}</p>
+                    <p><strong>Status:</strong> 
+                        <span style="
+                            display: inline-block;
+                            padding: 0.25em 0.75em;
+                            border-radius: 1rem;
+                            background-color: ${statusInfo.color};
+                            color: white;
+                            font-weight: bold;
+                            font-size: 0.9rem;
+                        ">
+                            ${statusInfo.label}
+                        </span>
+                    </p>
+                    <p><strong>Exchange Method:</strong> ${exchangeMethodText}</p>
                     <p><strong>Exchange Details:</strong> ${claim.exchangeDetails || 'N/A'}</p>
                     ${actionButtons}
                 </div>
@@ -181,21 +215,33 @@ async function verifyClaim(claimId, isApproved, modalInstance, claim) {
     try {
         const token = localStorage.getItem("accessToken");
         const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        const userRole = (loggedInUser.role || "").toUpperCase();
+        const claimStatus = (claim.claimStatus || "").toUpperCase();
+
         let newStatus;
 
-        // Admin verification logic
-        if (loggedInUser.role && loggedInUser.role.toUpperCase() === "ADMIN") {
+        // Admin can verify any claim that is not COMPLETED or REJECTED
+        if (userRole === "ADMIN" || userRole === "SEMI_ADMIN") {
+            if (["COMPLETED", "OWNER_REJECTED", "FINDER_REJECTED", "ADMIN_REJECTED"].includes(claimStatus)) {
+                throw new Error("Admin cannot modify a completed or rejected claim.");
+            }
             newStatus = isApproved ? "ADMIN_APPROVED" : "ADMIN_REJECTED";
         }
-        // Recipient verifying
+        // Recipient can only approve/reject pending claims
         else if (claim.recipientId === loggedInUser.userId) {
+            if (claimStatus !== "PENDING") {
+                throw new Error("Recipient can only verify pending claims.");
+            }
             newStatus = isApproved ? "APPROVED" : "REJECTED";
         }
-        // Claimant completing
+        // Claimant can mark as COMPLETED only if admin/finder approved
         else if (claim.claimantId === loggedInUser.userId && isApproved) {
+            if (!["ADMIN_APPROVED", "FINDER_APPROVED"].includes(claimStatus)) {
+                throw new Error("Claimant can only complete approved claims.");
+            }
             newStatus = "COMPLETED";
-        }
-        else {
+        } else {
             throw new Error("You are not allowed to perform this action.");
         }
 
@@ -210,17 +256,20 @@ async function verifyClaim(claimId, isApproved, modalInstance, claim) {
             }
         );
 
-        if (!response.ok) throw new Error("Failed to update claim status");
+        if (!response.ok) {
+            const errText = await response.text();
+            throw new Error(errText || "Failed to update claim status");
+        }
 
         Swal.fire({
             icon: "success",
-            title: `${newStatus.replace("_", " ")}!`,
+            title: `${newStatus.replaceAll("_", " ")}!`,
             timer: 2000,
             showConfirmButton: false
         });
 
         modalInstance.hide();
-        loadAllClaims(); // refresh UI
+        loadAllClaims(); 
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -230,7 +279,6 @@ async function verifyClaim(claimId, isApproved, modalInstance, claim) {
         });
     }
 }
-
 
 
 async function deleteClaim(claimId, modalInstance) {

@@ -75,6 +75,7 @@ const renderClaims = (container, claimsList, isRecipientView) => {
             <button class="btn mt-2 verify-claim-btn" data-claim='${JSON.stringify(claim)}'>Verify Claim</button>
             `;
         } else {
+            // display none for update button for now
             actionButtons = `
                 <button class="btn mt-2 btn-update-claim d-none" data-claim='${JSON.stringify(claim)}'>Update</button>
                 <button class="btn mt-2 btn-exchange-claim ms-2" data-claim='${JSON.stringify(claim)}'>Exchange Details</button>
@@ -109,6 +110,28 @@ const renderClaims = (container, claimsList, isRecipientView) => {
             timeLabel = "Requested At";
         }
 
+        // Exchange method mapping
+        const exchangeMethodLabels = {
+            "PUBLIC_PLACE": "Public Place",
+            "COURIER_SERVICE": "Courier Service",
+            "MAILING": "Through Mail"
+        };
+        const exchangeMethodText = exchangeMethodLabels[claim.exchangeMethod] || 'N/A';
+
+        // Status label with color coding
+        const statusLabels = {
+            "PENDING": { label: "Pending", color: "grey" },
+            "FINDER_APPROVED": { label: "Finder Approved", color: "green" },
+            "ADMIN_APPROVED": { label: "Admin Approved", color: "green" },
+            "OWNER_APPROVED": { label: "Owner Approved", color: "green" },
+            "FINDER_REJECTED": { label: "Finder Rejected", color: "red" },
+            "ADMIN_REJECTED": { label: "Admin Rejected", color: "red" },
+            "OWNER_REJECTED": { label: "Owner Rejected", color: "red" },
+            "COMPLETED": { label: "Completed", color: "green" }
+        };
+        const statusInfo = statusLabels[claim.claimStatus] || { label: claim.claimStatus, color: "black" };
+
+
         claimCard.innerHTML = `
             <div class="row">
                 <div class="col-md-3">
@@ -128,8 +151,20 @@ const renderClaims = (container, claimsList, isRecipientView) => {
                     <br>
                     <p><strong>${roleLabel}:</strong> ${displayName}</p>
                     <p><strong>${timeLabel}:</strong> ${new Date(claim.createdAt).toLocaleString()}</p>
-                    <p><strong>Status:</strong> ${claim.claimStatus}</p>
-                    <p><strong>Exchange Method:</strong> ${claim.exchangeMethod || 'N/A'}</p>
+                    <p><strong>Status:</strong> 
+                        <span style="
+                            display: inline-block;
+                            padding: 0.25em 0.75em;
+                            border-radius: 1rem;
+                            background-color: ${statusInfo.color};
+                            color: white;
+                            font-weight: bold;
+                            font-size: 0.9rem;
+                        ">
+                            ${statusInfo.label}
+                        </span>
+                    </p>
+                    <p><strong>Exchange Method:</strong> ${exchangeMethodText}</p>
                     <p><strong>Exchange Details:</strong> ${claim.exchangeDetails || 'N/A'}</p>
                     ${actionButtons}
                 </div>
@@ -145,11 +180,19 @@ const renderClaims = (container, claimsList, isRecipientView) => {
             dropdownContainer.classList.add("verification-dropdown");
 
             const verificationDropdown = document.createElement("select");
-            ["USER_ONLY", "ADMIN_ONLY", "DUAL_APPROVAL"].forEach(level => {
+
+            // Map backend values to friendly labels
+            const verificationOptions = {
+                "USER_ONLY": "Your Approval",
+                "ADMIN_ONLY": "Get Admin Involved"
+                // ,"DUAL_APPROVAL": "Dual Approval"
+            };
+
+            Object.entries(verificationOptions).forEach(([value, label]) => {
                 const option = document.createElement("option");
-                option.value = level;
-                option.textContent = level.replace("_", " ");
-                if (claim.verificationLevel === level) option.selected = true;
+                option.value = value;       // backend value
+                option.textContent = label; // user-friendly text
+                if (claim.verificationLevel === value) option.selected = true;
                 verificationDropdown.appendChild(option);
             });
 
@@ -161,6 +204,7 @@ const renderClaims = (container, claimsList, isRecipientView) => {
             dropdownContainer.appendChild(verificationDropdown);
             cardBody.appendChild(dropdownContainer);
         }
+
 
         container.appendChild(claimCard);
     });

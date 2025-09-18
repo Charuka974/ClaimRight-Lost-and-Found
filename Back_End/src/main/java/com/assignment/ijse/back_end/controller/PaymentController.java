@@ -17,8 +17,22 @@ public class PaymentController {
 
     private final PaymentService paymentService;
 
+//    @PostMapping("/create-intent-priority")
+//    public ResponseEntity<?> createPaymentIntent(@RequestBody PaymentDTO dto) {
+//        try {
+//            PaymentIntent intent = paymentService.handlePayment(dto);
+//
+//            return ResponseEntity.ok(Map.of(
+//                    "clientSecret", intent.getClientSecret()
+//            ));
+//        } catch (StripeException e) {
+//            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+//        }
+//    }
+
     @PostMapping("/create-intent")
-    public ResponseEntity<?> createPaymentIntent(@RequestBody PaymentDTO dto) {
+    public ResponseEntity<?> createPaymentIntentForReward(@RequestBody PaymentDTO dto) {
+        dto.setType("REWARD");
         try {
             PaymentIntent intent = paymentService.handlePayment(dto);
 
@@ -31,19 +45,5 @@ public class PaymentController {
     }
 
 
-
-//    @PostMapping("/create-intent")
-//    public ResponseEntity<?> createPaymentIntent(@RequestBody Map<String, Object> request) {
-//        try {
-//            BigDecimal amount = new BigDecimal(request.get("amount").toString()); // from frontend
-//            PaymentIntent intent = stripeService.createPayment(amount, "usd");
-//
-//            return ResponseEntity.ok(Map.of(
-//                    "clientSecret", intent.getClientSecret()
-//            ));
-//        } catch (StripeException e) {
-//            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
-//        }
-//    }
 
 }

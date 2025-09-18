@@ -11,6 +11,7 @@ import com.assignment.ijse.back_end.service.LostItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -121,6 +122,18 @@ public class LostItemServiceImpl implements LostItemService {
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public LostItemDTO updateReward(Long id, Double reward) {
+        LostItem existingItem = lostItemRepository.findById(id).orElse(null);
+        if (existingItem == null) return null;
+
+        existingItem.setReward(BigDecimal.valueOf(reward)); // only update reward
+        lostItemRepository.save(existingItem);
+
+        return mapToDTO(existingItem);
+    }
+
 
     @Override
     public LostItemDTO markAsClaimed(Long id) {

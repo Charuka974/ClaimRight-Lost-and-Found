@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ClaimRepository extends JpaRepository<Claim, Long> {
@@ -60,6 +61,7 @@ public interface ClaimRepository extends JpaRepository<Claim, Long> {
     @Query("UPDATE Claim c SET c.verificationLevel = :newLevel WHERE c.claimId = :id")
     void updateVerificationLevel(@Param("id") Long id, @Param("newLevel") String newLevel);
 
-
+//    find by lost item id and claim status in (list of statuses), return first match for payment
+    Optional<Claim> findFirstByLostItemIdAndClaimStatusIn(Long lostItemId, List<ClaimStatus> statuses);
 
 }

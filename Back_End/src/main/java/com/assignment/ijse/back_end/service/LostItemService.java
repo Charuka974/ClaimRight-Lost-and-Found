@@ -25,4 +25,6 @@ public interface LostItemService {
 
     void deleteExpiredItems();
 
+    LostItemDTO updateReward(Long id, Double reward);
+
 }

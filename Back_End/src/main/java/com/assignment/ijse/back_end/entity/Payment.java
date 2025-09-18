@@ -32,7 +32,7 @@ public class Payment {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private PaymentStatus status = PaymentStatus.PENDING; // PENDING, COMPLETED, FAILED, REFUNDED
+    private PaymentStatus status; // PENDING, COMPLETED, FAILED, REFUNDED
 
     @ManyToOne
     @JoinColumn(name = "payer_id", referencedColumnName = "userId", nullable = false)
