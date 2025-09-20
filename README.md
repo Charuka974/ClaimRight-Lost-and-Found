@@ -11,6 +11,31 @@
 
 **ClaimRight** is a centralized web-based system designed to simplify the process of reporting, searching, and claiming lost and found items. The system aims to reduce fraudulent claims and efficiently return lost items to their rightful owners through a secure platform.
 
+## 📸 Screenshots
+
+Here are some key screens from the **ClaimRight** application:
+
+- **Landing Page**  
+  ![Landing Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113016.png)
+
+- **Login Page**  
+  ![Login Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 112952.png)
+
+- **User Dashboard**  
+  ![User Dashboard](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113347.png)
+
+- **Post Lost Item Form**  
+  ![Found Item Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113129.png)
+
+- **Post Found Item Form**  
+  ![Lost Item Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113211.png)
+
+- **Claim Request Process**  
+  ![Claims Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113404.png)
+
+- **Admin Dashboard**  
+  ![About Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113035.png)
+
 ## Features
 - **User Authentication**
   - User registration and login
