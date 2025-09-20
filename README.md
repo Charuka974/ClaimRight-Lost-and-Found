@@ -3,7 +3,7 @@
 ---
 
 📺 **Watch the Demo Video on YouTube**:  
-👉 [![Watch on YouTube](https://img.shields.io/badge/▶️%20Watch%20Demo%20Video-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+👉 [![Watch on YouTube](https://img.shields.io/badge/▶️%20Watch%20Demo%20Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/aBP_N-HxBEQ)
 
 ---
 
@@ -95,23 +95,33 @@
 ## Project Structure
 ```
 ClaimRight/
-├── src/
-│   ├── main/
-│   │   ├── java/com/claimright/
-│   │   │   ├── config/          # Spring configuration
-│   │   │   ├── controller/      # MVC controllers
-│   │   │   ├── dto/             # Data transfer objects
-│   │   │   ├── model/           # Entity classes
-│   │   │   ├── repository/      # Data repositories
-│   │   │   ├── service/         # Business logic
-│   │   │   └── ClaimRightApplication.java
-│   │   └── resources/
-│   │       ├── static/          # Frontend assets
-│   │       ├── templates/       # Thymeleaf templates
-│   │       └── application.properties
-│   └── test/                    # Test cases
-├── pom.xml                      # Maven configuration
-└── README.md
+│
+├── BackEnd/                         # Backend (Spring Boot application)
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/claimright/
+│   │   │   │   ├── config/          # Spring configuration classes
+│   │   │   │   ├── controller/      # REST & MVC controllers
+│   │   │   │   ├── dto/             # Data Transfer Objects
+│   │   │   │   ├── model/           # Entity classes (Hibernate)
+│   │   │   │   ├── repository/      # Spring Data JPA repositories
+│   │   │   │   ├── service/         # Business logic layer
+│   │   │   │   └── ClaimRightApplication.java  # Main application class
+│   │   │   └── resources/
+│   │   │       ├── static/          # Frontend static assets
+│   │   │       ├── templates/       # Thymeleaf templates
+│   │   │       └── application.properties      # Spring Boot config
+│   │   └── test/                    # Unit & integration tests
+│   └── pom.xml                      # Maven project configuration
+│
+├── FrontEnd/                        # Frontend (Static Web)
+│   ├── index.html                   # Main HTML entry point
+│   ├── css/                         # Stylesheets
+│   ├── js/                          # JavaScript files
+│   └── images/                      # Image assets
+│
+└── README.md                        # Project documentation (this file)
+
 ```
 
 ## Usage
