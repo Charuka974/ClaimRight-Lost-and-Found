@@ -24,17 +24,17 @@ Here are some key screens from the **ClaimRight** application:
 - **User Dashboard**  
   ![User Dashboard](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113347.png)
 
-- **Post Lost Item Form**  
+- **Lost Item Page**  
   ![Lost Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113129.png)
 
-- **Post Found Item Form**  
+- **Found Item Page**  
   ![Found Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113211.png)
 
 - **Claim Request Process**  
   ![Claims Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113404.png)
 
-- **Admin Dashboard**  
-  ![Admin Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113035.png)
+- **About Page**  
+  ![About Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113035.png)
 
 ## Features
 - **User Authentication**
