@@ -24,11 +24,11 @@ Here are some key screens from the **ClaimRight** application:
 - **User Dashboard**  
   ![User Dashboard](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113347.png)
 
-- **Lost Item Page**  
-  ![Lost Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113129.png)
-
 - **Found Item Page**  
-  ![Found Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113211.png)
+  ![Found Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113129.png)
+
+- **Lost Item Page**  
+  ![Lost Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113211.png)
 
 - **Claim Request Process**  
   ![Claims Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113404.png)
