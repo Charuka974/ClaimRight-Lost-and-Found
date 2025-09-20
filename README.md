@@ -16,25 +16,25 @@
 Here are some key screens from the **ClaimRight** application:
 
 - **Landing Page**  
-  ![Landing Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113016.png)
+  ![Landing Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113016.png)
 
 - **Login Page**  
-  ![Login Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 112952.png)
+  ![Login Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20112952.png)
 
 - **User Dashboard**  
-  ![User Dashboard](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113347.png)
+  ![User Dashboard](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113347.png)
 
 - **Post Lost Item Form**  
-  ![Found Item Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113129.png)
+  ![Lost Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113129.png)
 
 - **Post Found Item Form**  
-  ![Lost Item Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113211.png)
+  ![Found Item Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113211.png)
 
 - **Claim Request Process**  
-  ![Claims Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113404.png)
+  ![Claims Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113404.png)
 
 - **Admin Dashboard**  
-  ![About Page](/Front_End/assets/images/screenshots/Screenshot 2025-09-20 113035.png)
+  ![Admin Page](/Front_End/assets/images/screenshots/Screenshot%202025-09-20%20113035.png)
 
 ## Features
 - **User Authentication**
