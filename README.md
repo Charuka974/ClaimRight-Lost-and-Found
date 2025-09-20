@@ -43,6 +43,9 @@
 - SweetAlert2 (for interactive alerts)
 
 ### Backend
+- Stripe (for payment gateway integration)
+- ImgBB API (for image hosting)
+- Hibernate (for ORM)
 - Java with Spring Boot
 - Spring Security (for authentication)
 - MySQL (database)
