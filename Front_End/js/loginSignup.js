@@ -170,8 +170,63 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  // ===== GOOGLE LOGIN =====
+    function initGoogleLogin() {
+        const API_BASE_AUTH = "http://localhost:8080/claimrightauth";
+        const CLIENT_ID = "881494674220-63vc11v4o0d3rv4150p4lr8lldes2oeg.apps.googleusercontent.com";
+        const googleBtn = document.getElementById("googleLoginBtn");
+
+        if (!googleBtn) return;
+
+        // Handle ID token from Google
+        async function handleCredentialResponse(response) {
+            const idToken = response.credential;
+
+            try {
+                const res = await fetch(`${API_BASE_AUTH}/google-login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ idToken }),
+                });
+
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    throw new Error(errorText || "Google authentication failed");
+                }
+
+                const result = await res.json();
+
+                // Save token and user info
+                localStorage.setItem("accessToken", result.data.accessToken);
+                localStorage.setItem("loggedInUser", JSON.stringify(result.data.user));
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Login Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => window.location.href = "/Front_End/html/dashboard.html");
+
+            } catch (error) {
+                console.error("Google login error:", error);
+                Swal.fire({ icon: "error", title: "Google Login Failed", text: error.message });
+            }
+        }
+
+        // Initialize Google Identity Services
+        google.accounts.id.initialize({
+            client_id: CLIENT_ID,
+            callback: handleCredentialResponse,
+            ux_mode: "popup" // force popup to avoid FedCM issues
+        });
+
+        // Attach click to custom button
+        googleLoginBtn.addEventListener("click", () => google.accounts.id.prompt());
+
+    }
+
+    // Call the function so it actually runs
+    initGoogleLogin();
+
 
 });
-
-        
-

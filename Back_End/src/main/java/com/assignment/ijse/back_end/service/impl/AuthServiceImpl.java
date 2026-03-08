@@ -12,6 +12,10 @@ import com.assignment.ijse.back_end.repository.UserRepository;
 import com.assignment.ijse.back_end.service.AuthService;
 import com.assignment.ijse.back_end.service.EmailService;
 import com.assignment.ijse.back_end.util.JwtUtil;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -178,7 +183,54 @@ public class AuthServiceImpl implements AuthService {
         return "Password reset successful";
     }
 
+//   ----------------------- Google Login ----------------
+    private static final String CLIENT_ID = "881494674220-63vc11v4o0d3rv4150p4lr8lldes2oeg.apps.googleusercontent.com";
 
+    @Override
+    public AuthResponseDTO authenticateWithGoogle(String idTokenString) {
+        try {
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
+                    GoogleNetHttpTransport.newTrustedTransport(),
+                    JacksonFactory.getDefaultInstance())
+                    .setAudience(Collections.singletonList(CLIENT_ID))
+                    .build();
+
+            GoogleIdToken idToken = verifier.verify(idTokenString);
+            if (idToken == null) {
+                throw new RuntimeException("Invalid Google ID token");
+            }
+
+            GoogleIdToken.Payload payload = idToken.getPayload();
+            String email = payload.getEmail();
+            String name = (String) payload.get("name");
+
+            // 1. Find or create user
+            User user = userRepository.findByEmail(email).orElse(null);
+            if (user == null) {
+                user = User.builder()
+                        .username(name)
+                        .email(email)
+                        .password(passwordEncoder.encode(UUID.randomUUID().toString())) // random password
+                        .role(UserRole.USER) // default role
+                        .createdAt(LocalDateTime.now())
+                        .isActive(true)
+                        .build();
+                userRepository.save(user);
+            }
+
+            // 2. Generate JWT
+            String jwt = jwtUtil.generateToken(user.getEmail());
+
+            // 3. Map to DTO (hide password)
+            UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+            userDTO.setPassword(null);
+
+            return new AuthResponseDTO(jwt, userDTO);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Google authentication failed: " + e.getMessage(), e);
+        }
+    }
 
 
 }

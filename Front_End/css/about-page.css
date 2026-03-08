@@ -281,3 +281,25 @@ body {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+
+.stats-section .row canvas {
+  width: 100% !important;
+  height: 300px; 
+}
+
+@media (max-width: 768px) {
+  .stats-section .row canvas {
+    height: 250px;
+  }
+}
+
+.stats-section .row.mt-5 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; 
+}
+
+.stats-section .row.mt-5 .col-md-4 {
+  flex: 1 1 100%; 
+}

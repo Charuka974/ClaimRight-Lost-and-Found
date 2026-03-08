@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 
 @RestController
@@ -57,6 +58,13 @@ public class AuthController {
         return ResponseEntity.ok(new APIResponse<>(200, "Email Sent", result));
     }
 
+
+    @PostMapping("/google-login")
+    public ResponseEntity<APIResponse<AuthResponseDTO>> googleLogin(@RequestBody Map<String, String> body) {
+        String idToken = body.get("idToken"); // sent from frontend
+        AuthResponseDTO response = authService.authenticateWithGoogle(idToken);
+        return ResponseEntity.ok(new APIResponse<>(200, "Google Login successful", response));
+    }
 
 
 

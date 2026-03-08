@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClaimRight - About Us</title>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -55,24 +56,39 @@
       <div class="container">
         <div class="row text-center">
           <div class="col-md-3 col-6 stat-item">
-            <div class="stat-number" data-count="15280">15,280+</div>
+            <div class="stat-number" data-count="15280">0</div>
             <div class="stat-label">Items Reunited</div>
           </div>
           <div class="col-md-3 col-6 stat-item">
-            <div class="stat-number" data-count="9540">9,540+</div>
+            <div class="stat-number" data-count="9540">0</div>
             <div class="stat-label">Happy Users</div>
           </div>
           <div class="col-md-3 col-6 stat-item">
-            <div class="stat-number" data-count="124">124+</div>
+            <div class="stat-number" data-count="124">0</div>
             <div class="stat-label">Cities Served</div>
           </div>
           <div class="col-md-3 col-6 stat-item">
-            <div class="stat-number" data-count="98">98%</div>
+            <div class="stat-number" data-count="98">0%</div>
             <div class="stat-label">Success Rate</div>
           </div>
         </div>
+
+        <!-- Graphs Section -->
+        <div class="row mt-5 bg-light rounded">
+          <div class="col-md-4">
+            <canvas id="barChart"></canvas>
+          </div>
+          <div class="col-md-4">
+            <canvas id="pieChart"></canvas>
+          </div>
+          <div class="col-md-4">
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+
       </div>
     </section>
+
 
     <!-- Features Section -->
     <section class="features-section py-5" data-aos="fade-up">

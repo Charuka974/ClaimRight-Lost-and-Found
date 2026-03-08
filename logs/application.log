@@ -1,24 +1,24 @@
-2025-09-20T11:28:36.554+05:30  INFO 23160 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Starting Application using Java 21.0.4 with PID 23160 (C:\Users\Charuka\OneDrive\Desktop\Second Semester Final Project\ClaimRight\Back_End\target\classes started by Charuka in C:\Users\Charuka\OneDrive\Desktop\Second Semester Final Project\ClaimRight)
-2025-09-20T11:28:36.570+05:30 DEBUG 23160 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Running with Spring Boot v3.5.3, Spring v6.2.8
-2025-09-20T11:28:36.572+05:30  INFO 23160 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : No active profile set, falling back to 1 default profile: "default"
-2025-09-20T11:28:36.657+05:30  INFO 23160 --- [Back_End] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-09-20T11:28:36.659+05:30  INFO 23160 --- [Back_End] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-09-20T11:28:38.404+05:30  INFO 23160 --- [Back_End] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-20T11:28:38.604+05:30  INFO 23160 --- [Back_End] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 191 ms. Found 10 JPA repository interfaces.
-2025-09-20T11:28:39.586+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-20T11:28:39.601+05:30  INFO 23160 --- [Back_End] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-20T11:28:39.602+05:30  INFO 23160 --- [Back_End] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
-2025-09-20T11:28:39.650+05:30  INFO 23160 --- [Back_End] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-20T11:28:39.650+05:30  INFO 23160 --- [Back_End] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2991 ms
-2025-09-20T11:28:40.057+05:30  INFO 23160 --- [Back_End] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-20T11:28:40.130+05:30  INFO 23160 --- [Back_End] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
-2025-09-20T11:28:40.166+05:30  INFO 23160 --- [Back_End] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-20T11:28:40.401+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-20T11:28:40.434+05:30  INFO 23160 --- [Back_End] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-20T11:28:40.870+05:30  INFO 23160 --- [Back_End] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35c13697
-2025-09-20T11:28:40.872+05:30  INFO 23160 --- [Back_End] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-20T11:28:40.960+05:30  WARN 23160 --- [Back_End] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-20T11:28:40.973+05:30  INFO 23160 --- [Back_End] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-08T16:13:43.155+05:30  INFO 24784 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Starting Application using Java 21.0.4 with PID 24784 (C:\Users\Charuka\OneDrive\Desktop\Second Semester Final Project\ClaimRight\Back_End\target\classes started by Charuka in C:\Users\Charuka\OneDrive\Desktop\Second Semester Final Project\ClaimRight)
+2026-03-08T16:13:43.174+05:30 DEBUG 24784 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Running with Spring Boot v3.5.3, Spring v6.2.8
+2026-03-08T16:13:43.177+05:30  INFO 24784 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : No active profile set, falling back to 1 default profile: "default"
+2026-03-08T16:13:43.319+05:30  INFO 24784 --- [Back_End] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-08T16:13:43.319+05:30  INFO 24784 --- [Back_End] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-08T16:13:46.382+05:30  INFO 24784 --- [Back_End] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-08T16:13:46.835+05:30  INFO 24784 --- [Back_End] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 429 ms. Found 10 JPA repository interfaces.
+2026-03-08T16:13:48.334+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-08T16:13:48.364+05:30  INFO 24784 --- [Back_End] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-08T16:13:48.365+05:30  INFO 24784 --- [Back_End] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2026-03-08T16:13:48.467+05:30  INFO 24784 --- [Back_End] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-08T16:13:48.467+05:30  INFO 24784 --- [Back_End] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5147 ms
+2026-03-08T16:13:49.072+05:30  INFO 24784 --- [Back_End] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-08T16:13:49.224+05:30  INFO 24784 --- [Back_End] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2026-03-08T16:13:49.310+05:30  INFO 24784 --- [Back_End] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-08T16:13:50.016+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-08T16:13:50.079+05:30  INFO 24784 --- [Back_End] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-08T16:13:50.899+05:30  INFO 24784 --- [Back_End] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@fdbc7d6
+2026-03-08T16:13:50.904+05:30  INFO 24784 --- [Back_End] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-08T16:13:51.054+05:30  WARN 24784 --- [Back_End] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-08T16:13:51.087+05:30  INFO 24784 --- [Back_End] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.37
@@ -26,348 +26,529 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-09-20T11:28:41.992+05:30  INFO 23160 --- [Back_End] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-20T11:28:42.349+05:30  INFO 23160 --- [Back_End] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-20T11:28:42.690+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-09-20T11:28:43.465+05:30 DEBUG 23160 --- [Back_End] [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
-2025-09-20T11:28:43.466+05:30 DEBUG 23160 --- [Back_End] [restartedMain] c.a.ijse.back_end.util.JwtAuthFilter     : Filter 'jwtAuthFilter' configured for use
-2025-09-20T11:28:46.432+05:30  WARN 23160 --- [Back_End] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-20T11:28:46.537+05:30  INFO 23160 --- [Back_End] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-09-20T11:28:46.538+05:30  WARN 23160 --- [Back_End] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2025-09-20T11:28:46.926+05:30 DEBUG 23160 --- [Back_End] [restartedMain] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/claimright-web-socket/ws-chat/**] in 'stompWebSocketHandlerMapping'
-2025-09-20T11:28:47.498+05:30 DEBUG 23160 --- [Back_End] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 68 mappings in 'requestMappingHandlerMapping'
-2025-09-20T11:28:47.733+05:30 DEBUG 23160 --- [Back_End] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2025-09-20T11:28:48.154+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2025-09-20T11:28:48.384+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:13:52.874+05:30  INFO 24784 --- [Back_End] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-08T16:13:53.559+05:30  WARN 24784 --- [Back_End] [restartedMain] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table payments add column id bigint not null auto_increment" via JDBC [Incorrect table definition; there can be only one auto column and it must be defined as a key]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table payments add column id bigint not null auto_increment" via JDBC [Incorrect table definition; there can be only one auto column and it must be defined as a key]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:413) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4464) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:438) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.assignment.ijse.back_end.Application.main(Application.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+Caused by: java.sql.SQLSyntaxErrorException: Incorrect table definition; there can be only one auto column and it must be defined as a key
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:837) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:685) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-6.3.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-6.3.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.6.18.Final.jar:6.6.18.Final]
+	... 133 common frames omitted
+
+2026-03-08T16:13:55.364+05:30  INFO 24784 --- [Back_End] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08T16:13:56.335+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-08T16:13:57.068+05:30 DEBUG 24784 --- [Back_End] [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-03-08T16:13:57.069+05:30 DEBUG 24784 --- [Back_End] [restartedMain] c.a.ijse.back_end.util.JwtAuthFilter     : Filter 'jwtAuthFilter' configured for use
+2026-03-08T16:13:59.036+05:30  WARN 24784 --- [Back_End] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-08T16:13:59.121+05:30  INFO 24784 --- [Back_End] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-03-08T16:13:59.122+05:30  WARN 24784 --- [Back_End] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-03-08T16:13:59.616+05:30 DEBUG 24784 --- [Back_End] [restartedMain] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/claimright-web-socket/ws-chat/**] in 'stompWebSocketHandlerMapping'
+2026-03-08T16:13:59.797+05:30 DEBUG 24784 --- [Back_End] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 69 mappings in 'requestMappingHandlerMapping'
+2026-03-08T16:13:59.916+05:30 DEBUG 24784 --- [Back_End] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-03-08T16:14:00.131+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-08T16:14:00.633+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.AuthController:
 	
-2025-09-20T11:28:48.393+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.640+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.ChatWebSocketController:
 	{[MESSAGE],[/send]}: sendMessage(MessageDTO)
-2025-09-20T11:28:48.395+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.640+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.ClaimDetailController:
 	
-2025-09-20T11:28:48.395+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.641+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.ClaimRespondController:
 	
-2025-09-20T11:28:48.395+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.642+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.ClaimVerifyController:
 	
-2025-09-20T11:28:48.395+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.642+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.EmailController:
 	
-2025-09-20T11:28:48.396+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.642+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.FoundItemController:
 	
-2025-09-20T11:28:48.396+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.642+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.HomePageController:
 	
-2025-09-20T11:28:48.396+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.642+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.ImageUploadController:
 	
-2025-09-20T11:28:48.396+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.642+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.ItemCategoryController:
 	
-2025-09-20T11:28:48.397+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.643+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.LostItemController:
 	
-2025-09-20T11:28:48.397+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.644+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.MessageController:
 	
-2025-09-20T11:28:48.397+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.644+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.PaymentController:
 	
-2025-09-20T11:28:48.397+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.645+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	c.a.i.b.c.UserController:
 	
-2025-09-20T11:28:48.398+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+2026-03-08T16:14:00.645+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
 	o.s.b.a.w.s.e.BasicErrorController:
 	
-2025-09-20T11:28:48.564+05:30 DEBUG 23160 --- [Back_End] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2025-09-20T11:28:48.709+05:30 DEBUG 23160 --- [Back_End] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
-2025-09-20T11:28:49.494+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-20T11:28:49.698+05:30 DEBUG 23160 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
-2025-09-20T11:28:49.698+05:30 DEBUG 23160 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
-2025-09-20T11:28:49.699+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2025-09-20T11:28:49.699+05:30 DEBUG 23160 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250a98e4]
-2025-09-20T11:28:49.699+05:30 DEBUG 23160 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250a98e4]
-2025-09-20T11:28:49.700+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250a98e4]]
-2025-09-20T11:28:49.702+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2025-09-20T11:28:49.703+05:30 DEBUG 23160 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
-2025-09-20T11:28:49.703+05:30 DEBUG 23160 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
-2025-09-20T11:28:49.943+05:30  INFO 23160 --- [Back_End] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-20T11:28:49.991+05:30  INFO 23160 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Started Application in 13.917 seconds (process running for 14.908)
-2025-09-20T11:28:50.855+05:30  INFO 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-20T11:28:50.858+05:30  INFO 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-20T11:28:50.864+05:30 DEBUG 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2025-09-20T11:28:50.864+05:30 DEBUG 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2025-09-20T11:28:50.864+05:30 DEBUG 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2025-09-20T11:28:50.871+05:30 DEBUG 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1f90fa83
-2025-09-20T11:28:50.877+05:30 DEBUG 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7ff415dc
-2025-09-20T11:28:50.879+05:30 DEBUG 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2025-09-20T11:28:50.879+05:30  INFO 23160 --- [Back_End] [RMI TCP Connection(3)-192.168.8.105] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
-2025-09-20T11:29:49.609+05:30  INFO 23160 --- [Back_End] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 1, completed tasks = 0]
-2025-09-20T11:30:01.950+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
-2025-09-20T11:30:01.954+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
-2025-09-20T11:30:02.104+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=c44073838@gmail.com, password=dev, role=null)]
-2025-09-20T11:30:03.713+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:03.714+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.assignment.ijse.back_end.util.APIResponse@44aae3fe]
-2025-09-20T11:30:03.740+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:05.620+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/category", parameters={}
-2025-09-20T11:30:05.621+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/lost", parameters={}
-2025-09-20T11:30:05.622+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllCategories()
-2025-09-20T11:30:05.622+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllLostItems()
-2025-09-20T11:30:05.622+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/found", parameters={}
-2025-09-20T11:30:05.624+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllFoundItems()
-2025-09-20T11:30:05.626+05:30  INFO 23160 --- [Back_End] [http-nio-8080-exec-7] c.a.i.b.controller.HomePageController    : Fetching all categories
-2025-09-20T11:30:05.911+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:05.913+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:05.914+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.LostItemDTO@60b36c3c, com.assignment.ijse.back_end.dto.LostItemDTO (truncated)...]
-2025-09-20T11:30:05.914+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Phones, laptops, tablets, headphones, c (truncated)...]
-2025-09-20T11:30:05.920+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:05.956+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:30:05.958+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:30:05.960+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/unread/1", parameters={}
-2025-09-20T11:30:05.961+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getUnreadMessages(Long)
-2025-09-20T11:30:06.047+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/admin", parameters={}
-2025-09-20T11:30:06.050+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getAllClaims()
-2025-09-20T11:30:06.077+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:06.077+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:06.078+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.FoundItemDTO@385d254e, com.assignment.ijse.back_end.dto.FoundItemD (truncated)...]
-2025-09-20T11:30:06.089+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:06.091+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:30:06.096+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:06.101+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:06.125+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:06.126+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [0]
-2025-09-20T11:30:06.128+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:06.218+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:06.219+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@e3c8330, com.assignment.ijse.back_end.dto.ClaimViewDT (truncated)...]
-2025-09-20T11:30:06.234+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:20.004+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:30:20.004+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:30:20.044+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:20.044+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:30:20.049+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:30:54.740+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:30:54.740+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:30:54.760+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:30:54.760+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:30:54.760+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:08.522+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:31:08.523+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:31:08.538+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:08.538+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:31:08.545+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:10.968+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:31:10.969+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:31:10.984+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:10.984+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:31:10.988+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:11.003+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:31:11.005+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:31:11.011+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/found-item/finder/1", parameters={}
-2025-09-20T11:31:11.014+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.FoundItemController#getFoundItemsByFinder(Long)
-2025-09-20T11:31:11.024+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:11.025+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:31:11.025+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:11.044+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:11.044+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:31:11.044+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:19.934+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
-2025-09-20T11:31:19.936+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
-2025-09-20T11:31:19.938+05:30  INFO 23160 --- [Back_End] [http-nio-8080-exec-7] c.a.i.b.c.ItemCategoryController         : Fetching all categories
-2025-09-20T11:31:19.946+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:31:19.948+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:31:19.970+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:19.971+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Phones, laptops, tablets, headphones, c (truncated)...]
-2025-09-20T11:31:19.974+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:19.981+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:19.982+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:31:19.984+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:19.988+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/found-item", parameters={}
-2025-09-20T11:31:19.989+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.FoundItemController#getAllFoundItems()
-2025-09-20T11:31:20.017+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:20.017+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.FoundItemDTO@2e27942b, com.assignment.ijse.back_end.dto.FoundItemD (truncated)...]
-2025-09-20T11:31:20.019+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:52.148+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
-2025-09-20T11:31:52.148+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
-2025-09-20T11:31:52.149+05:30  INFO 23160 --- [Back_End] [http-nio-8080-exec-6] c.a.i.b.c.ItemCategoryController         : Fetching all categories
-2025-09-20T11:31:52.153+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/lost-item", parameters={}
-2025-09-20T11:31:52.153+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:31:52.153+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.LostItemController#getAllLostItems()
-2025-09-20T11:31:52.153+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:31:52.164+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:52.165+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Phones, laptops, tablets, headphones, c (truncated)...]
-2025-09-20T11:31:52.167+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:52.174+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:52.174+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:31:52.174+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:31:52.178+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:31:52.178+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.LostItemDTO@1e700139, com.assignment.ijse.back_end.dto.LostItemDTO (truncated)...]
-2025-09-20T11:31:52.180+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:16.488+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/category", parameters={}
-2025-09-20T11:32:16.488+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/found", parameters={}
-2025-09-20T11:32:16.488+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/lost", parameters={}
-2025-09-20T11:32:16.494+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllCategories()
-2025-09-20T11:32:16.494+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllLostItems()
-2025-09-20T11:32:16.494+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllFoundItems()
-2025-09-20T11:32:16.494+05:30  INFO 23160 --- [Back_End] [http-nio-8080-exec-8] c.a.i.b.controller.HomePageController    : Fetching all categories
-2025-09-20T11:32:16.530+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:16.531+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Phones, laptops, tablets, headphones, c (truncated)...]
-2025-09-20T11:32:16.543+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:32:16.543+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/admin", parameters={}
-2025-09-20T11:32:16.548+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:16.550+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:32:16.553+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getAllClaims()
-2025-09-20T11:32:16.570+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/unread/1", parameters={}
-2025-09-20T11:32:16.572+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getUnreadMessages(Long)
-2025-09-20T11:32:16.572+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:16.572+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:16.572+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.LostItemDTO@7bc4dd22, com.assignment.ijse.back_end.dto.LostItemDTO (truncated)...]
-2025-09-20T11:32:16.572+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.FoundItemDTO@5e538ddc, com.assignment.ijse.back_end.dto.FoundItemD (truncated)...]
-2025-09-20T11:32:16.575+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:16.575+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:16.603+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:16.605+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:32:16.608+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:16.611+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:16.613+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [0]
-2025-09-20T11:32:16.618+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:16.682+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:16.683+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@3fd3dc98, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:32:16.684+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:22.639+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:32:22.641+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:32:22.655+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/admin", parameters={}
-2025-09-20T11:32:22.655+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getAllClaims()
-2025-09-20T11:32:22.671+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:22.674+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:32:22.674+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:22.984+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:22.984+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@2c23a775, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:32:22.990+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:29.524+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:32:29.526+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:32:29.598+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:29.599+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:32:29.600+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:29.616+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
-2025-09-20T11:32:29.617+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:32:29.632+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:29.632+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
-2025-09-20T11:32:29.632+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:32:44.011+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
-2025-09-20T11:32:44.011+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
-2025-09-20T11:32:44.023+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=theo@example.com, password=theo@, role=null)]
-2025-09-20T11:32:44.313+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.assignment.ijse.back_end.exceptions.GlobalExceptionHandler#handleRuntimeException(RuntimeException)
-2025-09-20T11:32:44.325+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:44.326+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.assignment.ijse.back_end.util.APIResponse@3e24be71]
-2025-09-20T11:32:44.341+05:30  WARN 23160 --- [Back_End] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Invalid credentials]
-2025-09-20T11:32:44.342+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
-2025-09-20T11:32:53.460+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
-2025-09-20T11:32:53.460+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
-2025-09-20T11:32:53.464+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=theo@example.com, password=theo@123, role=null)]
-2025-09-20T11:32:54.082+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.assignment.ijse.back_end.exceptions.GlobalExceptionHandler#handleRuntimeException(RuntimeException)
-2025-09-20T11:32:54.082+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:54.082+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.assignment.ijse.back_end.util.APIResponse@3b907a08]
-2025-09-20T11:32:54.085+05:30  WARN 23160 --- [Back_End] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Invalid credentials]
-2025-09-20T11:32:54.087+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
-2025-09-20T11:32:58.024+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
-2025-09-20T11:32:58.024+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
-2025-09-20T11:32:58.034+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=theo@example.com, password=theo@1234, role=null)]
-2025-09-20T11:32:58.194+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.assignment.ijse.back_end.exceptions.GlobalExceptionHandler#handleRuntimeException(RuntimeException)
-2025-09-20T11:32:58.194+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:32:58.194+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.assignment.ijse.back_end.util.APIResponse@1d682c12]
-2025-09-20T11:32:58.194+05:30  WARN 23160 --- [Back_End] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Invalid credentials]
-2025-09-20T11:32:58.202+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
-2025-09-20T11:33:03.396+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
-2025-09-20T11:33:03.397+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
-2025-09-20T11:33:03.399+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=theo@example.com, password=theo, role=null)]
-2025-09-20T11:33:03.648+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.assignment.ijse.back_end.exceptions.GlobalExceptionHandler#handleRuntimeException(RuntimeException)
-2025-09-20T11:33:03.648+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:03.649+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.assignment.ijse.back_end.util.APIResponse@31f7a633]
-2025-09-20T11:33:03.649+05:30  WARN 23160 --- [Back_End] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Invalid credentials]
-2025-09-20T11:33:03.649+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
-2025-09-20T11:33:09.081+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
-2025-09-20T11:33:09.082+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
-2025-09-20T11:33:09.086+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=theo@example.com, password=dev, role=null)]
-2025-09-20T11:33:09.894+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:09.908+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.assignment.ijse.back_end.util.APIResponse@a3f6fdb]
-2025-09-20T11:33:09.914+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:11.780+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/lost", parameters={}
-2025-09-20T11:33:11.780+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/category", parameters={}
-2025-09-20T11:33:11.782+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllCategories()
-2025-09-20T11:33:11.784+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllLostItems()
-2025-09-20T11:33:11.786+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/found", parameters={}
-2025-09-20T11:33:11.786+05:30  INFO 23160 --- [Back_End] [http-nio-8080-exec-9] c.a.i.b.controller.HomePageController    : Fetching all categories
-2025-09-20T11:33:11.791+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllFoundItems()
-2025-09-20T11:33:11.872+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/admin", parameters={}
-2025-09-20T11:33:11.877+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getAllClaims()
-2025-09-20T11:33:11.889+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:11.890+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/unread/7", parameters={}
-2025-09-20T11:33:11.890+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/7", parameters={}
-2025-09-20T11:33:13.313+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getUnreadMessages(Long)
-2025-09-20T11:33:13.312+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:33:13.325+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Phones, laptops, tablets, headphones, c (truncated)...]
-2025-09-20T11:33:13.325+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:13.331+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.FoundItemDTO@4586b5b, com.assignment.ijse.back_end.dto.FoundItemDT (truncated)...]
-2025-09-20T11:33:13.333+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:13.343+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:13.344+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:13.346+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.LostItemDTO@75732af, com.assignment.ijse.back_end.dto.LostItemDTO@ (truncated)...]
-2025-09-20T11:33:13.348+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:13.366+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:13.366+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [1]
-2025-09-20T11:33:13.372+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:13.451+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:13.453+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@47a354a5, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:33:13.462+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:13.463+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:13.465+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@4dc3760a, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:33:13.468+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:16.254+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/7", parameters={}
-2025-09-20T11:33:16.262+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:33:16.368+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:16.368+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@75385ca4, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:33:16.369+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:16.394+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/7", parameters={}
-2025-09-20T11:33:16.394+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:33:16.404+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/found-item/finder/7", parameters={}
-2025-09-20T11:33:16.411+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.FoundItemController#getFoundItemsByFinder(Long)
-2025-09-20T11:33:16.446+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:16.449+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.FoundItemDTO@6c87b33c, com.assignment.ijse.back_end.dto.FoundItemD (truncated)...]
-2025-09-20T11:33:16.454+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:16.524+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:16.526+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@2fda6acc, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:33:16.528+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:33.014+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : PUT "/claimright/user/change-password", parameters={}
-2025-09-20T11:33:33.014+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.UserController#changePassword(PasswordChangeDTO)
-2025-09-20T11:33:33.046+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [PasswordChangeDTO(userId=7, currentPassword=dev, newPassword=theo@)]
-2025-09-20T11:33:33.691+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:33.691+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.assignment.ijse.back_end.util.APIResponse@26ab81b7]
-2025-09-20T11:33:33.694+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:50.085+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/7", parameters={}
-2025-09-20T11:33:50.086+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:33:50.139+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:50.141+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@72c8e8c8, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:33:50.141+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:33:50.154+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/7", parameters={}
-2025-09-20T11:33:50.154+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
-2025-09-20T11:33:50.194+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-09-20T11:33:50.194+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.assignment.ijse.back_end.dto.ClaimViewDTO@52d86a61, com.assignment.ijse.back_end.dto.ClaimViewD (truncated)...]
-2025-09-20T11:33:50.194+05:30 DEBUG 23160 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-09-20T11:43:40.804+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-20T11:43:40.896+05:30  INFO 23160 --- [Back_End] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-20T11:43:40.949+05:30 DEBUG 23160 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
-2025-09-20T11:43:40.951+05:30 DEBUG 23160 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
-2025-09-20T11:43:40.951+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2025-09-20T11:43:40.953+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250a98e4]]
-2025-09-20T11:43:40.953+05:30 DEBUG 23160 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250a98e4]
-2025-09-20T11:43:40.953+05:30 DEBUG 23160 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250a98e4]
-2025-09-20T11:43:40.953+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2025-09-20T11:43:40.953+05:30 DEBUG 23160 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
-2025-09-20T11:43:40.953+05:30 DEBUG 23160 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
-2025-09-20T11:43:41.148+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-20T11:43:41.181+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-09-20T11:43:41.196+05:30  INFO 23160 --- [Back_End] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-08T16:14:01.162+05:30 DEBUG 24784 --- [Back_End] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-03-08T16:14:01.514+05:30 DEBUG 24784 --- [Back_End] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-03-08T16:14:02.876+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-03-08T16:14:03.309+05:30 DEBUG 24784 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2026-03-08T16:14:03.310+05:30 DEBUG 24784 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2026-03-08T16:14:03.310+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-08T16:14:03.310+05:30 DEBUG 24784 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@36cb7a2b]
+2026-03-08T16:14:03.310+05:30 DEBUG 24784 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@36cb7a2b]
+2026-03-08T16:14:03.310+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@36cb7a2b]]
+2026-03-08T16:14:03.311+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-08T16:14:03.312+05:30 DEBUG 24784 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2026-03-08T16:14:03.312+05:30 DEBUG 24784 --- [Back_End] [restartedMain] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2026-03-08T16:14:04.326+05:30  INFO 24784 --- [Back_End] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-03-08T16:14:04.345+05:30  INFO 24784 --- [Back_End] [restartedMain] c.assignment.ijse.back_end.Application   : Started Application in 22.728 seconds (process running for 23.916)
+2026-03-08T16:15:03.725+05:30  INFO 24784 --- [Back_End] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 1, completed tasks = 0]
+2026-03-08T16:15:33.360+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-08T16:15:33.408+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-08T16:15:33.457+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-03-08T16:15:33.459+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-03-08T16:15:33.464+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-03-08T16:15:34.094+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@783ea677
+2026-03-08T16:15:34.102+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@60e73a7d
+2026-03-08T16:15:34.118+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-03-08T16:15:34.123+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 708 ms
+2026-03-08T16:15:51.404+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/found", parameters={}
+2026-03-08T16:15:51.404+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/lost", parameters={}
+2026-03-08T16:15:51.404+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/category", parameters={}
+2026-03-08T16:15:51.880+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllLostItems()
+2026-03-08T16:15:51.876+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllCategories()
+2026-03-08T16:15:51.879+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllFoundItems()
+2026-03-08T16:15:57.551+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-2] c.a.i.b.controller.HomePageController    : Fetching all categories
+2026-03-08T16:16:06.091+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:16:06.091+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:16:06.094+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:16:06.094+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:16:06.105+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-10] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:16:06.110+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:06.110+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:06.124+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:16:06.124+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:16:06.207+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:06.207+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:06.249+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:06.250+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:06.253+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:16:09.560+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:16:09.858+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:09.858+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:09.907+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:09.908+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:16:09.918+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:23.538+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:16:23.538+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:16:23.548+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:16:23.544+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:16:23.558+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-8] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:16:23.658+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:23.672+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:16:23.689+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:23.768+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:23.771+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:16:23.781+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:27.695+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:16:27.692+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:16:27.705+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:16:27.706+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:16:27.708+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-7] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:16:27.791+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:27.805+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:16:27.808+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:27.809+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:16:27.819+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:27.819+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:35.392+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:16:35.392+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:16:35.398+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:16:35.399+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:16:35.400+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-2] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:16:35.627+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:35.630+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:16:35.654+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:16:35.773+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:16:35.782+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:16:35.808+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:28.812+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/claimrightauth/login", parameters={}
+2026-03-08T16:17:28.848+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.AuthController#loginUser(AuthDTO)
+2026-03-08T16:17:31.035+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AuthDTO(email=c44073838@gmail.com, password=1234, role=null)]
+2026-03-08T16:17:32.252+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:32.257+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.assignment.ijse.back_end.util.APIResponse@781dc97c]
+2026-03-08T16:17:32.305+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:36.262+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/found", parameters={}
+2026-03-08T16:17:36.260+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/lost", parameters={}
+2026-03-08T16:17:36.259+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright-landing-page/category", parameters={}
+2026-03-08T16:17:36.270+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllFoundItems()
+2026-03-08T16:17:36.271+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllCategories()
+2026-03-08T16:17:36.276+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.HomePageController#getAllLostItems()
+2026-03-08T16:17:36.284+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-2] c.a.i.b.controller.HomePageController    : Fetching all categories
+2026-03-08T16:17:36.401+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:36.400+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:36.410+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:36.412+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:36.433+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:36.437+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:36.440+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/admin", parameters={}
+2026-03-08T16:17:36.441+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getAllClaims()
+2026-03-08T16:17:36.477+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:17:36.489+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:17:36.537+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:36.547+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:17:36.558+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:36.866+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:36.870+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:36.881+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:36.966+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:36.970+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:36.990+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:37.035+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/unread/1", parameters={}
+2026-03-08T16:17:37.040+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getUnreadMessages(Long)
+2026-03-08T16:17:37.659+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:37.661+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [0]
+2026-03-08T16:17:37.674+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:42.528+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:17:42.530+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:17:42.601+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:42.603+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:42.606+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:42.651+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:17:42.654+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:17:42.706+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:42.707+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:42.716+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:42.851+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright/found-item/finder/1", parameters={}
+2026-03-08T16:17:42.852+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.FoundItemController#getFoundItemsByFinder(Long)
+2026-03-08T16:17:42.956+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:42.960+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:42.964+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:47.824+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:17:47.825+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/claimright/user/get-all", parameters={}
+2026-03-08T16:17:47.826+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.UserController#getAllUsers()
+2026-03-08T16:17:47.828+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:17:47.928+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:47.930+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:47.949+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:47.965+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:47.966+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.assignment.ijse.back_end.util.APIResponse@4834f81c]
+2026-03-08T16:17:48.039+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:48.269+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/unread-by-sender/1", parameters={}
+2026-03-08T16:17:48.272+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getUnreadMessagesBySender(Long)
+2026-03-08T16:17:48.795+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:48.796+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:48.805+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:48.946+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/get-messages/conversation/users?userA=1&userB=1", parameters={masked}
+2026-03-08T16:17:48.949+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getConversationBetweenUsers(Long, Long)
+2026-03-08T16:17:48.950+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright-web-socket/ws-chat/info?t=1772966868828", parameters={masked}
+2026-03-08T16:17:48.959+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@7b2ad647
+2026-03-08T16:17:49.027+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8080/claimright-web-socket/ws-chat/info?t=1772966868828
+2026-03-08T16:17:49.045+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:49.086+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright-web-socket/ws-chat/590/u01vqmmc/websocket", parameters={}
+2026-03-08T16:17:49.089+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@7b2ad647
+2026-03-08T16:17:49.114+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8080/claimright-web-socket/ws-chat/590/u01vqmmc/websocket
+2026-03-08T16:17:49.353+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:49.353+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:17:49.363+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:17:49.478+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : PUT "/claimright/messages/mark-read/conversation?userA=1&userB=1", parameters={masked}
+2026-03-08T16:17:49.481+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#markConversationAsRead(Long, Long)
+2026-03-08T16:17:49.541+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:17:49.543+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2026-03-08T16:17:49.546+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 204 NO_CONTENT
+2026-03-08T16:17:49.791+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2026-03-08T16:17:50.049+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=u01vqmmc]
+2026-03-08T16:17:50.431+05:30 DEBUG 24784 --- [Back_End] [clientInboundChannel-2] org.springframework.web.SimpLogging      : Processing CONNECT session=u01vqmmc
+2026-03-08T16:17:50.579+05:30 DEBUG 24784 --- [Back_End] [clientInboundChannel-5] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/messages/1 id=sub-0 session=u01vqmmc
+2026-03-08T16:18:11.846+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=u01vqmmc] closed with CloseStatus[code=1001, reason=null]
+2026-03-08T16:18:11.872+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-8] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session u01vqmmc
+2026-03-08T16:18:11.887+05:30 DEBUG 24784 --- [Back_End] [clientInboundChannel-8] org.springframework.web.SimpLogging      : Processing DISCONNECT session=u01vqmmc
+2026-03-08T16:18:11.905+05:30 DEBUG 24784 --- [Back_End] [clientOutboundChannel-2] o.s.w.s.m.SubProtocolWebSocketHandler    : No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpSessionId=u01vqmmc}], simpSessionId=u01vqmmc}]
+2026-03-08T16:18:19.292+05:30 DEBUG 24784 --- [Back_End] [MessageBroker-4] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [u01vqmmc]
+2026-03-08T16:18:19.962+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:18:19.973+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:18:19.962+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright/user/get-all", parameters={}
+2026-03-08T16:18:19.996+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.UserController#getAllUsers()
+2026-03-08T16:18:20.673+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:20.714+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.assignment.ijse.back_end.util.APIResponse@1baf9ccd]
+2026-03-08T16:18:20.865+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:21.368+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/unread-by-sender/1", parameters={}
+2026-03-08T16:18:21.369+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getUnreadMessagesBySender(Long)
+2026-03-08T16:18:21.470+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:21.471+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:21.473+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:23.098+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:23.098+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:23.134+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:23.721+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright/messages/get-messages/conversation/users?userA=1&userB=1", parameters={masked}
+2026-03-08T16:18:23.726+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#getConversationBetweenUsers(Long, Long)
+2026-03-08T16:18:24.126+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright-web-socket/ws-chat/info?t=1772966903685", parameters={masked}
+2026-03-08T16:18:24.127+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@7b2ad647
+2026-03-08T16:18:24.162+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:24.163+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:24.165+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8080/claimright-web-socket/ws-chat/info?t=1772966903685
+2026-03-08T16:18:24.165+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:24.219+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:24.428+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright-web-socket/ws-chat/544/kh0kwljz/websocket", parameters={}
+2026-03-08T16:18:24.429+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@7b2ad647
+2026-03-08T16:18:24.481+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : PUT "/claimright/messages/mark-read/conversation?userA=1&userB=1", parameters={masked}
+2026-03-08T16:18:24.483+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.MessageController#markConversationAsRead(Long, Long)
+2026-03-08T16:18:24.592+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8080/claimright-web-socket/ws-chat/544/kh0kwljz/websocket
+2026-03-08T16:18:24.718+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:24.719+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2026-03-08T16:18:24.720+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 204 NO_CONTENT
+2026-03-08T16:18:24.934+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2026-03-08T16:18:26.508+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=kh0kwljz]
+2026-03-08T16:18:27.124+05:30 DEBUG 24784 --- [Back_End] [clientInboundChannel-11] org.springframework.web.SimpLogging      : Processing CONNECT session=kh0kwljz
+2026-03-08T16:18:27.232+05:30 DEBUG 24784 --- [Back_End] [clientInboundChannel-14] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/messages/1 id=sub-0 session=kh0kwljz
+2026-03-08T16:18:36.151+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=kh0kwljz] closed with CloseStatus[code=1001, reason=null]
+2026-03-08T16:18:36.200+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session kh0kwljz
+2026-03-08T16:18:36.217+05:30 DEBUG 24784 --- [Back_End] [clientInboundChannel-17] org.springframework.web.SimpLogging      : Processing DISCONNECT session=kh0kwljz
+2026-03-08T16:18:36.267+05:30 DEBUG 24784 --- [Back_End] [clientOutboundChannel-4] o.s.w.s.m.SubProtocolWebSocketHandler    : No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpSessionId=kh0kwljz}], simpSessionId=kh0kwljz}]
+2026-03-08T16:18:40.967+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:18:40.969+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:18:42.101+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:42.102+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:42.106+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:44.182+05:30 DEBUG 24784 --- [Back_End] [MessageBroker-9] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [kh0kwljz]
+2026-03-08T16:18:45.969+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:18:45.976+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:18:46.125+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:46.125+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:46.138+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:47.708+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:18:47.709+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:18:47.710+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:18:47.710+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:18:47.718+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-3] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:18:47.717+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/claimright/found-item", parameters={}
+2026-03-08T16:18:47.722+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.FoundItemController#getAllFoundItems()
+2026-03-08T16:18:47.789+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:47.789+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:47.799+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:47.839+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:47.840+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:18:47.842+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:18:47.844+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:18:47.848+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:18:47.863+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:04.181+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:19:04.179+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/found-item", parameters={}
+2026-03-08T16:19:04.180+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:19:04.185+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.FoundItemController#getAllFoundItems()
+2026-03-08T16:19:04.185+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:19:04.185+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:19:04.188+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-4] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:19:04.255+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:04.256+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:04.269+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:04.289+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:04.292+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:19:04.302+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:04.387+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:04.388+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:04.400+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:06.933+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:19:06.938+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/lost-item", parameters={}
+2026-03-08T16:19:06.941+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:19:06.941+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.LostItemController#getAllLostItems()
+2026-03-08T16:19:06.942+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-5] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:19:07.005+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:07.009+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:19:07.034+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:07.067+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:19:07.068+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:19:07.154+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:07.155+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:07.156+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:07.157+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:07.158+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:07.167+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:19.423+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:19:19.415+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/claimright/lost-item", parameters={}
+2026-03-08T16:19:19.426+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:19:19.430+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.LostItemController#getAllLostItems()
+2026-03-08T16:19:19.433+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:19:19.436+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-4] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:19:19.439+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:19:19.473+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:19.479+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:19.487+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:19.533+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:19.548+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:19.553+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:19.561+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:19.571+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:19:19.583+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:47.241+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/claimright/claims/user/1", parameters={}
+2026-03-08T16:19:47.241+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/claimright/item-categories", parameters={}
+2026-03-08T16:19:47.241+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/claimright/lost-item", parameters={}
+2026-03-08T16:19:47.285+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.LostItemController#getAllLostItems()
+2026-03-08T16:19:47.285+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ItemCategoryController#getAllCategories()
+2026-03-08T16:19:47.288+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.assignment.ijse.back_end.controller.ClaimDetailController#getClaimsForUser(Long)
+2026-03-08T16:19:47.307+05:30  INFO 24784 --- [Back_End] [http-nio-8080-exec-10] c.a.i.b.c.ItemCategoryController         : Fetching all categories
+2026-03-08T16:19:47.766+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:47.784+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[ItemCategoryDTO(categoryId=1, name=Electronics, description=Items like smartphones, laptops, tablet (truncated)...]
+2026-03-08T16:19:47.789+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:47.790+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:47.905+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:47.912+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-03-08T16:19:47.950+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:19:47.970+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2026-03-08T16:19:47.972+05:30 DEBUG 24784 --- [Back_End] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-08T16:21:40.930+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-08T16:21:41.090+05:30  INFO 24784 --- [Back_End] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-08T16:21:41.276+05:30 DEBUG 24784 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2026-03-08T16:21:41.289+05:30 DEBUG 24784 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2026-03-08T16:21:41.290+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-08T16:21:41.298+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@36cb7a2b]]
+2026-03-08T16:21:41.298+05:30 DEBUG 24784 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@36cb7a2b]
+2026-03-08T16:21:41.299+05:30 DEBUG 24784 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@36cb7a2b]
+2026-03-08T16:21:41.301+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-08T16:21:41.303+05:30 DEBUG 24784 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2026-03-08T16:21:41.304+05:30 DEBUG 24784 --- [Back_End] [SpringApplicationShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2026-03-08T16:21:42.808+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08T16:21:42.920+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-08T16:21:43.045+05:30  INFO 24784 --- [Back_End] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

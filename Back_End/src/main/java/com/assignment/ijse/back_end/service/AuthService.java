@@ -12,4 +12,6 @@ public interface AuthService {
 
      String forgotPassword(String email);
      String resetPassword(String token, String newPassword);
+
+     AuthResponseDTO authenticateWithGoogle(String idTokenString);
 }
